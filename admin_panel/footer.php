@@ -166,6 +166,7 @@ include 'theme_settings.php';
 <script defer src="<?php echo ADMIN_PANEL_URL; ?>assets/js/nprogress.js"></script>
 <script defer src="<?php echo ADMIN_PANEL_URL; ?>assets/js/jstz.min.js"></script>
 <script defer src="<?php echo ADMIN_PANEL_URL; ?>assets/js/moment.min.js"></script>
+<script defer src="<?php echo ADMIN_PANEL_URL; ?>assets/js/bootstrap-datepicker.min.js"></script>
 <script defer src="<?php echo ADMIN_PANEL_URL; ?>assets/js/daterangepicker.js"></script>
 <script defer src="<?php echo ADMIN_PANEL_URL; ?>assets/js/pnotify.custom.js"></script>
 <script defer src="<?php echo ADMIN_PANEL_URL; ?>assets/js/jquery.dataTables.min.js"></script>
@@ -244,9 +245,35 @@ echo $include_javscript_at_bottom;
 					CURRENT_DATA = [];
 					editor = [];
 					myDropzone = [];
-					$.getScript(notify_panel_url+'js/'+newPage+'.js', function() {
-						//Call after script load
-					});
+					if($.inArray(newPage, load_pages) === -1)
+					{
+						load_pages.push(newPage);
+					}
+					$("[scripttype='pageScript']").remove();
+						// $.getScript(notify_panel_url+'js/'+newPage+'.js', function() {
+						// 	//Call after script load
+						// });
+						var script = document.createElement('script');
+						var prior = document.getElementsByTagName('script')[0];
+						script.async = 1;
+
+						script.onload = script.onreadystatechange = function( _, isAbort ) {
+							if(isAbort || !script.readyState || /loaded|complete/.test(script.readyState) ) {
+								script.onload = script.onreadystatechange = null;
+								script = undefined;
+
+								// if(!isAbort && callback) setTimeout(callback, 0);
+							}
+						};
+
+						script.src = notify_panel_url+'js/'+newPage+'.js';
+						script.setAttribute('scripttype',"pageScript");
+						// script.scripttype = "pageScript";
+						prior.parentNode.insertBefore(script, prior);
+					// }
+					// else if($.isFunction(callOnLoad)){
+					// 	callOnLoad();
+					// }
 					apply_after_page_load();
 					$(".side-nav a").each(function () {
 						$(this).removeClass("active");

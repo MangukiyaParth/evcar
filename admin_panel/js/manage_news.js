@@ -1,9 +1,14 @@
 var table;
 var SUBPRIMARYID = 0;
 jQuery(function () {
+    callOnLoad();
+});
+
+function callOnLoad(){
     HTMLEditor("description", 0);
     get_data();
-});
+}
+
 function resetform(){
     $('#formevent').val('submit');
 }

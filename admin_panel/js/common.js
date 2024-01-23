@@ -14,7 +14,7 @@ var updateMessage = 'Updated';
 var CURRENT_DATA = [];
 var editor = [];
 var myDropzone = [];
-
+var load_pages = [];
 if(CURRENT_PAGE != 'logout' && CURRENT_PAGE != 'login')
 {
     openPage();
@@ -183,6 +183,28 @@ function apply_after_page_load(){
         var objOptions = $.extend({}, defaultOptions, $(obj).data());
         $(obj).daterangepicker(objOptions);
     });
+    
+    $('[data-provide="date-picker"]').each(function (index, obj) {
+        var format = "dd/mm/yyyy";
+        var defaultView = "date";
+        if($(this).attr('data-date-min-view-mode') == 2){
+            //Year Picker
+            format = "yyyy";
+            defaultView = "year";
+        }
+        else if($(this).attr('data-date-min-view-mode') == 1){
+            //Month Picker
+            format = "mm/yyyy";
+            defaultView = "month";
+        }
+
+        $(obj).datepicker({
+            defaultViewDate: defaultView,
+            format: format,
+            autoclose: true
+        });
+    });
+    
 
     $(".numbersOnlyField").keydown(function (e) {
         if (!(e.keyCode >= 48 && e.keyCode <= 57) && !(e.keyCode >= 96 && e.keyCode <= 105) && e.keyCode != 18 && e.keyCode != 8 && e.keyCode != 9 && e.keyCode != 13 && e.keyCode != 16 && e.keyCode != 36) {
@@ -196,8 +218,12 @@ function apply_after_page_load(){
         }
     });
 
-    $('.select2').select2({
-        placeholder: 'Select an option'
+    $('.select2').each(function (index, obj) {
+        var searchCnt = ($(this).attr('data-live-search')) ? $(this).attr('data-live-search') : -1;
+        $(obj).select2({
+            placeholder: 'Select an option',
+            minimumResultsForSearch: searchCnt
+        });
     });
 }
 

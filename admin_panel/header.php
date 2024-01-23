@@ -80,6 +80,7 @@ var selata = [];
 	<link rel="shortcut icon" href="<?php echo ADMIN_PANEL_URL; ?>assets/images/favicon.ico">
 	<link rel="stylesheet" href="<?php echo ADMIN_PANEL_URL; ?>assets/css/custom.css">
 	<!-- Plugin css -->
+	<link rel="stylesheet" href="<?php echo ADMIN_PANEL_URL; ?>assets/css/bootstrap-datepicker.min.css" type="text/css" />
 	<link rel="stylesheet" href="<?php echo ADMIN_PANEL_URL; ?>assets/css/daterangepicker.css">
 	<link rel="stylesheet" href="<?php echo ADMIN_PANEL_URL; ?>assets/css/pnotify.custom.css" />
 	<link rel="stylesheet" href="<?php echo ADMIN_PANEL_URL; ?>assets/css/dataTables.bootstrap5.min.css" type="text/css" />

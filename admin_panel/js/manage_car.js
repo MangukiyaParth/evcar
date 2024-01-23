@@ -2,15 +2,69 @@ var table;
 var SUBPRIMARYID = 0;
 jQuery(function () {
     HTMLEditor("description", 0);
-    get_data();
+    // get_data();
 });
 function resetform(){
     $('#formevent').val('submit');
+    fill_details();
 }
-$('#dis_order').on('input', function() {
-    // Allow only numbers (0-9) and backspace
-    $(this).val($(this).val().replace(/[^0-9]/g, ''));
-  });
+
+function fill_details(){
+    showLoading();
+    var req_data = {
+        op: "get_details"
+        , action: "get_data"
+    };
+    doAPICall(req_data, async function(data){
+        if (data && data != null && data.success) {
+            hideLoading();
+            var brandData = data.brand;
+            var carTypeData = data.car_type;
+            var fulesData = data.fules;
+            var transmisionData = data.transmision;
+
+            if (brandData && brandData.length > 0) {
+                var brand_html = "";
+                brandData.forEach(brands => {
+                    brand_html += `<option value="${brands.id}">${brands.brand}</option>`;
+                });
+                $("#brand").html(brand_html).trigger('change');
+                $("#brand").trigger('change');
+            }
+            if (carTypeData && carTypeData.length > 0) {
+                var car_type_html = "";
+                carTypeData.forEach(car_type => {
+                    car_type_html += `<option value="${car_type.id}">${car_type.car_type}</option>`;
+                });
+                $("#car_type").html(car_type_html);
+                $("#car_type").trigger('change');
+            }
+            if (fulesData && fulesData.length > 0) {
+                var fule_html = "";
+                fulesData.forEach(fules => {
+                    fule_html += `<option value="${fules.id}">${fules.fule}</option>`;
+                });
+                $(".fule_type").html(fule_html);
+                $(".fule_type").trigger('change');
+            }
+            if (transmisionData && transmisionData.length > 0) {
+                var transmision_html = "";
+                transmisionData.forEach(transmisions => {
+                    transmision_html += `<option value="${transmisions.id}">${transmisions.trans_type}</option>`;
+                });
+                $(".transmision").html(transmision_html);
+                $(".transmision").trigger('change');
+            }
+            return false;
+        }
+        else if (data && data != null && !data.success) {
+            hideLoading();
+            showError(data.message);
+            return false;
+        }
+    });
+}
+
 function get_data() {
     table = $('#datatable').DataTable({
         processing: true,
@@ -70,6 +124,10 @@ function get_data() {
         }]
     });
 }
+
+$("#add_color").on("click", function(){
+
+});
 if($('#'+FORMNAME).length){		
     $('#'+FORMNAME).validate({
         rules:{
