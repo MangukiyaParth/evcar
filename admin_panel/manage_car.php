@@ -17,7 +17,7 @@
                     <div class="card-body">
 
                         <div id="formDiv" style="display: none;">
-                            <form id="manage_cars_form" class="needs-validation" method="POST" novalidate>
+                            <form id="manage_car_form" class="needs-validation" method="POST" novalidate>
                                 <input type="hidden" id="id">
                                 <input type="hidden" id="formevent" name ="formevent"value="submit">
                                 <div class="row">
@@ -28,9 +28,6 @@
                                     <div class="mb-3 col-sm-4">
                                         <label class="form-label" for="brand">Brand</label>
                                         <select class="form-select select2" id="brand" name="brand" data-live-search="2">
-                                            <option value="1">test</option>
-                                            <option value="2">test2</option>
-                                            <option value="3">test3</option>
                                         </select>
                                     </div>
                                     <div class="mb-3 col-sm-4">
@@ -42,9 +39,6 @@
                                     <div class="mb-3 col-sm-4">
                                         <label class="form-label" for="fule_type">Fule Type</label>
                                         <select class="form-select fule_type select2" id="fule_type" name="fule_type">
-                                            <option value="1">test</option>
-                                            <option value="2">test2</option>
-                                            <option value="3">test3</option>
                                         </select>
                                     </div>
                                     <div class="mb-3 col-sm-4">
@@ -60,9 +54,6 @@
                                     <div class="mb-3 col-sm-4">
                                         <label class="form-label" for="transmision">Transmision</label>
                                         <select class="form-select transmision select2" id="transmision" name="transmision">
-                                            <option value="1">test</option>
-                                            <option value="2">test2</option>
-                                            <option value="3">test3</option>
                                         </select>
                                     </div>
                                     <div class="mb-3 col-sm-4">
@@ -72,9 +63,6 @@
                                     <div class="mb-3 col-sm-4">
                                         <label class="form-label" for="car_type">Car Type</label>
                                         <select class="form-select select2" id="car_type" name="car_type">
-                                            <option value="1">test</option>
-                                            <option value="2">test2</option>
-                                            <option value="3">test3</option>
                                         </select>
                                     </div>
                                 </div>
@@ -144,17 +132,11 @@
                                     <div class="mb-3 col-sm-3">
                                         <label class="form-label" for="verient_fule_type">Fule Type</label>
                                         <select class="form-select fule_type select2" id="verient_fule_type" name="verient_fule_type">
-                                            <option value="1">test</option>
-                                            <option value="2">test2</option>
-                                            <option value="3">test3</option>
                                         </select>
                                     </div>
                                     <div class="mb-3 col-sm-3">
                                         <label class="form-label" for="verient_transmision">Transmision</label>
                                         <select class="form-select transmision select2" id="verient_transmision" name="verient_transmision">
-                                            <option value="1">test</option>
-                                            <option value="2">test2</option>
-                                            <option value="3">test3</option>
                                         </select>
                                     </div>
                                 </div>
@@ -168,7 +150,7 @@
                                         <input type="text" id="verient_price" name="verient_price" class="form-control desimalnumberField" placeholder="Enter price" required />
                                     </div>
                                     <div class="my-3 col-sm-1">
-                                        <button class="btn btn-info" type="button">Add</button>
+                                        <button class="btn btn-info" type="button" id="add_verient">Add</button>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -184,6 +166,7 @@
                                                     <th width="10%">Delete</th>
                                                 </tr>
                                             </thead>
+                                            <tbody id="verient_list"></tbody>
                                         </table>
                                     </div>
                                 </div>

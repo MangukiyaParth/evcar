@@ -1,6 +1,7 @@
 var table;
 var SUBPRIMARYID = 0;
 var colorData = [];
+var verientData = [];
 jQuery(function () {
     HTMLEditor("description", 0);
     // get_data();
@@ -156,7 +157,7 @@ function fillColorTbl(){
             clrimgdata.forEach(clrimg => {
                 imgs_html += `<img class="color-img" src="${WEB_API_FOLDER+clrimg.url}" />`;
             });
-            clr_html += `<tr class="img${i}">
+            clr_html += `<tr class="color${i}">
                 <td>${clrdata.color}</td>
                 <td>${imgs_html}</td>
                 <td><button class="btn btn-danger" onclick="removeColor(${i})">Remove</button></td>
@@ -175,36 +176,125 @@ function removeColor(i){
         imgs.push(clrimg.url);
     });
     remove_file(imgs, true);
-    $("#color_list .img"+i).remove();
-    colorData = colorData.filter(function( obj ) {
-        return obj.uuid != clrdata.uuid;
-    });
+    $("#color_list .color"+i).remove();
+    colorData.splice(i, 1);
+}
+
+$("#add_verient").on("click", function(){
+    var verient_name = $("#verient_name").val();
+    var fule_type = $("#verient_fule_type :selected").val();
+    var fule_type_text = $("#verient_fule_type :selected").text();
+    var transmision = $("#verient_transmision :selected").val();
+    var transmision_text = $("#verient_transmision :selected").text();
+    var engine = $("#verient_engine").val();
+    var price = $("#verient_price").val();
+    if(verient_name && fule_type && transmision && engine && price){
+        var vdata = {
+            verient_name: verient_name,
+            fule_type: fule_type,
+            fule_type_text: fule_type_text,
+            transmision: transmision,
+            transmision_text: transmision_text,
+            engine: engine,
+            price: price,
+        };
+        verientData.push(vdata);
+        fillVerientTbl();
+        $("#verient_name").val('');
+        $("#verient_fule_type").val('').trigger('change');
+        $("#verient_transmision").val('').trigger('change');
+        $("#verient_engine").val('');
+        $("#verient_price").val('');
+    }
+    else {
+        showError("Please fill all the details.");
+    }
+});
+
+function fillVerientTbl(){
+    var ver_html = "";
+    if(verientData.length > 0){
+        var i=0;
+        verientData.forEach(verdata => {
+            ver_html += `<tr class="verient${i}">
+                <td>${verdata.verient_name}</td>
+                <td>${verdata.fule_type_text}</td>
+                <td>${verdata.transmision_text}</td>
+                <td>${verdata.engine}</td>
+                <td>&#x20B9;${to_number_format(verdata.price)}</td>
+                <td><button class="btn btn-danger" onclick="removeVerient(${i})">Remove</button></td>
+            </tr>`;
+            i++;
+        });
+    }
+    $("#verient_list").html(ver_html);
+}
+
+function removeVerient(i){
+    $("#verient_list .verient"+i).remove();
+    verientData.splice(i, 1);
 }
 
 if($('#'+FORMNAME).length){		
     $('#'+FORMNAME).validate({
         rules:{
-            title:{
-                required: true,			
+            name:{
+                required: true,
             },
-            news_date:{
-                required: true,			
+            brand:{
+                required: true,
             },
-            short_description:{
-                required: true,			
+            price:{
+                required: true,
+            },
+            fule_type:{
+                required: true,
+            },
+            engine:{
+                required: true,
+            },
+            modal_year:{
+                required: true,
+            },
+            transmision:{
+                required: true,
+            },
+            seater:{
+                required: true,
+            },
+            car_type:{
+                required: true,
             },
             description:{
-                required: true,			
+                required: true,
             },
         },messages:{
-            title:{
-                required:"title is required",
+            name:{
+                required:"name is required",
             },
-            news_date:{
-                required:"Date is required",
+            brand:{
+                required:"brand is required",
             },
-            short_description:{
-                required:"Short description is required",
+            price:{
+                required:"price is required",
+            },
+            fule_type:{
+                required:"fule type is required",
+            },
+            engine:{
+                required:"engine displacement is required",
+            },
+            modal_year:{
+                required:"modal year is required",
+            },
+            transmision:{
+                required:"transmision is required",
+            },
+            seater:{
+                required:"seater is required",
+            },
+            car_type:{
+                required:"car type is required",
             },
             description:{
                 required:"description is required",
@@ -213,14 +303,26 @@ if($('#'+FORMNAME).length){
         submitHandler: function(form){
             showLoading();
             var req_data = {
-                op: CURRENT_PAGE
-                , action: "add_data"
-                , title: $('#title').val()
-                , news_date: $('#news_date').val()
-                , short_description: $('#short_description').val()
-                , description: editor[0].getData()
-                , formevent: $('#formevent').val()
-                , id: $('#id').val()
+                op: CURRENT_PAGE,
+                action: "add_data",
+                name: $('#name').val(),
+                brand: $('#brand :selected').val(),
+                brand_name: $('#brand :selected').text(),
+                price: $('#price').val(),
+                fule_type: $('#fule_type :selected').val(),
+                fule_type_name: $('#fule_type :selected').text(),
+                engine: $('#engine').val(),
+                modal_year: $('#modal_year').val(),
+                transmision: $('#transmision :selected').val(),
+                transmision_name: $('#transmision :selected').text(),
+                seater: $('#seater').val(),
+                car_type: $('#car_type :selected').val(),
+                car_type_name: $('#car_type :selected').text(),
+                description: editor[0].getData(),
+                color_data: JSON.stringify(colorData),
+                verient_data: JSON.stringify(verientData),
+                formevent: $('#formevent').val(),
+                id: $('#id').val()
             };
             if($('#file_name').val())
             {
