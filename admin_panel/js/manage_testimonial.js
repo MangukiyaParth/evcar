@@ -161,7 +161,7 @@ function edit_testimonial(index) {
         }
         $('#file_name').val(JSON.stringify(logoData));
 
-        changeView('form', '', true);
+        changeView('form', true);
     }
 }
 

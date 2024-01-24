@@ -241,6 +241,7 @@ echo $include_javscript_at_bottom;
 						return match.toUpperCase();
 					});
 					$('title').html('Admin Panel: '+page_name);
+					$(".page-name").html(page_name);
 					FORMNAME = CURRENT_PAGE+'_form';
 					CURRENT_DATA = [];
 					editor = [];
@@ -249,32 +250,31 @@ echo $include_javscript_at_bottom;
 					{
 						load_pages.push(newPage);
 					}
+
+					changeView('details');
 					$("[scripttype='pageScript']").remove();
-						// $.getScript(notify_panel_url+'js/'+newPage+'.js', function() {
-						// 	//Call after script load
-						// });
-						var script = document.createElement('script');
-						var prior = document.getElementsByTagName('script')[0];
-						script.async = 1;
+					var script = document.createElement('script');
+					var prior = document.getElementsByTagName('script')[0];
+					script.async = 1;
 
-						script.onload = script.onreadystatechange = function( _, isAbort ) {
-							if(isAbort || !script.readyState || /loaded|complete/.test(script.readyState) ) {
-								script.onload = script.onreadystatechange = null;
-								script = undefined;
+					script.onload = script.onreadystatechange = function( _, isAbort ) {
+						if(isAbort || !script.readyState || /loaded|complete/.test(script.readyState) ) {
+							script.onload = script.onreadystatechange = null;
+							script = undefined;
+							// if(!isAbort && callback) setTimeout(callback, 0);
+						}
+					};
 
-								// if(!isAbort && callback) setTimeout(callback, 0);
-							}
-						};
-
-						script.src = notify_panel_url+'js/'+newPage+'.js';
-						script.setAttribute('scripttype',"pageScript");
-						// script.scripttype = "pageScript";
-						prior.parentNode.insertBefore(script, prior);
-					// }
-					// else if($.isFunction(callOnLoad)){
-					// 	callOnLoad();
-					// }
+					script.src = notify_panel_url+'js/'+newPage+'.js';
+					script.setAttribute('scripttype',"pageScript");
+					prior.parentNode.insertBefore(script, prior);
 					apply_after_page_load();
+					
+					if(newPage == 'manage_dashboard' || newPage == 'manage_setting'){
+						$(".topbar-menu .action-btn").addClass('d-none');
+					}else{
+						$(".topbar-menu .action-btn").removeClass('d-none');
+					}
 					$(".side-nav a").each(function () {
 						$(this).removeClass("active");
 						$(this).parent().removeClass("menuitem-active");

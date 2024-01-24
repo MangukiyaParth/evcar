@@ -109,7 +109,7 @@
                 <li class="side-nav-item"><a href="javascript:void(0);" onclick="openPage('manage_news')" data-name="manage_news"  class="side-nav-link"><i class="uil-newspaper"></i><span>News</span></a></li>
                 <?php
             }
-            if($manage_setting_viewright ==1)
+            if($manage_setting_viewright ==1 && false)
             {
                 ?>
                 <li class="side-nav-item"><a href="javascript:void(0);" onclick="openPage('manage_setting')" data-name="manage_setting"  class="side-nav-link"><i class="ri-settings-5-line"></i><span>Settings</span></a></li>

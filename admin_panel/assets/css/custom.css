@@ -51,6 +51,16 @@
 	}
 }
 
+.topnav-navbar .page-name{
+	line-height: 70px;
+    font-weight: 900;
+    font-size: 18px;
+    color: var(--ct-page-title-color);
+}
+.topnav-navbar .action-btn{
+	line-height: 70px;
+}
+
 .tbl-img {
 	display: flex;
     align-items: center;

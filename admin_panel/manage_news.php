@@ -3,22 +3,7 @@
 
         <!-- Start Content-->
         <div class="container-fluid">
-
-            <div class="row">
-                <div class="col-12">
-                    <div class="page-title-box">
-                        <div class="page-title-right pr-5">
-                            <div id="addBtn">
-                                <button class="btn btn-info" onclick="changeView('form', 'manage_news_form')"> Add </button>
-                            </div>
-                            <button class="btn btn-info" id="backBtn" onclick="changeView('details')" style="display: none;"> Back </button>
-                        </div>
-                        <h4 class="page-title">News Master</h4>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col-xl-12 col-lg-12">
                     <div class="card">
                         <div class="card-body">

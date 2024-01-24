@@ -1,5 +1,6 @@
 var table;
 var SUBPRIMARYID = 0;
+var colorData = [];
 jQuery(function () {
     HTMLEditor("description", 0);
     // get_data();
@@ -126,8 +127,60 @@ function get_data() {
 }
 
 $("#add_color").on("click", function(){
-
+    var color = $("#color").val();
+    var img_data = $("#color_file_name").val();
+    if(color && img_data){
+        var cdata = {
+            color: color,
+            img_data: img_data
+        };
+        colorData.push(cdata);
+        fillColorTbl();
+        dataNotDeleteFileOnRemove = true;
+        myDropzone[1].removeAllFiles(true); 
+        dataNotDeleteFileOnRemove = false;
+        $("#color").val('');
+    }
+    else {
+        showError("Please fill all the details.");
+    }
 });
+
+function fillColorTbl(){
+    var clr_html = "";
+    if(colorData.length > 0){
+        var i=0;
+        colorData.forEach(clrdata => {
+            var clrimgdata = JSON.parse(clrdata.img_data);
+            var imgs_html = "";
+            clrimgdata.forEach(clrimg => {
+                imgs_html += `<img class="color-img" src="${WEB_API_FOLDER+clrimg.url}" />`;
+            });
+            clr_html += `<tr class="img${i}">
+                <td>${clrdata.color}</td>
+                <td>${imgs_html}</td>
+                <td><button class="btn btn-danger" onclick="removeColor(${i})">Remove</button></td>
+            </tr>`;
+            i++;
+        });
+    }
+    $("#color_list").html(clr_html);
+}
+
+function removeColor(i){
+    var clrdata = colorData[i];
+    var clrimgdata = JSON.parse(clrdata.img_data);
+    var imgs = [];
+    clrimgdata.forEach(clrimg => {
+        imgs.push(clrimg.url);
+    });
+    remove_file(imgs, true);
+    $("#color_list .img"+i).remove();
+    colorData = colorData.filter(function( obj ) {
+        return obj.uuid != clrdata.uuid;
+    });
+}
+
 if($('#'+FORMNAME).length){		
     $('#'+FORMNAME).validate({
         rules:{
@@ -214,7 +267,7 @@ function edit_slider(index) {
         }
         $('#file_name').val(JSON.stringify(logoData));
 
-        changeView('form', '', true);
+        changeView('form', true);
     }
 }
 

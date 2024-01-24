@@ -15,6 +15,7 @@ var CURRENT_DATA = [];
 var editor = [];
 var myDropzone = [];
 var load_pages = [];
+var dataNotDeleteFileOnRemove = false;
 if(CURRENT_PAGE != 'logout' && CURRENT_PAGE != 'login')
 {
     openPage();
@@ -30,21 +31,24 @@ Dropzone.autoDiscover = false;
         }
     })
 } */
-function remove_file(response, url) {
-    if (response && response.success > 0) {
-        hideLoading();
+function remove_file(url, ismupltiple = false) {
+    showLoading();
+    if(!ismupltiple){
+        url = [url]
     }
-    else if (response && response.success <= 0) {
-        hideLoading();
-    }
-    else if (!response) {
-        showLoading();
-        var data = {
-            "op": "remove_file"
-            , "url": url
-        };
-        doAPICall(data, function (resp) { remove_file(resp, url); }, false);
-    }
+    var data = {
+        "op": "remove_file"
+        , "url": url
+        , "ismupltiple": ismupltiple
+    };
+    doAPICall(data, function (response) { 
+        if (response && response.success) {
+            hideLoading();
+        }
+        else if (response && !response.success) {
+            hideLoading();
+        }
+     });
     return true;
 }
 
@@ -141,20 +145,26 @@ function apply_after_page_load(){
             //     }
             // },
             removedfile(file) {
-                if (file.previewElement != null && file.previewElement.parentNode != null) {
-                    file.previewElement.parentNode.removeChild(file.previewElement);
-                }
                 var uuid = file.upload.uuid;
                 var curr_file = hideen_id.val();
                 curr_file = (curr_file == "" || curr_file == undefined) ? [] : JSON.parse(curr_file);
                 
                 var foundindex = curr_file.findIndex((obj => obj.uuid == uuid));
-                var remove_url = curr_file[foundindex]['url'];
-                remove_file(null, remove_url)
-                curr_file = curr_file.filter(function( obj ) {
-                    return obj.uuid != uuid;
-                });
-                hideen_id.val(JSON.stringify(curr_file));
+                if(foundindex >= 0)
+                {
+                    if (file.previewElement != null && file.previewElement.parentNode != null) {
+                        file.previewElement.parentNode.removeChild(file.previewElement);
+                    }
+                    var remove_url = curr_file[foundindex].url;
+
+                    if(!dataNotDeleteFileOnRemove){
+                        remove_file(remove_url);
+                    }
+                    curr_file = curr_file.filter(function( obj ) {
+                        return obj.uuid != uuid;
+                    });
+                    hideen_id.val(JSON.stringify(curr_file));
+                }
                 return this._updateMaxFilesReachedClass();
             },
             maxfilesexceeded(file){
@@ -268,24 +278,26 @@ function hideLoading() {
     NProgress.done();
 }
 
-function changeView(view, formID = "", isEditMode = false) {
+function changeView(view, isEditMode = false) {
     if (view == 'form') {
         $("#addBtn, #detailsDiv").hide();
         $("#backBtn, #formDiv").show();
-        if (formID != "") {
-            resetValidation(formID);
-            $('#formevent').val('submit');
-            if(typeof resetform != 'undefined')
-            {
-                resetform();
-            }
-        }
         if (editor.length != 0 && isEditMode == false) {
             $("#verientList").html("");
         }
         if(isEditMode){
             $('#formevent').val('update');
             setDatepickerValue();
+        }
+        else{
+            if (FORMNAME != "") {
+                resetValidation(FORMNAME);
+                $('#formevent').val('submit');
+                if(typeof resetform != 'undefined')
+                {
+                    resetform();
+                }
+            }
         }
     }
     else {

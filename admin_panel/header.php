@@ -159,18 +159,28 @@ var selata = [];
 						</div>
 					</button>
 
+					<span class="page-name"></span>
+
 					<ul class="list-unstyled topbar-menu float-end mb-0">
+						<li class="notification-list d-sm-inline-block me-2">
+							<div class="action-btn d-none">
+								<div id="addBtn">
+									<button class="btn btn-info" onclick="changeView('form')"> Add </button>
+								</div>
+								<button class="btn btn-info" id="backBtn" onclick="changeView('details')" style="display: none;"> Back </button>
+							</div>
+						</li>
 						<li class="notification-list d-none d-sm-inline-block">
 							<a class="nav-link" data-bs-toggle="offcanvas" href="#theme-settings-offcanvas">
 								<i class="ri-settings-3-line noti-icon"></i>
 							</a>
 						</li>
 
-						<li class="notification-list d-none d-sm-inline-block">
+						<!-- <li class="notification-list d-none d-sm-inline-block">
 							<a class="nav-link" href="javascript:void(0)" id="light-dark-mode">
 								<i class="ri-moon-line noti-icon"></i>
 							</a>
-						</li>
+						</li> -->
 
 						<li class="notification-list d-none d-md-inline-block">
 							<a class="nav-link" href="#" data-toggle="fullscreen">
