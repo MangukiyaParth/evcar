@@ -1,6 +1,6 @@
 <?php
 
-function manage_brandcar()
+function manage_car()
 {
 	global $outputjson, $gh, $db;
 	$outputjson['success'] = 0;
@@ -93,8 +93,11 @@ function manage_brandcar()
 
 			if(isset($color_data)){
 				$colordata = json_decode($color_data, true);
+				$color_cnt = 0;
 				foreach($colordata as $clrdata){
 					$img_data = $clrdata['img_data'];
+					$color_file_data = "";
+					$file_urls = [];
 					if(isset($img_data)){
 						$imgdata = json_decode($img_data, true);
 						$img_cnt = 0;
@@ -107,10 +110,47 @@ function manage_brandcar()
 							$gh->check_directory_path(str_replace($color_file_name, $id.'/', $color_file_new_url));// Create directory if not exist
 							$color_file_new_url = str_replace($color_file_name, $id.'/'.$color_file_name, $color_file_new_url);
 							$color_file_data = str_replace('/'.$color_file_name, '/'.$id.'/'.$color_file_name, $color_file_data);
+							array_push($file_urls, $color_file_new_url);
 							rename($color_file_url, $color_file_new_url);
 							$img_cnt++;
 						}
 					}
+					$colordata[$color_cnt]['img_data'] = $color_file_data;
+					$colordata[$color_cnt]['img_url'] = json_encode($file_urls);
+					$color_id=$gh->generateuuid();
+					$color_insert_data = array(
+						"id" => $color_id,
+						"car_id" => $id,
+						"color" => $clrdata['color'],
+						"file_url" => json_encode($file_urls),
+						"file_data" => $color_file_data,
+						"entry_uid" => $user_id,
+						"entry_date" => $date,
+					);
+					$db->insert("tbl_cars_colors", $color_insert_data);
+					$color_cnt++;
+				}
+				$color_data = json_encode($colordata);
+			}
+
+			if(isset($verient_data)){
+				$verientdata = json_decode($verient_data, true);
+				foreach($verientdata as $verdata){
+					$verient_id=$gh->generateuuid();
+					$verient_insert_data = array(
+						"id" => $verient_id,
+						"car_id" => $id,
+						"verient_name" => $verdata['verient_name'],
+						"fule_type" => $verdata['fule_type'],
+						"fule_type_text" => $verdata['fule_type_text'],
+						"transmision" => $verdata['transmision'],
+						"transmision_text" => $verdata['transmision_text'],
+						"engine" => $verdata['engine'],
+						"price" => $verdata['price'],
+						"entry_uid" => $user_id,
+						"entry_date" => $date,
+					);
+					$db->insert("tbl_cars_verient", $verient_insert_data);
 				}
 			}
 

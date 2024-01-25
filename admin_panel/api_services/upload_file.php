@@ -14,20 +14,27 @@ function upload_file()
 		$files = [];
 		$length = count($_FILES['file']["name"]);
 		for ($i = 0; $i < $length; $i++) {
-			$target_file = $target_dir . basename($_FILES['file']["name"][$i]);
+			$basename = $_FILES['file']["name"][$i];
+
+			$target_file = $target_dir . $basename;
+			if(file_exists($target_file)){
+				$withoutExt = preg_replace('/\.\w+$/', '', $basename);
+				$basename = str_replace($withoutExt, $withoutExt."_".strtotime("now"), $basename);
+				$target_file = $target_dir . $basename;
+			}
 			move_uploaded_file($_FILES['file']["tmp_name"][$i], $target_file);
 			$new_file = (object)[
 				'uuid' => $uniq_id[$i],
-				'name' => $_FILES['file']["name"][$i],
-				'filename' => $_FILES['file']["name"][$i],
+				'name' => $basename,
+				'filename' => $basename,
 				'size' => $_FILES['file']["size"][$i],
 				'total' => $_FILES['file']["size"][$i],
 				'bytesSent' => $_FILES['file']["size"][$i],
 				'url' => $target_file,
 				'upload' => (object)[
 					'uuid' => $uniq_id[$i],
-					'name' => $_FILES['file']["name"][$i],
-					'filename' => $_FILES['file']["name"][$i],
+					'name' => $basename,
+					'filename' => $basename,
 					'size' => $_FILES['file']["size"][$i],
 					'total' => $_FILES['file']["size"][$i],
 					'bytesSent' => $_FILES['file']["size"][$i],
