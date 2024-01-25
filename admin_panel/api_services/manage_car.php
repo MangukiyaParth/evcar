@@ -17,11 +17,11 @@ function manage_car()
 		$columnsarr = $gh->read("columns");
 		$ordercolumn = $columnsarr[$orderindex]['name'];
 		
-		$whereData = "(p.brand LIKE '%" . $search . "%')";
+		$whereData = "(p.name LIKE '%" . $search . "%')";
 
-		$total_count = $db->get_row_count('tbl_brand', "1=1");
+		$total_count = $db->get_row_count('tbl_cars', "1=1");
 		$filtered_count = 0;
-		$count_query = "SELECT count(DISTINCT p.id) as cnt FROM tbl_brand as p 
+		$count_query = "SELECT count(DISTINCT p.id) as cnt FROM tbl_cars as p 
 			WHERE " . $whereData;
 		$filtered_count = $db->execute_scalar($count_query);
 
@@ -29,8 +29,8 @@ function manage_car()
 		if ($orderindex >0) {
 			$orderby = " ORDER BY ".$ordercolumn . " " . $orderdir;
 		}
-		$query_port_rates = "SELECT DISTINCT p.*,p.id AS md5_id
-			FROM tbl_brand as p 
+		$query_port_rates = "SELECT DISTINCT p.*
+			FROM tbl_cars as p 
 			WHERE " . $whereData . " " . $orderby . " LIMIT " . $start . "," . $length . "";
 		$rows = $db->execute($query_port_rates);
 
@@ -48,7 +48,8 @@ function manage_car()
 			$outputjson['recordsFiltered'] = 0;
 			$outputjson['message'] = "No Products found!";
 		}
-	}else if($action == "add_data")
+	}
+	else if($action == "add_data")
 	{
 		$id = $gh->read("id");
 		$user_id = $gh->read("user_id", 0);
@@ -189,7 +190,20 @@ function manage_car()
 			}
 			if ($id != "") {
 				$data = array(
+					"name" => $name,
 					"brand" => $brand,
+					"brand_name" => $brand_name,
+					"price" => $price,
+					"fule_type" => $fule_type,
+					"fule_type_name" => $fule_type_name,
+					"engine" => $engine,
+					"modal_year" => $modal_year,
+					"transmision" => $transmision,
+					"transmision_name" => $transmision_name,
+					"seater" => $seater,
+					"car_type" => $car_type,
+					"car_type_name" => $car_type_name,
+					"description" => $description,
 					"update_uid" => $user_id,
 					"update_date" => $date,
 				);
@@ -205,17 +219,86 @@ function manage_car()
 						$file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
 						$logo_data = str_replace('/'.$logo_data, '/'.$id.'/'.$file_name, $logo_data);
 						rename($file_url, $file_new_url);
-						$data['logo'] = $file_new_url;
-						$data['logo_data'] = $logo_data;
+						$data['file'] = $file_new_url;
+						$data['file_data'] = $logo_data;
 
-						$query = "SELECT file FROM tbl_brand WHERE id = '" . $id ."'";
+						$query = "SELECT file FROM tbl_cars WHERE id = '" . $id ."'";
 						$rows = $db->execute($query);
 						if ($rows != null && is_array($rows) && count($rows) > 0) {
-							unlink($rows[0]['logo']);
+							unlink($rows[0]['file']);
 						}
 					}
 				}
-				$rows = $db->update('tbl_brand', $data, array("id" => $id));
+
+				if(isset($color_data)){
+					$db->delete("tbl_cars_colors", array("car_id" => $id));
+					$colordata = json_decode($color_data, true);
+					$color_cnt = 0;
+					foreach($colordata as $clrdata){
+						$img_data = $clrdata['img_data'];
+						$color_file_data = $img_data;
+						$file_urls = [];
+						if(isset($img_data)){
+							if (str_contains($img_data, 'tmp/')){
+								$imgdata = json_decode($img_data, true);
+								$img_cnt = 0;
+								foreach($imgdata as $imgs){
+									$color_file_url = $imgs['url'];
+									$color_file_name = $imgs['filename'];
+									$color_file_new_url = str_replace('tmp/','images/', $color_file_url);
+									$color_file_data = str_replace('tmp/','images/', $img_data);
+									
+									$gh->check_directory_path(str_replace($color_file_name, $id.'/', $color_file_new_url));// Create directory if not exist
+									$color_file_new_url = str_replace($color_file_name, $id.'/'.$color_file_name, $color_file_new_url);
+									$color_file_data = str_replace('/'.$color_file_name, '/'.$id.'/'.$color_file_name, $color_file_data);
+									array_push($file_urls, $color_file_new_url);
+									rename($color_file_url, $color_file_new_url);
+									$img_cnt++;
+								}
+							}
+						}
+						$colordata[$color_cnt]['img_data'] = $color_file_data;
+						$colordata[$color_cnt]['img_url'] = json_encode($file_urls);
+						$color_id=$gh->generateuuid();
+						$color_insert_data = array(
+							"id" => $color_id,
+							"car_id" => $id,
+							"color" => $clrdata['color'],
+							"file_url" => json_encode($file_urls),
+							"file_data" => $color_file_data,
+							"entry_uid" => $user_id,
+							"entry_date" => $date,
+						);
+						$db->insert("tbl_cars_colors", $color_insert_data);
+						$color_cnt++;
+					}
+					$color_data = json_encode($colordata);
+				}
+	
+				if(isset($verient_data)){
+					$db->delete("tbl_cars_verient", array("car_id" => $id));
+					$verientdata = json_decode($verient_data, true);
+					foreach($verientdata as $verdata){
+						$verient_id=$gh->generateuuid();
+						$verient_insert_data = array(
+							"id" => $verient_id,
+							"car_id" => $id,
+							"verient_name" => $verdata['verient_name'],
+							"fule_type" => $verdata['fule_type'],
+							"fule_type_text" => $verdata['fule_type_text'],
+							"transmision" => $verdata['transmision'],
+							"transmision_text" => $verdata['transmision_text'],
+							"engine" => $verdata['engine'],
+							"price" => $verdata['price'],
+							"entry_uid" => $user_id,
+							"entry_date" => $date,
+						);
+						$db->insert("tbl_cars_verient", $verient_insert_data);
+					}
+				}
+				$data["color_data"] = $color_data;
+				$data["verient_data"] = $verient_data;
+				$rows = $db->update('tbl_cars', $data, array("id" => $id));
 
 				$outputjson['success'] = 1;
 				$outputjson['message'] = 'Data updated successfully.';

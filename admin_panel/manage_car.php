@@ -143,11 +143,11 @@
                                 <div class="row">
                                     <div class="mb-3 offset-1 col-sm-3">
                                         <label class="form-label" for="verient_engine">Engine Displacement</label>
-                                        <input type="text" id="verient_engine" name="verient_engine" class="form-control numbersOnlyField" placeholder="Enter engine displacement" required />
+                                        <input type="text" id="verient_engine" name="verient_engine" class="form-control numbersOnlyField" placeholder="Enter engine displacement" />
                                     </div>
                                     <div class="mb-3 col-sm-3">
                                         <label class="form-label" for="verient_price">Price</label>
-                                        <input type="text" id="verient_price" name="verient_price" class="form-control desimalnumberField" placeholder="Enter price" required />
+                                        <input type="text" id="verient_price" name="verient_price" class="form-control desimalnumberField" placeholder="Enter price" />
                                     </div>
                                     <div class="my-3 col-sm-1">
                                         <button class="btn btn-info" type="button" id="add_verient">Add</button>
@@ -182,10 +182,14 @@
                                 <thead>
                                     <tr>
                                         <th class="d-none">id</th>
-                                        <th>Title </th>
-                                        <th>Date </th>
-                                        <th>Short Description</th>
-                                        <th>Img</th>
+                                        <th width="20%">Brand</th>
+                                        <th width="10%">Name</th>
+                                        <th width="10%">Image</th>
+                                        <th width="10%">Fule Type</th>
+                                        <th width="10%">Modal Year</th>
+                                        <th width="10%">Transmision</th>
+                                        <th width="10%">Car Type</th>
+                                        <th width="10%">Price</th>
                                         <th class="text-end">Action</th>
                                     </tr>
                                 </thead>

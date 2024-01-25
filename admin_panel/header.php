@@ -45,7 +45,6 @@ else if ($current_page == "index") {
 else if(!empty($resultArray)){
 	$current_module_name = $resultArray['menuname'];
 }
-$html_title = $site_name . ": " . $current_module_name;
 
 $js_current_page = $current_page;
 if($current_page == 'index'){
@@ -66,7 +65,7 @@ var selata = [];
 <head>
 	<!-- Basic -->
 	<meta charset="UTF-8">
-	<title><?= $html_title ?></title>
+	<title><?= $site_name ?></title>
 	<meta name="keywords" content="<?php echo $site_name; ?>" />
 	<meta name="description" content="<?php echo $site_name; ?> User Panel">
 	<meta name="google" content="notranslate">
