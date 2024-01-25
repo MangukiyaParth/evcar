@@ -239,8 +239,8 @@ function manage_car()
 						$color_file_data = $img_data;
 						$file_urls = [];
 						if(isset($img_data)){
+							$imgdata = json_decode($img_data, true);
 							if (str_contains($img_data, 'tmp/')){
-								$imgdata = json_decode($img_data, true);
 								$img_cnt = 0;
 								foreach($imgdata as $imgs){
 									$color_file_url = $imgs['url'];
@@ -255,6 +255,9 @@ function manage_car()
 									rename($color_file_url, $color_file_new_url);
 									$img_cnt++;
 								}
+							}
+							else{
+								$file_urls = array_column($imgdata, 'url');
 							}
 						}
 						$colordata[$color_cnt]['img_data'] = $color_file_data;
