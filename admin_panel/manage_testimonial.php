@@ -24,12 +24,12 @@
                                     </div>
                                     <div class="mb-3 col-sm-3">
                                         <label class="form-label" for="date">Date</label>
-                                        <input type="text" id="date" name="date" class="form-control" data-toggle="date-picker" placeholder="Enter Date" required />
+                                        <input type="text" id="date" name="date" class="form-control" data-provide="date-picker" placeholder="Enter Date" required />
                                         <div class="invalid-feedback"> Please enter Date. </div>
                                     </div>
                                     <div class="mb-3 col-sm-3">
                                         <label class="form-label" for="rating">Rating</label>
-                                        <select class="form-select" id="example-select">
+                                        <select class="form-select" id="rating" name="rating" required>
                                             <option value="5">5</option>
                                             <option value="4">4</option>
                                             <option value="3">3</option>
@@ -73,6 +73,7 @@
                                         <th class="d-none">id</th>
                                         <th>Person Name </th>
                                         <th>Date </th>
+                                        <th>Rating</th>
                                         <th>Display Order</th>
                                         <th>Img</th>
                                         <th class="text-end">Action</th>

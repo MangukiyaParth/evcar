@@ -1,0 +1,8 @@
+ALTER TABLE `tbl_testimonialmaster`   
+  ADD COLUMN `rating` INT NULL AFTER `tdate`;
+
+ALTER TABLE `tbl_cars`
+  ADD COLUMN `show_on_homepage` TINYINT DEFAULT 0  NULL AFTER `car_type_name`;
+
+ALTER TABLE `tbl_news`   
+  ADD COLUMN `show_on_homepage` TINYINT DEFAULT 0  NULL AFTER `short_desc`;

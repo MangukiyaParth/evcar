@@ -7,7 +7,7 @@ function editor_file_upload()
 
 	$id = $gh->read("id");
 	$target_dir = "upload/tmp/editor/";
-	$gh->check_directory_path($target_dir);
+	$gh->TryCreateDirIfNeeded($target_dir);
 	$target_file = $target_dir . basename($_FILES["file"]["name"]);
 
 	if (isset($_FILES['file'])) {

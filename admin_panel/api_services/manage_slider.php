@@ -79,7 +79,7 @@ function manage_slider()
 				$id=$gh->generateuuid();
 				if(isset($_POST["file"]))
 				{
-					$gh->check_directory_path(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
+					$gh->TryCreateDirIfNeeded(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
 					$file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
 					$logo_data = str_replace('/'.$file_name, '/'.$id.'/'.$file_name, $logo_data);
 					rename($file_url, $file_new_url);
@@ -122,7 +122,7 @@ function manage_slider()
 						$file_name = $file[0]['name'];
 						$file_new_url = str_replace('tmp/','images/', $file_url);
 						$logo_data = str_replace('tmp/','images/', $_POST["file"]);
-						$gh->check_directory_path(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
+						$gh->TryCreateDirIfNeeded(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
 						$file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
 						$logo_data = str_replace('/'.$logo_data, '/'.$id.'/'.$file_name, $logo_data);
 						rename($file_url, $file_new_url);

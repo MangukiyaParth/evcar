@@ -10,7 +10,7 @@ function upload_file()
 	
 	if (isset($_FILES['file'])) {
 		$target_dir = $target_dir.$page."/";
-		$gh->check_directory_path($target_dir);
+		$gh->TryCreateDirIfNeeded($target_dir);
 		$files = [];
 		$length = count($_FILES['file']["name"]);
 		for ($i = 0; $i < $length; $i++) {

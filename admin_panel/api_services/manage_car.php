@@ -86,7 +86,7 @@ function manage_car()
 				$file_new_url = str_replace('tmp/','images/', $file_url);
 				$file_data = str_replace('tmp/','images/', $_POST["file"]);
 				
-				$gh->check_directory_path(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
+				$gh->TryCreateDirIfNeeded(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
 				$file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
 				$file_data = str_replace('/'.$file_name, '/'.$id.'/'.$file_name, $file_data);
 				rename($file_url, $file_new_url);
@@ -97,7 +97,6 @@ function manage_car()
 				$color_cnt = 0;
 				foreach($colordata as $clrdata){
 					$img_data = $clrdata['img_data'];
-					$color_file_data = "";
 					$file_urls = [];
 					if(isset($img_data)){
 						$imgdata = json_decode($img_data, true);
@@ -106,17 +105,17 @@ function manage_car()
 							$color_file_url = $imgs['url'];
 							$color_file_name = $imgs['filename'];
 							$color_file_new_url = str_replace('tmp/','images/', $color_file_url);
-							$color_file_data = str_replace('tmp/','images/', $img_data);
+							$img_data = str_replace('tmp/','images/', $img_data);
 							
-							$gh->check_directory_path(str_replace($color_file_name, $id.'/', $color_file_new_url));// Create directory if not exist
+							$gh->TryCreateDirIfNeeded(str_replace($color_file_name, $id.'/', $color_file_new_url));// Create directory if not exist
 							$color_file_new_url = str_replace($color_file_name, $id.'/'.$color_file_name, $color_file_new_url);
-							$color_file_data = str_replace('/'.$color_file_name, '/'.$id.'/'.$color_file_name, $color_file_data);
+							$img_data = str_replace('/'.$color_file_name, '/'.$id.'/'.$color_file_name, $img_data);
 							array_push($file_urls, $color_file_new_url);
 							rename($color_file_url, $color_file_new_url);
 							$img_cnt++;
 						}
 					}
-					$colordata[$color_cnt]['img_data'] = $color_file_data;
+					$colordata[$color_cnt]['img_data'] = $img_data;
 					$colordata[$color_cnt]['img_url'] = json_encode($file_urls);
 					$color_id=$gh->generateuuid();
 					$color_insert_data = array(
@@ -124,7 +123,7 @@ function manage_car()
 						"car_id" => $id,
 						"color" => $clrdata['color'],
 						"file_url" => json_encode($file_urls),
-						"file_data" => $color_file_data,
+						"file_data" => $img_data,
 						"entry_uid" => $user_id,
 						"entry_date" => $date,
 					);
@@ -215,7 +214,7 @@ function manage_car()
 						$file_name = $file[0]['name'];
 						$file_new_url = str_replace('tmp/','images/', $file_url);
 						$logo_data = str_replace('tmp/','images/', $_POST["file"]);
-						$gh->check_directory_path(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
+						$gh->TryCreateDirIfNeeded(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
 						$file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
 						$logo_data = str_replace('/'.$logo_data, '/'.$id.'/'.$file_name, $logo_data);
 						rename($file_url, $file_new_url);
@@ -236,7 +235,6 @@ function manage_car()
 					$color_cnt = 0;
 					foreach($colordata as $clrdata){
 						$img_data = $clrdata['img_data'];
-						$color_file_data = $img_data;
 						$file_urls = [];
 						if(isset($img_data)){
 							$imgdata = json_decode($img_data, true);
@@ -246,11 +244,11 @@ function manage_car()
 									$color_file_url = $imgs['url'];
 									$color_file_name = $imgs['filename'];
 									$color_file_new_url = str_replace('tmp/','images/', $color_file_url);
-									$color_file_data = str_replace('tmp/','images/', $img_data);
+									$img_data = str_replace('tmp/','images/', $img_data);
 									
-									$gh->check_directory_path(str_replace($color_file_name, $id.'/', $color_file_new_url));// Create directory if not exist
+									$gh->TryCreateDirIfNeeded(str_replace($color_file_name, $id.'/', $color_file_new_url));// Create directory if not exist
 									$color_file_new_url = str_replace($color_file_name, $id.'/'.$color_file_name, $color_file_new_url);
-									$color_file_data = str_replace('/'.$color_file_name, '/'.$id.'/'.$color_file_name, $color_file_data);
+									$img_data = str_replace('/'.$color_file_name, '/'.$id.'/'.$color_file_name, $img_data);
 									array_push($file_urls, $color_file_new_url);
 									rename($color_file_url, $color_file_new_url);
 									$img_cnt++;
@@ -260,7 +258,7 @@ function manage_car()
 								$file_urls = array_column($imgdata, 'url');
 							}
 						}
-						$colordata[$color_cnt]['img_data'] = $color_file_data;
+						$colordata[$color_cnt]['img_data'] = $img_data;
 						$colordata[$color_cnt]['img_url'] = json_encode($file_urls);
 						$color_id=$gh->generateuuid();
 						$color_insert_data = array(
@@ -268,7 +266,7 @@ function manage_car()
 							"car_id" => $id,
 							"color" => $clrdata['color'],
 							"file_url" => json_encode($file_urls),
-							"file_data" => $color_file_data,
+							"file_data" => $img_data,
 							"entry_uid" => $user_id,
 							"entry_date" => $date,
 						);

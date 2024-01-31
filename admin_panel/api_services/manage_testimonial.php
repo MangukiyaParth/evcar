@@ -61,6 +61,7 @@ function manage_testimonial()
 		$user_id = $gh->read("user_id", 0);
 		$personname = $gh->read("personname");
 		$orderno = $gh->read("orderno");
+		$rating = $gh->read("rating");
 		$date = $gh->read("date");
 		$description = $gh->read("description");
 		$entry_date = date('Y-m-d H:i:s');
@@ -81,7 +82,7 @@ function manage_testimonial()
 				$id=$gh->generateuuid();
 				if(isset($_POST["file_name"]))
 				{
-					$gh->check_directory_path(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
+					$gh->TryCreateDirIfNeeded(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
 					$file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
 					$logo_data = str_replace('/'.$file_name, '/'.$id.'/'.$file_name, $logo_data);
 					rename($file_url, $file_new_url);
@@ -91,7 +92,7 @@ function manage_testimonial()
 					"id" => $id,
 					"personname" => $personname,
 					"tdate" => $date,
-					"orderno" => $orderno,
+					"rating" => $rating,
 					"description" => $description,
 					"file" => $file_new_url,
 					"file_data" => $logo_data,
@@ -108,6 +109,7 @@ function manage_testimonial()
 			$id = $gh->read("id");
 			$personname = $gh->read("personname");
 			$orderno = $gh->read("orderno");
+			$rating = $gh->read("rating");
 			$date = $gh->read("date");
 			$description = $gh->read("description");
 			$user_id = $gh->read("user_id", 0);
@@ -122,6 +124,7 @@ function manage_testimonial()
 					"personname" => $personname,
 					"tdate" => $date,
 					"orderno" => $orderno,
+					"rating" => $rating,
 					"description" => $description,
 					"update_uid" => $user_id,
 					"update_date" => $entry_date,
@@ -134,7 +137,7 @@ function manage_testimonial()
 						$file_name = $file[0]['name'];
 						$file_new_url = str_replace('tmp/','images/', $file_url);
 						$logo_data = str_replace('tmp/','images/', $_POST["file_name"]);
-						$gh->check_directory_path(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
+						$gh->TryCreateDirIfNeeded(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
 						$file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
 						$logo_data = str_replace('/'.$logo_data, '/'.$id.'/'.$file_name, $logo_data);
 						rename($file_url, $file_new_url);

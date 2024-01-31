@@ -1,0 +1,9 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^www\.
+RewriteRule ^(.*)$ http://localhost:8080/product/HTML/evcar/$1 [R=301,L]
+RewriteRule ^home?$ index.php
+RewriteRule ^cart?$ cart.php
+RewriteRule ^address?$ address.php
+RewriteRule ^order-summary?$ order_summary.php
+RewriteRule ^payment?$ payment.php
+RewriteRule ^product-details/([^/]+)/?$ product_details.php?id=$1  [NC,L]

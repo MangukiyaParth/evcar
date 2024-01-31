@@ -6,78 +6,35 @@ function delete_all_record()
 	
 	$type = $gh->read("type");
 	$outputjson['success'] = 0;
-	if($type == 'manage_roles')
+
+	if($type=='manage_brand')
 	{
-		$db->execute_query('TRUNCATE TABLE tbl_roles');
+		$gh->removeFolder("brand", 0);
+		$db->execute_query('TRUNCATE TABLE tbl_brand');
 	}
-	else if($type == 'manage_usermaster')
+	else if($type=='manage_slider')
 	{
-		$db->execute_query('TRUNCATE TABLE tbl_users');
-		$db->execute_query('TRUNCATE TABLE tbl_userrole');
-		$db->execute_query('TRUNCATE TABLE tbl_user_cmp');
+		$gh->removeFolder("slider", 0);
+		$db->execute_query('TRUNCATE TABLE tbl_slidermaster');
 	}
-	else if($type == 'manage_ledger')
+	else if($type=='manage_testimonial')
 	{
-		$db->execute_query('TRUNCATE TABLE tbl_users');
-		$db->execute_query('TRUNCATE TABLE tbl_userrole');
-		$db->execute_query('TRUNCATE TABLE tbl_user_cmp');
+		$gh->removeFolder("testimonial", 0);
+		$db->execute_query('TRUNCATE TABLE tbl_testimonialmaster');
 	}
-	else if($type == 'manage_product')
+	else if($type=='manage_car')
 	{
-		$db->execute_query('TRUNCATE TABLE tbl_productmaster');
+		$gh->removeFolder("cars", 0);
+		$db->execute_query('TRUNCATE TABLE tbl_cars');
+		$db->execute_query('TRUNCATE TABLE tbl_cars_colors');
+		$db->execute_query('TRUNCATE TABLE tbl_cars_verient');
 	}
-	else if($type == 'manage_financialyear')
+	else if($type=='manage_news')
 	{
-		$db->execute_query('TRUNCATE TABLE tbl_financialyear');
+		$gh->removeFolder("news", 0);
+		$db->execute_query('TRUNCATE TABLE tbl_news');
 	}
-	else if($type == 'manage_states')
-	{
-		$db->execute_query('TRUNCATE TABLE tbl_statemaster');
-	}
-	else if($type == 'manage_city')
-	{
-		$db->execute_query('TRUNCATE TABLE tbl_citymaster');
-	}	
-	else if($type == 'unit')
-	{
-		$db->execute_query('TRUNCATE TABLE tbl_unitmaster');
-	}
-	else if($type == 'grade')
-	{
-		$db->execute_query('TRUNCATE TABLE tbl_grademaster');
-	}
-	else if($type == 'tax')
-	{
-		$db->execute_query('TRUNCATE TABLE tbl_taxmaster');
-	}
-	else if($type == 'manage_accountgroup')
-	{
-		$db->execute_query('TRUNCATE TABLE tbl_acountgroup');
-	}
-	else if($type == 'manage_category')
-	{
-		$db->execute_query('TRUNCATE TABLE tbl_categorymaster');
-	}
-	else if($type == 'manage_company')
-	{
-		$db->execute_query('TRUNCATE TABLE tbl_companymaster');
-	}
-	else if($type == 'head')
-	{
-		$db->execute_query('TRUNCATE TABLE tbl_headmaster');
-	}
-	else if($type == 'subhead')
-	{
-		$db->execute_query('TRUNCATE TABLE tbl_subheadmaster');
-	}
-	else if($type == 'invester')
-	{
-		$db->execute_query('TRUNCATE TABLE tbl_investermaster');
-	}
-	else if($type == 'site')
-	{
-		$db->execute_query('TRUNCATE TABLE tbl_sitemaster');
-	}
+
 	$outputjson['message'] = 'all data deleted successfully.';
 	$outputjson['success'] = 1;
 }

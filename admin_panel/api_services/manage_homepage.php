@@ -2,7 +2,7 @@
 
 function manage_homepage()
 {
-	global $outputjson, $gh, $db;
+	global $outputjson, $gh, $db, $const;
 	$outputjson['success'] = 0;
 	$outputjson['status'] = 0;
 
@@ -17,24 +17,34 @@ function manage_homepage()
 			$outputjson["slider"] = $rows_slider;
 		}
 
-		$qry_testimonial="SELECT * FROM tbl_testimonialmaster WHERE `isactive`=1 ORDER BY `orderno`+0 ASC";
+		$qry_testimonial="SELECT *, DATE_FORMAT(tdate, '%M %d, %Y') AS disp_date FROM tbl_testimonialmaster WHERE `isactive`=1 ORDER BY `orderno`+0 ASC";
 		$rows_testimonial = $db->execute($qry_testimonial);
 		if ($rows_testimonial != null && is_array($rows_testimonial) && count($rows_testimonial) > 0) {	
 			$outputjson["testimonial"] = $rows_testimonial;
 		}
-
-		$query_future = "SELECT DISTINCT p.*,p.id AS md5_id,ca.category,t.igst AS saletax,ta.igst AS purchase_tax,u.unitname AS punit,un.unitname AS saleunit,
-		IFNULL((SELECT GROUP_CONCAT(cm.colorname) AS colorname FROM tbl_colormaster cm INNER JOIN tbl_productcolor uc ON uc.colorid=cm.id WHERE uc.productid=p.id),'') AS colorname
-			FROM tbl_productmaster as p 
-			INNER JOIN tbl_categorymaster ca ON ca.id=p.categoryid
-			INNER JOIN tbl_taxmaster t  ON t.id=p.staxid
-			INNER JOIN tbl_taxmaster ta  ON ta.id=p.ptaxid
-			INNER JOIN tbl_unitmaster u ON u.id=p.punitid
-			INNER JOIN tbl_unitmaster un ON un.id=p.sunitid
-			WHERE STR_TO_DATE(p.`realese_date`,'%d/%m/%Y') > CURDATE()";
-		$future_rows = $db->execute($query_future);
-		if ($rows_testimonial != null && is_array($rows_testimonial) && count($rows_testimonial) > 0) {
-			$outputjson['future_data'] = $future_rows;
+		
+		$qry_brand="SELECT * FROM tbl_brand";
+		$rows_brand = $db->execute($qry_brand);
+		if ($rows_brand != null && is_array($rows_brand) && count($rows_brand) > 0) {	
+			$outputjson["brand"] = $rows_brand;
+		}
+		
+		$qry_fule="SELECT * FROM tbl_cars WHERE fule_type = '$const->petrol_fule_id' OR fule_type = '$const->diesel_fule_id' LIMIT 4";
+		$rows_fule = $db->execute($qry_fule);
+		if ($rows_fule != null && is_array($rows_fule) && count($rows_fule) > 0) {	
+			$outputjson["fule_car"] = $rows_fule;
+		}
+		
+		$qry_ev="SELECT * FROM tbl_cars WHERE fule_type = '$const->ev_fule_id' LIMIT 4";
+		$rows_ev = $db->execute($qry_ev);
+		if ($rows_ev != null && is_array($rows_ev) && count($rows_ev) > 0) {	
+			$outputjson["ev_car"] = $rows_ev;
+		}
+		
+		$qry_hybrid="SELECT * FROM tbl_cars WHERE fule_type = '$const->hybrid_fule_id' LIMIT 4";
+		$rows_hybrid = $db->execute($qry_hybrid);
+		if ($rows_hybrid != null && is_array($rows_hybrid) && count($rows_hybrid) > 0) {	
+			$outputjson["hybrid_car"] = $rows_hybrid;
 		}
 		$outputjson['success'] = 1;
 		$outputjson['status'] = 1;

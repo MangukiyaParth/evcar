@@ -184,11 +184,6 @@ include 'theme_settings.php';
 <!-- fileupload js -->
 <script defer src="<?php echo ADMIN_PANEL_URL; ?>assets/js/dropzone.min.js"></script>
 
-
-<script>
-	
-</script>
-
 <?php
 
 $include_javscript_library_before_custom_script_at_bottom = str_replace('<script ', '<script defer ', $include_javscript_library_before_custom_script_at_bottom);

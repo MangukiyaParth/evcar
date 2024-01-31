@@ -467,31 +467,6 @@ class SUPPORT
 		return $fileParts;
 	}
 
-
-	function print_pdf_cell($obj, $key = "", $is_image = false, $cell = 1)
-	{
-		$output = "";
-		if (!is_string($obj) && isset($obj) && isset($key) && isset($obj[$key]) && $obj[$key] != null) {
-			$output = stripslashes($this->GetString($obj[$key]));
-			if ($output != "" && $is_image) {
-				$output = '<img width="130px" src="' . $output . '" alt=""/>';
-				return $output;
-			}
-		}
-		if (is_string($obj) || is_int($obj) || is_float($obj)) {
-			$output = $this->GetString($obj);
-		}
-
-		$needles = array("<br>", "&#13;", "<br/>", "\n");
-		$replacement = "<br />";
-		$output = str_replace($needles, $replacement, $output);
-		$output = str_replace('\"', '"', $output);
-		$output = str_replace('\'', "'", $output);
-		$output = str_replace('\\\\', '\\', $output);
-
-		return $output;
-	}
-
 	function __construct()
 	{
 	}
@@ -512,26 +487,6 @@ class SUPPORT
 	{
 		$headers = get_headers($url);
 		return substr($headers[0], 9, 3);
-	}
-
-	function encrypt_decrypt($action, $string)
-	{
-		$output = false;
-		$encrypt_method = "AES-256-CBC";
-		$secret_key = 'This is my secret key';
-		$secret_iv = 'This is my secret iv';
-		// hash
-		$key = hash('sha256', $secret_key);
-
-		// iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
-		$iv = substr(hash('sha256', $secret_iv), 0, 16);
-		if ($action == 'encrypt') {
-			$output = openssl_encrypt($string, $encrypt_method, $key, 0, $iv);
-			$output = base64_encode($output);
-		} else if ($action == 'decrypt') {
-			$output = openssl_decrypt(base64_decode($string), $encrypt_method, $key, 0, $iv);
-		}
-		return $output;
 	}
 
 	function getRealIpAddr()
@@ -765,15 +720,6 @@ class SUPPORT
 		return $resp;
 	}
 
-	function set_session($object_name, $object_value = "")
-	{
-		$_SESSION[$object_name] = $object_value;
-	}
-
-	function get_session($object_name, $key = "")
-	{
-		return $_SESSION[$object_name];
-	}
 	function generateuuid() {
 		list($microseconds, $seconds) = explode(" ", microtime());
 		$timestamp = sprintf('%d%06d', $seconds, $microseconds * 1000000);
@@ -793,192 +739,7 @@ class SUPPORT
 	
 		return $uuid;
 	}
-	function generatemtid() {
-		// list($microseconds, $seconds) = explode(" ", microtime());
-		// $timestamp = sprintf('%d%06d', $seconds, $microseconds * 1000000);
-
-		// // Generate a random part
-		// $randomPart = sprintf('%04x%04x%04x%02x%02x%02x%02x',
-		// 	mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0x0fff) | 0x4000,
-		// 	mt_rand(0, 0x3fff) | 0x8000, mt_rand(0, 0xffff), mt_rand(0, 0xffff)
-		// );
-
-		// return $randomPart;
 	
-
-		$uuid = array(
-			'time_low'  => 0,
-			'time_mid'  => 0,
-			'time_hi'  => 0,
-			'clock_seq_hi' => 0,
-			'clock_seq_low' => 0,
-			'node'   => array()
-		);
-	
-		$uuid['time_low'] = mt_rand(0, 0xffff) + (mt_rand(0, 0xffff) << 16);
-		$uuid['time_mid'] = mt_rand(0, 0xffff);
-		$uuid['time_hi'] = (4 << 12) | (mt_rand(0, 0x1000));
-		$uuid['clock_seq_hi'] = (1 << 7) | (mt_rand(0, 128));
-		$uuid['clock_seq_low'] = mt_rand(0, 255);
-	
-		for ($i = 0; $i < 6; $i++) {
-			$uuid['node'][$i] = mt_rand(0, 255);
-		}
-	
-		$uuid = sprintf('%04x%04x%04x%02x%02x%02x%02x%02x%02x',
-			$uuid['time_low'],
-			$uuid['time_mid'],
-			$uuid['time_hi'],
-			$uuid['clock_seq_hi'],
-			$uuid['clock_seq_low'],
-			$uuid['node'][0],
-			$uuid['node'][1],
-			$uuid['node'][2],
-			$uuid['node'][3],
-			$uuid['node'][4],
-			$uuid['node'][5]
-		);
-	
-		return $uuid;
-	}
-
-	function generatemuid() {
-		$uuid = array(
-			'time_low'  => 0,
-			'time_mid'  => 0,
-			'time_hi'  => 0,
-			'clock_seq_hi' => 0,
-			'clock_seq_low' => 0,
-			'node'   => array()
-		);
-	
-		$uuid['time_low'] = mt_rand(0, 0xffff) + (mt_rand(0, 0xffff) << 16);
-		$uuid['time_mid'] = mt_rand(0, 0xffff);
-		$uuid['time_hi'] = (4 << 12) | (mt_rand(0, 0x1000));
-		$uuid['clock_seq_hi'] = (1 << 7) | (mt_rand(0, 128));
-		$uuid['clock_seq_low'] = mt_rand(0, 255);
-	
-		for ($i = 0; $i < 6; $i++) {
-			$uuid['node'][$i] = mt_rand(0, 255);
-		}
-	
-		$uuid = sprintf('%04x%04x%04x%02x%02x%02x%02x%02x%02x%02x',
-			$uuid['time_low'],
-			$uuid['time_mid'],
-			$uuid['time_hi'],
-			$uuid['clock_seq_hi'],
-			$uuid['clock_seq_low'],
-			$uuid['node'][0],
-			$uuid['node'][1],
-			$uuid['node'][2],
-			$uuid['node'][3],
-			$uuid['node'][4],
-			$uuid['node'][5]
-		);
-	
-		return $uuid;
-	}
-
-	function get_orderno($seriesid) {
-		global $db;
-		$orderno='';
-
-		$query_series = "SELECT s.*, pt.`tablename`, cm.`prefix` AS cmp_prefix
-		FROM tbl_seriesmaster s
-		INNER JOIN `tbl_page_typemaster` pt ON pt.id = s.`typeid`
-		INNER JOIN `tbl_companymaster` cm ON cm.`id` = s.`cmpid`
-		where s.id='$seriesid'";
-		$qry_res_series = $db->execute($query_series);
-		if(sizeof($qry_res_series)>0)
-		{
-			$row_ser=$qry_res_series[0];
-			$query_sattr = "SELECT pt.* FROM tbl_series_wise_attributes s
-			INNER JOIN tbl_series_attributes pt ON pt.attribute=s.attributeid
-			where s.seriesid='$seriesid' order by s.order asc";
-			$qry_res_sattr = $db->execute($query_sattr);
-			$fullyear = date ("Y");
-			$smallyear = date ("y");
-			$month = date ("m");
-			foreach ($qry_res_sattr as $key => $row_attr) {
-				if($row_attr['id']==1)
-				{
-					$orderno.=$row_ser['cmp_prefix'];
-				}
-				else if($row_attr['id']==2)
-				{
-					$orderno.=$row_ser['prefix'];
-				}
-				else if($row_attr['id']==3)
-				{
-					$orderno.=$month.'/'.$smallyear;
-				}
-				else if($row_attr['id']==4)
-				{
-					$orderno.=$smallyear.'-'.$month;
-				}
-				else if($row_attr['id']==5)
-				{
-					$orderno.=$month.'/'.$fullyear;
-				}
-				else if($row_attr['id']==6)
-				{
-					$orderno.=$fullyear.'-'.$month;
-				}
-				else if($row_attr['id']==7)
-				{
-					$orderno.=$smallyear;
-				}
-				else if($row_attr['id']==8)
-				{
-					$orderno.=$fullyear;
-				}
-				else if($row_attr['id']==9)
-				{
-					$orderno.=$month;
-				}
-				else if($row_attr['id']==10)
-				{
-					$orderno.='/';
-				}
-				else if($row_attr['id']==11)
-				{
-					$orderno.='-';
-				}
-				else if($row_attr['id']==12)
-				{
-					$tblname= $row_ser['tablename'];
-					$qry_maxid = "SELECT IFNULL(MAX(p.maxid),0) FROM $tblname p WHERE p.`seriesid`= '$seriesid'";
-					$old_maxid_data = $db->execute_scalar($qry_maxid);
-					$old_maxid = ($old_maxid_data && $old_maxid_data != "") ? $old_maxid_data : 0;
-
-					$maxid=$old_maxid+1;
-					$endno=$row_ser['endno'];
-					$orderno.=str_pad($maxid,strlen($endno),"0",STR_PAD_LEFT);
-				}
-			}
-		}
-		return $orderno;
-	}
-	function get_maxid($type,$seriesid) {
-		global $db;
-		$maxid='';
-		$tblname='tbl_'.$type;
-		if($type =='receipt')
-		{
-			$tblname='tbl_payment';
-		}
-		$query_series = "SELECT *
-		,IFNULL((SELECT MAX(p.maxid) FROM $tblname p WHERE p.`seriesid`=s.`id`),0) as maxid 
-		 FROM tbl_seriesmaster s
-		where s.id='$seriesid'";
-		$qry_res_series = $db->execute($query_series);
-		if(sizeof($qry_res_series)>0)
-		{
-			$row_ser=$qry_res_series[0];
-			$maxid=$row_ser['maxid']+1;
-		}
-		return $maxid;
-	}
 	function check_directory_path($target_dir){
 		if (!is_dir($target_dir)) {
 			$oldmask = umask(0);
@@ -986,6 +747,15 @@ class SUPPORT
 			umask($oldmask);
 		}
 	}
+
+	function removeFolder($type, $id){
+		$dirname = dirname(__DIR__, 1) . "/admin_panel/api_services/upload/images/".$type."/".$id;
+		array_map('unlink', glob("$dirname/*"));
+		array_map("rmdir", glob("$dirname/*")); 
+		rmdir($dirname);
+
+	}
+
 	function findArrayByValue($multiArray, $key, $value) {
 		foreach ($multiArray as $subArray) {
 			if (isset($subArray[$key]) && $subArray[$key] === $value) {
@@ -1013,88 +783,4 @@ class SUPPORT
 		return $filename;
 	}
 
-	function genrenstiring()
-	{
-		global $db;
-		$str_result1 = rand(10, 20);
-		$str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
- 
-		$str=substr(str_shuffle($str_result), 0, $str_result1);
-		$query = "SELECT id from tbl_salemaster sv WHERE sv.rtnor_no = '$str'";
-		$qry_res = $db->execute_scalar($query);
-		if($qry_res != '')
-		{
-			$this->genrenstiring();
-		}else{
-			return $str;
-		}
-		
-	}
-
-	function returnorder($saleid)
-	{
-		global $db;
-		$qryw="SELECT * from tbl_salemaster sm where sm.id='$saleid'";
-		$resw=$db->execute($qryw);
-		$roww=$resw[0];
-		$amt=$roww['totamt']*100;
-		$requesr['merchantId']='PGTESTPAYUAT';
-		$requesr['merchantUserId']=$roww['muid'];
-		$requesr['originalTransactionId']=$roww['mtid'];
-		$requesr['merchantTransactionId']=$roww['rmtid'];
-		$requesr['amount']=(int)$amt;
-		$requesr['callbackUrl']="http://localhost:8080/dovvo1/callback-url.php";
-		$jsonString = json_encode($requesr);
-		//print_r($jsonString);
-		$base64String = base64_encode($jsonString);
-		$salt='099eb0cd-02cf-4e2a-8aca-3e6c6aff0399';
-		$hasvalue=$base64String.'/pg/v1/refund'.$salt;
-		$hasreq= hash('sha256',$hasvalue);
-		$hasfinalreq=$hasreq.'###1';
-
-		$mrequest['request']=$base64String;
-		$json = json_encode($mrequest);
-		$headers = array(
-			'Content-Type: application/json',
-			'X-VERIFY : '.$hasfinalreq,
-			'accept: application/json',
-		);
-		
-		// require 'vendor/autoload.php';
-
-		// $client = new \GuzzleHttp\Client();
-
-		// $response = $client->request('POST', 'https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/refund', [
-		// 'body' =>$json,
-		// 'headers' => [
-		// 	'Content-Type' => 'application/json',
-		// 	'X-VERIFY' =>$hasfinalreq,
-		// 	'accept' => 'application/json',
-		// ],
-		// ]);
-
-		// $response=$response->getBody();
-
-		$result = [];
-		try {
-			$curl_handle = curl_init();
-			curl_setopt($curl_handle, CURLOPT_URL, 'https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/refund');
-			curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, 1);
-			curl_setopt($curl_handle, CURLOPT_POST, 1);
-			curl_setopt($curl_handle, CURLOPT_HTTPHEADER, $json);
-			curl_setopt($curl_handle, CURLOPT_POSTFIELDS, $headers);
-			$buffer = curl_exec($curl_handle);
-			curl_close($curl_handle);
-
-			$data = $this->removeBOM($buffer);
-			$result = json_decode($data, true);
-		} catch (Throwable $t) {
-			// Executed only in PHP 7, will not match in PHP 5.x
-			$this->Log($t);
-		} catch (Exception $e) {
-			$this->Log($e);
-		}
-		$data = ['data'=>$result];
-		return $data;
-	}
 }

@@ -32,6 +32,7 @@ function get_data() {
             { data: 'id', name: 'id', "width": "0%", className: "d-none" },
             { data: 'personname', name: 'personname' },
             { data: 'tdate', name: 'date' },
+            { data: 'rating', name: 'rating' },
             { data: 'orderno', name: 'orderno' },
             {
                 data: null,
@@ -53,7 +54,7 @@ function get_data() {
             },
         ],
         "columnDefs": [{
-            "targets": 5,
+            "targets": 6,
             "className": "text-end",
             "data": "id",
             "render": function (data, type, row, meta) {
@@ -144,8 +145,9 @@ function edit_testimonial(index) {
         CURRENT_DATA = TBLDATA[index];
         $('#id').val(CURRENT_DATA.id);
         $('#personname').val(CURRENT_DATA.personname);
-        $('#date').val(CURRENT_DATA.date);
+        $('#date').val(CURRENT_DATA.tdate).datepicker('update');
         $('#orderno').val(CURRENT_DATA.orderno);
+        $('#rating').val(CURRENT_DATA.rating);
         $('#description').val(CURRENT_DATA.description);
         $('#formevent').val('update');
 

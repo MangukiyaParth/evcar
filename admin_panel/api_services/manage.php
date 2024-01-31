@@ -518,7 +518,7 @@ function manageFilepathofEditor($description,$module,$entry_id){
 			if ($tmp && str_contains($mainPath, $tmp)) {
 				echo $oldPath = str_replace(API_SERVICE_URL, "", $mainPath);
 				echo $newPath = str_replace($tmp, "/images/".$module."/".$entry_id."/", $oldPath);
-				$gh->check_directory_path($newPath);// Create directory if not exist
+				$gh->TryCreateDirIfNeeded($newPath);// Create directory if not exist
 				rename($oldPath, $newPath);
 				$description = str_replace($mainPath, "__SERVICEURL__" . $newPath, $description);
 			} else {
