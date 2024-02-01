@@ -27,7 +27,7 @@
             </div>
 
             <div class="loadmorbtn">
-                <p class="morbtn"><a href="#">More</a></p>
+                <p class="morbtn"><a href="<?php echo ROOT_URL.'fuel/'.$const->fule_type_ev_txt ?>">More</a></p>
             </div>
         </div>
     </div>
@@ -39,25 +39,11 @@
     <div class="foundcar">
         <div class="featuredcar featuredblock">
             <div class="disflexcars" id="hybrid_list">
-                <div class="item ">
-                    <div class="carimagrang">
-                        <img src="assets/img/car1.png" alt="car1">
-                    </div>
-                    <div class="pricebox">
-                        <div class="pricebox1">
-                            <h4 class="boxtitle">1 Hyundai Exter</h4>
-                            <h5 class="carprice">Rs. 6.00 Lakh</h5>
-                            <p class="showroomtitle">Avg. Ex-Showroom price</p>
-                        </div>
-                        <div class="pricebox2">
-                            <p class="compareprice"><a href="#">+ COMPARE </a></p>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
 
             <div class="loadmorbtn">
-                <p class="morbtn"><a href="#">More</a></p>
+                <p class="morbtn"><a href="<?php echo ROOT_URL.'fuel/'.$const->fule_type_hybrid_txt ?>">More</a></p>
             </div>
         </div>
     </div>
@@ -69,25 +55,10 @@
     <div class="foundcar">
         <div class="featuredcar featuredblock">
             <div class="disflexcars" id="fule_list">
-                <div class="item ">
-                    <div class="carimagrang">
-                        <img src="assets/img/car1.png" alt="car1">
-                    </div>
-                    <div class="pricebox">
-                        <div class="pricebox1">
-                            <h4 class="boxtitle">1 Hyundai Exter</h4>
-                            <h5 class="carprice">Rs. 6.00 Lakh</h5>
-                            <p class="showroomtitle">Avg. Ex-Showroom price</p>
-                        </div>
-                        <div class="pricebox2">
-                            <p class="compareprice"><a href="#">+ COMPARE </a></p>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <div class="loadmorbtn">
-                <p class="morbtn"><a href="#">More</a></p>
+                <p class="morbtn"><a href="<?php echo ROOT_URL.'fuel/'.$const->fule_type_fuel_txt ?>">More</a></p>
             </div>
         </div>
     </div>

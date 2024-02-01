@@ -676,6 +676,21 @@ class SUPPORT
 				$status=1;
 				$msg= 'valid token';
 			}
+			else if($decoded_jwt['temp_user'] == 1 && $issuer == FRONTEND_CONSTANT){
+				$user_id = $this->generateuuid();
+				$key=$this->getjwt($user_id,$issuer,0,true);	
+				$token = '';
+				$status=0;
+				if($key['status']==1){
+					$token = $key['token'];
+					$at->setToken($token);
+					$msg= 'valid token';
+				}
+				else
+				{
+					$msg= 'invalid token';
+				}
+			}
 			else
 			{
 				$msg= 'invalid token';

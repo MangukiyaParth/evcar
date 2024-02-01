@@ -50,4 +50,45 @@ function manage_homepage()
 		$outputjson['status'] = 1;
 		$outputjson['message'] = 'success.';
 	}
+	else if($action == "get_car_list")
+	{
+		$list_type = $gh->read("list_type","");
+		$id = $gh->read("id","");
+		$heading = "";
+
+		$status = 0;
+		$message = "No Cars Found.";
+		$where = "";
+		if($list_type == "BRAND"){
+			$where="WHERE brand = '$id'";
+			$qry_brand = "SELECT brand FROM `tbl_brand` WHERE id = '$id'";
+			$heading = $db->execute_scalar($qry_brand);
+		}
+		if($list_type == "FUEL"){
+			if($id == $const->fule_type_fuel_txt){
+				$where="WHERE fule_type = '$const->petrol_fule_id' OR fule_type = '$const->diesel_fule_id'";
+				$heading = "Fuel Cars";
+			}
+			else if($id == $const->fule_type_fuel_txt){
+				$where="WHERE fule_type = '$const->ev_fule_id'";
+				$heading = "EV Cars";
+			}
+			else if($id == $const->fule_type_fuel_txt){
+				$where="WHERE fule_type = '$const->hybrid_fule_id'";
+				$heading = "Hybrid Cars";
+			}
+		}
+
+		$qry_car="SELECT * FROM tbl_cars $where";
+		$rows_car = $db->execute($qry_car);
+		if ($rows_car != null && is_array($rows_car) && count($rows_car) > 0) {	
+			$outputjson["data"] = $rows_car;
+			$status = 1;
+			$message = "success.";
+		}
+		$outputjson['heading'] = $heading;
+		$outputjson['success'] = $status;
+		$outputjson['status'] = $status;
+		$outputjson['message'] = $message;
+	}
 }

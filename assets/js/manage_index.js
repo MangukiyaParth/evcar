@@ -119,10 +119,10 @@ function getHomepageData(){
             {
                 var html_brand = "";
                 brandData.forEach(function (value) {
-                    html_brand += `<div class="symbol1">
+                    html_brand += `<a class="symbol1" href="${ROOT_URL}brand/${value.id}">
                                             <div class="kiaheight"> <img src="${WEB_API_FOLDER+value.logo}" alt="${value.brand}"></div>
                                             <p class="symbolname">${value.brand}</p>
-                                        </div>`;
+                                        </a>`;
                     
                 });
                 $("#brand_list").html(html_brand);
@@ -135,7 +135,7 @@ function getHomepageData(){
             {
                 var html_fule = "";
                 fuleData.forEach(function (value) {
-                    html_fule += `<div class="item" data-id="${value.id}">
+                    html_fule += `<div class="item">
                                     <div class="carimagrang">
                                         <img src="${WEB_API_FOLDER+value.file}" alt="${value.name}">
                                     </div>
@@ -146,7 +146,7 @@ function getHomepageData(){
                                             <p class="showroomtitle">Avg. Ex-Showroom price</p>
                                         </div>
                                         <div class="pricebox2">
-                                            <p class="compareprice"><a href="#"> View Details </a></p>
+                                            <p class="compareprice"><a href="${ROOT_URL}cars/${value.id}"> View Details </a></p>
                                         </div>
                                     </div>
                                 </div>`;       
@@ -160,7 +160,7 @@ function getHomepageData(){
             {
                 var html_hybrid = "";
                 hybridData.forEach(function (value) {
-                    html_hybrid += `<a class="item" href="${ROOT_URL}cars/${value.id}">
+                    html_hybrid += `<div class="item">
                                     <div class="carimagrang">
                                         <img src="${WEB_API_FOLDER+value.file}" alt="${value.name}">
                                     </div>
@@ -171,10 +171,10 @@ function getHomepageData(){
                                             <p class="showroomtitle">Avg. Ex-Showroom price</p>
                                         </div>
                                         <div class="pricebox2">
-                                            <p class="compareprice"><a href="#"> View Details </a></p>
+                                            <p class="compareprice"><a href="${ROOT_URL}cars/${value.id}"> View Details </a></p>
                                         </div>
                                     </div>
-                                </a>`;       
+                                </div>`;       
                 });
                 $("#hybrid_list").html(html_hybrid);
             }
@@ -185,7 +185,7 @@ function getHomepageData(){
             {
                 var html_ev = "";
                 evData.forEach(function (value) {
-                    html_ev += `<div class="item ">
+                    html_ev += `<div class="item">
                                     <div class="carimagrang">
                                         <img src="${WEB_API_FOLDER+value.file}" alt="${value.name}">
                                     </div>
@@ -196,7 +196,7 @@ function getHomepageData(){
                                             <p class="showroomtitle">Avg. Ex-Showroom price</p>
                                         </div>
                                         <div class="pricebox2">
-                                            <p class="compareprice"><a href="#"> View Details </a></p>
+                                            <p class="compareprice"><a href="${ROOT_URL}cars/${value.id}"> View Details </a></p>
                                         </div>
                                     </div>
                                 </div>`;       

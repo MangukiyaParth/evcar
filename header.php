@@ -6,7 +6,9 @@
         global $DEBUG,$ur, $ud, $gh, $const, $const_session_key_value, $current_user_id, $temp_user;
         include_once __DIR__."/config/_DEFINE.php";
         include_once __DIR__."/config/_SUPPORT.php";
+        include_once __DIR__."/config/_CONST.php";
         $gh = new SUPPORT();
+        $const = new ProjectConst();
         $primary_id = 0;
         if(isset($_REQUEST['id'])) {
             $primary_id = $_REQUEST['id'];
