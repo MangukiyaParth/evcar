@@ -56,6 +56,13 @@
         var API_SERVICE_URL = '<?php echo API_SERVICE_URL; ?>manage.php';
         var ADMIN_PANEL_URL = '<?php echo ADMIN_PANEL_URL; ?>';
         var REQ_FROM = '<?php echo FRONTEND_CONSTANT; ?>';
+        var fule_type_hybrid_txt = '<?php echo $const->fule_type_hybrid_txt; ?>';
+        var fule_type_ev_txt = '<?php echo $const->fule_type_ev_txt; ?>';
+        var fule_type_fuel_txt = '<?php echo $const->fule_type_fuel_txt; ?>';
+        var petrol_fule_id = '<?php echo $const->petrol_fule_id; ?>';
+        var diesel_fule_id = '<?php echo $const->diesel_fule_id; ?>';
+        var ev_fule_id = '<?php echo $const->ev_fule_id; ?>';
+        var hybrid_fule_id = '<?php echo $const->hybrid_fule_id; ?>';
 </script>
 </head>
 
@@ -106,13 +113,13 @@
                                 <a class="nav-link px-3 active" href="<?php echo ROOT_URL; ?>home">Home</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link px-3" href="<?php echo ROOT_URL; ?>home">EV Cars</a>
+                                <a class="nav-link px-3" href="<?php echo ROOT_URL.'fuel/'.$const->fule_type_ev_txt; ?>">EV Cars</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link px-3" href="<?php echo ROOT_URL; ?>home">Hybrid Cars</a>
+                                <a class="nav-link px-3" href="<?php echo ROOT_URL.'fuel/'.$const->fule_type_hybrid_txt; ?>">Hybrid Cars</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link px-3" href="<?php echo ROOT_URL; ?>home">Fuel Cars</a>
+                                <a class="nav-link px-3" href="<?php echo ROOT_URL.'fuel/'.$const->fule_type_fuel_txt; ?>">Fuel Cars</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link px-3" href="<?php echo ROOT_URL; ?>home">About Us</a>

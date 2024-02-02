@@ -46,9 +46,9 @@ $(document).ready(function() {
     // });
 
     $('.customtabs li').click(function() {
-        console.log("hello");
+        // console.log("hello");
         var tab_id = $(this).attr('data-tab');
-        console.log(tab_id);
+        // console.log(tab_id);
         $(".cartab-link.carcurrent").removeClass('carcurrent');
         $('.featuredcar.featuredblock').removeClass('featuredblock');
 
@@ -66,9 +66,9 @@ $(document).ready(function() {
 
 
     $('.producttabs li').click(function() {
-        console.log("hello");
+        // console.log("hello");
         var tab_id = $(this).attr('data-tab');
-        console.log(tab_id);
+        // console.log(tab_id);
         $(".productreview.prdtabblock").removeClass('prdtabblock');
         $('.prdsubpart.prdsubactive').removeClass('prdsubactive');
 
@@ -82,7 +82,7 @@ $(document).ready(function() {
 
     });
     $("#navbar-toggle i").click(function() {
-        console.log('hello');
+        // console.log('hello');
         $(".navbarcustom .navbar-nav").slideToggle();
     });
 
@@ -114,7 +114,7 @@ $(document).ready(function() {
  });
 
  $(".fafaclose i").on("click", function () {
-    console.log("ckidwd");
+    // console.log("ckidwd");
     $('.clsoverlay').css("display","none");
     $('.filtersubtitlemobile.boxclsactive').removeClass('boxclsactive');
  });
@@ -132,7 +132,7 @@ $('.clsoverlay').css("display","block");
  });
 
  $(".sortround .clsvarainround").on("click", function () {
-    console.log("clickevent");
+    // console.log("clickevent");
     $('.clsvarainround.clsvariantroundactive ').removeClass('clsvariantroundactive');
     $(this).addClass('clsvariantroundactive');
   

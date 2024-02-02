@@ -2,6 +2,7 @@ RewriteEngine on
 RewriteCond %{HTTP_HOST} ^www\.
 RewriteRule ^(.*)$ http://localhost:8080/product/HTML/evcar/$1 [R=301,L]
 RewriteRule ^home?$ index.php
+RewriteRule ^cars?$ car_list.php
 RewriteRule ^brand/([^/]+)/?$ car_list.php?list_type=BRAND&id=$1  [NC,L]
 RewriteRule ^fuel/([^/]+)/?$ car_list.php?list_type=FUEL&id=$1  [NC,L]
 RewriteRule ^cars/([^/]+)/?$ car_details.php?id=$1  [NC,L]
