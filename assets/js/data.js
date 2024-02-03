@@ -55,14 +55,14 @@ $(document).ready(function() {
         $(this).addClass('carcurrent');
         $("#" + tab_id).addClass('featuredblock');
     });
-    $('.productcarslide').slick({
-        dots: true,
-        infinite: true,
-        speed: 300,
-        slidesToShow: 1,
-        adaptiveHeight: true,
-        arrows: false
-    });
+    // $('.productcarslide').slick({
+    //     dots: true,
+    //     infinite: true,
+    //     speed: 300,
+    //     slidesToShow: 1,
+    //     adaptiveHeight: true,
+    //     arrows: false
+    // });
 
 
     $('.producttabs li').click(function() {

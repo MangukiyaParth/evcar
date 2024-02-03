@@ -96,7 +96,6 @@ function get_brands(){
         action: "get_brand_list"
     };
     doAPICall(req_data, async function(data){
-        $(".page-heading").html(data.heading);
         if (data && data != null && data.success == true) {
             var brandData = data.brand;
             if(brandData && brandData.length > 0)

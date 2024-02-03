@@ -98,4 +98,31 @@ function manage_homepage()
 		$outputjson['status'] = $status;
 		$outputjson['message'] = $message;
 	}
+	else if($action == "get_car_details")
+	{
+		$id = $gh->read("id","");
+		$status = 0;
+		$message = "No Detail Found.";
+		$qry_car="SELECT * FROM car_details WHERE id = '$id'";
+		$rows_car = $db->execute($qry_car);
+		if ($rows_car != null && is_array($rows_car) && count($rows_car) > 0) {	
+			if($rows_car[0]['main_car_id'] != ""){
+				$car_id = $rows_car[0]['main_car_id'];
+				$qry_car_verient="SELECT * FROM car_details WHERE (id = '$car_id' OR main_car_id = '$car_id') AND id != '$id'";
+			}
+			else{
+				$qry_car_verient="SELECT * FROM car_details WHERE main_car_id = '$id'";
+			}
+			$rows_car_verient = $db->execute($qry_car_verient);
+			if ($rows_car_verient != null && is_array($rows_car_verient) && count($rows_car_verient) > 0) {	
+				$rows_car[0]['vdata'] = json_encode($rows_car_verient);
+			}
+			$outputjson["data"] = $rows_car[0];
+			$status = 1;
+			$message = "success.";
+		}
+		$outputjson['success'] = $status;
+		$outputjson['status'] = $status;
+		$outputjson['message'] = $message;
+	}
 }
