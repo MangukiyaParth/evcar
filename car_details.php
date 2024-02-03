@@ -98,7 +98,7 @@
     </div>
 
     <!-- tabbing part -->
-    <div class="producttab">
+    <div class="producttab mb-3">
         <div class="productflex">
             <div class="productflex75">
                 <ul class="producttabs">

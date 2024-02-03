@@ -1,5 +1,12 @@
 jQuery(function () {
-    // get_Settings_data();
+    var footer_data = localStorage.getItem("footer_data");
+    var itemData = (footer_data == null) ? [] : JSON.parse(footer_data);
+    if(itemData.length > 0){
+        set_footer_data();
+    }
+    else {
+        get_footer_data();
+    }
 });
     
 function doAPICall(obj, callback, is_async) {
@@ -119,4 +126,74 @@ function convert_number(number)
     } 
     res += " Lakh"; 
     return res;
+}
+
+function get_footer_data(){
+    var req_data = {
+        op: "manage_homepage",
+        action: "get_data"
+    };
+    doAPICall(req_data, async function(data){
+        if (data && data != null && data.success == true) {
+            var fuleData = data.fule_car;
+            var evData = data.ev_car;
+            var hybridData = data.hybrid_car;
+
+            var footer_data = [];
+            footer_data.push(fuleData);
+            footer_data.push(evData);
+            footer_data.push(hybridData);
+            localStorage.setItem("footer_data", JSON.stringify(footer_data));
+            
+            set_footer_data();
+            return false;
+        }
+        else if (data && data != null && data.success == false) {
+            return false;
+        }
+    });
+}
+
+function set_footer_data(){
+    var footer_data = localStorage.getItem("footer_data");
+    var itemData = (footer_data == null) ? [] : JSON.parse(footer_data);
+    if(itemData.length > 0){
+        var fuleData = itemData[0];
+        var hybridData = itemData[1];
+        var evData = itemData[2];
+
+        if(fuleData && fuleData.length > 0)
+        {
+            var html_fule = "";
+            fuleData.forEach(function (value) {     
+                html_fule += `<li class="carlistsubtutitle"><a href="${ROOT_URL}cars/${value.id}">${value.name}</a></li>`;
+            });
+            $("#footer_fule_list").html(html_fule);
+        }
+        else{
+            $(".footer-fule-area").remove();
+        }
+        if(hybridData && hybridData.length > 0)
+        {
+            var html_hybrid = "";
+            hybridData.forEach(function (value) {
+                html_hybrid += `<li class="carlistsubtutitle"><a href="${ROOT_URL}cars/${value.id}">${value.name}</a></li>`;
+            });
+            $("#footer_hybrid_list").html(html_hybrid);
+        }
+        else{
+            $(".footer-hybrid-area").remove();
+        }
+        if(evData && evData.length > 0)
+        {
+            var html_ev = "";
+            evData.forEach(function (value) {
+                html_ev += `<li class="carlistsubtutitle"><a href="${ROOT_URL}cars/${value.id}">${value.name}</a></li>`;
+            });
+            $("#footer_ev_list").html(html_ev);
+        }
+        else{
+            $(".footer-ev-area").remove();
+        }
+    }
 }

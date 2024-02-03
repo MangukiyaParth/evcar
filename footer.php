@@ -24,36 +24,21 @@
                     </ul>
                 </div>
 
-                <div class="footerflex2">
+                <div class="footerflex2 footer-ev-area">
                     <h4 class="carinfotitle">Best EV Cars</h4>
-                    <ul class="carlistfooter">
-                        <li class="carlistsubtutitle"><a href="#">Lorem Ipsum is simply</a></li>
-                        <li class="carlistsubtutitle"><a href="#">Lorem Ipsum is simply</a></li>
-                        <li class="carlistsubtutitle"><a href="#">Lorem Ipsum is simply</a></li>
-                        <li class="carlistsubtutitle"><a href="#">Lorem Ipsum is simply</a></li>
-                        <li class="carlistsubtutitle"><a href="#">Lorem Ipsum is simply</a></li>
+                    <ul class="carlistfooter" id="footer_ev_list">
                     </ul>
                 </div>
 
-                <div class="footerflex2">
+                <div class="footerflex2 footer-hybrid-area">
                     <h4 class="carinfotitle">Best Hybrid</h4>
-                    <ul class="carlistfooter">
-                        <li class="carlistsubtutitle"><a href="#">Lorem Ipsum is simply</a></li>
-                        <li class="carlistsubtutitle"><a href="#">Lorem Ipsum is simply</a></li>
-                        <li class="carlistsubtutitle"><a href="#">Lorem Ipsum is simply</a></li>
-                        <li class="carlistsubtutitle"><a href="#">Lorem Ipsum is simply</a></li>
-                        <li class="carlistsubtutitle"><a href="#">Lorem Ipsum is simply</a></li>
+                    <ul class="carlistfooter" id="footer_hybrid_list">
                     </ul>
                 </div>
 
-                <div class="footerflex2">
+                <div class="footerflex2 footer-fule-area">
                     <h4 class="carinfotitle">Best Fuel</h4>
-                    <ul class="carlistfooter">
-                        <li class="carlistsubtutitle"><a href="#">Lorem Ipsum is simply</a></li>
-                        <li class="carlistsubtutitle"><a href="#">Lorem Ipsum is simply</a></li>
-                        <li class="carlistsubtutitle"><a href="#">Lorem Ipsum is simply</a></li>
-                        <li class="carlistsubtutitle"><a href="#">Lorem Ipsum is simply</a></li>
-                        <li class="carlistsubtutitle"><a href="#">Lorem Ipsum is simply</a></li>
+                    <ul class="carlistfooter" id="footer_fule_list">
                     </ul>
                 </div>
 
