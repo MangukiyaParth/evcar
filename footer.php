@@ -16,11 +16,9 @@
                 <div class="footerflex2">
                     <h4 class="carinfotitle">EV Cars info</h4>
                     <ul class="carlistfooter">
-                        <li class="carlistsubtutitle"><a href="#">About Us</a></li>
-                        <li class="carlistsubtutitle"><a href="#">Contact Us</a></li>
-                        <li class="carlistsubtutitle"><a href="#">News</a></li>
-                        <li class="carlistsubtutitle"><a href="#">Support</a></li>
-
+                        <li class="carlistsubtutitle"><a href="<?php echo ROOT_URL; ?>about-us">About Us</a></li>
+                        <li class="carlistsubtutitle"><a href="<?php echo ROOT_URL; ?>contact-us">Contact Us</a></li>
+                        <li class="carlistsubtutitle"><a href="<?php echo ROOT_URL; ?>news">News</a></li>
                     </ul>
                 </div>
 
@@ -52,8 +50,8 @@
                 </div>
                 <div class="copyflex1">
                     <ul class="d-flex flex-wrap">
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="<?php echo ROOT_URL; ?>privacy-policy">Privacy Policy</a></li>
+                        <li><a href="<?php echo ROOT_URL; ?>terms-conditions">Terms & Conditions</a></li>
 
                     </ul>
                 </div>

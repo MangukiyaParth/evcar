@@ -6,6 +6,11 @@
     var list_type = '<?php echo (isset($_REQUEST['list_type'])) ? $_REQUEST['list_type'] : ''; ?>';
 </script>
 <section class="logocontainer container">
+    <div class="homeproduct">
+        <img src="<?php echo ROOT_URL; ?>assets/img/home.png" alt="home">
+        <a href="<?php echo ROOT_URL; ?>home">Home</a> <i class="fa fa-angle-right" aria-hidden="true"></i>
+        <a href="javascript:void(0)" class="gernexon">Cars</a>
+    </div>
     <div class="clsoverlay"></div>
     <!-- mobileview start -->
     <div class="mobilegetset">

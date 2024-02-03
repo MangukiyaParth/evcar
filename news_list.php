@@ -9,7 +9,7 @@
         <div class="homeproduct">
             <img src="<?php echo ROOT_URL; ?>assets/img/home.png" alt="home">
             <a href="<?php echo ROOT_URL; ?>home">Home</a> <i class="fa fa-angle-right" aria-hidden="true"></i>
-            <a href="javascript:void(0)" class="gernexon vname">News</a>
+            <a href="javascript:void(0)" class="gernexon">News</a>
         </div>
         <div class="vaildityall">
             <div class="vaildiflex full-width" id="news_list">
