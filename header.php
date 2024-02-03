@@ -125,7 +125,7 @@
                                 <a class="nav-link px-3" href="<?php echo ROOT_URL; ?>home">About Us</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link px-3" href="<?php echo ROOT_URL; ?>home">News</a>
+                                <a class="nav-link px-3" href="<?php echo ROOT_URL; ?>news">News</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link px-3" href="<?php echo ROOT_URL; ?>home">Contact Us</a>

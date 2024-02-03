@@ -4,9 +4,6 @@ include_once dirname(__DIR__, 1)."/config/_CONST.php";
 include_once dirname(__DIR__, 1)."/config/gatter_satter.php";
 $const = new ProjectConst();
 
-$acc_bank=$const->accgrp_bank;
-$acc_purparty=$const->accgrp_purchaseparty;
-$acc_puracc=$const->accgrp_purchaseacc;
 $admin_role_id=$const->admin_role_id;
 
 $current_file_name = basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']);

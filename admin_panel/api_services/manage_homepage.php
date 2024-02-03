@@ -46,6 +46,12 @@ function manage_homepage()
 		if ($rows_hybrid != null && is_array($rows_hybrid) && count($rows_hybrid) > 0) {	
 			$outputjson["hybrid_car"] = $rows_hybrid;
 		}
+		
+		$qry_news="SELECT *, DATE_FORMAT(STR_TO_DATE(news_date,'%d/%m/%Y'),'%M %d, %Y') as disp_date FROM tbl_news LIMIT 6";
+		$rows_news = $db->execute($qry_news);
+		if ($rows_news != null && is_array($rows_news) && count($rows_news) > 0) {	
+			$outputjson["news"] = $rows_news;
+		}
 		$outputjson['success'] = 1;
 		$outputjson['status'] = 1;
 		$outputjson['message'] = 'success.';
@@ -118,6 +124,37 @@ function manage_homepage()
 				$rows_car[0]['vdata'] = json_encode($rows_car_verient);
 			}
 			$outputjson["data"] = $rows_car[0];
+			$status = 1;
+			$message = "success.";
+		}
+		$outputjson['success'] = $status;
+		$outputjson['status'] = $status;
+		$outputjson['message'] = $message;
+	}
+	else if($action == "get_news_list"){
+		$status = 0;
+		$message = "No news Found.";
+		
+		$qry_news="SELECT *, DATE_FORMAT(STR_TO_DATE(news_date,'%d/%m/%Y'),'%M %d, %Y') as disp_date FROM tbl_news";
+		$rows_news = $db->execute($qry_news);
+		if ($rows_news != null && is_array($rows_news) && count($rows_news) > 0) {	
+			$outputjson["data"] = $rows_news;
+			$status = 1;
+			$message = "success.";
+		}
+		$outputjson['success'] = $status;
+		$outputjson['status'] = $status;
+		$outputjson['message'] = $message;
+	}
+	else if($action == "get_news_details"){
+		$status = 0;
+		$message = "No news Found.";
+		$id = $gh->read("id");
+		
+		$qry_news="SELECT *, DATE_FORMAT(STR_TO_DATE(news_date,'%d/%m/%Y'),'%M %d, %Y') as disp_date FROM tbl_news WHERE id = '$id'";
+		$rows_news = $db->execute($qry_news);
+		if ($rows_news != null && is_array($rows_news) && count($rows_news) > 0) {	
+			$outputjson["data"] = $rows_news[0];
 			$status = 1;
 			$message = "success.";
 		}

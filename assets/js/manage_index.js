@@ -12,6 +12,7 @@ function getHomepageData(){
             var sliderData = data.slider;
             var testimonialData = data.testimonial;
             var brandData = data.brand;
+            var newsData = data.news;
             var fuleData = data.fule_car;
             var evData = data.ev_car;
             var hybridData = data.hybrid_car;
@@ -129,6 +130,25 @@ function getHomepageData(){
             }
             else{
                 $(".brand-area").remove();
+            }
+            
+            if(newsData && newsData.length > 0)
+            {
+                var html_news = "";
+                newsData.forEach(function (value) {
+                    html_news += `<div class="validflex1">
+                                    <img src="${WEB_API_FOLDER+value.main_image}" alt="2stcar">
+                                    <h6 class="dates">${value.disp_date}</h6>
+                                    <h4 class="customservice">${value.title}</h4>
+                                    <p class="csrnewsub">${value.short_desc}</p>
+                                    <a href="${ROOT_URL}news/${value.id}" class="showall">Read More</a>
+                                </div>`;
+                    
+                });
+                $("#news_list").html(html_news);
+            }
+            else{
+                $(".news-area").remove();
             }
             
             if(fuleData && fuleData.length > 0)

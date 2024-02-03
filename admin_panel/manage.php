@@ -11,9 +11,6 @@ $include_javscript_library_before_custom_script_at_bottom .= "<script>
 	var LOGGED_IN_USER_ID = '$user_id';
 	var FORMNAME = '" . $formname . "';
     </script>";
-echo "<script>var acc_bank = '" . $acc_bank . "'</script>";
-echo "<script>var acc_purparty = '" . $acc_purparty . "'</script>";
-echo "<script>var acc_puracc = '" . $acc_puracc . "'</script>";
 
 ?>
 <div class="content-page" id="main_page_data">

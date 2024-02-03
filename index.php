@@ -166,7 +166,7 @@
     </div>
 </div>
 <!-- blogsection -->
-<div class="blogsection">
+<div class="blogsection news-area">
     <div class="logocontainer container">
         <div class="borderlineblog">
             <div class="carnewflex d-flex flex-wrap justify-content-between align-items-center">
@@ -175,56 +175,14 @@
                     <h2 class="carnewsubtitle">EV CARS NEWS</h2>
                 </div>
                 <div class="caeblog">
-                    <a href="#" class="showall">Show All</a>
+                    <a href="<?php echo ROOT_URL; ?>news" class="showall">Show All</a>
                 </div>
             </div>
         </div>
 
 
         <div class="vaildityall">
-            <div class="vaildiflex ">
-                <div class="validflexmain">
-                    <img src="assets/img/carn1.png" alt="1stcar">
-                    <h6 class="dates">January 24, 2023</h6>
-                    <h4 class="customservice">Aston deal validates “the most advanced electric motor in the world”</h4>
-                    <p class="csrnewsub">Off the back of the deal between Lucid Motors and Aston Martin, Peter Rawlinson, CEO and CTO of Lucid Motors, has stated that Aston’s decision to go with Lucid rubber stamps its claim to have 'the most advanced electric motor in
-                        the world'. In case you missed it, “the whole partnership with Aston Martin is worth in excess of 450 million". In an interview with TG.com, Rawlinson is careful to not tell us anything we don’t already know (boo) but claims
-                        the money isn’t the point. “It's great for us because it's a validation point of our technology. Yeah, it's got $450 million, thank you. </p>
-                    <a href="#" class="showall">Read More</a>
-                </div>
-                <div class="validflex1">
-                    <img src="assets/img/carn2.png" alt="2stcar">
-                    <h6 class="dates">January 19, 2023</h6>
-                    <h4 class="customservice">Tesla Supercharger network: where can I charge in the UK?</h4>
-                    <p class="csrnewsub">The Tesla Supercharger network is arguably the blueprint of EV charge point networks. Launch a car (or four - enter the Model S, Model X, Model 3 and Model Y), then give the people somewhere to charge and boom. </p>
-                    <a href="#" class="showall">Read More</a>
-                </div>
-
-                <div class="validflex1">
-                    <img src="assets/img/carn3.png" alt="3stcar">
-                    <h6 class="dates">January 24, 2023</h6>
-                    <h4 class="customservice">Report: EVs now top 5% of new vehicle sales in 23 countries</h4>
-                    <p class="csrnewsub">At 5%, sales might accelerate, assuming the same adoption curve for EVs as for other technologies—although charging hurdles and cost barriers are among the factors ...</p>
-                    <a href="#" class="showall">Read More</a>
-                </div>
-
-                <div class="validflex1">
-                    <img src="assets/img/carn4.png" alt="4stcar">
-                    <h6 class="dates">January 20, 2023</h6>
-                    <h4 class="customservice">Mercedes renews plans for its own EV fast-charging hubs</h4>
-                    <p class="csrnewsub">Mercedes' High Power Charging Network will be differentiated in North America from the EV charging network being established with six other automakers, the automaker clarified ...</p>
-                    <a href="#" class="showall">Read More</a>
-                </div>
-
-                <div class="validflex1">
-                    <img src="assets/img/carn5.png" alt="5stcar">
-                    <h6 class="dates">January 19, 2023</h6>
-                    <h4 class="customservice">2024 Audi Q8 E-Tron joins the 300-mile club—in Sportback</h4>
-                    <p class="csrnewsub">ercedes-Benz has ambitious plans to create its own EV charging network, which it’s terming its High-Power Charging Network, on several continents. That will include more than 2,000 ...</p>
-                    <a href="#" class="showall">Read More</a>
-                </div>
-
-
+            <div class="vaildiflex " id="news_list">
             </div>
         </div>
     </div>
