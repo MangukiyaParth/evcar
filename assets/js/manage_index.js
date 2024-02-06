@@ -1,6 +1,12 @@
 jQuery(function () {
     getHomepageData();
 });
+
+function loadMoreBrand(){
+    $("#brand_list").toggleClass("limited-list");
+    $(".load-more-brand-div").toggleClass("d-none");
+    $("#brand_list").css("max-height", "auto");
+}
     
 function getHomepageData(){
     var req_data = {
@@ -36,7 +42,9 @@ function getHomepageData(){
                     speed: 300,
                     slidesToShow: 1,
                     adaptiveHeight: true,
-                    arrows: false
+                    arrows: true,
+                    prevArrow: '<button type="button" class="slick-custom-arrow slick-prev"> <i class="fa fa-angle-left" aria-hidden="true"></i> </button>',
+                    nextArrow: '<button type="button" class="slick-custom-arrow slick-next">  <i class="fa fa-angle-right" aria-hidden="true"></i> </button>',
                 });
             }
             else{
@@ -127,6 +135,10 @@ function getHomepageData(){
                     
                 });
                 $("#brand_list").html(html_brand);
+                var margin = (+$("#brand_list a:nth-child(1)").css('margin-top').replace('px','')) * 2;
+                var tot_height = 121 + margin;
+                var two_line_height = Math.round((tot_height * 2) + 3);
+                $("#brand_list").css('max-height', two_line_height+' px'.trim());
             }
             else{
                 $(".brand-area").remove();

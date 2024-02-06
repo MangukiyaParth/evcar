@@ -325,6 +325,23 @@ display: none;
     padding-bottom: 1%;
 }
 
+#brand_list{
+    align-content: center;
+}
+
+#brand_list.limited-list{
+    align-content: baseline;
+    max-height: 285px;
+    overflow: hidden;
+}
+
+.prsonalman{
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    object-fit: cover;
+}
+
 .compareprice a:hover {
     background-color: #000;
     color: #fff;
@@ -346,7 +363,7 @@ display: none;
     flex: 0 0 16.66%;
     max-width: 15%;
     text-align: center;
-    padding: 1% 0px;
+    padding: 15px 0px;
     justify-content: space-between;
     border: 1px solid #000;
     border-radius: 10px;
@@ -762,6 +779,18 @@ display: none;
 .alltestimonial:hover .howertestimonial {
     display: block;
     transition: all 3s;
+}
+
+.one-time .slick-prev{
+    color: #ffffff;
+    left: 2%;
+    z-index: 2;
+}
+
+.one-time .slick-next{
+    right: 2%;
+    z-index: 2;
+    color: #ffffff;
 }
 
 .testimonialslider .slick-prev {
@@ -1867,7 +1896,7 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
             flex: 0 0 100%;
             max-width: calc(100% - 10px);
         }
-        
+
 
     }
     

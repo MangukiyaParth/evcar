@@ -70,7 +70,10 @@
         <div class="dreamtitle">
             <h2 class="dreamsubtitle">Find your dream car</h2>
         </div>
-        <div class="d-flex align-content-center flex-wrap" id="brand_list">
+        <div class="d-flex flex-wrap limited-list" id="brand_list">
+        </div>
+        <div class="loadmorbtn load-more-brand-div">
+            <p class="morbtn"><a href="javascript:void(0)" onclick="loadMoreBrand()">More</a></p>
         </div>
     </div>
 </div>
