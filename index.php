@@ -91,7 +91,7 @@
                     <div class="cstomflex1">
                         <div class="cstompadding">
 
-                            <img src="assets/img/Icon.png" alt="icon1">
+                            <img src="assets/img/icon.png" alt="icon1">
                         </div>
                         <h3 class="customservice">CUSTOMER SERVICE</h3>
                         <div class="servicepera">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make

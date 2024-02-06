@@ -8,7 +8,7 @@ function delete_record()
 	$id = $gh->read("id");
 	if($type=='manage_brand')
 	{
-		if ($id > 0) {
+		if ($id != "") {
 			$gh->removeFolder("brand", $id);
 
 			$db->delete('tbl_brand', array("id" => $id));
@@ -20,7 +20,7 @@ function delete_record()
 	}
 	else if($type=='manage_slider')
 	{
-		if ($id > 0) {
+		if ($id != "") {
 			$gh->removeFolder("slider", $id);
 
 			$db->delete('tbl_slidermaster', array("id" => $id));
@@ -33,7 +33,7 @@ function delete_record()
 	}
 	else if($type=='manage_testimonial')
 	{
-		if ($id > 0) {
+		if ($id != "") {
 			$gh->removeFolder("testimonial", $id);
 
 			$db->delete('tbl_testimonialmaster', array("id" => $id));
@@ -46,7 +46,7 @@ function delete_record()
 	}
 	else if($type=='manage_car')
 	{
-		if ($id > 0) {
+		if ($id != "") {
 			$gh->removeFolder("cars", $id);
 
 			$db->delete('tbl_cars', array("id" => $id));
@@ -61,7 +61,7 @@ function delete_record()
 	}
 	else if($type=='manage_news')
 	{
-		if ($id > 0) {
+		if ($id != "") {
 			$gh->removeFolder("news", $id);
 
 			$db->delete('tbl_news', array("id" => $id));

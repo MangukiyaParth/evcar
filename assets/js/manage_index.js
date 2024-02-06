@@ -120,8 +120,8 @@ function getHomepageData(){
             {
                 var html_brand = "";
                 brandData.forEach(function (value) {
-                    html_brand += `<a class="symbol1" href="${ROOT_URL}brand/${value.id}">
-                                            <div class="kiaheight"> <img src="${WEB_API_FOLDER+value.logo}" alt="${value.brand}"></div>
+                    html_brand += `<a class="symbol1 text-decoration-none" href="${ROOT_URL}brand/${value.id}">
+                                            <div class="kiaheight"> <img src="${WEB_API_FOLDER+value.logo}" class="h-100" alt="${value.brand}"></div>
                                             <p class="symbolname">${value.brand}</p>
                                         </a>`;
                     
