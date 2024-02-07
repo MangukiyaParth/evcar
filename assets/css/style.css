@@ -56,14 +56,17 @@ body {
 }
 
 .bgimagecar {
-    padding: 0 5%;
+    padding: 0 9vw;
     max-width: 1440px;
-    width: 100%;
+    width: 100vw;
     margin: 0 auto;
-    height: 638px;
+    /* height: 638px; */
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: absolute;
+    top: 0;
 }
 
 .evcartitle {
@@ -80,7 +83,7 @@ body {
     font-size: 64px;
     line-height: 70px;
     font-weight: 600;
-    letter-spacing: -4px;
+    /* letter-spacing: -4px; */
     font-family: 'Lexend';
 }
 
@@ -88,7 +91,7 @@ body {
     font-size: 18px;
     color: #d5c9c9;
     width: 40%;
-    padding-bottom: 43px;
+    /* padding-bottom: 43px; */
     margin: 0;
     font-family: 'Lexend';
 }
@@ -223,7 +226,7 @@ display: none;
 .carfont {
     font-size: 45px;
     line-height: 49px;
-    letter-spacing: -4px;
+    /* letter-spacing: -4px; */
     font-weight: 600;
     text-transform: uppercase;
     margin: 5% 0px 3%;
@@ -318,7 +321,7 @@ display: none;
 .dreamsubtitle {
     font-size: 45px;
     line-height: 49px;
-    letter-spacing: -4px;
+    /* letter-spacing: -4px; */
     font-weight: 600;
     margin: 0px;
     font-family: lexend;
@@ -400,7 +403,7 @@ display: none;
     font-size: 45px;
     font-weight: 600;
     line-height: 50px;
-    letter-spacing: -4px;
+    /* letter-spacing: -4px; */
     text-align: left;
     color: #1A1E26;
 }
@@ -696,7 +699,7 @@ display: none;
     font-weight: 500;
     line-height: 27px;
     letter-spacing: 0px;
-    text-align: left;
+    /* text-align: left; */
     color: #fff;
 }
 
@@ -1231,8 +1234,17 @@ display: none;
     display: none;
 }
 
-.navonlysearchbar.carlogoflex.d-flex.justify-content-between.align-items-center {
-    display: none !important;
+.navonlysearchbar.carlogoflex {
+    display: none;
+}
+
+.mobsearchclosebtn{
+    background: #40b54d;
+    color: #FFF;
+    padding: 8px 12px;
+    font-size: 15px;
+    border-radius: 50%;
+    display: none;
 }
 
 .detailbutton:hover {
@@ -1366,29 +1378,29 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
     border-color: transparent;
     color: transparent;
     border-radius: 5px;
-  }
-  
-  /* Style toddler input range */
-  
-  .price-field input[type=range]::-webkit-slider-thumb { 
+}
+
+/* Style toddler input range */
+
+.price-field input[type=range]::-webkit-slider-thumb { 
     /* WebKit/Blink */
-      position: relative;
-      -webkit-appearance: none;
-      margin: 0;
-      border: 0;
-      outline: 0;
-      border-radius: 50%;
-      height: 10px;
-      width: 10px;
-      margin-top: -4px;
-      background-color: #fff;
-      cursor: pointer;
-      cursor: pointer;
-      pointer-events: all;
-      z-index: 100;
-  }
+    position: relative;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    margin-top: -4px;
+    background-color: #fff;
+    cursor: pointer;
+    cursor: pointer;
+    pointer-events: all;
+    z-index: 100;
+}
   
-  .price-field input[type=range]::-moz-range-thumb { 
+.price-field input[type=range]::-moz-range-thumb { 
     /* Firefox */
     position: relative;
     appearance: none;
@@ -1404,9 +1416,9 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
     cursor: pointer;
     pointer-events: all;
     z-index: 100;
-  }
-  
-  .price-field input[type=range]::-ms-thumb  { 
+}
+
+.price-field input[type=range]::-ms-thumb  { 
     /* IE */
     position: relative;
     appearance: none;
@@ -1422,34 +1434,34 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
     cursor: pointer;
     pointer-events: all;
     z-index: 100;
-  }
- .customcheck input[type=checkbox] {
+}
+.customcheck input[type=checkbox] {
     position: relative;
-      border: 2px solid #000;
-      border-radius: 2px;
-      background: none;
-      cursor: pointer;
-      line-height: 0;
-      margin: 0 .6em 0 0;
-      outline: 0;
-      padding: 0 !important;
-      vertical-align: text-top;
-      height: 18px;
-      width: 18px;
-      -webkit-appearance: none;
+    border: 2px solid #000;
+    border-radius: 2px;
+    background: none;
+    cursor: pointer;
+    line-height: 0;
+    margin: 0 .6em 0 0;
+    outline: 0;
+    padding: 0 !important;
+    vertical-align: text-top;
+    height: 18px;
+    width: 18px;
+    -webkit-appearance: none;
     opacity: .5;
-  }
-  
- .customcheck input[type=checkbox]:hover {
+}
+
+.customcheck input[type=checkbox]:hover {
     opacity: 1;
-  }
-  
-  .customcheck input[type=checkbox]:checked {
+}
+
+.customcheck input[type=checkbox]:checked {
     background-color: #000;
     opacity: 1;
-  }
-  
-  .customcheck input[type=checkbox]:before {
+}
+
+.customcheck input[type=checkbox]:before {
     content: '';
     position: absolute;
     right: 50%;
@@ -1461,41 +1473,40 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
     margin: -1px -1px 0 -1px;
     transform: rotate(45deg) translate(-50%, -50%);
     z-index: 2;
-  }
+}
 
 
-  .acc__card {
+.acc__card {
     position: relative;
     border-top: 1px solid #9D9EA2;;
- 
-  }
-  .acc__title {
-     cursor: pointer;
+}
+.acc__title {
+    cursor: pointer;
     display: block;
-       position: relative;
+    position: relative;
     text-align: left;
     &::after {
-      width: 8px;
-      height: 8px;
-      border-right: 1px solid #4a6e78;
-      border-bottom: 1px solid #4a6e78;
-      position: absolute;
-      right: 10px;
-      content: " ";
-      top: 17px;
-      transform: rotate(45deg);
-      transition: all 0.2s ease-in-out;
+        width: 8px;
+        height: 8px;
+        border-right: 1px solid #4a6e78;
+        border-bottom: 1px solid #4a6e78;
+        position: absolute;
+        right: 10px;
+        content: " ";
+        top: 17px;
+        transform: rotate(45deg);
+        transition: all 0.2s ease-in-out;
     }
     &.active::after {
-      transform: rotate(225deg);
-      transition: all 0.2s ease-in-out;
+        transform: rotate(225deg);
+        transition: all 0.2s ease-in-out;
     }
-  }
-  .acc__panel {
-    display: none;
-    margin: 0;
-    text-align: left;
-  }
+}
+.acc__panel {
+display: none;
+margin: 0;
+text-align: left;
+}
 .customcheck {
     margin: 0;
     padding: 5px 10px;
@@ -1641,9 +1652,10 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
         .carlogo {
             order: 2;
         }
-        .navonlysearchbar.carlogoflex.d-flex.justify-content-between.align-items-center {
+        .navonlysearchbar.carlogoflex .searchbar{
             justify-content: center !important;
-            display: flex !important;
+            display: flex;
+            /* display: none; */
         }
     }
     
@@ -1666,14 +1678,15 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
     
     @media only screen and (max-width: 820px) {
         .worldtitle {
-            font-size: 50px;
-            line-height: 60px;
+            font-size: 35px;
+            line-height: 40px;
         }
         .filterflex2 {
             flex: 0 0 100%;
             max-width: 100%;
         }
         .worldsubtitle {
+            font-size: 15px;
             width: 60%;
         }
         icon1 .item {
@@ -1862,6 +1875,9 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
             margin: 0;
             padding: 6% 0px 4%;
         }
+        .footerflex{
+            text-align: center;
+        }
     }
     
     @media only screen and (max-width: 540px) {
@@ -1881,6 +1897,11 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
             flex: 0 0 100%;
             max-width: 100%;
         }
+        .morbtn a{
+            display: inline-block;
+            margin: 0;
+            padding: 12px 25px;
+        }
     }
     
     @media only screen and (max-width: 414px) {
@@ -1889,8 +1910,11 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
             max-width: 100%;
         }
         .worldtitle {
-            font-size: 40px;
-            line-height: 50px;
+            font-size: 20px;
+            line-height: 30px;
+        }
+        .worldsubtitle{
+            font-size: 11px;
         }
         .carfilteritem {
             flex: 0 0 100%;
@@ -1902,10 +1926,11 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
     
     @media only screen and (max-width: 375px) {
         .worldtitle {
-            font-size: 30px;
-            line-height: 40px;
+            font-size: 15px;
+            line-height: 25px;
         }
         .worldsubtitle {
+            font-size: 10px;
             width: 100%;
         }
         .shopallbtn a {

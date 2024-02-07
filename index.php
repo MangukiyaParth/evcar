@@ -84,8 +84,6 @@
         <div class="logocontainer container">
             <div class="incartitle">
                 <h2 class="indiacarsub">WHAT MAKES US THE <span class="carnumber">#1</span> ONLINE EV CARS IN INDIA?</h2>
-                <p class="indilorem">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-                    specimen book.</p>
             </div>
 
             <div class="iconimage">
@@ -94,41 +92,10 @@
                     <div class="cstomflex1">
                         <div class="cstompadding">
 
-                            <img src="assets/img/icon.png" alt="icon1">
-                        </div>
-                        <h3 class="customservice">CUSTOMER SERVICE</h3>
-                        <div class="servicepera">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
-                            a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</div>
-                    </div>
-
-                    <div class="cstomflex1">
-                        <div class="cstompadding">
-
-                            <img src="assets/img/icon2.png" alt="icon2">
-                        </div>
-                        <h3 class="customservice">SECURITY</h3>
-                        <div class="servicepera">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
-                            a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</div>
-                    </div>
-
-                    <div class="cstomflex1">
-                        <div class="cstompadding">
-
                             <img src="assets/img/icon3.png" alt="icon3">
                         </div>
                         <h3 class="customservice">BEST VALUE</h3>
-                        <div class="servicepera">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
-                            a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</div>
-                    </div>
-
-                    <div class="cstomflex1">
-                        <div class="cstompadding">
-
-                            <img src="assets/img/icon4.png" alt="icon4">
-                        </div>
-                        <h3 class="customservice">DELIVERY INSURANCE</h3>
-                        <div class="servicepera">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
-                            a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</div>
+                        <div class="servicepera">vehicles offering a blend of features, performance, reliability, and affordability. Users can compare models, read expert and user reviews, and find transparent pricing information</div>
                     </div>
 
                     <div class="cstomflex1">
@@ -137,8 +104,7 @@
                             <img src="assets/img/icon5.png" alt="icon5">
                         </div>
                         <h3 class="customservice">HIGHEST QUALITY</h3>
-                        <div class="servicepera">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
-                            a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</div>
+                        <div class="servicepera">handpicked assortment of vehicles renowned for their exceptional craftsmanship, durability, reliability, and advanced engineering. </div>
                     </div>
 
                     <div class="cstomflex1">
@@ -147,8 +113,7 @@
                             <img src="assets/img/icon6.png" alt="icon6">
                         </div>
                         <h3 class="customservice">TRUST</h3>
-                        <div class="servicepera">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
-                            a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</div>
+                        <div class="servicepera">vehicles that have earned a reputation for reliability, safety, and customer satisfaction. </div>
                     </div>
                 </div>
             </div>

@@ -96,15 +96,17 @@
             <!-- navbar -->
             <nav class="navbarcustom navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
-                    <div class="mobilelogoflex">
+                    <div class="mobilelogoflex py-2">
                         <div class="carlogo">
-                            <h1><img src="<?php echo ROOT_URL; ?>assets/img/logo.png" alt="logo" class="logoimage"></h1>
+                            <img src="<?php echo ROOT_URL; ?>assets/img/logo.png" alt="logo" class="logoimage">
                         </div>
                         <div class="nav-mobile">
                             <a id="navbar-toggle" href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
                         </div>
                         <div class="loginbutton">
-                            <p class="loggedin  "><a href="#" class="btn">Login</a></p>
+                            <!-- <p class="loggedin  "><a href="#" class="btn">Login</a></p> -->
+                            <img src="<?php echo ROOT_URL; ?>assets/img/search-Button.png" alt="searchbtn" class="seracbar mobsearchbtn">
+                            <span class="seracbar mobsearchbtn mobsearchclosebtn"><i class="fa fa-close"></i></span>
                         </div>
                     </div>
                     <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
@@ -122,13 +124,7 @@
                                 <a class="nav-link px-3" href="<?php echo ROOT_URL.'fuel/'.$const->fule_type_fuel_txt; ?>">Fuel Cars</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link px-3" href="<?php echo ROOT_URL; ?>about-us">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link px-3" href="<?php echo ROOT_URL; ?>news">News</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link px-3" href="<?php echo ROOT_URL; ?>contact-us">Contact Us</a>
+                                <a class="nav-link px-3" href="<?php echo ROOT_URL; ?>news">Car News</a>
                             </li>
                         </ul>
                     </div>
@@ -136,7 +132,7 @@
             </nav>
 
             <!-- mobileview start -->
-            <div class="navonlysearchbar carlogoflex d-flex justify-content-between align-items-center ">
+            <div class="navonlysearchbar carlogoflex">
                 <div class="searchbar">
                     <div class="borderline">
                         <div class="my-3">

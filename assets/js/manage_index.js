@@ -27,7 +27,8 @@ function getHomepageData(){
             {
                 var html_slider = "";
                 sliderData.forEach(function (value) {
-                    html_slider += `<div class="carimage" style="background-image: linear-gradient( rgba(8, 14, 19, 0), rgba(8, 14, 19, 1)), url('${WEB_API_FOLDER+value.file}');">
+                    html_slider += `<div class="carimage" style="background-image: linear-gradient( rgba(8, 14, 19, 0), rgba(8, 14, 19, 1), #FFFFFF)');">
+                                        <img src="${WEB_API_FOLDER+value.file}" class="w-100"/>
                                         <div class="bgimagecar">
                                             <h2 class="worldtitle">${value.title}</h2>
                                             <p class="worldsubtitle">${value.description}</p>
@@ -41,7 +42,7 @@ function getHomepageData(){
                     infinite: true,
                     speed: 300,
                     slidesToShow: 1,
-                    adaptiveHeight: true,
+                    adaptiveHeight: false,
                     arrows: true,
                     prevArrow: '<button type="button" class="slick-custom-arrow slick-prev"> <i class="fa fa-angle-left" aria-hidden="true"></i> </button>',
                     nextArrow: '<button type="button" class="slick-custom-arrow slick-next">  <i class="fa fa-angle-right" aria-hidden="true"></i> </button>',
@@ -135,9 +136,9 @@ function getHomepageData(){
                     
                 });
                 $("#brand_list").html(html_brand);
-                var margin = (+$("#brand_list a:nth-child(1)").css('margin-top').replace('px','')) * 2;
-                var tot_height = 121 + margin;
-                var two_line_height = Math.round((tot_height * 2) + 3);
+                var margin = (+$("#brand_list a:nth-child(1)").css('margin-top').replace('px','') * 2);
+                var tot_height = +$("#brand_list a:nth-child(1)")[0].clientHeight + margin;
+                var two_line_height = Math.round((tot_height * 2) + 2);
                 $("#brand_list").css('max-height', two_line_height+' px'.trim());
             }
             else{

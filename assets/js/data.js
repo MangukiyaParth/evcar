@@ -85,6 +85,10 @@ $(document).ready(function() {
         // console.log('hello');
         $(".navbarcustom .navbar-nav").slideToggle();
     });
+    $(".mobsearchbtn").click(function() {
+        $(".navonlysearchbar").slideToggle();
+        $(".mobsearchbtn").toggle();
+    });
 
     // /collection page accordian
 
