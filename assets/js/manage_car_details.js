@@ -71,7 +71,7 @@ function manageColorDetails(){
             infinite: true,
             speed: 300,
             slidesToShow: 1,
-            adaptiveHeight: true,
+            // adaptiveHeight: true,
             arrows: false
         });
     }
@@ -97,7 +97,7 @@ function manageColorClick(ind, first_time = false){
                 infinite: true,
                 speed: 300,
                 slidesToShow: 1,
-                adaptiveHeight: true,
+                // adaptiveHeight: true,
                 arrows: false
             });
             

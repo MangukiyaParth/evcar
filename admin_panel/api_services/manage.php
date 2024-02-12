@@ -79,10 +79,6 @@ $acc_cash=$const->accgrp_cash;
 $acc_bank=$const->accgrp_bank;
 $acc_purparty=$const->accgrp_purchaseparty;
 $acc_puracc=$const->accgrp_purchaseacc;
-$role_cashies=$const->role_cashies;
-$role_accountant=$const->role_accountant;
-$role_director=$const->role_director;
-$role_sitemanager=$const->role_sitemanager;
 $role_admin=$const->admin_role_id;
 
 $login_not_require_operation = array("login_user", "logout_user", "log_manage", "upload_csv");
@@ -122,7 +118,7 @@ if (!in_array($operation, $login_not_require_operation)) {
 
 if (isset($_POST) && count($_POST) > 0) {
 	foreach ($_POST as $post_key => &$post_value) {
-		if (is_string($post_value)) {
+		if (is_string($post_value) && $post_key != "description") {
 			$post_value = strip_tags($post_value);
 		}
 	}
