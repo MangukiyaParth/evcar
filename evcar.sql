@@ -63,7 +63,7 @@ CREATE TABLE `tbl_cars` (
   `name` varchar(150) DEFAULT NULL,
   `brand` varchar(50) DEFAULT NULL,
   `brand_name` varchar(100) DEFAULT NULL,
-  `price` double(10,2) DEFAULT NULL,
+  `price` VARCHAR(25) DEFAULT NULL,
   `fule_type` varchar(50) DEFAULT NULL,
   `fule_type_name` varchar(50) DEFAULT NULL,
   `engine` int(11) DEFAULT NULL,
@@ -73,6 +73,7 @@ CREATE TABLE `tbl_cars` (
   `seater` int(11) DEFAULT NULL,
   `car_type` varchar(50) DEFAULT NULL,
   `car_type_name` varchar(50) DEFAULT NULL,
+  `show_on_homepage` TINYINT DEFAULT 0,
   `description` longtext DEFAULT NULL,
   `file` longtext DEFAULT NULL,
   `file_data` longtext DEFAULT NULL,
@@ -117,7 +118,7 @@ CREATE TABLE `tbl_cars_verient` (
   `transmision` varchar(50) DEFAULT NULL,
   `transmision_text` varchar(50) DEFAULT NULL,
   `engine` int(11) DEFAULT NULL,
-  `price` double(10,2) DEFAULT NULL,
+  `price` VARCHAR(25) DEFAULT NULL,
   `entry_uid` varchar(50) DEFAULT NULL,
   `entry_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -166,6 +167,7 @@ CREATE TABLE `tbl_news` (
   `title` varchar(250) DEFAULT NULL,
   `news_date` varchar(50) DEFAULT NULL,
   `short_desc` longtext DEFAULT NULL,
+  `show_on_homepage` TINYINT DEFAULT 0,
   `description` longtext DEFAULT NULL,
   `main_image` varchar(300) DEFAULT NULL,
   `main_image_data` longtext DEFAULT NULL,
@@ -263,6 +265,7 @@ CREATE TABLE `tbl_testimonialmaster` (
   `personname` varchar(100) NOT NULL,
   `description` longtext NOT NULL,
   `tdate` varchar(50) DEFAULT NULL,
+  `rating` INT NULL,
   `orderno` int(11) NOT NULL,
   `file` text DEFAULT NULL,
   `file_data` text DEFAULT NULL,
@@ -370,3 +373,11 @@ CREATE TABLE `tbl_users` (
 
 insert  into `tbl_users`(`id`,`name`,`username`,`password`,`role_id`,`last_logged_in`,`last_login_offset`,`insert_at`,`phone`,`email`,`token`,`otp`) values ('17019352-1247-1172-9a37-27852d564b27','Admin','a','0cc175b9c0f1b6a831c399e269772661','17019350-1059-3172-f8de-9c507e9e4901','2024-01-24 11:55:11','330','2023-02-01 11:49:50',NULL,'admin@admin.com','',386110);
 
+CREATE
+    VIEW `car_details` 
+    AS
+(SELECT id, '' AS main_car_id,`name`,brand,brand_name,price,fule_type,fule_type_name,`engine`,modal_year,transmision,transmision_name,seater,car_type,car_type_name,show_on_homepage,description,`file`,file_data,color_data,verient_data 
+FROM tbl_cars
+UNION ALL
+SELECT v.id, v.`car_id` AS main_car_id,v.`verient_name`,c.brand,c.brand_name,v.price,v.fule_type,v.fule_type_text,v.`engine`,c.modal_year,v.transmision,v.transmision_text,c.seater,c.car_type,c.car_type_name,c.show_on_homepage,c.description,c.`file`,c.file_data,c.color_data,c.verient_data 
+FROM `tbl_cars_verient` v INNER JOIN tbl_cars c ON c.`id` = v.`car_id`);

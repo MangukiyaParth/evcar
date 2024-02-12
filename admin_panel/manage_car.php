@@ -32,7 +32,7 @@
                                     </div>
                                     <div class="mb-3 col-sm-4">
                                         <label class="form-label" for="price">Price</label>
-                                        <input type="text" id="price" name="price" class="form-control desimalnumberField" placeholder="Enter price" required />
+                                        <input type="text" id="price" name="price" class="form-control" placeholder="Enter price" required />
                                     </div>
                                 </div>
                                 <div class="row">
@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="mb-3 col-sm-4">
                                         <label class="form-label" for="engine">Engine Displacement</label>
-                                        <input type="text" id="engine" name="engine" class="form-control numbersOnlyField" placeholder="Enter engine displacement" required />
+                                        <input type="text" id="engine" name="engine" class="form-control numbersOnlyField" placeholder="Enter engine displacement" />
                                     </div>
                                     <div class="mb-3 col-sm-4">
                                         <label class="form-label" for="modal_year">Modal Year</label>
@@ -147,7 +147,7 @@
                                     </div>
                                     <div class="mb-3 col-sm-3">
                                         <label class="form-label" for="verient_price">Price</label>
-                                        <input type="text" id="verient_price" name="verient_price" class="form-control desimalnumberField" placeholder="Enter price" />
+                                        <input type="text" id="verient_price" name="verient_price" class="form-control" placeholder="Enter price" />
                                     </div>
                                     <div class="my-3 col-sm-1">
                                         <button class="btn btn-info" type="button" id="add_verient">Add</button>

@@ -5,6 +5,26 @@ var verientData = [];
 jQuery(function () {
     HTMLEditor("description", 0);
     get_data();
+    $("#fule_type").on('change',()=>{
+        let f_type = $("#fule_type :selected").val();
+        if(f_type == ev_fule_id){
+            $("#engine").val("");
+            $("#engine").prop("readonly", true);
+        }
+        else {
+            $("#engine").prop("readonly", false);
+        }
+    });
+    $("#verient_fule_type").on('change',()=>{
+        let f_type = $("#verient_fule_type :selected").val();
+        if(f_type == ev_fule_id){
+            $("#verient_engine").val("");
+            $("#verient_engine").prop("readonly", true);
+        }
+        else {
+            $("#verient_engine").prop("readonly", false);
+        }
+    });
 });
 function resetform(){
     $('#formevent').val('submit');
@@ -138,7 +158,7 @@ function get_data() {
                 data: null,
                 orderable: false,
                 render: function (data, type, row) {
-                    return "&#x20B9;"+to_number_format(row.price);
+                    return "&#x20B9; "+row.price;
                 }, name: 'price', width: "10%"
             },
         ],
@@ -294,9 +314,9 @@ if($('#'+FORMNAME).length){
             fule_type:{
                 required: true,
             },
-            engine:{
-                required: true,
-            },
+            // engine:{
+            //     required: true,
+            // },
             modal_year:{
                 required: true,
             },
@@ -325,9 +345,9 @@ if($('#'+FORMNAME).length){
             fule_type:{
                 required:"fule type is required",
             },
-            engine:{
-                required:"engine displacement is required",
-            },
+            // engine:{
+            //     required:"engine displacement is required",
+            // },
             modal_year:{
                 required:"modal year is required",
             },

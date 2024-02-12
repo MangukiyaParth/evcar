@@ -12,9 +12,6 @@
 
     <div class="prdousctflex">
         <div class="productpicture productcarslide" id="color_img">
-            <img src="<?php echo ROOT_URL; ?>assets/img/pdpcar.png" alt="productimage">
-            <img src="<?php echo ROOT_URL; ?>assets/img/pdpcar.png" alt="productimage">
-            <img src="<?php echo ROOT_URL; ?>assets/img/pdpcar.png" alt="productimage">
         </div>
         <div class="productpera">
             <p class="starrating d-none">
@@ -40,7 +37,7 @@
                     <p class="petrols vfuel"></p>
                 </div>
             </div>
-            <div class="specficflex">
+            <div class="specficflex vengin-div">
                 <div class="specfixflex1">
                     <img src="<?php echo ROOT_URL; ?>assets/img/prd2.png" alt="petro2">
                 </div>
@@ -91,9 +88,6 @@
 
     <div class="produtabs">
         <ul class="customtabs" id="color_list">
-            <li class="productcartab-link pdcarcurrent">Red</li>
-            <li class="productcartab-link">Black</li>
-            <li class="productcartab-link">Blue</li>
         </ul>
     </div>
 

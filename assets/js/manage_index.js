@@ -175,7 +175,7 @@ function getHomepageData(){
                                     <div class="pricebox">
                                         <div class="pricebox1">
                                             <h4 class="boxtitle">${value.name}</h4>
-                                            <h5 class="carprice">Rs. ${number2text(value.price)}</h5>
+                                            <h5 class="carprice">Rs. ${value.price}</h5>
                                             <p class="showroomtitle">Avg. Ex-Showroom price</p>
                                         </div>
                                         <div class="pricebox2">
@@ -200,7 +200,7 @@ function getHomepageData(){
                                     <div class="pricebox">
                                         <div class="pricebox1">
                                             <h4 class="boxtitle">${value.name}</h4>
-                                            <h5 class="carprice">Rs. ${number2text(value.price)}</h5>
+                                            <h5 class="carprice">Rs. ${value.price}</h5>
                                             <p class="showroomtitle">Avg. Ex-Showroom price</p>
                                         </div>
                                         <div class="pricebox2">
@@ -225,7 +225,7 @@ function getHomepageData(){
                                     <div class="pricebox">
                                         <div class="pricebox1">
                                             <h4 class="boxtitle">${value.name}</h4>
-                                            <h5 class="carprice">Rs. ${number2text(value.price)}</h5>
+                                            <h5 class="carprice">Rs. ${value.price}</h5>
                                             <p class="showroomtitle">Avg. Ex-Showroom price</p>
                                         </div>
                                         <div class="pricebox2">

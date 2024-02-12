@@ -154,7 +154,7 @@ function getCarList(){
                                             <div class="hearcar">
                                                 <h4 class="boxtitle">${value.name}</h4>
                                             </div>
-                                            <h5 class="carprice">Rs. ${number2text(value.price)}</h5>
+                                            <h5 class="carprice">Rs. ${value.price}</h5>
                                             <p class="showroomtitle">Avg. Ex-Showroom price</p>
                                             <p class="showroomtitle">Brand - ${value.brand_name} </p>
                                         </div>

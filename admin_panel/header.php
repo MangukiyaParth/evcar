@@ -52,6 +52,7 @@ var PRIMARY_ID = ' . (empty($primary_id) ? 0 : $primary_id) . ';
 var CURRENT_PAGE = "' . $js_current_page . '";
 var LOGGED_IN_ROLE_ID = "' . ($userObj['role_id'] ?? 0) . '";
 var IS_PRODUCTION="' . IS_PRODUCTION . '";
+var ev_fule_id = "' . $const->ev_fule_id . '";
 var TBLDATA = [];
 var selata = [];
 </script>';

@@ -175,3 +175,8 @@
     align-items: center;
     justify-content: center;
 }
+
+.form-control:read-only{
+	cursor: not-allowed;
+	background-color: #DDDDDD1f;
+}

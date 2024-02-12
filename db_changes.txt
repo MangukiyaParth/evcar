@@ -16,3 +16,9 @@ FROM tbl_cars
 UNION ALL
 SELECT v.id, v.`car_id` AS main_car_id,v.`verient_name`,c.brand,c.brand_name,v.price,v.fule_type,v.fule_type_text,v.`engine`,c.modal_year,v.transmision,v.transmision_text,c.seater,c.car_type,c.car_type_name,c.show_on_homepage,c.description,c.`file`,c.file_data,c.color_data,c.verient_data 
 FROM `tbl_cars_verient` v INNER JOIN tbl_cars c ON c.`id` = v.`car_id`);
+
+ALTER TABLE `tbl_cars_verient`   
+  CHANGE `price` `price` VARCHAR(25) NULL;
+
+ALTER TABLE `tbl_cars`   
+  CHANGE `price` `price` VARCHAR(25) NULL;
