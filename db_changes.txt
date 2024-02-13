@@ -22,3 +22,6 @@ ALTER TABLE `tbl_cars_verient`
 
 ALTER TABLE `tbl_cars`   
   CHANGE `price` `price` VARCHAR(25) NULL;
+
+  ALTER TABLE `tbl_news`
+  ADD COLUMN `sub_title` VARCHAR(250) NULL AFTER `title`;

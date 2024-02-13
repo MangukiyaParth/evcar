@@ -21,13 +21,13 @@ function getHomepageData(){
                 $(".vfuel").html(carData.fule_type_name);
                 if(carData.engine)
                 {
-                    $(".vengin").html(carData.engine);
+                    $(".vengin").html(carData.engine + ' cc');
                 }
                 else{
                     $(".vengin-div").remove();
                 }
-                $(".vmodel").html(carData.modal_year + 'Model');
-                $(".vseater").html(carData.seater + 'Seater');
+                $(".vmodel").html(carData.modal_year + ' Model');
+                $(".vseater").html(carData.seater + ' Seater');
                 $(".vtransmision").html(carData.transmision_name);
                 $(".vtype").html(carData.car_type_name);
                 
@@ -72,7 +72,7 @@ function manageColorDetails(){
             speed: 300,
             slidesToShow: 1,
             // adaptiveHeight: true,
-            arrows: false
+            arrows: true
         });
     }
 }
@@ -98,7 +98,7 @@ function manageColorClick(ind, first_time = false){
                 speed: 300,
                 slidesToShow: 1,
                 // adaptiveHeight: true,
-                arrows: false
+                arrows: true
             });
             
         }
@@ -136,7 +136,7 @@ function manageVerientDetails(){
                                         <div class="compareflex">
                                             <div class="nexflex1">
                                                 <h5 class="carprice">Rs. ${verientData.price}</h5>
-                                                <p class="showroomtitle">Avg. Ex-Showroom price</p>
+                                                <p class="showroomtitle">Estimated price</p>
                                             </div>
                                             <!--<div class="nexflex2">
                                                 <p class="compareprice"><a href="#">+ COMPARE </a></p>

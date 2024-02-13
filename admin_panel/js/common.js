@@ -216,14 +216,29 @@ function apply_after_page_load(){
     });
     
 
-    $(".numbersOnlyField").keydown(function (e) {
-        if (!(e.keyCode >= 48 && e.keyCode <= 57) && !(e.keyCode >= 96 && e.keyCode <= 105) && e.keyCode != 18 && e.keyCode != 8 && e.keyCode != 9 && e.keyCode != 13 && e.keyCode != 16 && e.keyCode != 36) {
+    $('.numbersOnlyField').on('paste', function (event) {
+        if (event.originalEvent.clipboardData.getData('Text').match(/[^\d]/)) {
+            event.preventDefault();
+        }
+    });
+
+    $(".numbersOnlyField").on('keydown', function (e) {
+        if (!(e.keyCode >= 48 && e.keyCode <= 57) && !(e.keyCode >= 96 && e.keyCode <= 105) && !(e.ctrlKey && e.keyCode == 86) && e.keyCode != 18 && e.keyCode != 8 && e.keyCode != 9 && e.keyCode != 13 && e.keyCode != 16 && e.keyCode != 36) {
             return false;
+        }
+    });
+
+    $('.desimalnumberField').on('paste', function (event) {
+        if (event.originalEvent.clipboardData.getData('Text').match(/[.]/)) {
+
+        }
+        else if (event.originalEvent.clipboardData.getData('Text').match(/[^\d]/)) {
+            event.preventDefault();
         }
     });
     
     $(".desimalnumberField").keydown(function (e) {
-        if (!(e.keyCode >= 48 && e.keyCode <= 57) && !(e.keyCode >= 96 && e.keyCode <= 105) && e.keyCode != 18 && e.keyCode != 8 && e.keyCode != 9 && e.keyCode != 13 && e.keyCode != 16 && e.keyCode != 36 && e.keyCode != 110) {
+        if (!(e.keyCode >= 48 && e.keyCode <= 57) && !(e.keyCode >= 96 && e.keyCode <= 105) && !(e.ctrlKey && e.keyCode == 86) && e.keyCode != 18 && e.keyCode != 8 && e.keyCode != 9 && e.keyCode != 13 && e.keyCode != 16 && e.keyCode != 36 && e.keyCode != 110) {
             return false;
         }
     });

@@ -154,7 +154,7 @@ function getHomepageData(){
                                     <h6 class="dates">${value.disp_date}</h6>
                                     <h4 class="customservice">${value.title}</h4>
                                     <p class="csrnewsub">${value.short_desc}</p>
-                                    <a href="${ROOT_URL}news/${value.id}" class="showall">Read More</a>
+                                    <a href="${ROOT_URL}news/${value.sub_title}" class="showall">Read More</a>
                                 </div>`;
                     
                 });
@@ -176,7 +176,7 @@ function getHomepageData(){
                                         <div class="pricebox1">
                                             <h4 class="boxtitle">${value.name}</h4>
                                             <h5 class="carprice">Rs. ${value.price}</h5>
-                                            <p class="showroomtitle">Avg. Ex-Showroom price</p>
+                                            <p class="showroomtitle">Estimated price</p>
                                         </div>
                                         <div class="pricebox2">
                                             <p class="compareprice"><a href="${ROOT_URL}cars/${value.id}"> View Details </a></p>
@@ -201,7 +201,7 @@ function getHomepageData(){
                                         <div class="pricebox1">
                                             <h4 class="boxtitle">${value.name}</h4>
                                             <h5 class="carprice">Rs. ${value.price}</h5>
-                                            <p class="showroomtitle">Avg. Ex-Showroom price</p>
+                                            <p class="showroomtitle">Estimated price</p>
                                         </div>
                                         <div class="pricebox2">
                                             <p class="compareprice"><a href="${ROOT_URL}cars/${value.id}"> View Details </a></p>
@@ -226,7 +226,7 @@ function getHomepageData(){
                                         <div class="pricebox1">
                                             <h4 class="boxtitle">${value.name}</h4>
                                             <h5 class="carprice">Rs. ${value.price}</h5>
-                                            <p class="showroomtitle">Avg. Ex-Showroom price</p>
+                                            <p class="showroomtitle">Estimated price</p>
                                         </div>
                                         <div class="pricebox2">
                                             <p class="compareprice"><a href="${ROOT_URL}cars/${value.id}"> View Details </a></p>

@@ -110,6 +110,7 @@ if($('#'+FORMNAME).length){
                 op: CURRENT_PAGE
                 , action: "add_data"
                 , title: $('#title').val()
+                , sub_title: url_title($('#title').val())
                 , news_date: $('#news_date').val()
                 , short_description: $('#short_description').val()
                 , description: editor[0].getData()

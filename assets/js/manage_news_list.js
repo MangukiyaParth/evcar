@@ -20,7 +20,7 @@ function getnews(){
                                     <h6 class="dates">${value.disp_date}</h6>
                                     <h4 class="customservice">${value.title}</h4>
                                     <p class="csrnewsub">${value.short_desc}</p>
-                                    <a href="${ROOT_URL}news/${value.id}" class="showall">Read More</a>
+                                    <a href="${ROOT_URL}news/${value.sub_title}" class="showall">Read More</a>
                                 </div>`;
                     
                 });

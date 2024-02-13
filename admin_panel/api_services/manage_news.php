@@ -57,6 +57,7 @@ function manage_news()
 		$id = $gh->read("id");
 		$user_id = $gh->read("user_id", 0);
 		$title = $gh->read("title");
+		$sub_title = $gh->read("sub_title");
 		$news_date = $gh->read("news_date");
 		$short_description = $gh->read("short_description");
 		$description = $gh->read("description");
@@ -87,6 +88,7 @@ function manage_news()
 				$data = array(
 					"id" => $id,
 					"title" => $title,
+					"sub_title" => $sub_title,
 					"news_date" => $news_date,
 					"short_desc" => $short_description,
 					"description" => $description,
@@ -108,6 +110,7 @@ function manage_news()
 			if ($id != "") {
 				$data = array(
 					"title" => $title,
+					"sub_title" => $sub_title,
 					"news_date" => $news_date,
 					"short_desc" => $short_description,
 					"description" => $description,

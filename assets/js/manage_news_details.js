@@ -6,7 +6,7 @@ function getnewsdetails(){
     var req_data = {
         op: "manage_homepage",
         action: "get_news_details",
-        id: PRIMARY_ID
+        title: PRIMARY_ID
     };
     doAPICall(req_data, async function(data){
         if (data && data != null && data.success == true) {

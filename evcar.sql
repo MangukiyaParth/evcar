@@ -165,6 +165,7 @@ DROP TABLE IF EXISTS `tbl_news`;
 CREATE TABLE `tbl_news` (
   `id` varchar(50) NOT NULL,
   `title` varchar(250) DEFAULT NULL,
+  `sub_title` varchar(250) DEFAULT NULL,
   `news_date` varchar(50) DEFAULT NULL,
   `short_desc` longtext DEFAULT NULL,
   `show_on_homepage` TINYINT DEFAULT 0,

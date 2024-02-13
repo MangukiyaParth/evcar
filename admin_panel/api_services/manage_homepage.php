@@ -114,10 +114,10 @@ function manage_homepage()
 		if ($rows_car != null && is_array($rows_car) && count($rows_car) > 0) {	
 			if($rows_car[0]['main_car_id'] != ""){
 				$car_id = $rows_car[0]['main_car_id'];
-				$qry_car_verient="SELECT * FROM car_details WHERE (id = '$car_id' OR main_car_id = '$car_id') AND id != '$id'";
+				$qry_car_verient="SELECT * FROM car_details WHERE (id COLLATE utf8mb4_general_ci = '$car_id' OR main_car_id COLLATE utf8mb4_general_ci = '$car_id') AND id COLLATE utf8mb4_general_ci != '$id'";
 			}
 			else{
-				$qry_car_verient="SELECT * FROM car_details WHERE main_car_id = '$id'";
+				$qry_car_verient="SELECT * FROM car_details WHERE main_car_id COLLATE utf8mb4_general_ci = '$id'";
 			}
 			$rows_car_verient = $db->execute($qry_car_verient);
 			if ($rows_car_verient != null && is_array($rows_car_verient) && count($rows_car_verient) > 0) {	
@@ -149,9 +149,11 @@ function manage_homepage()
 	else if($action == "get_news_details"){
 		$status = 0;
 		$message = "No news Found.";
+		$title = $gh->read("title","");
 		$id = $gh->read("id");
 		
-		$qry_news="SELECT *, DATE_FORMAT(STR_TO_DATE(news_date,'%d/%m/%Y'),'%M %d, %Y') as disp_date FROM tbl_news WHERE id = '$id'";
+		// $qry_news="SELECT *, DATE_FORMAT(STR_TO_DATE(news_date,'%d/%m/%Y'),'%M %d, %Y') as disp_date FROM tbl_news WHERE id = '$id'";
+		$qry_news = 'SELECT *, DATE_FORMAT(STR_TO_DATE(news_date,"%d/%m/%Y"),"%M %d, %Y") as disp_date FROM tbl_news WHERE sub_title = "'.$title.'"';
 		$rows_news = $db->execute($qry_news);
 		if ($rows_news != null && is_array($rows_news) && count($rows_news) > 0) {	
 			$outputjson["data"] = $rows_news[0];

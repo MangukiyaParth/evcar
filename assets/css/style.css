@@ -312,6 +312,8 @@ display: none;
     max-width: 100%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    aspect-ratio: 3/2;
+    object-fit: cover;
 }
 
 .featured .item {
@@ -798,6 +800,11 @@ display: none;
     color: #ffffff;
 }
 
+.one-time .slick-prev::before,
+.one-time .slick-next::before {
+    font-size: 30px;
+}
+
 .testimonialslider .slick-prev {
     color: #ffffff;
     left: 0px;
@@ -806,6 +813,18 @@ display: none;
 
 .testimonialslider .slick-next {
     right: 0px;
+    z-index: 2;
+    color: #ffffff;
+}
+
+.productcarslide .slick-prev {
+    color: #ffffff;
+    left: 5px;
+    z-index: 2;
+}
+
+.productcarslide .slick-next {
+    right: 5px;
     z-index: 2;
     color: #ffffff;
 }
@@ -906,6 +925,7 @@ display: none;
 
 .specfixflex1 {
     padding-right: 20px;
+    width: 45px;
 }
 
 .petrols {
