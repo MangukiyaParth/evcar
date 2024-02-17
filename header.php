@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <?php
@@ -70,15 +70,53 @@
     <header class="headerborder">
 
         <div class="logosection logocontainer">
-            <div class="navdisnonemobile carlogoflex d-flex justify-content-between align-items-center container">
-                <div class="carlogo">
+            <div class="carlogoflex d-flex justify-content-between align-items-center container px-0 py-2">
+                <div class="carlogo navdisnonemobile">
                     <h1>
                         <a href="<?php echo ROOT_URL; ?>home">
-                            <img src="<?php echo ROOT_URL; ?>assets/img/logo.png" alt="logo" class="logoimage">
+                            <img src="<?php echo ROOT_URL; ?>assets/img/logo.png" alt="logo" class="logoimage h-100 mw-none">
                         </a>
                     </h1>
                 </div>
-                <div class="searchbar">
+                <!-- navbar -->
+                <nav class="navbarcustom navbar navbar-expand-lg bg-body-tertiary w-100">
+                    <div class="container-fluid">
+                        <div class="mobilelogoflex py-2">
+                            <div class="carlogo">
+                                <img src="<?php echo ROOT_URL; ?>assets/img/logo.png" alt="logo" class="logoimage">
+                            </div>
+                            <div class="nav-mobile">
+                                <a id="navbar-toggle" href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="loginbutton">
+                                <!-- <p class="loggedin  "><a href="#" class="btn">Login</a></p> -->
+                                <img src="<?php echo ROOT_URL; ?>assets/img/search-Button.png" alt="searchbtn" class="seracbar mobsearchbtn">
+                                <span class="seracbar mobsearchbtn mobsearchclosebtn"><i class="fa fa-close"></i></span>
+                            </div>
+                        </div>
+                        <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link px-3 active" href="<?php echo ROOT_URL; ?>home">Home</a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link px-3" href="<?php echo ROOT_URL.'fuel/'.$const->fule_type_ev_txt; ?>">EV Cars</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link px-3" href="<?php echo ROOT_URL.'fuel/'.$const->fule_type_hybrid_txt; ?>">Hybrid Cars</a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link px-3" href="<?php echo ROOT_URL.'fuel/'.$const->fule_type_fuel_txt; ?>">Fuel Cars</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link px-3" href="<?php echo ROOT_URL; ?>news">Car News</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+                <div class="searchbar navdisnonemobile">
                     <div class="borderline">
                         <div>
                             <form class="d-flex align-items-center" role="search">
@@ -93,43 +131,7 @@
                 </div> -->
             </div>
 
-            <!-- navbar -->
-            <nav class="navbarcustom navbar navbar-expand-lg bg-body-tertiary">
-                <div class="container-fluid">
-                    <div class="mobilelogoflex py-2">
-                        <div class="carlogo">
-                            <img src="<?php echo ROOT_URL; ?>assets/img/logo.png" alt="logo" class="logoimage">
-                        </div>
-                        <div class="nav-mobile">
-                            <a id="navbar-toggle" href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
-                        </div>
-                        <div class="loginbutton">
-                            <!-- <p class="loggedin  "><a href="#" class="btn">Login</a></p> -->
-                            <img src="<?php echo ROOT_URL; ?>assets/img/search-Button.png" alt="searchbtn" class="seracbar mobsearchbtn">
-                            <span class="seracbar mobsearchbtn mobsearchclosebtn"><i class="fa fa-close"></i></span>
-                        </div>
-                    </div>
-                    <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link px-3 active" href="<?php echo ROOT_URL; ?>home">Home</a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link px-3" href="<?php echo ROOT_URL.'fuel/'.$const->fule_type_ev_txt; ?>">EV Cars</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link px-3" href="<?php echo ROOT_URL.'fuel/'.$const->fule_type_hybrid_txt; ?>">Hybrid Cars</a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link px-3" href="<?php echo ROOT_URL.'fuel/'.$const->fule_type_fuel_txt; ?>">Fuel Cars</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link px-3" href="<?php echo ROOT_URL; ?>news">Car News</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+            
 
             <!-- mobileview start -->
             <div class="navonlysearchbar carlogoflex">

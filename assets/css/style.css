@@ -103,9 +103,9 @@ body {
 }
 
 .borderline input {
-    width: 400px;
+    width: 24vw;
     max-width: 100%;
-    border: 1px solid #E8E8E8;
+    border: 1px solid #CCC;
 }
 
 .borderline input::placeholder {
@@ -669,6 +669,7 @@ display: none;
 
 .footerbroda {
     border-bottom: 1px solid #46494F;
+    position: relative;
 }
 
 .footericon i {
@@ -718,8 +719,16 @@ display: none;
     text-decoration: none;
 }
 
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    right: 0;
+    position: absolute;
+}
+
 .carlistsubtutitle {
     list-style: none;
+    padding: 0 25px 0 0;
 }
 
 .footerflex {
@@ -735,6 +744,8 @@ display: none;
 
 .carlistfooter {
     padding-left: 0;
+    display: flex;
+    justify-content: space-around;
 }
 
 .footerflex2 {
@@ -786,6 +797,10 @@ display: none;
 .alltestimonial:hover .howertestimonial {
     display: block;
     transition: all 3s;
+}
+
+.one-time .slick-slide img{
+    aspect-ratio: 38/15;
 }
 
 .one-time .slick-prev{
@@ -1162,7 +1177,7 @@ display: none;
 .nextewlve {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .newflexreviw {
@@ -1171,6 +1186,8 @@ display: none;
     border: 1px solid #DEE2E7;
     border-radius: 8px;
     margin-bottom: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .nexonblock {
@@ -1189,12 +1206,9 @@ display: none;
 
 .newflexed {
     padding: 15px;
-}
-
-.newflexed {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -1290,9 +1304,12 @@ display: none;
     padding: 2% 0 3%;
 }
 
+.mw-none{
+    max-width: none;
+}
 nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
     padding: 0;
-    border-top: 1px solid #E8E8E8;
+    /* border-top: 1px solid #E8E8E8; */
     background-color: transparent !important;
 }
 
@@ -1679,6 +1696,16 @@ text-align: left;
             display: flex;
             /* display: none; */
         }
+        .footer-links {
+            display: block;
+            position: relative;
+            width: 100%;
+            margin-top: 15px;
+        }
+        
+        .carlistsubtutitle {
+            padding: 0 15px;
+        }
     }
     
     @media only screen and (max-width: 920px) {
@@ -1923,6 +1950,12 @@ text-align: left;
             display: inline-block;
             margin: 0;
             padding: 12px 25px;
+        }
+        .carlistfooter {
+            display: list-item;
+        }
+        .carlistsubtutitle {
+            padding: 0;
         }
     }
     

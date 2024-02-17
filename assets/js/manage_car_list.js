@@ -33,7 +33,7 @@ jQuery(function () {
     else{
         getCarList();
     }
-    history.replaceState({}, "title", ROOT_URL+"cars");
+    // history.replaceState({}, "title", ROOT_URL+"cars");
 
     $('[name="filter_car_type"]').on('click',function(){
         var fuel_type_id = $(this).val();
@@ -150,16 +150,16 @@ function getCarList(){
                                         <img src="${WEB_API_FOLDER+value.file}" alt="${value.name}">
                                     </div>
                                     <div class="pricesettle">
-                                        <div class="pricebox1">
+                                        <div class="pricebox1 w-100">
                                             <div class="hearcar">
                                                 <h4 class="boxtitle">${value.name}</h4>
                                             </div>
                                             <h5 class="carprice">Rs. ${value.price}</h5>
                                             <p class="showroomtitle">Avg. Ex-Showroom price</p>
-                                            <p class="showroomtitle">Brand - ${value.brand_name} </p>
-                                        </div>
-                                        <div class="pricebox2">
-                                            <p class="compareprice"><a href="${ROOT_URL}cars/${value.id}">Details</a></p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <p class="showroomtitle">Brand - ${value.brand_name} </p>
+                                                <p class="compareprice"><a href="${ROOT_URL}cars/${value.id}">Details</a></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>`;

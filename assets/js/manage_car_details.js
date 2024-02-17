@@ -118,23 +118,23 @@ function manageVerientDetails(){
                 if(carData.id != verientData.id){
                     html_verient += `<div class="newflexreviw">
                                         <div class="newflexed">
-                                            <div class="nexflex1">
+                                            <div class="">
                                                 <h3 class="nxtweltitle"> ${verientData.name} 
                                                 <span> ${verientData.fule_type_name} </span></h3>
                                             </div>
-                                            <div class="nexflex2">
-                                            <!--<ul class="variandown">
+                                            <!--<div class="nexflex2">
+                                                <ul class="variandown">
                                                     <li class="varainround variantroundactive" data-tab="round1">1</li>
                                                     <li class="varainround" data-tab="round2">2</li>
                                                     <li class="varainround" data-tab="round3">3</li>
                                                     <li class="varainround" data-tab="round4">4</li>
-                                                </ul>-->
-                                            </div>
+                                                </ul>
+                                            </div>-->
                                         </div>
 
 
                                         <div class="compareflex">
-                                            <div class="nexflex1">
+                                            <div class="">
                                                 <h5 class="carprice">Rs. ${verientData.price}</h5>
                                                 <p class="showroomtitle">Estimated price</p>
                                             </div>

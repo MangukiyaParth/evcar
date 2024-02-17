@@ -1,12 +1,12 @@
 jQuery(function () {
-    var footer_data = localStorage.getItem("footer_data");
-    var itemData = (footer_data == null) ? [] : JSON.parse(footer_data);
-    if(itemData.length > 0){
-        set_footer_data();
-    }
-    else {
-        get_footer_data();
-    }
+    // var footer_data = localStorage.getItem("footer_data");
+    // var itemData = (footer_data == null) ? [] : JSON.parse(footer_data);
+    // if(itemData.length > 0){
+    //     set_footer_data();
+    // }
+    // else {
+    //     get_footer_data();
+    // }
 });
     
 function doAPICall(obj, callback, is_async) {

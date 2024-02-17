@@ -13,16 +13,8 @@
 
                     </div>
                 </div>
-                <div class="footerflex2">
-                    <h4 class="carinfotitle mt-2">EV Cars info</h4>
-                    <ul class="carlistfooter">
-                        <li class="carlistsubtutitle"><a href="<?php echo ROOT_URL; ?>about-us">About Us</a></li>
-                        <li class="carlistsubtutitle"><a href="<?php echo ROOT_URL; ?>contact-us">Contact Us</a></li>
-                        <li class="carlistsubtutitle"><a href="<?php echo ROOT_URL; ?>news">Car News</a></li>
-                    </ul>
-                </div>
 
-                <div class="footerflex2 footer-ev-area">
+                <!-- <div class="footerflex2 footer-ev-area">
                     <h4 class="carinfotitle mt-2">Best EV Cars</h4>
                     <ul class="carlistfooter" id="footer_ev_list">
                     </ul>
@@ -38,6 +30,15 @@
                     <h4 class="carinfotitle mt-2">Best Fuel</h4>
                     <ul class="carlistfooter" id="footer_fule_list">
                     </ul>
+                </div> -->
+                <div class="footer-links">
+                    <h4 class="carinfotitle mt-2">EV Cars info</h4>
+                    <ul class="carlistfooter">
+                        <li class="carlistsubtutitle"><a href="<?php echo ROOT_URL; ?>about-us">About Us</a></li>
+                        <li class="carlistsubtutitle"><a href="<?php echo ROOT_URL; ?>contact-us">Contact Us</a></li>
+                        <li class="carlistsubtutitle"><a href="<?php echo ROOT_URL; ?>privacy-policy">Privacy Policy</a></li>
+                        <li class="carlistsubtutitle"><a href="<?php echo ROOT_URL; ?>terms-conditions">Terms & Conditions</a></li>
+                    </ul>
                 </div>
 
             </div>
@@ -49,12 +50,15 @@
                     <p class="copyrightitle"><a href="#">© Copyright 2024 EV CAR .IN. All Rights Reserved.</a></p>
                 </div>
                 <div class="copyflex1">
+                    <p class="madeintitle"><a href="#">Made in Bharat &#x1F1EE;&#x1F1F3;</a></p>
+                </div>
+                <!-- <div class="copyflex1">
                     <ul class="d-flex flex-wrap">
                         <li><a href="<?php echo ROOT_URL; ?>privacy-policy">Privacy Policy</a></li>
                         <li><a href="<?php echo ROOT_URL; ?>terms-conditions">Terms & Conditions</a></li>
 
                     </ul>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

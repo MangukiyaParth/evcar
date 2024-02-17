@@ -173,13 +173,13 @@ function getHomepageData(){
                                         <img src="${WEB_API_FOLDER+value.file}" alt="${value.name}">
                                     </div>
                                     <div class="pricebox">
-                                        <div class="pricebox1">
+                                        <div class="pricebox1 w-100">
                                             <h4 class="boxtitle">${value.name}</h4>
                                             <h5 class="carprice">Rs. ${value.price}</h5>
-                                            <p class="showroomtitle">Estimated price</p>
-                                        </div>
-                                        <div class="pricebox2">
-                                            <p class="compareprice"><a href="${ROOT_URL}cars/${value.id}"> View Details </a></p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <p class="showroomtitle">Estimated price</p>
+                                                <p class="compareprice"><a href="${ROOT_URL}cars/${value.id}"> View Details </a></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>`;       
@@ -198,13 +198,13 @@ function getHomepageData(){
                                         <img src="${WEB_API_FOLDER+value.file}" alt="${value.name}">
                                     </div>
                                     <div class="pricebox">
-                                        <div class="pricebox1">
+                                        <div class="pricebox1 w-100">
                                             <h4 class="boxtitle">${value.name}</h4>
                                             <h5 class="carprice">Rs. ${value.price}</h5>
-                                            <p class="showroomtitle">Estimated price</p>
-                                        </div>
-                                        <div class="pricebox2">
-                                            <p class="compareprice"><a href="${ROOT_URL}cars/${value.id}"> View Details </a></p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <p class="showroomtitle">Estimated price</p>
+                                                <p class="compareprice"><a href="${ROOT_URL}cars/${value.id}"> View Details </a></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>`;       
@@ -223,13 +223,13 @@ function getHomepageData(){
                                         <img src="${WEB_API_FOLDER+value.file}" alt="${value.name}">
                                     </div>
                                     <div class="pricebox">
-                                        <div class="pricebox1">
+                                        <div class="pricebox1 w-100">
                                             <h4 class="boxtitle">${value.name}</h4>
                                             <h5 class="carprice">Rs. ${value.price}</h5>
-                                            <p class="showroomtitle">Estimated price</p>
-                                        </div>
-                                        <div class="pricebox2">
-                                            <p class="compareprice"><a href="${ROOT_URL}cars/${value.id}"> View Details </a></p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <p class="showroomtitle">Estimated price</p>
+                                                <p class="compareprice"><a href="${ROOT_URL}cars/${value.id}"> View Details </a></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>`;       
