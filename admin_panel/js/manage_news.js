@@ -152,9 +152,11 @@ function edit_slider(index) {
         $('#formevent').val('update');
         var logoData = (CURRENT_DATA.main_image_data == "" || CURRENT_DATA.main_image_data == undefined) ? [] : JSON.parse(CURRENT_DATA.main_image_data);
         logoData.forEach(function(imgData) {
+            imgData.upload = imgData;
             myDropzone[0].emit( "addedfile", imgData );
             myDropzone[0].emit( "thumbnail", imgData, WEB_API_FOLDER+imgData.url );
             myDropzone[0].files.push( imgData );
+            imgData.upload = "";
         });
         if($("#news_file").attr('is-multipe') != 'true' && logoData.length > 0)
         {

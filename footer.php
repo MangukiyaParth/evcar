@@ -4,7 +4,7 @@
         <div class="footerbroda">
             <div class="footerflex">
                 <div class="footerlfle1">
-                    <img src="<?php echo ROOT_URL; ?>assets/img/footerlogo.png" alt="logo" class="footerlogoimage">
+                    <img src="<?php echo ROOT_URL; ?>assets/img/footerlogo.png" alt="logo" class="footerlogoimage w-75">
                     <div class="footericon mt-3">
                         <i class="fa fa-facebook" aria-hidden="true"></i>
                         <i class="fa fa-instagram" aria-hidden="true"></i>
@@ -50,7 +50,10 @@
                     <p class="copyrightitle"><a href="#">© Copyright 2024 EV CAR .IN. All Rights Reserved.</a></p>
                 </div>
                 <div class="copyflex1">
-                    <p class="madeintitle"><a href="#">Made in Bharat &#x1F1EE;&#x1F1F3;</a></p>
+                    <p class="madeintitle"><a href="#">
+                        Made in Bharat 
+                        <img src="<?php echo ROOT_URL; ?>assets/img/ic_flag_india_in.jpg" alt="in, " class="footer-flag-icon">
+                    </a></p>
                 </div>
                 <!-- <div class="copyflex1">
                     <ul class="d-flex flex-wrap">

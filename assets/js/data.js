@@ -94,10 +94,13 @@ $(document).ready(function() {
 
     $(function() {
         $('.acc__title').click(function(j) {
-          
+          var current_card = $(this).closest('.acc__card');
           var dropDown = $(this).closest('.acc__card').find('.acc__panel');
           $(this).closest('.acc').find('.acc__panel').not(dropDown).slideUp();
           
+          $('.acc__title.active').closest('.acc__card').not(current_card).find('.acc__panel').stop(false, true).slideToggle();
+          $('.acc__card').not(current_card).find('.acc__title').removeClass('active');
+
           if ($(this).hasClass('active')) {
             $(this).removeClass('active');
           } else {

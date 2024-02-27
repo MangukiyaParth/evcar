@@ -28,6 +28,15 @@ jQuery(function () {
 });
 function resetform(){
     $('#formevent').val('submit');
+    var dz_ind = 0;
+    myDropzone.forEach(function() {
+        myDropzone.splice(dz_ind+2, 1);
+        dz_ind++;
+    });
+    colorData = [];
+    verientData = [];
+    $("#color_list").html("");
+    $("#verient_list").html("");
     fill_details();
 }
 
@@ -168,10 +177,10 @@ function get_data() {
             "data": "id",
             "render": function (data, type, row, meta) {
                 var rowid="'"+row.id+"'";
-                var html='<button class="btn btn-info rounded-pill tbl-btn" onclick="view_news_details(' + meta.row + ')"><i class="uil-notes"></i></button>';
+                var html='<button class="btn btn-info rounded-pill tbl-btn" onclick="view_car_details(' + meta.row + ')"><i class="uil-notes"></i></button>';
                 if(editright == 1)
                 {
-                    html+='<button class="btn btn-primary rounded-pill tbl-btn" onclick="edit_slider(' + meta.row + ')"><i class="ri-pencil-fill"></i></button>';
+                    html+='<button class="btn btn-primary rounded-pill tbl-btn" onclick="edit_car_details(' + meta.row + ')"><i class="ri-pencil-fill"></i></button>';
                 }
                 if(deleteright == 1)
                 {
@@ -194,6 +203,7 @@ $("#add_color").on("click", function(){
         };
         colorData.push(cdata);
         $("#color_list").html(getColorTbl(true));
+        manageColorImgDropzone();
         dataNotDeleteFileOnRemove = true;
         myDropzone[1].removeAllFiles(true); 
         dataNotDeleteFileOnRemove = false;
@@ -215,10 +225,23 @@ function getColorTbl(editable = false){
                 imgs_html += `<a href='${WEB_API_FOLDER + clrimg.url}' target='_blank'><img style='height: 60px;' src='${WEB_API_FOLDER + clrimg.url}'></a>`;
             });
             clr_html += `<tr class="color${i}">
-                <td>${clrdata.color}</td>
-                <td>${imgs_html}</td>`
+                <td>${clrdata.color}</td>`;
                 if(editable){
-                    clr_html+=`<td><button class="btn btn-danger" onclick="removeColor(${i})">Remove</button></td>`;
+                    clr_html+=`<td>
+                                    <div class="dropzone d-none" id="color_file_${i}" data-plugin="dropzone" data-previews-container="file-previews-${i}" data-upload-preview-template="#uploadPreviewTemplate" data-page="cars" acceptedFiles="image/*" is-multipe="true">
+                                        <div class="fallback"><input type="text" name="color_file" id="color_file_${i}" class="" /></div>
+                                        <div class="dz-message needsclick">
+                                            <i class="h1 text-muted ri-upload-cloud-2-line"></i>
+                                            <h4>Drop files here or click to upload.</h4>
+                                        </div>
+                                        <input type="hidden" name="color_file_name_${i}" id="color_file_name_${i}" class="file_name" />
+                                    </div>
+                                    <div class="dropzone-previews only-preview" id="file-previews-${i}" data-index="${i}"></div> 
+                                </td>
+                                <td><button class="btn btn-danger" onclick="removeColor(${i})">Remove</button></td>`;
+                }
+                else{
+                    clr_html+=`<td>${imgs_html}</td>`;
                 }
             clr_html+=`</tr>`;
             i++;
@@ -226,6 +249,62 @@ function getColorTbl(editable = false){
     }
     return clr_html;
     
+}
+
+function manageColorImgDropzone(){
+    if(colorData.length > 0){
+        var cd_ind=0;
+        colorData.forEach(clrdata => {
+            var clrimgdata = JSON.parse(clrdata.img_data);
+            setFileDropzone($("#color_file_"+cd_ind));
+            clrimgdata.forEach(function(imgData) {
+                imgData.upload = imgData;
+                myDropzone[cd_ind+2].emit( "addedfile", imgData );
+                myDropzone[cd_ind+2].emit( "thumbnail", imgData, WEB_API_FOLDER+imgData.url );
+                myDropzone[cd_ind+2].files.push( imgData );
+                imgData.upload = "";
+            });
+            $("#file-previews-"+cd_ind).sortable({
+                items: '.dz-image-preview',
+                cursor: 'move',
+                opacity: 0.5,
+                containment: "#file-previews-"+cd_ind,
+                elMargin: [10, 10, 0, 0],
+                distance: 150,
+                tolerance: 'pointer',
+                flow: 'h-flow',
+                wrapWidth: 'auto',
+                wrapHeight: 'auto',
+                elWidth: 'auto',
+                elHeight: 'auto',
+                stop: function (e) {
+                    var current_srt_index = +e.target.getAttribute('data-index');
+                    // var queue = myDropzone[current_srt_index+2].files;
+                    var queue = JSON.parse($('#color_file_name_'+current_srt_index).val());
+                    var newQueue = [];
+                    var newFileQueue = [];
+                    $('#file-previews-'+current_srt_index+' .dz-image-preview [data-dz-name]').each(function (count, el) {           
+                        var name = el.innerHTML;
+                        queue.forEach(function(file) {
+                           if (file.name === name) {
+                               newQueue.push(file);
+                               newFileQueue.push(file.url);
+                            }
+                        });
+                    });
+                    myDropzone[current_srt_index+2].files = newQueue;
+                    let string_newQueue = JSON.stringify(newQueue);
+                    let string_newFileQueue = JSON.stringify(newFileQueue);
+                    colorData[current_srt_index].img_data = string_newQueue;
+                    colorData[current_srt_index].img_url = string_newFileQueue;
+                    $('#color_file_name_'+current_srt_index).val(string_newQueue);
+            
+                }
+            });
+            $('#color_file_name_'+cd_ind).val(JSON.stringify(clrimgdata));
+            cd_ind++;
+        });
+    }
 }
 
 function removeColor(i){
@@ -238,6 +317,7 @@ function removeColor(i){
     remove_file(imgs, true);
     $("#color_list .color"+i).remove();
     colorData.splice(i, 1);
+    myDropzone.splice(i+2, 1);
 }
 
 $("#add_verient").on("click", function(){
@@ -248,7 +328,7 @@ $("#add_verient").on("click", function(){
     var transmision_text = $("#verient_transmision :selected").text();
     var engine = $("#verient_engine").val();
     var price = $("#verient_price").val();
-    if(verient_name && fule_type && transmision && engine && price){
+    if(verient_name && fule_type && transmision && (engine || fule_type==ev_fule_id) && price){
         var vdata = {
             verient_name: verient_name,
             fule_type: fule_type,
@@ -382,6 +462,13 @@ if($('#'+FORMNAME).length){
                 seater: $('#seater').val(),
                 car_type: $('#car_type :selected').val(),
                 car_type_name: $('#car_type :selected').text(),
+                mileage: $('#mileage').val(),
+                ground_clearance: $('#ground_clearance').val(),
+                warranty: $('#warranty').val(),
+                fuel_tank: $('#fuel_tank').val(),
+                length: $('#length').val(),
+                width: $('#width').val(),
+                height: $('#height').val(),
                 description: editor[0].getData(),
                 color_data: JSON.stringify(colorData),
                 verient_data: JSON.stringify(verientData),
@@ -411,7 +498,7 @@ if($('#'+FORMNAME).length){
     });
 }
 
-function edit_slider(index) {
+function edit_car_details(index) {
     if (TBLDATA.length > 0) {
         CURRENT_DATA = TBLDATA[index];
         colorData = JSON.parse(CURRENT_DATA.color_data);
@@ -430,9 +517,11 @@ function edit_slider(index) {
 
         var logoData = (CURRENT_DATA.file_data == "" || CURRENT_DATA.file_data == undefined) ? [] : JSON.parse(CURRENT_DATA.file_data);
         logoData.forEach(function(imgData) {
+            imgData.upload = imgData;
             myDropzone[0].emit( "addedfile", imgData );
             myDropzone[0].emit( "thumbnail", imgData, WEB_API_FOLDER+imgData.url );
             myDropzone[0].files.push( imgData );
+            imgData.upload = "";
         });
         if($("#cars_file").attr('is-multipe') != 'true' && logoData.length > 0)
         {
@@ -442,80 +531,91 @@ function edit_slider(index) {
 
         $("#verient_list").html(getVerientTblData(true));
         $("#color_list").html(getColorTbl(true));
+        manageColorImgDropzone();
 
         fill_details();
         changeView('form', true);
     }
 }
 
-function view_news_details(index) {
+function view_car_details(index) {
     if (TBLDATA.length > 0) {
         CURRENT_DATA = TBLDATA[index];
         colorData = JSON.parse(CURRENT_DATA.color_data);
         verientData = JSON.parse(CURRENT_DATA.verient_data);
-        var html = '<table class="table table-striped"><tbody>';
-            html += '<tr class="index-rows">';
-                html += '<th class="index-rows">Description</th>';
-                html += '<td class="index-rows">'+CURRENT_DATA.description+'</td>';
-            html += '</tr>';
-        html += '</tbody></table>';
+        var html = `<table class="table"><tbody>
+            <tr class="index-rows">
+                <th class="index-rows" style="width: 14%">Mileage</th>
+                <td class="index-rows" style="width: 20%">${(CURRENT_DATA.mileage) ? CURRENT_DATA.mileage : '-'}</td>
+                <th class="index-rows" style="width: 13%">Ground Clearance</th>
+                <td class="index-rows" style="width: 20%">${(CURRENT_DATA.ground_clearance) ? CURRENT_DATA.ground_clearance + ' mm' : '-'}</td>
+                <th class="index-rows" style="width: 13%">Warranty</th>
+                <td class="index-rows" style="width: 20%">${(CURRENT_DATA.warranty) ? CURRENT_DATA.warranty : '-'}</td>
+            </tr>
+            <tr class="index-rows">
+                <th class="index-rows">Fuel Tank</th>
+                <td class="index-rows">${(CURRENT_DATA.fuel_tank) ? CURRENT_DATA.fuel_tank + ' litre' : '-'}</td>
+                <th class="index-rows">Size</th>
+                <td class="index-rows" colspan="3">${(CURRENT_DATA.length) ? CURRENT_DATA.length +' mm L' : '-'} X ${(CURRENT_DATA.width) ? CURRENT_DATA.width +  ' mm W' : '-'} X ${(CURRENT_DATA.height) ? CURRENT_DATA.height + ' mm H' : '-'}</td>
+            </tr>
+        </tbody></table>`;
 
 
-        var html = `<div class="accordion" id="accordionExample">
+        html+= `<div class="accordion" id="accordionExample">
                         <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Color
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th width="25%">Color</th>
-                                            <th width="75%">Images</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>${getColorTbl(false)}</tbody>
-                                </table>
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Color
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th width="25%">Color</th>
+                                                <th width="75%">Images</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>${getColorTbl(false)}</tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                        </div>
                         <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Verient
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th width="40%">Name</th>
-                                            <th width="15%">Fule Type</th>
-                                            <th width="15%">Transmision</th>
-                                            <th width="15%">Engine</th>
-                                            <th width="15%">Price</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>${getVerientTblData(false)}</tbody>
-                                </table>
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Verient
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th width="40%">Name</th>
+                                                <th width="15%">Fule Type</th>
+                                                <th width="15%">Transmision</th>
+                                                <th width="15%">Engine</th>
+                                                <th width="15%">Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>${getVerientTblData(false)}</tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                        </div>
                         <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Description
-                            </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                ${CURRENT_DATA.description}
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Description
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    ${CURRENT_DATA.description}
+                                </div>
                             </div>
-                        </div>
                         </div>
                     </div>`;
        

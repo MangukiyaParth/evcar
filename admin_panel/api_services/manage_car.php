@@ -67,6 +67,13 @@ function manage_car()
 		$seater = $gh->read("seater");
 		$car_type = $gh->read("car_type");
 		$car_type_name = $gh->read("car_type_name");
+		$mileage = $gh->read("mileage");
+		$ground_clearance = $gh->read("ground_clearance");
+		$warranty = $gh->read("warranty");
+		$fuel_tank = $gh->read("fuel_tank");
+		$length = $gh->read("length");
+		$width = $gh->read("width");
+		$height = $gh->read("height");
 		$description = $gh->read("description");
 		$color_data = $_POST["color_data"];
 		$verient_data = $_POST["verient_data"];
@@ -169,6 +176,13 @@ function manage_car()
 				"seater" => $seater,
 				"car_type" => $car_type,
 				"car_type_name" => $car_type_name,
+				"mileage" => $mileage,
+				"ground_clearance" => $ground_clearance,
+				"warranty" => $warranty,
+				"fuel_tank" => $fuel_tank,
+				"length" => $length,
+				"width" => $width,
+				"height" => $height,
 				"description" => $description,
 				"file" => $file_new_url,
 				"file_data" => $file_data,
@@ -202,6 +216,13 @@ function manage_car()
 					"seater" => $seater,
 					"car_type" => $car_type,
 					"car_type_name" => $car_type_name,
+					"mileage" => $mileage,
+					"ground_clearance" => $ground_clearance,
+					"warranty" => $warranty,
+					"fuel_tank" => $fuel_tank,
+					"length" => $length,
+					"width" => $width,
+					"height" => $height,
 					"description" => $description,
 					"update_uid" => $user_id,
 					"update_date" => $date,
@@ -241,16 +262,21 @@ function manage_car()
 							if (str_contains($img_data, 'tmp/')){
 								$img_cnt = 0;
 								foreach($imgdata as $imgs){
-									$color_file_url = $imgs['url'];
-									$color_file_name = $imgs['filename'];
-									$color_file_new_url = str_replace('tmp/','images/', $color_file_url);
-									$img_data = str_replace('tmp/','images/', $img_data);
-									
-									$gh->TryCreateDirIfNeeded(str_replace($color_file_name, $id.'/', $color_file_new_url));// Create directory if not exist
-									$color_file_new_url = str_replace($color_file_name, $id.'/'.$color_file_name, $color_file_new_url);
-									$img_data = str_replace('/'.$color_file_name, '/'.$id.'/'.$color_file_name, $img_data);
-									array_push($file_urls, $color_file_new_url);
-									rename($color_file_url, $color_file_new_url);
+									if (str_contains($imgs['url'], 'tmp/')){
+										$color_file_url = $imgs['url'];
+										$color_file_name = $imgs['filename'];
+										$color_file_new_url = str_replace('tmp/','images/', $color_file_url);
+										$img_data = str_replace('tmp/','images/', $img_data);
+										
+										$gh->TryCreateDirIfNeeded(str_replace($color_file_name, $id.'/', $color_file_new_url));// Create directory if not exist
+										$color_file_new_url = str_replace($color_file_name, $id.'/'.$color_file_name, $color_file_new_url);
+										$img_data = str_replace('/'.$color_file_name, '/'.$id.'/'.$color_file_name, $img_data);
+										array_push($file_urls, $color_file_new_url);
+										rename($color_file_url, $color_file_new_url);
+									}
+									else{
+										array_push($file_urls, $imgs['url']);
+									}
 									$img_cnt++;
 								}
 							}

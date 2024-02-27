@@ -72,109 +72,7 @@ function remove_file(url, ismupltiple = false) {
 function apply_after_page_load(){
 
     $('[data-plugin="dropzone"]').each(function () {
-        var t = $(this).attr("action"),
-        multipe = $(this).attr("is-multipe"),
-        multiple = (multipe == 'true') ? true : false,
-        previewContainer = $(this).data("previewsContainer"),
-        acceptedFiles = $(this).attr("acceptedFiles"),
-        page = $(this).attr("data-page"),
-        hideen_id = $(this).find('.file_name'),
-        pname = "file";
-        var previewEle = $(this).data("uploadPreviewTemplate");
-        var previewHTML = $(previewEle).html();
-        // console.log((multiple) ? null : 1);
-        $(this).dropzone({ 
-            init() {
-                var dropzoneIndex = myDropzone.length;
-                myDropzone[dropzoneIndex] = this;
-                // this.on("maxfilesexceeded", function(file){
-                //     alert("No more files please!");
-                // });
-            },
-            url: API_SERVICE_URL ,
-            paramName: pname,
-            maxFilesize: 2, //MB
-            parallelUploads: 2,
-            createImageThumbnails: true,
-            acceptedFiles: acceptedFiles,
-            uploadMultiple: true,
-            previewTemplate: previewHTML,
-            previewsContainer: previewContainer,
-            maxFiles: (multiple) ? null : 1,
-            dictMaxFilesExceeded: "You can not upload any more then {{maxFiles}} files.",
-            paramName: pname,
-            params(files, xhr, chunk) {
-                var uuid = files.map(function (el) { return el.upload.uuid; });
-                return {
-                    page: page,
-                    uuid: JSON.stringify(uuid),
-                    user_id: CURRENT_USER_ID,
-                    from: "panel",
-                    op: "upload_file",
-                }
-            },
-            successmultiple(files,response){
-                var res_files = JSON.parse(response.files);
-                var curr_file = hideen_id.val();
-                curr_file = (curr_file == "" || curr_file == undefined) ? [] : JSON.parse(curr_file);
-                var new_files = $.merge(curr_file, res_files);
-                hideen_id.val(JSON.stringify(new_files));
-            },
-            error(file, message) {
-                showError(message);
-                if (file.previewElement) {
-                    if (file.previewElement != null && file.previewElement.parentNode != null) {
-                        file.previewElement.parentNode.removeChild(file.previewElement);
-                    }
-                    file.previewElement.classList.add("dz-error");
-                    if (typeof message !== "string" && message.error) {
-                        message = message.error;
-                    }
-                    for (let node of file.previewElement.querySelectorAll(
-                        "[data-dz-errormessage]"
-                    )) {
-                        node.textContent = message;
-                    }
-                }
-            },
-            // errormultiple(files){
-            //     console.log(files);
-            //     var file = files[0];
-            //     if (file.previewElement != null && file.previewElement.parentNode != null) {
-            //         file.previewElement.parentNode.removeChild(file.previewElement);
-            //     }
-            // },
-            removedfile(file) {
-                var uuid = file.upload.uuid;
-                var curr_file = hideen_id.val();
-                curr_file = (curr_file == "" || curr_file == undefined) ? [] : JSON.parse(curr_file);
-                
-                var foundindex = curr_file.findIndex((obj => obj.uuid == uuid));
-                if(foundindex >= 0)
-                {
-                    if (file.previewElement != null && file.previewElement.parentNode != null) {
-                        file.previewElement.parentNode.removeChild(file.previewElement);
-                    }
-                    var remove_url = curr_file[foundindex].url;
-
-                    if(!dataNotDeleteFileOnRemove){
-                        remove_file(remove_url);
-                    }
-                    curr_file = curr_file.filter(function( obj ) {
-                        return obj.uuid != uuid;
-                    });
-                    hideen_id.val(JSON.stringify(curr_file));
-                }
-                return this._updateMaxFilesReachedClass();
-            },
-            maxfilesexceeded(file){
-                alert("No more files please!");
-                this.removeFile(file);
-            },
-            success (file, responseText) {
-            },
-            // For Mor Options https://github.com/dropzone/dropzone/blob/main/src/options.js
-        });
+        setFileDropzone($(this));
     });
 
     // Datetime and date range picker
@@ -249,6 +147,111 @@ function apply_after_page_load(){
             placeholder: 'Select an option',
             minimumResultsForSearch: searchCnt
         });
+    });
+}
+
+function setFileDropzone(element){
+    var previewContainer = element.data("previewsContainer");
+    var t = element.attr("action"),
+    multipe = element.attr("is-multipe"),
+    multiple = (multipe == 'true') ? true : false,
+    previewsContainer = (previewContainer != "") ? "#"+previewContainer : "",
+    acceptedFiles = element.attr("acceptedFiles"),
+    page = element.attr("data-page"),
+    hideen_id = element.find('.file_name'),
+    pname = "file";
+    var previewEle = element.data("uploadPreviewTemplate");
+    var previewHTML = $(previewEle).html();
+    // console.log((multiple) ? null : 1);
+    element.dropzone({ 
+        init() {
+            var dropzoneIndex = myDropzone.length;
+            myDropzone[dropzoneIndex] = this;
+            // this.on("maxfilesexceeded", function(file){
+            //     alert("No more files please!");
+            // });
+        },
+        url: API_SERVICE_URL ,
+        paramName: pname,
+        maxFilesize: 2, //MB
+        parallelUploads: 2,
+        createImageThumbnails: true,
+        acceptedFiles: acceptedFiles,
+        uploadMultiple: true,
+        previewTemplate: previewHTML,
+        previewsContainer: previewsContainer,
+        maxFiles: (multiple) ? null : 1,
+        dictMaxFilesExceeded: "You can not upload any more then {{maxFiles}} files.",
+        paramName: pname,
+        params(files, xhr, chunk) {
+            var uuid = files.map(function (el) { return el.upload.uuid; });
+            return {
+                page: page,
+                uuid: JSON.stringify(uuid),
+                user_id: CURRENT_USER_ID,
+                from: "panel",
+                op: "upload_file",
+            }
+        },
+        successmultiple(files,response){
+            var res_files = JSON.parse(response.files);
+            var curr_file = hideen_id.val();
+            curr_file = (curr_file == "" || curr_file == undefined) ? [] : JSON.parse(curr_file);
+            var new_files = $.merge(curr_file, res_files);
+            hideen_id.val(JSON.stringify(new_files));
+        },
+        error(file, message) {
+            showError(message);
+            if (file.previewElement) {
+                if (file.previewElement != null && file.previewElement.parentNode != null) {
+                    file.previewElement.parentNode.removeChild(file.previewElement);
+                }
+                file.previewElement.classList.add("dz-error");
+                if (typeof message !== "string" && message.error) {
+                    message = message.error;
+                }
+                for (let node of file.previewElement.querySelectorAll(
+                    "[data-dz-errormessage]"
+                )) {
+                    node.textContent = message;
+                }
+            }
+        },
+        // errormultiple(files){
+        //     console.log(files);
+        //     var file = files[0];
+        //     if (file.previewElement != null && file.previewElement.parentNode != null) {
+        //         file.previewElement.parentNode.removeChild(file.previewElement);
+        //     }
+        // },
+        removedfile(file) {
+            var uuid = file.upload.uuid;
+            var curr_file = hideen_id.val();
+            curr_file = (curr_file == "" || curr_file == undefined) ? [] : JSON.parse(curr_file);
+            var foundindex = curr_file.findIndex((obj => obj.uuid == uuid));
+            if(foundindex >= 0)
+            {
+                if (file.previewElement != null && file.previewElement.parentNode != null) {
+                    file.previewElement.parentNode.removeChild(file.previewElement);
+                }
+                var remove_url = curr_file[foundindex].url;
+                if(!dataNotDeleteFileOnRemove){
+                    remove_file(remove_url);
+                }
+                curr_file = curr_file.filter(function( obj ) {
+                    return obj.uuid != uuid;
+                });
+                hideen_id.val(JSON.stringify(curr_file));
+            }
+            return this._updateMaxFilesReachedClass();
+        },
+        maxfilesexceeded(file){
+            alert("No more files please!");
+            this.removeFile(file);
+        },
+        success (file, responseText) {
+        },
+        // For Mor Options https://github.com/dropzone/dropzone/blob/main/src/options.js
     });
 }
 

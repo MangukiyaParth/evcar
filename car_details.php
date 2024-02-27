@@ -2,7 +2,7 @@
     include 'header.php'; 
     $include_javscript_at_bottom .= '<script src="'.ROOT_URL.'assets/js/manage_car_details.js"></script>';    
 ?>
-<div class="logocontainer">
+<div class="logocontainer container">
     <div class="homeproduct">
         <img src="<?php echo ROOT_URL; ?>assets/img/home.png" alt="home">
         <a href="<?php echo ROOT_URL; ?>home">Home</a> <i class="fa fa-angle-right" aria-hidden="true"></i>

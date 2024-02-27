@@ -56,15 +56,16 @@ body {
 }
 
 .bgimagecar {
-    padding: 0 9vw;
+    padding: 0 9vw 9vh 9vw;
     max-width: 1440px;
     width: 100vw;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     /* height: 638px; */
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
+    justify-content: flex-end;
     position: absolute;
     top: 0;
 }
@@ -102,14 +103,26 @@ body {
     margin: 0 auto;
 }
 
+.right-0 {
+    right: 0;
+}
+
 .borderline input {
     width: 24vw;
     max-width: 100%;
-    border: 1px solid #CCC;
+    /* border: 1px solid #CCC; */
+    border: none;
+    box-shadow: 0 1px 6px 0 #20212447;
 }
 
 .borderline input::placeholder {
-    color: #DBDBDB;
+    /* color: #DBDBDB; */
+    color: #BBBBBBff;
+}
+
+.borderline input:focus {
+    border: 1px solid #20212447;
+    box-shadow: none;
 }
 
 .loggedin {
@@ -291,6 +304,12 @@ display: none;
     padding: 20px;
 }
 
+.pricebox-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .compareprice {
     margin: 0px;
 }
@@ -310,8 +329,8 @@ display: none;
 .carimagrang img {
     width: 100%;
     max-width: 100%;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
     aspect-ratio: 3/2;
     object-fit: cover;
 }
@@ -677,6 +696,14 @@ display: none;
     padding: 5px 6px;
     border-radius: 25px;
     color: #fff;
+}
+
+.footer-flag-icon{
+    border: 1px solid #2a6f37;
+    /* border-radius: 50%;
+    height: 24px; */
+    margin-right: 8px;
+    width: 24px!important;
 }
 
 .copyrightflex a {
@@ -1659,6 +1686,18 @@ text-align: left;
 /* mediaquery */
     
     @media only screen and (max-width: 992px) {
+        .worldtitle {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .worldsubtitle {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
         .navbarcustom .collapse:not(.show) {
             display: block;
         }
@@ -1727,7 +1766,7 @@ text-align: left;
     
     @media only screen and (max-width: 820px) {
         .worldtitle {
-            font-size: 35px;
+            font-size: 25px;
             line-height: 40px;
         }
         .filterflex2 {
@@ -1846,12 +1885,12 @@ text-align: left;
             cursor: pointer;
         }
         .clsvarainround.clsvariantroundactive::before{
-              content: '•';
-              border: 1px solid #2a57e9;
-              width: 19px;
-              height: 19px;
-               position: absolute;
-               padding: 2px;
+            content: '•';
+            border: 1px solid #2a57e9;
+            width: 19px;
+            height: 19px;
+            position: absolute;
+            padding: 2px;
             text-align: center;
             display: flex;
             justify-content: center;
@@ -1876,6 +1915,15 @@ text-align: left;
         }
         .price-field{
             width: 87%;
+        }
+        .acc__panel {
+            max-height: 55vh;
+            overflow: auto;
+        }
+        .productcartab-link {
+            font-size: 12px;
+            padding: 8px 12px;
+            margin-top: 5px;
         }
     }
     
@@ -1957,8 +2005,22 @@ text-align: left;
         .carlistsubtutitle {
             padding: 0;
         }
+        .one-time .slick-slide img {
+            aspect-ratio: 19/10 !important;
+            object-fit: cover;
+        }
+        .one-time .slick-prev::before, .one-time .slick-next::before {
+            font-size: 20px !important;
+        }
     }
     
+    @media only screen and (max-width: 458px) {
+        .pricebox-bottom {
+            flex-direction: column;
+            align-content: flex-start;
+            flex-wrap: wrap;
+        }
+    }
     @media only screen and (max-width: 414px) {
         .cstomflex1 {
             flex: 0 0 100%;

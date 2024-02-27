@@ -68,6 +68,40 @@
                                 </div>
                                 <div class="row">
                                     <div class="mb-3 col-sm-4">
+                                        <label class="form-label" for="mileage">Mileage</label>
+                                        <input type="text" id="mileage" name="mileage" class="form-control" placeholder="Enter mileage" />
+                                    </div>
+                                    <div class="mb-3 col-sm-4">
+                                        <label class="form-label" for="ground_clearance">Ground Clearance</label>
+                                        <input type="text" id="ground_clearance" name="ground_clearance" class="form-control numbersOnlyField" placeholder="Enter Ground Clearance" />
+                                    </div>
+                                    <div class="mb-3 col-sm-4">
+                                        <label class="form-label" for="warranty">Warranty</label>
+                                        <input type="text" id="warranty" name="warranty" class="form-control numbersOnlyField" placeholder="Enter Warranty" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="mb-3 col-sm-4">
+                                        <label class="form-label" for="fuel_tank">Fuel Tank</label>
+                                        <input type="text" id="fuel_tank" name="fuel_tank" class="form-control numbersOnlyField" placeholder="Enter Fuel Tank" />
+                                    </div>
+                                    <div class="mb-3 col-sm-4">
+                                        <label class="form-label">Size</label>
+                                        <div class="row">
+                                            <div class="col-sm-4 pe-1">
+                                                <input type="text" id="length" name="length" class="form-control" placeholder="Enter length" />
+                                            </div>
+                                            <div class="col-sm-4 px-1">
+                                                <input type="text" id="width" name="width" class="form-control" placeholder="Enter width" />
+                                            </div>
+                                            <div class="col-sm-4 ps-1">
+                                                <input type="text" id="height" name="height" class="form-control" placeholder="Enter height" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="mb-3 col-sm-4">
                                         <label class="form-label" for="disp_order">Image</label>
                                         <div class="dropzone" id="cars_file" data-plugin="dropzone" data-previews-container="" data-upload-preview-template="#uploadPreviewTemplate" data-page="cars" acceptedFiles="image/*" is-multipe="false">
                                             <div class="fallback"><input type="file" name="file" id="file" class="" /></div>

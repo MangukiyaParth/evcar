@@ -25,3 +25,19 @@ ALTER TABLE `tbl_cars`
 
   ALTER TABLE `tbl_news`
   ADD COLUMN `sub_title` VARCHAR(250) NULL AFTER `title`;
+
+UPDATE tbl_cars_colors SET file_data = REGEXP_REPLACE(file_data, ',"upload":{.*?"}', '');
+UPDATE `tbl_brand` SET logo_data = REGEXP_REPLACE(logo_data, ',"upload":{.*?"}', '');
+UPDATE `tbl_cars` SET file_data = REGEXP_REPLACE(file_data, ',"upload":{.*?"}', ''), color_data = REGEXP_REPLACE(REPLACE(color_data, ',\\"upload\\":', '----'), '----.*?"}', '');
+UPDATE `tbl_news` SET main_image_data = REGEXP_REPLACE(main_image_data, ',"upload":{.*?"}', '');
+UPDATE `tbl_slidermaster` SET file_data = REGEXP_REPLACE(file_data, ',"upload":{.*?"}', '');
+UPDATE `tbl_testimonialmaster` SET file_data = REGEXP_REPLACE(file_data, ',"upload":{.*?"}', '');
+
+ALTER TABLE `tbl_cars`   
+  ADD COLUMN `mileage` VARCHAR(50) NULL AFTER `car_type_name`,
+  ADD COLUMN `ground_clearance` INT NULL AFTER `mileage`,
+  ADD COLUMN `warranty` VARCHAR(50) NULL AFTER `ground_clearance`,
+  ADD COLUMN `fuel_tank` INT NULL AFTER `warranty`,
+  ADD COLUMN `length` INT NULL AFTER `fuel_tank`,
+  ADD COLUMN `width` INT NULL AFTER `length`,
+  ADD COLUMN `height` INT NULL AFTER `width`;

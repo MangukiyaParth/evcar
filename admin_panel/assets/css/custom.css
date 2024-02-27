@@ -180,3 +180,40 @@
 	cursor: not-allowed;
 	background-color: #DDDDDD1f;
 }
+
+.only-preview{
+	display: flex;
+	flex-wrap: wrap;
+}
+.only-preview .card{
+	margin-right: 10px;
+}
+.only-preview .dz-image-preview{
+	width: 150px !important;
+}
+.only-preview .dz-div{
+	flex-direction: column;
+}
+.only-preview .dz-img-div img{
+	width: 120px !important;
+    height: auto !important;
+    aspect-ratio: 1 !important;
+}
+.only-preview .dz-detail-div{
+	padding-left: 10px !important;
+    margin-top: 10px !important;
+}
+
+.only-preview .dz-remove-btn-div{
+	position: absolute !important;
+    top: -7px !important;
+    right: -10px !important;
+    padding: 0 !important;
+}
+
+.only-preview .dz-remove-btn-div a{
+	padding: 0 !important;
+    margin: 0 !important;
+    line-height: 15px !important;
+    color: red !important;
+}

@@ -176,7 +176,7 @@ function getHomepageData(){
                                         <div class="pricebox1 w-100">
                                             <h4 class="boxtitle">${value.name}</h4>
                                             <h5 class="carprice">Rs. ${value.price}</h5>
-                                            <div class="d-flex justify-content-between align-items-center">
+                                            <div class="pricebox-bottom">
                                                 <p class="showroomtitle">Estimated price</p>
                                                 <p class="compareprice"><a href="${ROOT_URL}cars/${value.id}"> View Details </a></p>
                                             </div>
@@ -201,7 +201,7 @@ function getHomepageData(){
                                         <div class="pricebox1 w-100">
                                             <h4 class="boxtitle">${value.name}</h4>
                                             <h5 class="carprice">Rs. ${value.price}</h5>
-                                            <div class="d-flex justify-content-between align-items-center">
+                                            <div class="pricebox-bottom">
                                                 <p class="showroomtitle">Estimated price</p>
                                                 <p class="compareprice"><a href="${ROOT_URL}cars/${value.id}"> View Details </a></p>
                                             </div>
@@ -226,7 +226,7 @@ function getHomepageData(){
                                         <div class="pricebox1 w-100">
                                             <h4 class="boxtitle">${value.name}</h4>
                                             <h5 class="carprice">Rs. ${value.price}</h5>
-                                            <div class="d-flex justify-content-between align-items-center">
+                                            <div class="pricebox-bottom">
                                                 <p class="showroomtitle">Estimated price</p>
                                                 <p class="compareprice"><a href="${ROOT_URL}cars/${value.id}"> View Details </a></p>
                                             </div>

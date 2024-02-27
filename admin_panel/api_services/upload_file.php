@@ -30,17 +30,17 @@ function upload_file()
 				'size' => $_FILES['file']["size"][$i],
 				'total' => $_FILES['file']["size"][$i],
 				'bytesSent' => $_FILES['file']["size"][$i],
-				'url' => $target_file,
-				'upload' => (object)[
-					'uuid' => $uniq_id[$i],
-					'name' => $basename,
-					'filename' => $basename,
-					'size' => $_FILES['file']["size"][$i],
-					'total' => $_FILES['file']["size"][$i],
-					'bytesSent' => $_FILES['file']["size"][$i],
-					'url' => $target_file
-				]
+				'url' => $target_file
 			];
+			// 'upload' => (object)[
+			// 	'uuid' => $uniq_id[$i],
+			// 	'name' => $basename,
+			// 	'filename' => $basename,
+			// 	'size' => $_FILES['file']["size"][$i],
+			// 	'total' => $_FILES['file']["size"][$i],
+			// 	'bytesSent' => $_FILES['file']["size"][$i],
+			// 	'url' => $target_file
+			// ]
 			array_push($files,$new_file);
 		}
 		$outputjson['files'] = json_encode($files);
