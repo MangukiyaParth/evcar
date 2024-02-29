@@ -77,7 +77,7 @@
                                     </div>
                                     <div class="mb-3 col-sm-4">
                                         <label class="form-label" for="warranty">Warranty</label>
-                                        <input type="text" id="warranty" name="warranty" class="form-control numbersOnlyField" placeholder="Enter Warranty" />
+                                        <input type="text" id="warranty" name="warranty" class="form-control" placeholder="Enter Warranty" />
                                     </div>
                                 </div>
                                 <div class="row">

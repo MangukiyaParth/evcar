@@ -21,6 +21,21 @@ body {
     font-family: Lexend;
 }
 
+::-webkit-scrollbar {
+    width: 8px;               /* width of the entire scrollbar */
+}
+  
+::-webkit-scrollbar-track {
+    /*background: orange;        /* color of the tracking area */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+  
+::-webkit-scrollbar-thumb {
+    border-radius: 20px;       /* roundness of the scroll thumb */
+   /* border: 3px solid orange;  /* creates padding around scroll thumb */
+    background-color: #40b54d;
+}
+
 .nexontitle {
     font-size: 28px;
     font-weight: 400;
@@ -179,7 +194,8 @@ body {
 
 .one-time .slick-dots li.slick-active button:before,
 .productcarslide .slick-dots li.slick-active button:before {
-    color: #fff;
+    color: #44b44d;
+    border-color: #44b44d;
 }
 
 .one-time .slick-dots li button:before,
@@ -1006,6 +1022,7 @@ display: none;
     border-radius: 8px;
     margin-right: 20px;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 .productcartab-link img {
@@ -1194,6 +1211,8 @@ display: none;
     letter-spacing: -0.5px;
     text-align: left;
     color: #46494F;
+    height: 69px;
+    overflow: hidden;
 }
 
 .nexoncontain .productflex75 {
@@ -1569,9 +1588,11 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
     }
 }
 .acc__panel {
-display: none;
-margin: 0;
-text-align: left;
+    display: none;
+    margin: 0;
+    text-align: left;
+    max-height: calc(100vh - 360px);
+    overflow: auto;
 }
 .customcheck {
     margin: 0;
@@ -1729,6 +1750,7 @@ text-align: left;
         }
         .carlogo {
             order: 2;
+            width: 50%;
         }
         .navonlysearchbar.carlogoflex .searchbar{
             justify-content: center !important;

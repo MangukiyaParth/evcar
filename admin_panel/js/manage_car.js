@@ -363,7 +363,7 @@ function getVerientTblData(editable = false){
                 <td>${verdata.fule_type_text}</td>
                 <td>${verdata.transmision_text}</td>
                 <td>${verdata.engine}</td>
-                <td>&#x20B9;${to_number_format(verdata.price)}</td>`;
+                <td>&#x20B9;${verdata.price}</td>`;
             if(editable){
                 ver_html+=`<td><button class="btn btn-danger" onclick="removeVerient(${i})">Remove</button></td>`;
             }
@@ -512,6 +512,14 @@ function edit_car_details(index) {
         $('#engine').val(CURRENT_DATA.engine);
         $('#modal_year').val(CURRENT_DATA.modal_year);
         $('#seater').val(CURRENT_DATA.seater);
+
+        $('#mileage').val(CURRENT_DATA.mileage);
+        $('#ground_clearance').val(CURRENT_DATA.ground_clearance);
+        $('#warranty').val(CURRENT_DATA.warranty);
+        $('#fuel_tank').val(CURRENT_DATA.fuel_tank);
+        $('#length').val(CURRENT_DATA.length);
+        $('#width').val(CURRENT_DATA.width);
+        $('#height').val(CURRENT_DATA.height);
 
         editor[0].setData(CURRENT_DATA.description);
 

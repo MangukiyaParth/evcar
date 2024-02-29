@@ -79,7 +79,7 @@
                         </div>
                         
                         <div class="mainfilter3 acc__card mt-4">
-                            <div class="acc__title">
+                            <div class="acc__title brand_acc__title">
                                 <h3 class="filtercategary">BRAND</h3>
                             </div>
                             <div class="acc__panel" id="mob_brand_list">
@@ -87,7 +87,7 @@
                         </div>
 
                         <div class="mainfilter5 acc__card mt-4">
-                            <div class="acc__title">
+                            <div class="acc__title type_acc__title">
                                 <h3 class="filtercategary">Car Type</h3>
                             </div>
                             <div class="acc__panel">
@@ -125,7 +125,7 @@
                     </div>
                     <div class="filtersubtitle">
                         <div class="mainfilter1 acc__card mt-4">
-                            <div class="acc__title">
+                            <div class="acc__title brand_acc__title">
                                 <h3 class="filtercategary">BRAND</h3>
                             </div>
                             <div class="acc__panel" id="brand_list">
@@ -138,7 +138,7 @@
                         </div>
 
                         <div class="mainfilter3 acc__card mt-4">
-                            <div class="acc__title">
+                            <div class="acc__title type_acc__title">
                                 <h3 class="filtercategary">Car Type</h3>
                             </div>
                             <div class="acc__panel">

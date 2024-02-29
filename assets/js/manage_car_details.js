@@ -143,7 +143,7 @@ function manageVerientDetails(){
                                             </div>-->
                                         </div>
                                         <div class="details">
-                                            <p class="detailbutton"><a href="${ROOT_URL}cars/${verientData.id}">See Details</a></p>
+                                            <p class="detailbutton"><a href="${ROOT_URL}cars/${verientData.encode_name}">See Details</a></p>
                                         </div>
                                     </div>`;
                     verient_index++;

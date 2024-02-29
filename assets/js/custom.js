@@ -166,7 +166,7 @@ function set_footer_data(){
         {
             var html_fule = "";
             fuleData.forEach(function (value) {     
-                html_fule += `<li class="carlistsubtutitle"><a href="${ROOT_URL}cars/${value.id}">${value.name}</a></li>`;
+                html_fule += `<li class="carlistsubtutitle"><a href="${ROOT_URL}cars/${value.encode_name}">${value.name}</a></li>`;
             });
             $("#footer_fule_list").html(html_fule);
         }
@@ -177,7 +177,7 @@ function set_footer_data(){
         {
             var html_hybrid = "";
             hybridData.forEach(function (value) {
-                html_hybrid += `<li class="carlistsubtutitle"><a href="${ROOT_URL}cars/${value.id}">${value.name}</a></li>`;
+                html_hybrid += `<li class="carlistsubtutitle"><a href="${ROOT_URL}cars/${value.encode_name}">${value.name}</a></li>`;
             });
             $("#footer_hybrid_list").html(html_hybrid);
         }
@@ -188,7 +188,7 @@ function set_footer_data(){
         {
             var html_ev = "";
             evData.forEach(function (value) {
-                html_ev += `<li class="carlistsubtutitle"><a href="${ROOT_URL}cars/${value.id}">${value.name}</a></li>`;
+                html_ev += `<li class="carlistsubtutitle"><a href="${ROOT_URL}cars/${value.encode_name}">${value.name}</a></li>`;
             });
             $("#footer_ev_list").html(html_ev);
         }

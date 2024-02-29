@@ -129,7 +129,7 @@ function getHomepageData(){
             {
                 var html_brand = "";
                 brandData.forEach(function (value) {
-                    html_brand += `<a class="symbol1 text-decoration-none" href="${ROOT_URL}brand/${value.id}">
+                    html_brand += `<a class="symbol1 text-decoration-none" href="${ROOT_URL}brand/${value.encode_name}">
                                             <div class="kiaheight"> <img src="${WEB_API_FOLDER+value.logo}" class="h-100" alt="${value.brand}"></div>
                                             <p class="symbolname">${value.brand}</p>
                                         </a>`;
@@ -178,7 +178,7 @@ function getHomepageData(){
                                             <h5 class="carprice">Rs. ${value.price}</h5>
                                             <div class="pricebox-bottom">
                                                 <p class="showroomtitle">Estimated price</p>
-                                                <p class="compareprice"><a href="${ROOT_URL}cars/${value.id}"> View Details </a></p>
+                                                <p class="compareprice"><a href="${ROOT_URL}cars/${value.encode_name}"> View Details </a></p>
                                             </div>
                                         </div>
                                     </div>
@@ -203,7 +203,7 @@ function getHomepageData(){
                                             <h5 class="carprice">Rs. ${value.price}</h5>
                                             <div class="pricebox-bottom">
                                                 <p class="showroomtitle">Estimated price</p>
-                                                <p class="compareprice"><a href="${ROOT_URL}cars/${value.id}"> View Details </a></p>
+                                                <p class="compareprice"><a href="${ROOT_URL}cars/${value.encode_name}"> View Details </a></p>
                                             </div>
                                         </div>
                                     </div>
@@ -228,7 +228,7 @@ function getHomepageData(){
                                             <h5 class="carprice">Rs. ${value.price}</h5>
                                             <div class="pricebox-bottom">
                                                 <p class="showroomtitle">Estimated price</p>
-                                                <p class="compareprice"><a href="${ROOT_URL}cars/${value.id}"> View Details </a></p>
+                                                <p class="compareprice"><a href="${ROOT_URL}cars/${value.encode_name}"> View Details </a></p>
                                             </div>
                                         </div>
                                     </div>

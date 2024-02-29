@@ -8,6 +8,11 @@ function manage_homepage()
 
 	$action = $gh->read("action");
 
+	$collection = "";
+	if(IS_PRODUCTION){
+		$collection = "COLLATE utf8mb4_general_ci";
+	}
+
 	if($action == "get_data")
 	{
 		$qry_slider="SELECT * FROM tbl_slidermaster
@@ -23,25 +28,25 @@ function manage_homepage()
 			$outputjson["testimonial"] = $rows_testimonial;
 		}
 		
-		$qry_brand="SELECT * FROM tbl_brand";
+		$qry_brand="SELECT *, remove_spacialcharacter(brand) as encode_name FROM tbl_brand";
 		$rows_brand = $db->execute($qry_brand);
 		if ($rows_brand != null && is_array($rows_brand) && count($rows_brand) > 0) {	
 			$outputjson["brand"] = $rows_brand;
 		}
 		
-		$qry_fule="SELECT * FROM tbl_cars WHERE fule_type = '$const->petrol_fule_id' OR fule_type = '$const->diesel_fule_id' LIMIT 4";
+		$qry_fule="SELECT *, remove_spacialcharacter(name) as encode_name FROM tbl_cars WHERE fule_type = '$const->petrol_fule_id' OR fule_type = '$const->diesel_fule_id' LIMIT 4";
 		$rows_fule = $db->execute($qry_fule);
 		if ($rows_fule != null && is_array($rows_fule) && count($rows_fule) > 0) {	
 			$outputjson["fule_car"] = $rows_fule;
 		}
 		
-		$qry_ev="SELECT * FROM tbl_cars WHERE fule_type = '$const->ev_fule_id' LIMIT 4";
+		$qry_ev="SELECT *, remove_spacialcharacter(name) as encode_name FROM tbl_cars WHERE fule_type = '$const->ev_fule_id' LIMIT 4";
 		$rows_ev = $db->execute($qry_ev);
 		if ($rows_ev != null && is_array($rows_ev) && count($rows_ev) > 0) {	
 			$outputjson["ev_car"] = $rows_ev;
 		}
 		
-		$qry_hybrid="SELECT * FROM tbl_cars WHERE fule_type = '$const->hybrid_fule_id' LIMIT 4";
+		$qry_hybrid="SELECT *, remove_spacialcharacter(name) as encode_name FROM tbl_cars WHERE fule_type = '$const->hybrid_fule_id' LIMIT 4";
 		$rows_hybrid = $db->execute($qry_hybrid);
 		if ($rows_hybrid != null && is_array($rows_hybrid) && count($rows_hybrid) > 0) {	
 			$outputjson["hybrid_car"] = $rows_hybrid;
@@ -58,7 +63,7 @@ function manage_homepage()
 	}
 	else if($action == "get_brand_list")
 	{
-		$qry_brand="SELECT * FROM tbl_brand";
+		$qry_brand="SELECT *, remove_spacialcharacter(brand) as encode_name FROM tbl_brand";
 		$rows_brand = $db->execute($qry_brand);
 		if ($rows_brand != null && is_array($rows_brand) && count($rows_brand) > 0) {	
 			$outputjson["brand"] = $rows_brand;
@@ -78,7 +83,7 @@ function manage_homepage()
 		$message = "No Cars Found.";
 		$where = " WHERE 1=1 ";
 		if($brand_filter != ""){
-			$where .= " AND brand IN ('".str_replace(",","','",$brand_filter)."') ";
+			$where .= " AND remove_spacialcharacter(brand_name) $collection IN ('".str_replace(",","','",$brand_filter)."') ";
 		}
 		if($fuel_filter != ""){
 			$where .= " AND fule_type IN ('".str_replace(",","','",$fuel_filter)."') ";
@@ -92,7 +97,7 @@ function manage_homepage()
 			$orderby = " ORDER BY price DESC";
 		}
 
-		$qry_car="SELECT * FROM tbl_cars $where $orderby";
+		$qry_car="SELECT *, remove_spacialcharacter(name) as encode_name FROM tbl_cars $where $orderby";
 		$rows_car = $db->execute($qry_car);
 		if ($rows_car != null && is_array($rows_car) && count($rows_car) > 0) {	
 			$outputjson["data"] = $rows_car;
@@ -106,18 +111,19 @@ function manage_homepage()
 	}
 	else if($action == "get_car_details")
 	{
-		$id = $gh->read("id","");
+		$name = $gh->read("id","");
 		$status = 0;
 		$message = "No Detail Found.";
-		$qry_car="SELECT * FROM car_details WHERE id = '$id'";
+		$qry_car="SELECT * FROM car_details WHERE remove_spacialcharacter(name) $collection = '$name'";
 		$rows_car = $db->execute($qry_car);
 		if ($rows_car != null && is_array($rows_car) && count($rows_car) > 0) {	
+			$id = $rows_car[0]['id'];
 			if($rows_car[0]['main_car_id'] != ""){
 				$car_id = $rows_car[0]['main_car_id'];
-				$qry_car_verient="SELECT * FROM car_details WHERE (id COLLATE utf8mb4_general_ci = '$car_id' OR main_car_id COLLATE utf8mb4_general_ci = '$car_id') AND id COLLATE utf8mb4_general_ci != '$id'";
+				$qry_car_verient="SELECT *, remove_spacialcharacter(name) as encode_name FROM car_details WHERE (id $collection = '$car_id' OR main_car_id $collection = '$car_id') AND id $collection != '$id'";
 			}
 			else{
-				$qry_car_verient="SELECT * FROM car_details WHERE main_car_id COLLATE utf8mb4_general_ci = '$id'";
+				$qry_car_verient="SELECT *, remove_spacialcharacter(name) as encode_name FROM car_details WHERE main_car_id $collection = '$id'";
 			}
 			$rows_car_verient = $db->execute($qry_car_verient);
 			if ($rows_car_verient != null && is_array($rows_car_verient) && count($rows_car_verient) > 0) {	

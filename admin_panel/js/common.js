@@ -225,7 +225,7 @@ function setFileDropzone(element){
         //     }
         // },
         removedfile(file) {
-            var uuid = file.upload.uuid;
+            var uuid = file.uuid;
             var curr_file = hideen_id.val();
             curr_file = (curr_file == "" || curr_file == undefined) ? [] : JSON.parse(curr_file);
             var foundindex = curr_file.findIndex((obj => obj.uuid == uuid));

@@ -387,5 +387,20 @@ CREATE
 (SELECT id, '' AS main_car_id,`name`,brand,brand_name,price,fule_type,fule_type_name,`engine`,modal_year,transmision,transmision_name,seater,car_type,car_type_name,show_on_homepage,description,`file`,file_data,color_data,verient_data 
 FROM tbl_cars
 UNION ALL
-SELECT v.id, v.`car_id` AS main_car_id,v.`verient_name`,c.brand,c.brand_name,v.price,v.fule_type,v.fule_type_text,v.`engine`,c.modal_year,v.transmision,v.transmision_text,c.seater,c.car_type,c.car_type_name,c.show_on_homepage,c.description,c.`file`,c.file_data,c.color_data,c.verient_data 
+SELECT v.id, v.`car_id` AS main_car_id,CONCAT(c.name, ' ', v.verient_name),c.brand,c.brand_name,v.price,v.fule_type,v.fule_type_text,v.`engine`,c.modal_year,v.transmision,v.transmision_text,c.seater,c.car_type,c.car_type_name,c.show_on_homepage,c.description,c.`file`,c.file_data,c.color_data,c.verient_data 
 FROM `tbl_cars_verient` v INNER JOIN tbl_cars c ON c.`id` = v.`car_id`);
+
+DELIMITER $$
+CREATE
+    FUNCTION `remove_spacialcharacter`(input_string VARCHAR(255))
+    RETURNS VARCHAR(255)
+    BEGIN
+      DECLARE output_string VARCHAR(255);
+      SET output_string = '';
+      -- Remove special characters using regular expression
+      SET output_string = REPLACE(LOWER(REGEXP_REPLACE(input_string, '[^a-zA-Z0-9 ]', '')),' ','-');
+
+      RETURN output_string;
+    END$$
+
+DELIMITER ;

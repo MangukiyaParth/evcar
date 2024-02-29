@@ -3,36 +3,6 @@ var brand_filter = [];
 var fuel_filter = [];
 jQuery(function () {
     get_brands();
-    if(list_type == 'FUEL'){
-        if(PRIMARY_ID == fule_type_fuel_txt){
-            fuel_filter.push(petrol_fule_id);
-            addFule(diesel_fule_id);
-            $("#mob_"+petrol_fule_id).prop('checked', true);
-            $("#"+petrol_fule_id).prop('checked', true);
-            $("#mob_"+diesel_fule_id).prop('checked', true);
-            $("#"+diesel_fule_id).prop('checked', true);
-        }
-        else if(PRIMARY_ID == fule_type_hybrid_txt){
-            addFule(hybrid_fule_id);
-            $("#mob_"+hybrid_fule_id).prop('checked', true);
-            $("#"+hybrid_fule_id).prop('checked', true);
-        }
-        else if(PRIMARY_ID == fule_type_ev_txt){
-            addFule(ev_fule_id);
-            $("#mob_"+ev_fule_id).prop('checked', true);
-            $("#"+ev_fule_id).prop('checked', true);
-        }
-        $(".acc__title").click();
-    }
-    else if(list_type == 'BRAND'){
-        addBrand(PRIMARY_ID);
-        $("#mob_"+PRIMARY_ID).prop('checked', true);
-        $("#"+PRIMARY_ID).prop('checked', true);
-        $(".acc__title").click();
-    }
-    else{
-        getCarList();
-    }
     // history.replaceState({}, "title", ROOT_URL+"cars");
 
     $('[name="filter_car_type"]').on('click',function(){
@@ -62,6 +32,39 @@ jQuery(function () {
 $(document).on('load', function(){
 
 });
+
+function defaultSelected(){
+    if(list_type == 'FUEL'){
+        if(PRIMARY_ID == fule_type_fuel_txt){
+            fuel_filter.push(petrol_fule_id);
+            addFule(diesel_fule_id);
+            $("#mob_"+petrol_fule_id).prop('checked', true);
+            $("#"+petrol_fule_id).prop('checked', true);
+            $("#mob_"+diesel_fule_id).prop('checked', true);
+            $("#"+diesel_fule_id).prop('checked', true);
+        }
+        else if(PRIMARY_ID == fule_type_hybrid_txt){
+            addFule(hybrid_fule_id);
+            $("#mob_"+hybrid_fule_id).prop('checked', true);
+            $("#"+hybrid_fule_id).prop('checked', true);
+        }
+        else if(PRIMARY_ID == fule_type_ev_txt){
+            addFule(ev_fule_id);
+            $("#mob_"+ev_fule_id).prop('checked', true);
+            $("#"+ev_fule_id).prop('checked', true);
+        }
+        $(".type_acc__title").click();
+    }
+    else if(list_type == 'BRAND'){
+        addBrand(PRIMARY_ID);
+        $("#mob_"+PRIMARY_ID).prop('checked', true);
+        $("#"+PRIMARY_ID).prop('checked', true);
+        $(".brand_acc__title").click();
+    }
+    else{
+        getCarList();
+    }
+}
 
 function addBrand(brandId){
     if(brand_filter.indexOf(brandId) === -1){ 
@@ -108,22 +111,24 @@ function get_brands(){
                         chkd = 'checked';
                     } 
                     html_brand += `<p class="customcheck">
-                                        <input type="checkbox" id="${value.id}" class="${value.id} brand" ${chkd} name="filter_brand" value="${value.id}">
-                                        <label for="${value.id}">${value.brand}</label><br>
+                                        <input type="checkbox" id="${value.encode_name}" class="${value.encode_name} brand" ${chkd} name="filter_brand" value="${value.encode_name}">
+                                        <label for="${value.encode_name}">${value.brand}</label><br>
                                     </p>`;
                     mob_html_brand += `<p class="customcheck">
-                                        <input type="checkbox" id="mob_${value.id}" class="${value.id} brand" ${chkd} name="mob_filter_brand" value="${value.id}">
-                                        <label for="mob_${value.id}">${value.brand}</label><br>
+                                        <input type="checkbox" id="mob_${value.encode_name}" class="${value.encode_name} brand" ${chkd} name="mob_filter_brand" value="${value.encode_name}">
+                                        <label for="mob_${value.encode_name}">${value.brand}</label><br>
                                     </p>`;
                 });
                 $("#brand_list").html(html_brand);
                 $("#mob_brand_list").html(mob_html_brand);
             }
+            defaultSelected();
             return false;
         }
         else if (data && data != null && data.success == false) {
             $(".disflexcars").css('justify-content','center');
             $("#car_list").html(`<h1 class="text-center">${data.message}</h1>`);
+            defaultSelected();
             return false;
         }
     });
@@ -158,7 +163,7 @@ function getCarList(){
                                             <p class="showroomtitle">Avg. Ex-Showroom price</p>
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <p class="showroomtitle">Brand - ${value.brand_name} </p>
-                                                <p class="compareprice"><a href="${ROOT_URL}cars/${value.id}">Details</a></p>
+                                                <p class="compareprice"><a href="${ROOT_URL}cars/${value.encode_name}">Details</a></p>
                                             </div>
                                         </div>
                                     </div>
