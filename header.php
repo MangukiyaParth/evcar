@@ -63,7 +63,16 @@
         var diesel_fule_id = '<?php echo $const->diesel_fule_id; ?>';
         var ev_fule_id = '<?php echo $const->ev_fule_id; ?>';
         var hybrid_fule_id = '<?php echo $const->hybrid_fule_id; ?>';
-</script>
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GHWWB6EPB4"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-GHWWB6EPB4');
+    </script>
 </head>
 
 <body>
@@ -116,7 +125,7 @@
                     </div>
                 </nav>
 
-                <div class="searchbar navdisnonemobile">
+                <div class="searchbar navdisnonemobile w-50">
                     <div class="borderline">
                         <div>
                             <form class="d-flex align-items-center position-relative" role="search">

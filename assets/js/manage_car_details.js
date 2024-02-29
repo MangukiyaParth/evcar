@@ -14,7 +14,7 @@ function getHomepageData(){
             carData = data.data;
             if(carData)
             {
-                $(".brand_url").attr('href',ROOT_URL+'brand/'+carData.brand);
+                $(".brand_url").attr('href',ROOT_URL+'brand/'+carData.encode_brand_name);
                 $(".brand_url").html(carData.brand_name);
                 $(".vname").html(carData.name);
                 $(".vprice").html('₹ '+carData.price);
@@ -30,8 +30,43 @@ function getHomepageData(){
                 $(".vseater").html(carData.seater + ' Seater');
                 $(".vtransmision").html(carData.transmision_name);
                 $(".vtype").html(carData.car_type_name);
-                
                 $(".vdesc").html(carData.description);
+
+                if(carData.mileage){
+                    $(".vmileage").html(carData.mileage);
+                    $(".vmileage-div").removeClass('d-none');
+                }
+                else {
+                    $(".vmileage-div").remove();
+                }
+                if(carData.ground_clearance){
+                    $(".vground-clearance").html(carData.ground_clearance);
+                    $(".vground-clearance-div").removeClass('d-none');
+                }
+                else {
+                    $(".vground-clearance-div").remove();
+                }
+                if(carData.warranty){
+                    $(".vwarranty").html(carData.warranty);
+                    $(".vwarranty-div").removeClass('d-none');
+                }
+                else {
+                    $(".vwarranty-div").remove();
+                }
+                if(carData.length && carData.width && carData.height){
+                    $(".vdimension").html(carData.length+' mm L X '+carData.width+' mm W X '+carData.height+' mm H');
+                    $(".vdimension-div").removeClass('d-none');
+                }
+                else {
+                    $(".vdimension-div").remove();
+                }
+                if(carData.fuel_tank){
+                    $(".vfuel-tank").html(carData.fuel_tank);
+                    $(".vfuel-tank-div").removeClass('d-none');
+                }
+                else {
+                    $(".vfuel-tank-div").remove();
+                }
 
                 manageColorDetails();
                 manageVerientDetails();

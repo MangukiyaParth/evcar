@@ -88,7 +88,7 @@
 
                         <div class="mainfilter5 acc__card mt-4">
                             <div class="acc__title type_acc__title">
-                                <h3 class="filtercategary">Car Type</h3>
+                                <h3 class="filtercategary">CAR TYPE</h3>
                             </div>
                             <div class="acc__panel">
                                 <p class="customcheck">
@@ -139,7 +139,7 @@
 
                         <div class="mainfilter3 acc__card mt-4">
                             <div class="acc__title type_acc__title">
-                                <h3 class="filtercategary">Car Type</h3>
+                                <h3 class="filtercategary">CAR TYPE</h3>
                             </div>
                             <div class="acc__panel">
                                 <p class="customcheck">

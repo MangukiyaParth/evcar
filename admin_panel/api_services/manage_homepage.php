@@ -114,7 +114,7 @@ function manage_homepage()
 		$name = $gh->read("id","");
 		$status = 0;
 		$message = "No Detail Found.";
-		$qry_car="SELECT * FROM car_details WHERE remove_spacialcharacter(name) $collection = '$name'";
+		$qry_car="SELECT *, remove_spacialcharacter(brand_name) as encode_brand_name FROM car_details WHERE remove_spacialcharacter(name) $collection = '$name'";
 		$rows_car = $db->execute($qry_car);
 		if ($rows_car != null && is_array($rows_car) && count($rows_car) > 0) {	
 			$id = $rows_car[0]['id'];

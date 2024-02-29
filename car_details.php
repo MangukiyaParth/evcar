@@ -29,58 +29,54 @@
             <p class="pdcontain vshort_desc"></p>
 
             <p class="specific">Specifications</p>
-            <div class="specficflex">
-                <div class="specfixflex1">
-                    <img src="<?php echo ROOT_URL; ?>assets/img/prd1.png" alt="petrol">
-                </div>
-                <div class="spefixflex2">
-                    <p class="petrols vfuel"></p>
-                </div>
-            </div>
-            <div class="specficflex vengin-div">
-                <div class="specfixflex1">
-                    <img src="<?php echo ROOT_URL; ?>assets/img/prd2.png" alt="petro2">
-                </div>
-                <div class="spefixflex2">
-                    <p class="petrols vengin"></p>
-                </div>
-            </div>
-
-            <div class="specficflex">
-                <div class="specfixflex1">
-                    <img src="<?php echo ROOT_URL; ?>assets/img/prd3.png" alt="petro3">
-                </div>
-                <div class="spefixflex2">
-                    <p class="petrols vmodel"></p>
-                </div>
-            </div>
-
-            <div class="specficflex">
-                <div class="specfixflex1">
-                    <img src="<?php echo ROOT_URL; ?>assets/img/prd4.png" alt="5seater">
-                </div>
-                <div class="spefixflex2">
-                    <p class="petrols vseater"></p>
-                </div>
-            </div>
-
-            <div class="specficflex">
-                <div class="specfixflex1">
-                    <img src="<?php echo ROOT_URL; ?>assets/img/prd5.png" alt="madal">
-                </div>
-                <div class="spefixflex2">
-                    <p class="petrols vtransmision"></p>
-                </div>
-            </div>
-
-            <div class="specficflex">
-                <div class="specfixflex1">
-                    <img src="<?php echo ROOT_URL; ?>assets/img/prd6.png" alt="SUV">
-                </div>
-                <div class="spefixflex2">
-                    <p class="petrols vtype"></p>
-                </div>
-            </div>
+            <table class="table table-strip spec-table">
+                <tbody>
+                    <tr class="vfule-div">
+                        <td class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/fuel.svg" alt="Fuel Type"><span> Fuel Type </span></td>
+                        <td class="vfuel"></td>
+                    </tr>
+                    <tr class="vmodal_year-div">
+                        <td class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/calendar.svg" alt="Model"><span> Model </span></td>
+                        <td class="vmodel"></td>
+                    </tr>
+                    <tr class="vtransmision-div">
+                        <td class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/transmission.svg" alt="Transmision"><span> Transmision </span></td>
+                        <td class="vtransmision"></td>
+                    </tr>
+                    <tr class="vengin-div">
+                        <td class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/engine.svg" alt="Engine Size"><span> Engine Size </span></td>
+                        <td class="vengin"></td>
+                    </tr>
+                    <tr class="vmileage-div d-none">
+                        <td class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/mileage.svg" alt="Mileage"><span> Mileage </span></td>
+                        <td class="vmileage"></td>
+                    </tr>
+                    <tr class="vground-clearance-div d-none">
+                        <td class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/ground-clearance.svg" alt="Ground Clearance"><span> Ground Clearance (mm) </span></td>
+                        <td class="vground-clearance"></td>
+                    </tr>
+                    <tr class="vwarranty-div d-none">
+                        <td class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/warranty.svg" alt="Warranty"><span> Warranty </span></td>
+                        <td class="vwarranty"></td>
+                    </tr>
+                    <tr class="vseater-div">
+                        <td class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/seated.svg" alt="Seating Capacity"><span> Seating Capacity </span></td>
+                        <td class="vseater"></td>
+                    </tr>
+                    <tr class="vdimension-div d-none">
+                        <td class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/dimension.svg" alt="Size"><span> Size </span></td>
+                        <td class="vdimension"></td>
+                    </tr>
+                    <tr class="vfuel-tank-div d-none">
+                        <td class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/fuel-tank-capacity.svg" alt="Fuel Tank"><span> Fuel Tank </span></td>
+                        <td class="vfuel-tank"></td>
+                    </tr>
+                    <tr class="vtype-div">
+                        <td class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/safety-rating.svg" alt="Car Type"><span> Car Type </span></td>
+                        <td class="vtype"></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
