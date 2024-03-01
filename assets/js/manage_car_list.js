@@ -1,6 +1,7 @@
 var sorting = 0;
 var brand_filter = [];
 var fuel_filter = [];
+var search_val = "";
 jQuery(function () {
     get_brands();
     // history.replaceState({}, "title", ROOT_URL+"cars");
@@ -60,6 +61,10 @@ function defaultSelected(){
         $("#mob_"+PRIMARY_ID).prop('checked', true);
         $("#"+PRIMARY_ID).prop('checked', true);
         $(".brand_acc__title").click();
+    }
+    else if(list_type == 'SEARCH'){
+        search_val = PRIMARY_ID;
+        getCarList();
     }
     else{
         getCarList();
@@ -140,9 +145,11 @@ function getCarList(){
         action: "get_car_list",
         sorting: sorting,
         brand_filter: brand_filter.join(','),
-        fuel_filter: fuel_filter.join(',')
+        fuel_filter: fuel_filter.join(','),
+        search: search_val
     };
     doAPICall(req_data, async function(data){
+        search_val="";
         $(".page-heading").html(data.heading);
         if (data && data != null && data.success == true) {
             var carData = data.data;

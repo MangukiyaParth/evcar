@@ -1,9 +1,9 @@
 var carData = [];
 jQuery(function () {
-    getHomepageData();
+    getcarData();
 });
     
-function getHomepageData(){
+function getcarData(){
     var req_data = {
         op: "manage_homepage",
         action: "get_car_details",

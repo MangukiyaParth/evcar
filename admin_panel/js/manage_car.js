@@ -202,6 +202,7 @@ $("#add_color").on("click", function(){
             isnew: ($('#formevent').val() == 'update') ? true : false
         };
         colorData.push(cdata);
+        myDropzone.splice(2, myDropzone.length - 2);
         $("#color_list").html(getColorTbl(true));
         manageColorImgDropzone();
         dataNotDeleteFileOnRemove = true;

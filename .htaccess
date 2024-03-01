@@ -9,6 +9,7 @@ RewriteRule ^contact-us?$ contact_us.php
 RewriteRule ^privacy-policy?$ privacy.php
 RewriteRule ^terms-conditions?$ terms.php
 RewriteRule ^news/([^/]+)/?$ news_details.php?id=$1  [NC,L]
+RewriteRule ^search/([^/]+)/?$ car_list.php?list_type=SEARCH&id=$1  [NC,L]
 RewriteRule ^brand/([^/]+)/?$ car_list.php?list_type=BRAND&id=$1  [NC,L]
 RewriteRule ^fuel/([^/]+)/?$ car_list.php?list_type=FUEL&id=$1  [NC,L]
 RewriteRule ^cars/([^/]+)/?$ car_details.php?id=$1  [NC,L]

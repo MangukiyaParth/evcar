@@ -7,6 +7,25 @@ jQuery(function () {
     // else {
     //     get_footer_data();
     // }
+    $('.search').keyup(function() {
+		var query = $(this).val();
+        var searchListDiv = $(this).parent('.search-div').find('.searchCarList');
+		if (query != '') {
+			get_car_suggestion(query, searchListDiv);
+		} else {
+			searchListDiv.fadeOut();
+			searchListDiv.html('');
+		}
+	});
+
+	$(document).on('click', 'li.searchresult', function() {
+		$(this).parents('.search-div').find('.search').val($(this).text());
+		$(this).parents('.search-div').find('.searchCarList').fadeOut();
+	});
+
+    $(".btnSearch").on('click', function(){
+        window.location = ROOT_URL+'search/'+$(this).parent('.search-div').find('.search').val().replace(/ /g, '-');
+    });
 });
     
 function doAPICall(obj, callback, is_async) {
@@ -201,4 +220,28 @@ function set_footer_data(){
 function url_title(title){
     // return encodeURIComponent(title.replace(/ /g,'-'));
     return title.replace(/[^a-z0-9\s]/gi, '').replace(/ /g,'-').replace(/[_\s]/g, '-');
+}
+
+function get_car_suggestion(search, element){
+    var req_data = {
+        op: "manage_homepage",
+        action: "get_car_suggestion",
+        search: search
+    };
+    doAPICall(req_data, async function(data){
+        if (data && data != null && data.success == true) {
+            var carData = data.data;
+            element.fadeIn();
+            var html_car = "";
+            carData.forEach(function (value) {     
+                html_car += `<li class="searchresult">${value.name}</li>`;
+            });
+            console.log(element);
+            element.html(html_car);
+            return false;
+        }
+        else if (data && data != null && data.success == false) {
+            return false;
+        }
+    });
 }

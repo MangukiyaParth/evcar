@@ -2170,3 +2170,28 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
     height: 20px;
     margin-right: 15px;
 }
+
+.searchCarList{
+    max-height: 160px;
+    overflow-y: auto;
+    background-color: #FFFFFF;
+    border-top: none;
+    z-index: 1;
+    margin-bottom: 10px;
+    width: 100%;
+    border-radius: 5px;
+    /* padding: 5px 10px; */
+    position: absolute;
+    top: 50px;
+    box-shadow: 0 0 6px 2px #EEE;
+}
+
+.searchCarList li{
+    padding: 5px 15px;
+    border-bottom: 1px solid #EEEEEE88;
+    font-size: 14px;
+}
+.searchCarList li:hover{
+    background-color: #40b54d4a;
+    cursor: pointer;
+}

@@ -128,9 +128,10 @@
                 <div class="searchbar navdisnonemobile w-50">
                     <div class="borderline">
                         <div>
-                            <form class="d-flex align-items-center position-relative" role="search">
-                                <input class="form-control me-2 ps-4 pe-5 rounded-pill" type="search" placeholder="Search" aria-label="Search">
-                                <img src="<?php echo ROOT_URL; ?>assets/img/search-Button.png" alt="searchbtn" class="seracbar position-absolute right-0">
+                            <form class="d-flex align-items-center position-relative flex-column search-div" role="search">
+                                <input class="form-control me-2 ps-4 pe-5 rounded-pill search" type="text" placeholder="Search" aria-label="Search">
+                                <img src="<?php echo ROOT_URL; ?>assets/img/search-Button.png" alt="searchbtn" class="btnSearch seracbar position-absolute right-0">
+                                <div class="searchCarList" id="search_car_list" style="display: none;"></div>
                             </form>
                         </div>
                     </div>
@@ -147,9 +148,10 @@
                 <div class="searchbar">
                     <div class="borderline">
                         <div class="my-3">
-                            <form class="d-flex align-items-center" role="search">
-                                <input class="form-control me-2 rounded-pill" type="search" placeholder="Search" aria-label="Search">
-                                <img src="<?php echo ROOT_URL; ?>assets/img/search-Button.png" alt="searchbtn" class="seracbar">
+                            <form class="d-flex align-items-center position-relative search-div" role="search">
+                                <input class="form-control me-2 rounded-pill search" type="text" placeholder="Search" aria-label="Search">
+                                <img src="<?php echo ROOT_URL; ?>assets/img/search-Button.png" alt="searchbtn" class="seracbar btnSearch">
+                                <div class="searchCarList" id="mob_search_car_list" style="display: none;"></div>
                             </form>
                         </div>
                     </div>

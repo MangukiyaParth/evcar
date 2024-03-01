@@ -77,6 +77,7 @@ function manage_homepage()
 		$sorting = $gh->read("sorting","0");
 		$brand_filter = $gh->read("brand_filter","");
 		$fuel_filter = $gh->read("fuel_filter","");
+		$search = $gh->read("search","");
 		$heading = "";
 
 		$status = 0;
@@ -87,6 +88,9 @@ function manage_homepage()
 		}
 		if($fuel_filter != ""){
 			$where .= " AND fule_type IN ('".str_replace(",","','",$fuel_filter)."') ";
+		}
+		if($search != ""){
+			$where .= " AND REPLACE(`name`,' ','-') IN ('".$search."') ";
 		}
 		
 		$orderby = "";
@@ -166,6 +170,25 @@ function manage_homepage()
 			$status = 1;
 			$message = "success.";
 		}
+		$outputjson['success'] = $status;
+		$outputjson['status'] = $status;
+		$outputjson['message'] = $message;
+	}
+	else if($action == "get_car_suggestion")
+	{
+		$search = $gh->read("search","");
+		$heading = "";
+
+		$status = 0;
+		$message = "No Cars Found.";
+		$qry_car="SELECT *, remove_spacialcharacter(name) as encode_name FROM tbl_cars WHERE LOWER(`name`) LIKE LOWER('%$search%')";
+		$rows_car = $db->execute($qry_car);
+		if ($rows_car != null && is_array($rows_car) && count($rows_car) > 0) {	
+			$outputjson["data"] = $rows_car;
+			$status = 1;
+			$message = "success.";
+		}
+		$outputjson['heading'] = $heading;
 		$outputjson['success'] = $status;
 		$outputjson['status'] = $status;
 		$outputjson['message'] = $message;
