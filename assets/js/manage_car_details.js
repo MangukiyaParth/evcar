@@ -61,7 +61,7 @@ function getcarData(){
                     $(".vdimension-div").remove();
                 }
                 if(carData.fuel_tank){
-                    $(".vfuel-tank").html(carData.fuel_tank);
+                    $(".vfuel-tank").html(carData.fuel_tank + " Ltr");
                     $(".vfuel-tank-div").removeClass('d-none');
                 }
                 else {

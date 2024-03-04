@@ -18,7 +18,9 @@ li {
 }
 
 body {
-    font-family: Lexend;
+    font-family: Lexend !important;
+    color: #5F6C72;
+    font-weight: 300 !important;
 }
 
 ::-webkit-scrollbar {
