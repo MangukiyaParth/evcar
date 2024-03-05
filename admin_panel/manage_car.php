@@ -47,7 +47,13 @@
                                     </div>
                                     <div class="mb-3 col-sm-4">
                                         <label class="form-label" for="modal_year">Modal Year</label>
-                                        <input type="text" id="modal_year" name="modal_year" class="form-control numbersOnlyField" data-provide="date-picker" data-date-min-view-mode="2" placeholder="Enter modal year" required />
+                                        <div class="d-flex align-items-center" style="height: 35px;">
+                                            <div class="form-check form-switch me-2" style="width: 180px;">
+                                                <input type="checkbox" class="form-check-input" id="comming_soon">
+                                                <label class="form-check-label" for="comming_soon">Comming soon</label>
+                                            </div>
+                                            <input type="text" id="modal_year" name="modal_year" class="form-control numbersOnlyField" data-provide="date-picker" data-date-min-view-mode="2" placeholder="Enter modal year" />
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -68,22 +74,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="mb-3 col-sm-4">
-                                        <label class="form-label" for="mileage">Mileage</label>
-                                        <input type="text" id="mileage" name="mileage" class="form-control" placeholder="Enter mileage" />
-                                    </div>
-                                    <div class="mb-3 col-sm-4">
                                         <label class="form-label" for="ground_clearance">Ground Clearance</label>
                                         <input type="text" id="ground_clearance" name="ground_clearance" class="form-control numbersOnlyField" placeholder="Enter Ground Clearance" />
-                                    </div>
-                                    <div class="mb-3 col-sm-4">
-                                        <label class="form-label" for="warranty">Warranty</label>
-                                        <input type="text" id="warranty" name="warranty" class="form-control" placeholder="Enter Warranty" />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="mb-3 col-sm-4">
-                                        <label class="form-label" for="fuel_tank">Fuel Tank</label>
-                                        <input type="text" id="fuel_tank" name="fuel_tank" class="form-control numbersOnlyField" placeholder="Enter Fuel Tank" />
                                     </div>
                                     <div class="mb-3 col-sm-4">
                                         <label class="form-label">Size</label>
@@ -99,10 +91,53 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="mb-3 col-sm-4">
+                                        <label class="form-label"></label>
+                                        <div class="d-flex align-items-center" style="height: 50px;">
+                                            <div class="form-check form-switch me-2">
+                                                <input type="checkbox" class="form-check-input" id="discontinued">
+                                                <label class="form-check-label" for="discontinued">Discontinued</label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="mb-3 col-sm-4">
-                                        <label class="form-label" for="disp_order">Image</label>
+                                        <label class="form-label" for="mileage">Mileage</label>
+                                        <input type="text" id="mileage" name="mileage" class="form-control" placeholder="Enter mileage" />
+                                    </div>
+                                    <div class="mb-3 col-sm-4">
+                                        <label class="form-label" for="fuel_tank">Fuel Tank</label>
+                                        <input type="text" id="fuel_tank" name="fuel_tank" class="form-control numbersOnlyField" placeholder="Enter Fuel Tank" />
+                                    </div>
+                                    <div class="mb-3 col-sm-4">
+                                        <label class="form-label" for="warranty">Warranty</label>
+                                        <input type="text" id="warranty" name="warranty" class="form-control" placeholder="Enter Warranty" />
+                                    </div>
+                                </div>
+                                <div class="row ev-info">
+                                    <div class="mb-3 col-sm-4">
+                                        <label class="form-label" for="driving_range">Driving Range</label>
+                                        <input type="text" id="driving_range" name="driving_range" class="form-control" placeholder="Enter driving range" />
+                                    </div>
+                                    <div class="mb-3 col-sm-4">
+                                        <label class="form-label" for="battery_warranty">Battery Warranty</label>
+                                        <input type="text" id="battery_warranty" name="battery_warranty" class="form-control" placeholder="Enter battery warranty" />
+                                    </div>
+                                    <div class="mb-3 col-sm-4">
+                                        <label class="form-label" for="battery_capacity">Battery Capacity</label>
+                                        <input type="text" id="battery_capacity" name="battery_capacity" class="form-control" placeholder="Enter battery capacity" />
+                                    </div>
+                                </div>
+                                <div class="row ev-info">
+                                    <div class="mb-3 col-sm-4">
+                                        <label class="form-label" for="ncap_rating">NCAP Rating</label>
+                                        <input type="text" id="ncap_rating" name="ncap_rating" class="form-control" placeholder="Enter ncap rating" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="mb-3 col-sm-4">
+                                        <label class="form-label" for="">Image</label>
                                         <div class="dropzone" id="cars_file" data-plugin="dropzone" data-previews-container="" data-upload-preview-template="#uploadPreviewTemplate" data-page="cars" acceptedFiles="image/*" is-multipe="false">
                                             <div class="fallback"><input type="file" name="file" id="file" class="" /></div>
                                             <div class="dz-message needsclick">
@@ -110,6 +145,28 @@
                                                 <h3>Drop files here or click to upload.</h3>
                                             </div>
                                             <input type="hidden" name="file_name" id="file_name" class="file_name" />
+                                        </div>                                                      
+                                    </div>
+                                    <div class="mb-3 col-sm-4">
+                                        <label class="form-label" for="gallery">Gallery</label>
+                                        <div class="dropzone" id="cars_gallery" data-plugin="dropzone" data-previews-container="" data-upload-preview-template="#uploadPreviewTemplate" data-page="cars" acceptedFiles="image/*" is-multipe="true">
+                                            <div class="fallback"><input type="file" name="gallery_file" id="gallery_file" class="" /></div>
+                                            <div class="dz-message needsclick">
+                                                <i class="h1 text-muted ri-upload-cloud-2-line"></i>
+                                                <h3>Drop files here or click to upload.</h3>
+                                            </div>
+                                            <input type="hidden" name="gallery_file_name" id="gallery_file_name" class="file_name" />
+                                        </div>                                                      
+                                    </div>
+                                    <div class="mb-3 col-sm-4">
+                                        <label class="form-label" for="">Brochure</label>
+                                        <div class="dropzone" id="cars_brochure_file" data-plugin="dropzone" data-previews-container="" data-upload-preview-template="#uploadPreviewTemplate" data-page="cars" acceptedFiles="application/pdf" is-multipe="false">
+                                            <div class="fallback"><input type="file" name="brochure_file" id="brochure_file" class="" /></div>
+                                            <div class="dz-message needsclick">
+                                                <i class="h1 text-muted ri-upload-cloud-2-line"></i>
+                                                <h3>Drop files here or click to upload.</h3>
+                                            </div>
+                                            <input type="hidden" name="brochure_file_name" id="brochure_file_name" class="file_name" />
                                         </div>                                                      
                                     </div>
                                 </div>
@@ -121,6 +178,18 @@
                                     </div>
                                 </div>
 
+                                <!-- Video Link -->
+                                <div class="row mt-2 pt-3" style="border-top: 1px solid rgba(138,150,156,.2)">
+                                    <div class="mb-3 offset-2 col-sm-3">
+                                        <label class="form-label" for="video-link">Video Link</label>
+                                        <input type="text" id="video_link" name="video_link" class="form-control" placeholder="Enter video link" />
+                                    </div>
+                                    <div class="my-3 col-sm-1">
+                                        <button class="btn btn-info" type="button" id="add_video">Add</button>
+                                    </div>
+                                </div>
+                                <div class="row mb-5" id="video_list"></div>
+                                
                                 <!-- Color -->
                                 <div class="row mt-2 pt-3" style="border-top: 1px solid rgba(138,150,156,.2)">
                                     <div class="mb-3 offset-2 col-sm-3">
@@ -142,7 +211,7 @@
                                         <button class="btn btn-info" type="button" id="add_color">Add</button>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row mb-5">
                                     <div class="offset-1 col-sm-10">
                                         <table class="table table-striped">
                                             <thead>
@@ -187,7 +256,7 @@
                                         <button class="btn btn-info" type="button" id="add_verient">Add</button>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row mb-5">
                                     <div class="offset-1 col-sm-10">
                                         <table class="table table-striped">
                                             <thead>
@@ -204,6 +273,8 @@
                                         </table>
                                     </div>
                                 </div>
+
+
                                 <div class="row">
                                     <div class="col-sm-12 text-end">
                                         <button class="btn btn-primary offset-sm-3" type="submit">Submit</button>

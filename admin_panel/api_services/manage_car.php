@@ -61,6 +61,7 @@ function manage_car()
 		$fule_type = $gh->read("fule_type");
 		$fule_type_name = $gh->read("fule_type_name");
 		$engine = $gh->read("engine");
+		$comming_soon = $gh->read("comming_soon");
 		$modal_year = $gh->read("modal_year");
 		$transmision = $gh->read("transmision");
 		$transmision_name = $gh->read("transmision_name");
@@ -74,17 +75,24 @@ function manage_car()
 		$length = $gh->read("length");
 		$width = $gh->read("width");
 		$height = $gh->read("height");
+		$driving_range = $gh->read("driving_range");
+		$battery_warranty = $gh->read("battery_warranty");
+		$battery_capacity = $gh->read("battery_capacity");
+		$ncap_rating = $gh->read("ncap_rating");
 		$description = $gh->read("description");
+		$discontinued = $gh->read("discontinued");
 		$color_data = $_POST["color_data"];
 		$verient_data = $_POST["verient_data"];
+		$video_data = $_POST["video_data"];
 
 		$date = date('Y-m-d H:i:s');
 		$formevent = $gh->read("formevent");
 
 		if($formevent =='submit'){
+			$id=$gh->generateuuid();
+			
 			$file_new_url='';
 			$file_data='';
-			$id=$gh->generateuuid();
 			if(isset($_POST["file"]))
 			{
 				$file = json_decode($_POST["file"], true);
@@ -97,6 +105,24 @@ function manage_car()
 				$file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
 				$file_data = str_replace('/'.$file_name, '/'.$id.'/'.$file_name, $file_data);
 				rename($file_url, $file_new_url);
+			}
+			
+			$brochure_file_url='';
+			$brochure_file_data='';
+			if(isset($_POST["brochure_file"]))
+			{
+				$newData = uploadDropzoneFiles($_POST["brochure_file"],$id);
+				$brochure_file_url= $newData['file_url'][0];
+				$brochure_file_data= $newData['file_data'];
+			}
+			
+			$gallery_file_url='';
+			$gallery_file_data='';
+			if(isset($_POST["gallery_file"]))
+			{
+				$newData = uploadDropzoneFiles($_POST["gallery_file"],$id);
+				$gallery_file_url= json_encode($newData['file_url']);
+				$gallery_file_data= $newData['file_data'];
 			}
 
 			if(isset($color_data)){
@@ -170,6 +196,7 @@ function manage_car()
 				"fule_type" => $fule_type,
 				"fule_type_name" => $fule_type_name,
 				"engine" => $engine,
+				"comming_soon" => $comming_soon,
 				"modal_year" => $modal_year,
 				"transmision" => $transmision,
 				"transmision_name" => $transmision_name,
@@ -183,11 +210,21 @@ function manage_car()
 				"length" => $length,
 				"width" => $width,
 				"height" => $height,
+				"driving_range" => $driving_range,
+				"battery_warranty" => $battery_warranty,
+				"battery_capacity" => $battery_capacity,
+				"ncap_rating" => $ncap_rating,
+				"discontinued" => $discontinued,
 				"description" => $description,
 				"file" => $file_new_url,
 				"file_data" => $file_data,
+				"brochure_file" => $brochure_file_url,
+				"brochure_file_data" => $brochure_file_data,
+				"gallery_file" => $gallery_file_url,
+				"gallery_file_data" => $gallery_file_data,
 				"color_data" => $color_data,
 				"verient_data" => $verient_data,
+				"video_data" => $video_data,
 				"entry_uid" => $user_id,
 				"entry_date" => $date,
 			);
@@ -196,7 +233,13 @@ function manage_car()
 			$outputjson['result'] = [];
 			$outputjson['success'] = 1;
 			$outputjson['message'] = "Data added successfully";
-		}else{																						//update
+		}else{	
+			$existing_data = [];
+			$query = "SELECT file FROM tbl_cars WHERE id = '" . $id ."'";
+			$rows = $db->execute($query);
+			if ($rows != null && is_array($rows) && count($rows) > 0) {
+				$existing_data = $rows[0];
+			}																					//update
 			if(isset($_POST["file"]))
 			{
 				$file = json_decode($_POST["file"], true);
@@ -223,6 +266,10 @@ function manage_car()
 					"length" => $length,
 					"width" => $width,
 					"height" => $height,
+					"driving_range" => $driving_range,
+					"battery_warranty" => $battery_warranty,
+					"battery_capacity" => $battery_capacity,
+					"ncap_rating" => $ncap_rating,
 					"description" => $description,
 					"update_uid" => $user_id,
 					"update_date" => $date,
@@ -242,12 +289,27 @@ function manage_car()
 						$data['file'] = $file_new_url;
 						$data['file_data'] = $logo_data;
 
-						$query = "SELECT file FROM tbl_cars WHERE id = '" . $id ."'";
-						$rows = $db->execute($query);
-						if ($rows != null && is_array($rows) && count($rows) > 0) {
-							unlink($rows[0]['file']);
+						if ($existing_data != null && $existing_data != []) {
+							unlink($existing_data['file']);
 						}
 					}
+				}
+
+				if(isset($_POST["brochure_file"]))
+				{
+					$newData = uploadDropzoneFiles($_POST["brochure_file"],$id);
+					$data['brochure_file'] = $newData['file_url'][0];
+					$data['brochure_file_data'] = $newData['file_data'];
+					if ($existing_data != null && $existing_data != []) {
+						unlink($existing_data['brochure_file']);
+					}
+				}
+				
+				if(isset($_POST["gallery_file"]))
+				{
+					$newData = uploadDropzoneFiles($_POST["gallery_file"],$id);
+					$data['gallery_file'] = json_encode($newData['file_url']);
+					$data['gallery_file_data'] = $newData['file_data'];
 				}
 
 				if(isset($color_data)){
@@ -325,6 +387,7 @@ function manage_car()
 				}
 				$data["color_data"] = $color_data;
 				$data["verient_data"] = $verient_data;
+				$data["video_data"] = $video_data;
 				$rows = $db->update('tbl_cars', $data, array("id" => $id));
 
 				$outputjson['success'] = 1;

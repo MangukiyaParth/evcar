@@ -21677,7 +21677,7 @@ div.dataTables_scrollBody>table>:not(:first-child) {
     background: var(--ct-input-bg);
     border-radius: 6px;
     cursor: pointer;
-    min-height: 150px;
+    min-height: 170px;
     padding: 20px
 }
 

@@ -525,6 +525,35 @@ function manageFilepathofEditor($description,$module,$entry_id){
 	return $description;
 }
 
+function uploadDropzoneFiles($fileData,$primary_id){
+	global $gh;
+
+	$imgdata = json_decode($fileData, true);
+	$file_urls = [];
+	foreach($imgdata as $imgs){
+		if (str_contains($imgs['url'], 'tmp/'))
+		{
+			$file_url = $imgs['url'];
+			$file_name = $imgs['filename'];
+			$file_new_url = str_replace('tmp/','images/', $file_url);
+			$fileData = str_replace('tmp/','images/', $fileData);
+			
+			$gh->TryCreateDirIfNeeded(str_replace($file_name, $primary_id.'/', $file_new_url));// Create directory if not exist
+			$file_new_url = str_replace($file_name, $primary_id.'/'.$file_name, $file_new_url);
+			$fileData = str_replace('/'.$file_name, '/'.$primary_id.'/'.$file_name, $fileData);
+			array_push($file_urls, $file_new_url);
+			rename($file_url, $file_new_url);
+		}
+		else{
+			array_push($file_urls, $imgs['url']);
+		}
+	}
+	return array(
+		"file_data" => $fileData,
+		"file_url" => $file_urls,
+	);
+}
+
 interface MyPackageThrowable extends Throwable
 {
 }

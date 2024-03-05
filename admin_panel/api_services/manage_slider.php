@@ -76,30 +76,30 @@ function manage_slider()
 				$logo_data = str_replace('tmp/','images/', $_POST["file"]);
 			}
 			
-				$id=$gh->generateuuid();
-				if(isset($_POST["file"]))
-				{
-					$gh->TryCreateDirIfNeeded(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
-					$file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
-					$logo_data = str_replace('/'.$file_name, '/'.$id.'/'.$file_name, $logo_data);
-					rename($file_url, $file_new_url);
-				}
-				$data = array(
-					"id" => $id,
-					"title" => $title,
-					"orderno" => $dis_order,
-					"btntext" => $button,
-					"description" => $description,
-					"file" => $file_new_url,
-					"file_data" => $logo_data,
-					"entry_uid" => $user_id,
-					"entry_date" => $date,
-				);
-				$db->insert("tbl_slidermaster", $data);
+			$id=$gh->generateuuid();
+			if(isset($_POST["file"]))
+			{
+				$gh->TryCreateDirIfNeeded(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
+				$file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
+				$logo_data = str_replace('/'.$file_name, '/'.$id.'/'.$file_name, $logo_data);
+				rename($file_url, $file_new_url);
+			}
+			$data = array(
+				"id" => $id,
+				"title" => $title,
+				"orderno" => $dis_order,
+				"btntext" => $button,
+				"description" => $description,
+				"file" => $file_new_url,
+				"file_data" => $logo_data,
+				"entry_uid" => $user_id,
+				"entry_date" => $date,
+			);
+			$db->insert("tbl_slidermaster", $data);
 
-				$outputjson['result'] = [];
-				$outputjson['success'] = 1;
-				$outputjson['message'] = "Data added successfully";
+			$outputjson['result'] = [];
+			$outputjson['success'] = 1;
+			$outputjson['message'] = "Data added successfully";
 		}else{																						//update
 			if(isset($_POST["file"]))
 			{

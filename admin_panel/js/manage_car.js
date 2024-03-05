@@ -2,6 +2,8 @@ var table;
 var SUBPRIMARYID = 0;
 var colorData = [];
 var verientData = [];
+var videoData = [];
+var predefine_dropzones = 4;
 jQuery(function () {
     HTMLEditor("description", 0);
     get_data();
@@ -25,16 +27,33 @@ jQuery(function () {
             $("#verient_engine").prop("readonly", false);
         }
     });
+    manageCommingSoon();
+    $("#comming_soon").on('change', ()=>{
+        manageCommingSoon();
+    })
 });
+
+function manageCommingSoon(){
+    var comming_soon = $("#comming_soon").prop('checked');
+    if(comming_soon){
+        $("#modal_year").val("");
+        $("#modal_year").addClass("hide");
+    }
+    else{
+        $("#modal_year").removeClass("hide");
+    }
+}
+
 function resetform(){
     $('#formevent').val('submit');
     var dz_ind = 0;
     myDropzone.forEach(function() {
-        myDropzone.splice(dz_ind+2, 1);
+        myDropzone.splice(dz_ind+predefine_dropzones, 1);
         dz_ind++;
     });
     colorData = [];
     verientData = [];
+    videoData = [];
     $("#color_list").html("");
     $("#verient_list").html("");
     fill_details();
@@ -202,11 +221,11 @@ $("#add_color").on("click", function(){
             isnew: ($('#formevent').val() == 'update') ? true : false
         };
         colorData.push(cdata);
-        myDropzone.splice(2, myDropzone.length - 2);
+        myDropzone.splice(predefine_dropzones, myDropzone.length - predefine_dropzones);
         $("#color_list").html(getColorTbl(true));
         manageColorImgDropzone();
         dataNotDeleteFileOnRemove = true;
-        myDropzone[1].removeAllFiles(true); 
+        myDropzone[predefine_dropzones-1].removeAllFiles(true); 
         dataNotDeleteFileOnRemove = false;
         $("#color").val('');
     }
@@ -260,9 +279,9 @@ function manageColorImgDropzone(){
             setFileDropzone($("#color_file_"+cd_ind));
             clrimgdata.forEach(function(imgData) {
                 imgData.upload = imgData;
-                myDropzone[cd_ind+2].emit( "addedfile", imgData );
-                myDropzone[cd_ind+2].emit( "thumbnail", imgData, WEB_API_FOLDER+imgData.url );
-                myDropzone[cd_ind+2].files.push( imgData );
+                myDropzone[cd_ind+predefine_dropzones].emit( "addedfile", imgData );
+                myDropzone[cd_ind+predefine_dropzones].emit( "thumbnail", imgData, WEB_API_FOLDER+imgData.url );
+                myDropzone[cd_ind+predefine_dropzones].files.push( imgData );
                 imgData.upload = "";
             });
             $("#file-previews-"+cd_ind).sortable({
@@ -293,7 +312,7 @@ function manageColorImgDropzone(){
                             }
                         });
                     });
-                    myDropzone[current_srt_index+2].files = newQueue;
+                    myDropzone[current_srt_index+predefine_dropzones].files = newQueue;
                     let string_newQueue = JSON.stringify(newQueue);
                     let string_newFileQueue = JSON.stringify(newFileQueue);
                     colorData[current_srt_index].img_data = string_newQueue;
@@ -318,7 +337,7 @@ function removeColor(i){
     remove_file(imgs, true);
     $("#color_list .color"+i).remove();
     colorData.splice(i, 1);
-    myDropzone.splice(i+2, 1);
+    myDropzone.splice(i+predefine_dropzones, 1);
 }
 
 $("#add_verient").on("click", function(){
@@ -378,6 +397,66 @@ function getVerientTblData(editable = false){
 function removeVerient(i){
     $("#verient_list .verient"+i).remove();
     verientData.splice(i, 1);
+}
+
+$("#add_video").on("click", function(){
+    var video_link = $("#video_link").val();
+    if(video_link){
+        videoData.push(video_link);
+        $("#video_list").html(getVideoTblData(true));
+        manageVideoTitle();
+        $("#video_link").val('');
+    }
+    else {
+        showError("Please fill all the details.");
+    }
+});
+
+function getVideoTblData(editable = false){
+    var ver_html = "";
+    if(videoData.length > 0){
+        var i=0;
+        videoData.forEach(viddata => {
+            var youtube_video_id = viddata.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop();
+            fetch(`https://noembed.com/embed?dataType=json&url=${viddata}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                var url = data.url;
+                var v_id = url.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop();
+                $("#vid_title_"+v_id).html(data.title);
+            });
+
+            ver_html+=`<div class="video-preview-div video${i}">`;
+            ver_html += `<img src="//img.youtube.com/vi/${youtube_video_id}/0.jpg" class="video-preview">`;
+            ver_html += `<a class="play-btn" href="${viddata}" target="_blank"><i class="ri-play-circle-fill"></i></a>`;
+            ver_html += `<span id="vid_title_${youtube_video_id}" class="video-title"></span>`;
+            // ver_html += `<iframe class="video-preview" src="${viddata}" allowfullscreen></iframe>`;
+            if(editable){
+                ver_html+=`<button class="btn btn-default remove-video" onclick="removeVideo(${i})"><i class="ri-close-line"></i></button>`;
+            }
+            ver_html+=`</div>`;
+            i++;
+        });
+    }
+    return ver_html;
+}
+
+function manageVideoTitle(){
+    videoData.forEach(viddata => {
+        fetch(`https://noembed.com/embed?dataType=json&url=${viddata}`)
+        .then(res => res.json())
+        .then(data => {
+            var url = data.url;
+            var v_id = url.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop();
+            $("#vid_title_"+v_id).html(data.title);
+        });
+    });
+}
+
+function removeVideo(i){
+    $("#video_list .video"+i).remove();
+    videoData.splice(i, 1);
 }
 
 if($('#'+FORMNAME).length){		
@@ -457,6 +536,7 @@ if($('#'+FORMNAME).length){
                 fule_type: $('#fule_type :selected').val(),
                 fule_type_name: $('#fule_type :selected').text(),
                 engine: $('#engine').val(),
+                comming_soon: $("#comming_soon").prop('checked') ? 1 : 0, 
                 modal_year: $('#modal_year').val(),
                 transmision: $('#transmision :selected').val(),
                 transmision_name: $('#transmision :selected').text(),
@@ -470,15 +550,29 @@ if($('#'+FORMNAME).length){
                 length: $('#length').val(),
                 width: $('#width').val(),
                 height: $('#height').val(),
+                driving_range: $('#driving_range').val(),
+                battery_warranty: $('#battery_warranty').val(),
+                battery_capacity: $('#battery_capacity').val(),
+                ncap_rating: $('#ncap_rating').val(),
+                discontinued: $("#discontinued").prop('checked') ? 1 : 0, 
                 description: editor[0].getData(),
                 color_data: JSON.stringify(colorData),
                 verient_data: JSON.stringify(verientData),
+                video_data: JSON.stringify(videoData),
                 formevent: $('#formevent').val(),
                 id: $('#id').val()
             };
             if($('#file_name').val())
             {
                 req_data['file']=JSON.stringify(JSON.parse($('#file_name').val()));
+            }
+            if($('#gallery_file_name').val())
+            {
+                req_data['gallery_file']=JSON.stringify(JSON.parse($('#gallery_file_name').val()));
+            }
+            if($('#brochure_file_name').val())
+            {
+                req_data['brochure_file']=JSON.stringify(JSON.parse($('#brochure_file_name').val()));
             }
             doAPICall(req_data, async function(data){
                 if (data && data != null && data.success == true) {
@@ -504,6 +598,7 @@ function edit_car_details(index) {
         CURRENT_DATA = TBLDATA[index];
         colorData = JSON.parse(CURRENT_DATA.color_data);
         verientData = JSON.parse(CURRENT_DATA.verient_data);
+        videoData = JSON.parse(CURRENT_DATA.video_data);
 
         $('#id').val(CURRENT_DATA.id);
         $('#formevent').val('update');
@@ -511,6 +606,8 @@ function edit_car_details(index) {
         $('#name').val(CURRENT_DATA.name);
         $('#price').val(CURRENT_DATA.price);
         $('#engine').val(CURRENT_DATA.engine);
+        $("#comming_soon").prop('checked', CURRENT_DATA.comming_soon);
+        manageCommingSoon();
         $('#modal_year').val(CURRENT_DATA.modal_year);
         $('#seater').val(CURRENT_DATA.seater);
 
@@ -521,6 +618,13 @@ function edit_car_details(index) {
         $('#length').val(CURRENT_DATA.length);
         $('#width').val(CURRENT_DATA.width);
         $('#height').val(CURRENT_DATA.height);
+        
+        $('#driving_range').val(CURRENT_DATA.driving_range);
+        $('#battery_warranty').val(CURRENT_DATA.battery_warranty);
+        $('#battery_capacity').val(CURRENT_DATA.battery_capacity);
+        $('#ncap_rating').val(CURRENT_DATA.ncap_rating);
+
+        $("#discontinued").prop('checked', CURRENT_DATA.discontinued);
 
         editor[0].setData(CURRENT_DATA.description);
 
@@ -537,10 +641,40 @@ function edit_car_details(index) {
             $("#cars_file").addClass('dz-max-files-reached');
         }
         $('#file_name').val(JSON.stringify(logoData));
+        
+        var galleryData = (CURRENT_DATA.gallery_file_data == "" || CURRENT_DATA.gallery_file_data == undefined) ? [] : JSON.parse(CURRENT_DATA.gallery_file_data);
+        galleryData.forEach(function(imgData) {
+            imgData.upload = imgData;
+            myDropzone[1].emit( "addedfile", imgData );
+            myDropzone[1].emit( "thumbnail", imgData, WEB_API_FOLDER+imgData.url );
+            myDropzone[1].files.push( imgData );
+            imgData.upload = "";
+        });
+        if($("#cars_gallery").attr('is-multipe') != 'true' && galleryData.length > 0)
+        {
+            $("#cars_gallery").addClass('dz-max-files-reached');
+        }
+        $('#gallery_file_name').val(JSON.stringify(galleryData));
+        
+        var brochureData = (CURRENT_DATA.brochure_file_data == "" || CURRENT_DATA.brochure_file_data == undefined) ? [] : JSON.parse(CURRENT_DATA.brochure_file_data);
+        brochureData.forEach(function(imgData) {
+            imgData.upload = imgData;
+            myDropzone[2].emit( "addedfile", imgData );
+            // myDropzone[2].emit( "thumbnail", imgData, WEB_API_FOLDER+imgData.url );
+            myDropzone[2].files.push( imgData );
+            imgData.upload = "";
+        });
+        if($("#cars_brochure_file").attr('is-multipe') != 'true' && brochureData.length > 0)
+        {
+            $("#cars_brochure_file").addClass('dz-max-files-reached');
+        }
+        $('#brochure_file_name').val(JSON.stringify(brochureData));
 
         $("#verient_list").html(getVerientTblData(true));
         $("#color_list").html(getColorTbl(true));
         manageColorImgDropzone();
+        $("#video_list").html(getVideoTblData(true));
+        manageVideoTitle();
 
         fill_details();
         changeView('form', true);
@@ -571,62 +705,62 @@ function view_car_details(index) {
 
 
         html+= `<div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Color
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th width="25%">Color</th>
-                                                <th width="75%">Images</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>${getColorTbl(false)}</tbody>
-                                    </table>
-                                </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Color
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th width="25%">Color</th>
+                                            <th width="75%">Images</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>${getColorTbl(false)}</tbody>
+                                </table>
                             </div>
                         </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Verient
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th width="40%">Name</th>
-                                                <th width="15%">Fule Type</th>
-                                                <th width="15%">Transmision</th>
-                                                <th width="15%">Engine</th>
-                                                <th width="15%">Price</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>${getVerientTblData(false)}</tbody>
-                                    </table>
-                                </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Verient
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th width="40%">Name</th>
+                                            <th width="15%">Fule Type</th>
+                                            <th width="15%">Transmision</th>
+                                            <th width="15%">Engine</th>
+                                            <th width="15%">Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>${getVerientTblData(false)}</tbody>
+                                </table>
                             </div>
                         </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Description
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    ${CURRENT_DATA.description}
-                                </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Description
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                ${CURRENT_DATA.description}
                             </div>
                         </div>
-                    </div>`;
+                    </div>
+                </div>`;
        
         $("#comman_ListModal #comman_list_model_div").html(html);
     }

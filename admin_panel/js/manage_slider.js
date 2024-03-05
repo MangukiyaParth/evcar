@@ -72,31 +72,31 @@ function get_data() {
 if($('#'+FORMNAME).length){		
     $('#'+FORMNAME).validate({
         rules:{
-            title:{
-                required: true,			
-            },
+            // title:{
+            //     required: true,			
+            // },
             dis_order:{
                 required: true,			
             },
-            button:{
-                required: true,			
-            },
-            description:{
-                required: true,			
-            },
+            // button:{
+            //     required: true,			
+            // },
+            // description:{
+            //     required: true,			
+            // },
         },messages:{
-            title:{
-                required:"title name is required",
-            },
+            // title:{
+            //     required:"title name is required",
+            // },
             dis_order:{
                 required:"dispaly order is required",
             },
-            button:{
-                required:"button is required",
-            },
-            description:{
-                required:"description is required",
-            },
+            // button:{
+            //     required:"button is required",
+            // },
+            // description:{
+            //     required:"description is required",
+            // },
         },
         submitHandler: function(form){
             showLoading();
