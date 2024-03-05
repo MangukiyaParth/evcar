@@ -173,13 +173,18 @@ class SUPPORT
 				$month_year = "";
 			}
 
-			$path1 = $path . "upload/_log/" . $month_year;
+			$path_fe = "";
+            if($this->read("from") == FRONTEND_CONSTANT){
+				$path_fe = "front_end/";
+			}
+			
+			$path1 = $path . "upload/_log/" . $path_fe . $month_year;
 			$this->TryCreateDirIfNeeded($path1);
 
-			$path1 = $path . "upload/_log/" . $month_year . $sub_path;
+			$path1 = $path . "upload/_log/" . $path_fe . $month_year . $sub_path;
 			$this->TryCreateDirIfNeeded($path1);
 
-			$path1 = $path . "upload/_log/" . $month_year . $sub_path . $requested_by_user_id;
+			$path1 = $path . "upload/_log/" . $path_fe . $month_year . $sub_path . $requested_by_user_id;
 			$this->TryCreateDirIfNeeded($path1);
 
 			$msg = str_replace('\r\n', PHP_EOL, $msg);
