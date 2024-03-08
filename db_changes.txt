@@ -37,7 +37,7 @@ ALTER TABLE `tbl_cars`
   ADD COLUMN `mileage` VARCHAR(50) NULL AFTER `car_type_name`,
   ADD COLUMN `ground_clearance` INT NULL AFTER `mileage`,
   ADD COLUMN `warranty` VARCHAR(50) NULL AFTER `ground_clearance`,
-  ADD COLUMN `fuel_tank` INT NULL AFTER `warranty`,
+  ADD COLUMN `fuel_tank` VARCHAR(150) NULL AFTER `warranty`,
   ADD COLUMN `length` INT NULL AFTER `fuel_tank`,
   ADD COLUMN `width` INT NULL AFTER `length`,
   ADD COLUMN `height` INT NULL AFTER `width`;
@@ -77,3 +77,6 @@ ALTER TABLE `tbl_cars`
   ADD COLUMN `img_360` VARCHAR(250) NULL AFTER `height`,
   ADD COLUMN `interior_gallery_file` LONGTEXT NULL AFTER `gallery_file_data`,
   ADD COLUMN `interior_gallery_file_data` LONGTEXT NULL AFTER `interior_gallery_file`;
+
+ALTER TABLE `tbl_cars`   
+  CHANGE `modal_year` `modal_year` VARCHAR(50) NULL;

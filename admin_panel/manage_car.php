@@ -52,7 +52,8 @@
                                                 <input type="checkbox" class="form-check-input" id="comming_soon">
                                                 <label class="form-check-label" for="comming_soon">Comming soon</label>
                                             </div>
-                                            <input type="text" id="modal_year" name="modal_year" class="form-control numbersOnlyField" data-provide="date-picker" data-date-min-view-mode="2" placeholder="Enter modal year" />
+                                            <!-- <input type="text" id="modal_year" name="modal_year" class="form-control numbersOnlyField" data-provide="date-picker" data-date-min-view-mode="2" placeholder="Enter modal year" /> -->
+                                            <input type="text" id="modal_year" name="modal_year" class="form-control" placeholder="Enter modal year" />
                                         </div>
                                     </div>
                                 </div>
@@ -108,7 +109,7 @@
                                     </div>
                                     <div class="mb-3 col-sm-4">
                                         <label class="form-label" for="fuel_tank">Fuel Tank</label>
-                                        <input type="text" id="fuel_tank" name="fuel_tank" class="form-control numbersOnlyField" placeholder="Enter Fuel Tank" />
+                                        <input type="text" id="fuel_tank" name="fuel_tank" class="form-control" placeholder="Enter Fuel Tank" />
                                     </div>
                                     <div class="mb-3 col-sm-4">
                                         <label class="form-label" for="warranty">Warranty</label>

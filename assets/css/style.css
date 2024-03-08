@@ -191,6 +191,12 @@ body {
     margin: 0px;
 }
 
+.productcarslide .slick-prev:before, .productcarslide .slick-next:before {
+    color: #40b54d !important;
+    background: #FFF;
+    border-radius: 50%;
+}
+
 .one-time .slick-dots li button:before,
 .productcarslide .slick-dots li button:before {
     width: 13px;
