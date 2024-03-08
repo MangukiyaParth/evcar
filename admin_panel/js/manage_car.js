@@ -602,9 +602,9 @@ if($('#'+FORMNAME).length){
 function edit_car_details(index) {
     if (TBLDATA.length > 0) {
         CURRENT_DATA = TBLDATA[index];
-        colorData = JSON.parse(CURRENT_DATA.color_data);
-        verientData = JSON.parse(CURRENT_DATA.verient_data);
-        videoData = JSON.parse(CURRENT_DATA.video_data);
+        colorData = (CURRENT_DATA.color_data && CURRENT_DATA.color_data != "") ? JSON.parse(CURRENT_DATA.color_data) : [];
+        verientData = (CURRENT_DATA.verient_data && CURRENT_DATA.verient_data != "") ? JSON.parse(CURRENT_DATA.verient_data) : [];
+        videoData = (CURRENT_DATA.video_data && CURRENT_DATA.video_data != "") ? JSON.parse(CURRENT_DATA.video_data) : [];
 
         $('#id').val(CURRENT_DATA.id);
         $('#formevent').val('update');
@@ -635,6 +635,7 @@ function edit_car_details(index) {
 
         editor[0].setData(CURRENT_DATA.description);
 
+        /** main img **/
         var logoData = (CURRENT_DATA.file_data == "" || CURRENT_DATA.file_data == undefined) ? [] : JSON.parse(CURRENT_DATA.file_data);
         logoData.forEach(function(imgData) {
             imgData.upload = imgData;
@@ -648,14 +649,29 @@ function edit_car_details(index) {
             $("#cars_file").addClass('dz-max-files-reached');
         }
         $('#file_name').val(JSON.stringify(logoData));
+
+        /** brochure **/
+        var brochureData = (CURRENT_DATA.brochure_file_data == "" || CURRENT_DATA.brochure_file_data == undefined) ? [] : JSON.parse(CURRENT_DATA.brochure_file_data);
+        brochureData.forEach(function(imgData) {
+            imgData.upload = imgData;
+            myDropzone[1].emit( "addedfile", imgData );
+            // myDropzone[1].emit( "thumbnail", imgData, WEB_API_FOLDER+imgData.url );
+            myDropzone[1].files.push( imgData );
+            imgData.upload = "";
+        });
+        if($("#cars_brochure_file").attr('is-multipe') != 'true' && brochureData.length > 0)
+        {
+            $("#cars_brochure_file").addClass('dz-max-files-reached');
+        }
+        $('#brochure_file_name').val(JSON.stringify(brochureData));
         
         /** exterior **/
         var galleryData = (CURRENT_DATA.gallery_file_data == "" || CURRENT_DATA.gallery_file_data == undefined) ? [] : JSON.parse(CURRENT_DATA.gallery_file_data);
         galleryData.forEach(function(imgData) {
             imgData.upload = imgData;
-            myDropzone[1].emit( "addedfile", imgData );
-            myDropzone[1].emit( "thumbnail", imgData, WEB_API_FOLDER+imgData.url );
-            myDropzone[1].files.push( imgData );
+            myDropzone[2].emit( "addedfile", imgData );
+            myDropzone[2].emit( "thumbnail", imgData, WEB_API_FOLDER+imgData.url );
+            myDropzone[2].files.push( imgData );
             imgData.upload = "";
         });
         if($("#cars_gallery").attr('is-multipe') != 'true' && galleryData.length > 0)
@@ -668,9 +684,9 @@ function edit_car_details(index) {
         var interior_galleryData = (CURRENT_DATA.interior_gallery_file_data == "" || CURRENT_DATA.interior_gallery_file_data == undefined) ? [] : JSON.parse(CURRENT_DATA.interior_gallery_file_data);
         interior_galleryData.forEach(function(imgData) {
             imgData.upload = imgData;
-            myDropzone[1].emit( "addedfile", imgData );
-            myDropzone[1].emit( "thumbnail", imgData, WEB_API_FOLDER+imgData.url );
-            myDropzone[1].files.push( imgData );
+            myDropzone[3].emit( "addedfile", imgData );
+            myDropzone[3].emit( "thumbnail", imgData, WEB_API_FOLDER+imgData.url );
+            myDropzone[3].files.push( imgData );
             imgData.upload = "";
         });
         if($("#cars_interior_gallery").attr('is-multipe') != 'true' && interior_galleryData.length > 0)
@@ -679,21 +695,6 @@ function edit_car_details(index) {
         }
         $('#interior_gallery_file_name').val(JSON.stringify(interior_galleryData));
         
-
-        var brochureData = (CURRENT_DATA.brochure_file_data == "" || CURRENT_DATA.brochure_file_data == undefined) ? [] : JSON.parse(CURRENT_DATA.brochure_file_data);
-        brochureData.forEach(function(imgData) {
-            imgData.upload = imgData;
-            myDropzone[2].emit( "addedfile", imgData );
-            // myDropzone[2].emit( "thumbnail", imgData, WEB_API_FOLDER+imgData.url );
-            myDropzone[2].files.push( imgData );
-            imgData.upload = "";
-        });
-        if($("#cars_brochure_file").attr('is-multipe') != 'true' && brochureData.length > 0)
-        {
-            $("#cars_brochure_file").addClass('dz-max-files-reached');
-        }
-        $('#brochure_file_name').val(JSON.stringify(brochureData));
-
         $("#verient_list").html(getVerientTblData(true));
         $("#color_list").html(getColorTbl(true));
         manageColorImgDropzone();
