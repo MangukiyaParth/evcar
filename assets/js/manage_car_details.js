@@ -68,6 +68,35 @@ function getcarData(){
                     $(".vfuel-tank-div").remove();
                 }
 
+                if(carData.driving_range){
+                    $(".vdriveing-range").html(carData.driving_range);
+                    $(".vdriveing-range-div").removeClass('d-none');
+                }
+                else {
+                    $(".vdriveing-range-div").remove();
+                }
+                if(carData.ncap_rating){
+                    $(".vncap-rating").html(carData.ncap_rating);
+                    $(".vncap-rating-div").removeClass('d-none');
+                }
+                else {
+                    $(".vncap-rating-div").remove();
+                }
+                if(carData.battery_warranty){
+                    $(".vbattery-warranty").html(carData.battery_warranty);
+                    $(".vbattery-warranty-div").removeClass('d-none');
+                }
+                else {
+                    $(".vbattery-warranty-div").remove();
+                }
+                if(carData.battery_capacity){
+                    $(".vbattery-capacity").html(carData.battery_capacity);
+                    $(".vbattery-capacity-div").removeClass('d-none');
+                }
+                else {
+                    $(".vbattery-capacity-div").remove();
+                }
+
                 manageColorDetails();
                 manageVerientDetails();
             }

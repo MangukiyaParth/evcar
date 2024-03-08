@@ -292,6 +292,10 @@ function manage_car()
 				{
 					if (str_contains($_POST["file"], 'tmp/'))
 					{
+						if ($existing_data != null && $existing_data != []) {
+							unlink($existing_data['file']);
+						}
+						
 						$file_url = $file[0]['url'];
 						$file_name = $file[0]['name'];
 						$file_new_url = str_replace('tmp/','images/', $file_url);
@@ -303,9 +307,6 @@ function manage_car()
 						$data['file'] = $file_new_url;
 						$data['file_data'] = $logo_data;
 
-						if ($existing_data != null && $existing_data != []) {
-							unlink($existing_data['file']);
-						}
 					}
 				}
 

@@ -417,24 +417,27 @@ function getVideoTblData(editable = false){
     if(videoData && videoData.length > 0){
         var i=0;
         videoData.forEach(viddata => {
-            var youtube_video_id = viddata.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop();
-            fetch(`https://noembed.com/embed?dataType=json&url=${viddata}`)
-            .then(res => res.json())
-            .then(data => {
-                var url = data.url;
-                var v_id = url.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop();
-                $("#vid_title_"+v_id).html(data.title);
-            });
+            var vid_match = viddata.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/);
+            if(vid_match){
+                var youtube_video_id = vid_match.pop();
+                fetch(`https://noembed.com/embed?dataType=json&url=${viddata}`)
+                .then(res => res.json())
+                .then(data => {
+                    var url = data.url;
+                    var v_id = url.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop();
+                    $("#vid_title_"+v_id).html(data.title);
+                });
 
-            ver_html+=`<div class="video-preview-div video${i}">`;
-            ver_html += `<img src="//img.youtube.com/vi/${youtube_video_id}/0.jpg" class="video-preview">`;
-            ver_html += `<a class="play-btn" href="${viddata}" target="_blank"><i class="ri-play-circle-fill"></i></a>`;
-            ver_html += `<span id="vid_title_${youtube_video_id}" class="video-title"></span>`;
-            // ver_html += `<iframe class="video-preview" src="${viddata}" allowfullscreen></iframe>`;
-            if(editable){
-                ver_html+=`<button class="btn btn-default remove-video" onclick="removeVideo(${i})"><i class="ri-close-line"></i></button>`;
+                ver_html+=`<div class="video-preview-div video${i}">`;
+                ver_html += `<img src="//img.youtube.com/vi/${youtube_video_id}/0.jpg" class="video-preview">`;
+                ver_html += `<a class="play-btn" href="${viddata}" target="_blank"><i class="ri-play-circle-fill"></i></a>`;
+                ver_html += `<span id="vid_title_${youtube_video_id}" class="video-title"></span>`;
+                // ver_html += `<iframe class="video-preview" src="${viddata}" allowfullscreen></iframe>`;
+                if(editable){
+                    ver_html+=`<button class="btn btn-default remove-video" onclick="removeVideo(${i})"><i class="ri-close-line"></i></button>`;
+                }
+                ver_html+=`</div>`;
             }
-            ver_html+=`</div>`;
             i++;
         });
     }

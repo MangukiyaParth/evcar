@@ -71,8 +71,24 @@
                         <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/fuel-tank-capacity.svg" alt="Fuel Tank"><span> Fuel Tank </span></div></td>
                         <td class="vfuel-tank"></td>
                     </tr>
+                    <tr class="vdriveing-range-div d-none">
+                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/driving-range.svg" alt="Driving Range (km)"><span> Driving Range (km) </span></div></td>
+                        <td class="vdriveing-range"></td>
+                    </tr>
+                    <tr class="vncap-rating-div d-none">
+                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/safety-rating.svg" alt="NCAP Rating"><span> NCAP Rating (Best - 5 Star) </span></div></td>
+                        <td class="vncap-rating"></td>
+                    </tr>
+                    <tr class="vbattery-warranty-div d-none">
+                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/battery-warranty.svg" alt="Battery Warranty"><span> Battery Warranty </span></div></td>
+                        <td class="vbattery-warranty"></td>
+                    </tr>
+                    <tr class="vbattery-capacity-div d-none">
+                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/battery-size.svg" alt="Battery Capacity"><span> Battery Capacity </span></div></td>
+                        <td class="vbattery-capacity"></td>
+                    </tr>
                     <tr class="vtype-div">
-                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/safety-rating.svg" alt="Car Type"><span> Car Type </span></div></td>
+                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/car-type.svg" alt="Car Type"><span> Car Type </span></div></td>
                         <td class="vtype"></td>
                     </tr>
                 </tbody>
