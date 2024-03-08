@@ -173,7 +173,7 @@ function setFileDropzone(element){
         },
         url: API_SERVICE_URL ,
         paramName: pname,
-        maxFilesize: 2, //MB
+        maxFilesize: 5, //MB
         parallelUploads: 2,
         createImageThumbnails: true,
         acceptedFiles: acceptedFiles,

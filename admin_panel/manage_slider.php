@@ -16,7 +16,7 @@
                                         <div class="col-sm-6 row">
                                             <div class="mb-3 col-sm-6">
                                             <label class="form-label" for="title">Title</label>
-                                                <input type="text" id="title" name="title" class="form-control" placeholder="Enter Title" required />
+                                                <input type="text" id="title" name="title" class="form-control" placeholder="Enter Title" />
                                                 <div class="invalid-feedback"> Please enter Title. </div>
                                             </div>
                                             <div class="mb-3 col-sm-6">
@@ -26,7 +26,7 @@
                                             </div>
                                             <div class="mb-3 col-sm-12">
                                                 <label class="form-label" for="description">Description</label>
-                                                <textarea name="description" id="description" class="form-control" placeholder="Enter Description" rows="3" required></textarea> 
+                                                <textarea name="description" id="description" class="form-control" placeholder="Enter Description" rows="3"></textarea> 
                                                 <div class="invalid-feedback"> Please enter Description. </div>
                                             </div>
                                         </div>

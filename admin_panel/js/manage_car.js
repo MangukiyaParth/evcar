@@ -3,7 +3,7 @@ var SUBPRIMARYID = 0;
 var colorData = [];
 var verientData = [];
 var videoData = [];
-var predefine_dropzones = 4;
+var predefine_dropzones = 5;
 jQuery(function () {
     HTMLEditor("description", 0);
     get_data();
@@ -414,14 +414,13 @@ $("#add_video").on("click", function(){
 
 function getVideoTblData(editable = false){
     var ver_html = "";
-    if(videoData.length > 0){
+    if(videoData && videoData.length > 0){
         var i=0;
         videoData.forEach(viddata => {
             var youtube_video_id = viddata.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop();
             fetch(`https://noembed.com/embed?dataType=json&url=${viddata}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 var url = data.url;
                 var v_id = url.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop();
                 $("#vid_title_"+v_id).html(data.title);
@@ -443,15 +442,17 @@ function getVideoTblData(editable = false){
 }
 
 function manageVideoTitle(){
-    videoData.forEach(viddata => {
-        fetch(`https://noembed.com/embed?dataType=json&url=${viddata}`)
-        .then(res => res.json())
-        .then(data => {
-            var url = data.url;
-            var v_id = url.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop();
-            $("#vid_title_"+v_id).html(data.title);
+    if(videoData && videoData.length > 0){
+        videoData.forEach(viddata => {
+            fetch(`https://noembed.com/embed?dataType=json&url=${viddata}`)
+            .then(res => res.json())
+            .then(data => {
+                var url = data.url;
+                var v_id = url.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop();
+                $("#vid_title_"+v_id).html(data.title);
+            });
         });
-    });
+    }
 }
 
 function removeVideo(i){
@@ -550,6 +551,7 @@ if($('#'+FORMNAME).length){
                 length: $('#length').val(),
                 width: $('#width').val(),
                 height: $('#height').val(),
+                img_360: $('#img_360').val(),
                 driving_range: $('#driving_range').val(),
                 battery_warranty: $('#battery_warranty').val(),
                 battery_capacity: $('#battery_capacity').val(),
@@ -569,6 +571,10 @@ if($('#'+FORMNAME).length){
             if($('#gallery_file_name').val())
             {
                 req_data['gallery_file']=JSON.stringify(JSON.parse($('#gallery_file_name').val()));
+            }
+            if($('#interior_gallery_file_name').val())
+            {
+                req_data['interior_gallery_file']=JSON.stringify(JSON.parse($('#interior_gallery_file_name').val()));
             }
             if($('#brochure_file_name').val())
             {
@@ -618,6 +624,7 @@ function edit_car_details(index) {
         $('#length').val(CURRENT_DATA.length);
         $('#width').val(CURRENT_DATA.width);
         $('#height').val(CURRENT_DATA.height);
+        $('#img_360').val(CURRENT_DATA.img_360);
         
         $('#driving_range').val(CURRENT_DATA.driving_range);
         $('#battery_warranty').val(CURRENT_DATA.battery_warranty);
@@ -642,6 +649,7 @@ function edit_car_details(index) {
         }
         $('#file_name').val(JSON.stringify(logoData));
         
+        /** exterior **/
         var galleryData = (CURRENT_DATA.gallery_file_data == "" || CURRENT_DATA.gallery_file_data == undefined) ? [] : JSON.parse(CURRENT_DATA.gallery_file_data);
         galleryData.forEach(function(imgData) {
             imgData.upload = imgData;
@@ -655,7 +663,23 @@ function edit_car_details(index) {
             $("#cars_gallery").addClass('dz-max-files-reached');
         }
         $('#gallery_file_name').val(JSON.stringify(galleryData));
+       
+        /** interior **/
+        var interior_galleryData = (CURRENT_DATA.interior_gallery_file_data == "" || CURRENT_DATA.interior_gallery_file_data == undefined) ? [] : JSON.parse(CURRENT_DATA.interior_gallery_file_data);
+        interior_galleryData.forEach(function(imgData) {
+            imgData.upload = imgData;
+            myDropzone[1].emit( "addedfile", imgData );
+            myDropzone[1].emit( "thumbnail", imgData, WEB_API_FOLDER+imgData.url );
+            myDropzone[1].files.push( imgData );
+            imgData.upload = "";
+        });
+        if($("#cars_interior_gallery").attr('is-multipe') != 'true' && interior_galleryData.length > 0)
+        {
+            $("#cars_interior_gallery").addClass('dz-max-files-reached');
+        }
+        $('#interior_gallery_file_name').val(JSON.stringify(interior_galleryData));
         
+
         var brochureData = (CURRENT_DATA.brochure_file_data == "" || CURRENT_DATA.brochure_file_data == undefined) ? [] : JSON.parse(CURRENT_DATA.brochure_file_data);
         brochureData.forEach(function(imgData) {
             imgData.upload = imgData;

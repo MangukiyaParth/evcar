@@ -148,6 +148,23 @@
                                         </div>                                                      
                                     </div>
                                     <div class="mb-3 col-sm-4">
+                                        <label class="form-label" for="">Brochure</label>
+                                        <div class="dropzone" id="cars_brochure_file" data-plugin="dropzone" data-previews-container="" data-upload-preview-template="#uploadPreviewTemplate" data-page="cars" acceptedFiles="application/pdf" is-multipe="false">
+                                            <div class="fallback"><input type="file" name="brochure_file" id="brochure_file" class="" /></div>
+                                            <div class="dz-message needsclick">
+                                                <i class="h1 text-muted ri-upload-cloud-2-line"></i>
+                                                <h3>Drop files here or click to upload.</h3>
+                                            </div>
+                                            <input type="hidden" name="brochure_file_name" id="brochure_file_name" class="file_name" />
+                                        </div>                                                      
+                                    </div>
+                                    <div class="mb-3 col-sm-4">
+                                        <label class="form-label" for="img_360">360 Image</label>
+                                        <input type="text" id="img_360" name="img_360" class="form-control" placeholder="Enter 360 img url" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="mb-3 col-sm-4">
                                         <label class="form-label" for="gallery">Gallery</label>
                                         <div class="dropzone" id="cars_gallery" data-plugin="dropzone" data-previews-container="" data-upload-preview-template="#uploadPreviewTemplate" data-page="cars" acceptedFiles="image/*" is-multipe="true">
                                             <div class="fallback"><input type="file" name="gallery_file" id="gallery_file" class="" /></div>
@@ -159,14 +176,14 @@
                                         </div>                                                      
                                     </div>
                                     <div class="mb-3 col-sm-4">
-                                        <label class="form-label" for="">Brochure</label>
-                                        <div class="dropzone" id="cars_brochure_file" data-plugin="dropzone" data-previews-container="" data-upload-preview-template="#uploadPreviewTemplate" data-page="cars" acceptedFiles="application/pdf" is-multipe="false">
-                                            <div class="fallback"><input type="file" name="brochure_file" id="brochure_file" class="" /></div>
+                                        <label class="form-label" for="gallery">Interior Gallery</label>
+                                        <div class="dropzone" id="cars_interior_gallery" data-plugin="dropzone" data-previews-container="" data-upload-preview-template="#uploadPreviewTemplate" data-page="cars" acceptedFiles="image/*" is-multipe="true">
+                                            <div class="fallback"><input type="file" name="interior_gallery_file" id="interior_gallery_file" class="" /></div>
                                             <div class="dz-message needsclick">
                                                 <i class="h1 text-muted ri-upload-cloud-2-line"></i>
                                                 <h3>Drop files here or click to upload.</h3>
                                             </div>
-                                            <input type="hidden" name="brochure_file_name" id="brochure_file_name" class="file_name" />
+                                            <input type="hidden" name="interior_gallery_file_name" id="interior_gallery_file_name" class="file_name" />
                                         </div>                                                      
                                     </div>
                                 </div>

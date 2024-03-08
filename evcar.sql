@@ -81,6 +81,7 @@ CREATE TABLE `tbl_cars` (
   `length` INT DEFAULT NULL,
   `width` INT DEFAULT NULL,
   `height` INT DEFAULT NULL,
+  `img_360` VARCHAR(250) DEFAULT NULL
   `discontinued` TINYINT DEFAULT 0,
   `driving_range` VARCHAR(50) DEFAULT NULL,
   `battery_warranty` VARCHAR(50) DEFAULT NULL,
@@ -94,6 +95,8 @@ CREATE TABLE `tbl_cars` (
   `brochure_file_data` LONGTEXT DEFAULT NULL,
   `gallery_file` LONGTEXT DEFAULT NULL,
   `gallery_file_data` LONGTEXT DEFAULT NULL,
+  `interior_gallery_file` LONGTEXT DEFAULT NULL,
+  `interior_gallery_file_data` LONGTEXT DEFAULT NULL,
   `color_data` longtext DEFAULT NULL,
   `verient_data` longtext DEFAULT NULL,
   `video_data` longtext DEFAULT NULL,
@@ -395,10 +398,10 @@ insert  into `tbl_users`(`id`,`name`,`username`,`password`,`role_id`,`last_logge
 CREATE
     VIEW `car_details` 
     AS
-(SELECT id, '' AS main_car_id,`name`,brand,brand_name,price,fule_type,fule_type_name,`engine`,comming_soon,modal_year,transmision,transmision_name,seater,car_type,car_type_name,mileage,ground_clearance,warranty,fuel_tank,`length`,width,height,discontinued,driving_range,battery_warranty,battery_capacity,ncap_rating,show_on_homepage,description,`file`,file_data,brochure_file,brochure_file_data,gallery_file,gallery_file_data,color_data,verient_data,video_data 
+(SELECT id, '' AS main_car_id,`name`,brand,brand_name,price,fule_type,fule_type_name,`engine`,comming_soon,modal_year,transmision,transmision_name,seater,car_type,car_type_name,mileage,ground_clearance,warranty,fuel_tank,`length`,width,height,img_360,discontinued,driving_range,battery_warranty,battery_capacity,ncap_rating,show_on_homepage,description,`file`,file_data,brochure_file,brochure_file_data,gallery_file,gallery_file_data,interior_gallery_file,interior_gallery_file_data,color_data,verient_data,video_data 
 FROM tbl_cars
 UNION ALL
-SELECT v.id, v.`car_id` AS main_car_id,CONCAT(c.name, ' ', v.verient_name),c.brand,c.brand_name,v.price,v.fule_type,v.fule_type_text,v.`engine`,c.comming_soon,c.modal_year,v.transmision,v.transmision_text,c.seater,c.car_type,c.car_type_name,c.mileage,c.ground_clearance,c.warranty,c.fuel_tank,c.length,c.width,c.height,c.discontinued,c.driving_range,c.battery_warranty,c.battery_capacity,c.ncap_rating,c.show_on_homepage,c.description,c.`file`,c.file_data,c.brochure_file,c.brochure_file_data,c.gallery_file,c.gallery_file_data,c.color_data,c.verient_data,c.video_data 
+SELECT v.id, v.`car_id` AS main_car_id,CONCAT(c.name, ' ', v.verient_name),c.brand,c.brand_name,v.price,v.fule_type,v.fule_type_text,v.`engine`,c.comming_soon,c.modal_year,v.transmision,v.transmision_text,c.seater,c.car_type,c.car_type_name,c.mileage,c.ground_clearance,c.warranty,c.fuel_tank,c.length,c.width,c.height,c.img_360,c.discontinued,c.driving_range,c.battery_warranty,c.battery_capacity,c.ncap_rating,c.show_on_homepage,c.description,c.`file`,c.file_data,c.brochure_file,c.brochure_file_data,c.gallery_file,c.gallery_file_data,c.interior_gallery_file,c.interior_gallery_file_data,c.color_data,c.verient_data,c.video_data 
 FROM `tbl_cars_verient` v INNER JOIN tbl_cars c ON c.`id` = v.`car_id`);
 
 DELIMITER $$

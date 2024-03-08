@@ -75,6 +75,7 @@ function manage_car()
 		$length = $gh->read("length");
 		$width = $gh->read("width");
 		$height = $gh->read("height");
+		$img_360 = $gh->read("img_360");
 		$driving_range = $gh->read("driving_range");
 		$battery_warranty = $gh->read("battery_warranty");
 		$battery_capacity = $gh->read("battery_capacity");
@@ -123,6 +124,15 @@ function manage_car()
 				$newData = uploadDropzoneFiles($_POST["gallery_file"],$id);
 				$gallery_file_url= json_encode($newData['file_url']);
 				$gallery_file_data= $newData['file_data'];
+			}
+			
+			$interior_gallery_file_url='';
+			$interior_gallery_file_data='';
+			if(isset($_POST["interior_gallery_file"]))
+			{
+				$newData = uploadDropzoneFiles($_POST["interior_gallery_file"],$id);
+				$interior_gallery_file_url= json_encode($newData['file_url']);
+				$interior_gallery_file_data= $newData['file_data'];
 			}
 
 			if(isset($color_data)){
@@ -210,6 +220,7 @@ function manage_car()
 				"length" => $length,
 				"width" => $width,
 				"height" => $height,
+				"img_360" => $img_360,
 				"driving_range" => $driving_range,
 				"battery_warranty" => $battery_warranty,
 				"battery_capacity" => $battery_capacity,
@@ -222,6 +233,8 @@ function manage_car()
 				"brochure_file_data" => $brochure_file_data,
 				"gallery_file" => $gallery_file_url,
 				"gallery_file_data" => $gallery_file_data,
+				"interior_gallery_file" => $interior_gallery_file_url,
+				"interior_gallery_file_data" => $interior_gallery_file_data,
 				"color_data" => $color_data,
 				"verient_data" => $verient_data,
 				"video_data" => $video_data,
@@ -266,6 +279,7 @@ function manage_car()
 					"length" => $length,
 					"width" => $width,
 					"height" => $height,
+					"img_360" => $img_360,
 					"driving_range" => $driving_range,
 					"battery_warranty" => $battery_warranty,
 					"battery_capacity" => $battery_capacity,
@@ -310,6 +324,13 @@ function manage_car()
 					$newData = uploadDropzoneFiles($_POST["gallery_file"],$id);
 					$data['gallery_file'] = json_encode($newData['file_url']);
 					$data['gallery_file_data'] = $newData['file_data'];
+				}
+				
+				if(isset($_POST["interior_gallery_file"]))
+				{
+					$newData = uploadDropzoneFiles($_POST["interior_gallery_file"],$id);
+					$data['interior_gallery_file'] = json_encode($newData['file_url']);
+					$data['interior_gallery_file_data'] = $newData['file_data'];
 				}
 
 				if(isset($color_data)){
