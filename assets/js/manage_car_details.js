@@ -16,7 +16,14 @@ function getcarData(){
             {
                 $(".brand_url").attr('href',ROOT_URL+'brand/'+carData.encode_brand_name);
                 $(".brand_url").html(carData.brand_name);
+                var name_value = carData.name;
+                if(carData.brochure_file && carData.main_car_id == ""){
+                    // var Filename= carData.brochure_file.split('/').pop();
+                    var Filename = carData.name + ' Brochure.pdf';
+                    name_value += `<a href="${WEB_API_FOLDER + carData.brochure_file}" target="_blank" type="application/octet-stream" download="${Filename}" class="download-brochure"><i class="fa fa-download"></i>Download Brochure</a>`;
+                }
                 $(".vname").html(carData.name);
+                $(".vname-with-brochure").html(name_value);
                 $(".vprice").html('₹ '+carData.price);
                 $(".vfuel").html(carData.fule_type_name);
                 if(carData.engine)
@@ -99,6 +106,7 @@ function getcarData(){
 
                 manageColorDetails();
                 manageVerientDetails();
+                manageVideoDetails();
             }
             return false;
         }
@@ -218,5 +226,81 @@ function manageVerientDetails(){
                 $(".varient-section").remove();
             }
         }
+    }
+}
+
+function manageVideoDetails(){
+    $(".video-list").html("");
+    if(carData.video_data && carData.video_data.trim() != "" && carData.video_data.trim() != "[]"){
+        var videoData = JSON.parse(carData.video_data);
+        if(videoData && videoData.length > 0){
+            var i=1;
+            videoData.forEach(viddata => {
+                var vid_match = viddata.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/);
+                if(vid_match){
+                    var youtube_video_id = vid_match.pop();
+
+                    var ver_html = `<a href="${viddata}" target="_blank">
+                                        <div class="video-preview-div">
+                                            <img src="//img.youtube.com/vi/${youtube_video_id}/0.jpg" class="video-preview">
+                                            <div class="video-title-div">
+                                                <span id="vid_title_${youtube_video_id}" class="video-title"></span>
+                                                <i class="video-play-btn fa fa-play-circle"></i>
+                                            </div>
+                                        </div>
+                                    </a>`;
+                    $(".video-list").append(ver_html);
+                    $(".video-section").removeClass('d-none');
+
+                    fetch(`https://noembed.com/embed?dataType=json&url=${viddata}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        var url = data.url;
+                        var v_id = url.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop();
+                        $("#vid_title_"+v_id).html(data.title);
+                    });
+
+                    if(i == videoData.length){
+                        // var slideWidth = $('.video-list').outerWidth();
+                        $('.video-list').slick({
+                            dots: true,
+                            infinite: false,
+                            speed: 300,
+                            slidesToShow: 4,
+                            arrows: true,
+                            responsive: [
+                                {
+                                  breakpoint: 1024,
+                                  settings: {
+                                    slidesToShow: 3,
+                                    infinite: true,
+                                    arrows: false
+                                  }
+                                },
+                                {
+                                  breakpoint: 600,
+                                  settings: {
+                                    slidesToShow: 2,
+                                    arrows: false
+                                  }
+                                },
+                                {
+                                  breakpoint: 480,
+                                  settings: {
+                                    slidesToShow: 1,
+                                    arrows: false
+                                  }
+                                }
+                            ]
+                        });
+                    }
+                }
+                i++;
+                
+            });
+        }
+    }
+    else {
+        $(".video-section").remove();
     }
 }

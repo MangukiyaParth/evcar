@@ -212,6 +212,7 @@ body {
 }
 
 .one-time .slick-dots li.slick-active button:before,
+.video-list .slick-dots li.slick-active button:before,
 .productcarslide .slick-dots li.slick-active button:before {
     color: #44b44d;
     border-color: #44b44d;
@@ -229,6 +230,28 @@ body {
 /* .item {
 display: none;
 } */
+
+.video-list .slick-prev:before, .video-list .slick-next:before {
+    color: #40b54d !important;
+    background: #FFF;
+    border-radius: 50%;
+    font-size: 25px;
+}
+
+.video-list .slick-prev,
+.video-list .slick-next{
+    z-index: 5;
+    left: auto;
+    top: auto;
+    bottom: -20px;
+}
+
+.video-list .slick-prev{
+    right: 45px;
+}
+.video-list .slick-next{
+    right: 10px;
+}
 
 .featuredcar {
     display: none;
@@ -2206,4 +2229,76 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
 .searchCarList li:hover{
     background-color: #40b54d4a;
     cursor: pointer;
+}
+
+.video-preview-div {
+    position: relative;
+    width: 90% !important;
+    box-shadow: 5px 5px 10px #151414;
+    border-radius: 10px;
+    margin: 15px 0 15px 5%;
+}
+
+.video-preview {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 375 / 220;
+    border-radius: 10px;
+}
+
+.video-preview-div a {
+    position: absolute;
+    width: calc(100% - 25px);
+    left: 12px;
+    height: calc(100% - 30px);
+    display: flex;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    font-size: 35px;
+}
+
+.video-title-div{
+    max-width: 100%;
+    display: flex;
+    align-items: flex-end;
+    padding: 0px 5px;
+    bottom: 0;
+    background: transparent linear-gradient(180deg, rgba(0, 0, 0, 0) -8%, #000 95%) 0% 0% no-repeat padding-box;
+    border-radius: 10px;
+    height: 65px;
+    position: absolute;
+    width: 100%;
+}
+
+.video-play-btn {
+    padding: 2px;
+    font-size: 30px !important;
+    color: #40b54d;
+}
+
+.video-title {
+    padding: 5px;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #FFF;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.download-brochure{
+    font-size: 15px;
+    color: #40b54d;
+    margin-left: 15px;
+    text-decoration: none;
+    border: 1px solid #40b54d;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+.download-brochure i{
+    margin-right: 5px;
 }

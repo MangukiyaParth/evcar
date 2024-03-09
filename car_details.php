@@ -23,7 +23,7 @@
                 <span class="productrates">4.7 Star Rating</span>
                 <span class="userfeedback">(21,671 User feedback)</span>
             </p>
-            <h4 class="nexontitle vname"></h4>
+            <h4 class="nexontitle vname vname-with-brochure"></h4>
             <!-- <p class="fivesets">SUV * 5 Seater</p> -->
             <p class="pdprice vprice">₹</p>
             <p class="pdcontain vshort_desc"></p>
@@ -102,6 +102,11 @@
         <ul class="customtabs" id="color_list">
         </ul>
     </div>
+    
+    <section class="video-section d-none">
+        <h2>Trending Video</h2>
+        <div class="video-list"></div>
+    </section>
 
     <!-- tabbing part -->
     <div class="producttab mb-3">
