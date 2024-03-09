@@ -173,13 +173,27 @@ function get_data() {
                 }, name: 'file', width: "10%"
             },
             { data: 'fule_type_name', name: 'fule_type_name', width: "10%" },
-            { data: 'modal_year', name: 'modal_year', width: "10%" },
+            {
+                data: null,
+                orderable: false,
+                render: function (data, type, row) {
+                    var details ='';
+                    if(row.comming_soon)
+                    {
+                        details = "Comming Soon";
+                    }
+                    else{
+                        details = row.modal_year;
+                    }
+                    return details;
+                }, name: 'modal_year', width: "10%"
+            },
             { data: 'transmision_name', name: 'transmision_name', width: "10%" },
             {
                 data: null,
                 orderable: false,
                 render: function (data, type, row) {
-                    return row.car_type_name+"("+row.seater+" Seater)";
+                    return row.car_type_name+" ("+row.seater+" Seater)";
                 }, name: 'car_type_name', width: "10%"
             },
             {
@@ -420,13 +434,13 @@ function getVideoTblData(editable = false){
             var vid_match = viddata.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/);
             if(vid_match){
                 var youtube_video_id = vid_match.pop();
-                fetch(`https://noembed.com/embed?dataType=json&url=${viddata}`)
-                .then(res => res.json())
-                .then(data => {
-                    var url = data.url;
-                    var v_id = url.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop();
-                    $("#vid_title_"+v_id).html(data.title);
-                });
+                // fetch(`https://noembed.com/embed?dataType=json&url=${viddata}`)
+                // .then(res => res.json())
+                // .then(data => {
+                //     var url = data.url;
+                //     var v_id = url.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/).pop();
+                //     $("#vid_title_"+v_id).html(data.title);
+                // });
 
                 ver_html+=`<div class="video-preview-div video${i}">`;
                 ver_html += `<img src="//img.youtube.com/vi/${youtube_video_id}/0.jpg" class="video-preview">`;
@@ -712,9 +726,29 @@ function edit_car_details(index) {
 function view_car_details(index) {
     if (TBLDATA.length > 0) {
         CURRENT_DATA = TBLDATA[index];
-        colorData = JSON.parse(CURRENT_DATA.color_data);
-        verientData = JSON.parse(CURRENT_DATA.verient_data);
-        var html = `<table class="table"><tbody>
+        colorData = (CURRENT_DATA.color_data && CURRENT_DATA.color_data != "") ? JSON.parse(CURRENT_DATA.color_data) : [];
+        verientData = (CURRENT_DATA.verient_data && CURRENT_DATA.verient_data != "") ? JSON.parse(CURRENT_DATA.verient_data) : [];
+        videoData = (CURRENT_DATA.video_data && CURRENT_DATA.video_data != "") ? JSON.parse(CURRENT_DATA.video_data) : [];
+
+        var brochur_html = "";
+        var brochureData = (CURRENT_DATA.brochure_file_data == "" || CURRENT_DATA.brochure_file_data == undefined) ? [] : JSON.parse(CURRENT_DATA.brochure_file_data);
+        brochureData.forEach(img => {
+            brochur_html += `<a href='${WEB_API_FOLDER + img.url}' target='_blank'><img style='height: 60px;' src='${PDF_ICON}'></a>`;
+        });
+
+        var gallery_html = "";
+        var galleryData = (CURRENT_DATA.gallery_file_data == "" || CURRENT_DATA.gallery_file_data == undefined) ? [] : JSON.parse(CURRENT_DATA.gallery_file_data);
+        galleryData.forEach(img => {
+            gallery_html += `<a href='${WEB_API_FOLDER + img.url}' target='_blank'><img style='height: 60px; margin-right: 10px;' src='${WEB_API_FOLDER + img.url}'></a>`;
+        });
+
+        var interior_gallery_html = "";
+        var interior_galleryData = (CURRENT_DATA.interior_gallery_file_data == "" || CURRENT_DATA.interior_gallery_file_data == undefined) ? [] : JSON.parse(CURRENT_DATA.interior_gallery_file_data);
+        interior_galleryData.forEach(img => {
+            interior_gallery_html += `<a href='${WEB_API_FOLDER + img.url}' target='_blank'><img style='height: 60px; margin-right: 10px;' src='${WEB_API_FOLDER + img.url}'></a>`;
+        });
+
+        var common_html = `<table class="table table-bordered"><tbody>
             <tr class="index-rows">
                 <th class="index-rows" style="width: 14%">Mileage</th>
                 <td class="index-rows" style="width: 20%">${(CURRENT_DATA.mileage) ? CURRENT_DATA.mileage : '-'}</td>
@@ -729,17 +763,65 @@ function view_car_details(index) {
                 <th class="index-rows">Size</th>
                 <td class="index-rows" colspan="3">${(CURRENT_DATA.length) ? CURRENT_DATA.length +' mm L' : '-'} X ${(CURRENT_DATA.width) ? CURRENT_DATA.width +  ' mm W' : '-'} X ${(CURRENT_DATA.height) ? CURRENT_DATA.height + ' mm H' : '-'}</td>
             </tr>
+            <tr class="index-rows">
+                <th class="index-rows" style="width: 14%">Engine Displacement</th>
+                <td class="index-rows" style="width: 20%">${(CURRENT_DATA.engine) ? CURRENT_DATA.engine : '-'}</td>
+                <th class="index-rows" style="width: 13%">Discontinued</th>
+                <td class="index-rows" style="width: 20%">${(CURRENT_DATA.discontinued) ? 'Yes' : 'No'}</td>
+                <th class="index-rows" style="width: 13%">NCAP Rating</th>
+                <td class="index-rows" style="width: 20%">${(CURRENT_DATA.ncap_rating) ? CURRENT_DATA.ncap_rating : '-'}</td>
+            </tr>
+            <tr class="index-rows">
+                <th class="index-rows" style="width: 14%">Driving Range</th>
+                <td class="index-rows" style="width: 20%">${(CURRENT_DATA.driving_range) ? CURRENT_DATA.driving_range : '-'}</td>
+                <th class="index-rows" style="width: 13%">Battery Warranty</th>
+                <td class="index-rows" style="width: 20%">${(CURRENT_DATA.battery_warranty) ? CURRENT_DATA.battery_warranty : '-'}</td>
+                <th class="index-rows" style="width: 13%">Battery Capacity</th>
+                <td class="index-rows" style="width: 20%">${(CURRENT_DATA.battery_capacity) ? CURRENT_DATA.battery_capacity : '-'}</td>
+            </tr>
+            <tr class="index-rows">
+                <th class="index-rows" style="width: 14%">360 Image</th>
+                <td class="index-rows" colspan="5">${(CURRENT_DATA.img_360) ? `<a href='${CURRENT_DATA.img_360}' target='_blank'><img style='height: 60px;' src='${IMG_ICON}'></a>` : '-'}</td>
+            </tr>
+            <tr class="index-rows">
+                <th class="index-rows" style="width: 14%">Expert Video</th>
+                <td class="index-rows" colspan="5">${getVideoTblData()}</td>
+            </tr>
+            <tr class="index-rows">
+                <th class="index-rows" style="width: 14%">Brochur</th>
+                <td class="index-rows" colspan="5">${brochur_html}</td>
+            </tr>
+            <tr class="index-rows">
+                <th class="index-rows" style="width: 14%">Gallery</th>
+                <td class="index-rows" colspan="5">${gallery_html}</td>
+            </tr>
+            <tr class="index-rows">
+                <th class="index-rows" style="width: 14%">Interrior Gallery</th>
+                <td class="index-rows" colspan="5">${interior_gallery_html}</td>
+            </tr>
         </tbody></table>`;
 
 
-        html+= `<div class="accordion" id="accordionExample">
+        var html = `<div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingZero">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseZero" aria-expanded="true" aria-controls="collapseZero">
+                            Common
+                            </button>
+                        </h2>
+                        <div id="collapseZero" class="accordion-collapse collapse show" aria-labelledby="headingZero" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                ${common_html}
+                            </div>
+                        </div>
+                    </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             Color
                             </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <table class="table table-striped">
                                     <thead>
@@ -791,6 +873,7 @@ function view_car_details(index) {
                 </div>`;
        
         $("#comman_ListModal #comman_list_model_div").html(html);
+        manageVideoTitle();
     }
     $("#comman_ListModal").modal('show');
     $("#comman_ListModal .comman_list_model_header").html('Cars Details');

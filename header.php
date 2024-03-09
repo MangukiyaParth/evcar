@@ -83,7 +83,7 @@
                 <div class="carlogo navdisnonemobile">
                     <h1>
                         <a href="<?php echo ROOT_URL; ?>home">
-                            <img src="<?php echo ROOT_URL; ?>assets/img/logo.png" alt="logo" class="logoimage w-75">
+                            <img src="<?php echo ROOT_URL; ?>assets/img/logo.png" alt="logo" class="logoimage w-50">
                         </a>
                     </h1>
                 </div>

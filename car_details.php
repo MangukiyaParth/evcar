@@ -104,7 +104,7 @@
     </div>
     
     <section class="video-section d-none">
-        <h2>Trending Video</h2>
+        <h2>Expert Car Review</h2>
         <div class="video-list"></div>
     </section>
 
