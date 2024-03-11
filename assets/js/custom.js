@@ -217,11 +217,6 @@ function set_footer_data(){
     }
 }
 
-function url_title(title){
-    // return encodeURIComponent(title.replace(/ /g,'-'));
-    return title.replace(/[^a-z0-9\s]/gi, '').replace(/ /g,'-').replace(/[_\s]/g, '-');
-}
-
 function get_car_suggestion(search, element){
     var req_data = {
         op: "manage_homepage",

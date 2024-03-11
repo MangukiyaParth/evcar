@@ -148,6 +148,19 @@ function apply_after_page_load(){
             minimumResultsForSearch: searchCnt
         });
     });
+
+    //Prevent Submit Form on press Enter
+    $('form').on('keyup keypress', function (e) {
+        ///Get Target
+        if (e.target.nodeName != 'TEXTAREA' && e.target.id != 'q' && e.target.id != 'tb_email' && e.target.id != 'tb_password' && $(e.target).attr('class') != "note-editable" && !$(e.target).attr('class').includes("ck-editor__editable"))//For Allow Enter in TextArea, Allow when global search enter
+        {
+            var keyCode = e.keyCode || e.which;
+            if (keyCode === 13 && !$(e.target).hasClass('select2-search__field')) {
+                e.preventDefault();
+                return false;
+            }
+        }
+    });
 }
 
 function setFileDropzone(element){
@@ -173,7 +186,7 @@ function setFileDropzone(element){
         },
         url: API_SERVICE_URL ,
         paramName: pname,
-        maxFilesize: 5, //MB
+        maxFilesize: 10, //MB
         parallelUploads: 2,
         createImageThumbnails: true,
         acceptedFiles: acceptedFiles,
@@ -290,6 +303,16 @@ $(document).ready(function () {
     });
 
 });
+
+function url_title(title){
+    // return encodeURIComponent(title.replace(/ /g,'-'));
+    if(title){
+        return title.replace(/[^a-z0-9\s]/gi, '').replace(/ /g,'-').replace(/[_\s]/g, '-');
+    }
+    else{
+        return title;
+    }
+}
 
 function showLoading() {
     NProgress.start();
