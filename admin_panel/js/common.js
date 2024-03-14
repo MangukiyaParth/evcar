@@ -186,7 +186,7 @@ function setFileDropzone(element){
         },
         url: API_SERVICE_URL ,
         paramName: pname,
-        maxFilesize: 10, //MB
+        maxFilesize: 15, //MB
         parallelUploads: 2,
         createImageThumbnails: true,
         acceptedFiles: acceptedFiles,
@@ -307,7 +307,7 @@ $(document).ready(function () {
 function url_title(title){
     // return encodeURIComponent(title.replace(/ /g,'-'));
     if(title){
-        return title.replace(/[^a-z0-9\s]/gi, '').replace(/ /g,'-').replace(/[_\s]/g, '-');
+        return title.replace(/[^a-z0-9\s]/gi, '').replace(/ /g,'-').replace(/[_\s]/g, '-').toLowerCase();
     }
     else{
         return title;

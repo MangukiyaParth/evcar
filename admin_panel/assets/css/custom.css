@@ -263,3 +263,11 @@
     font-weight: 400;
     font-size: 14px;
 }
+
+/** Generated HTML Style **/
+.general-description figure.image{
+	text-align: center;
+}
+.general-description figure.image-style-side{
+	text-align: end;
+}

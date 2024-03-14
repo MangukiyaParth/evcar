@@ -650,7 +650,7 @@ function edit_car_details(index) {
 
         $("#discontinued").prop('checked', CURRENT_DATA.discontinued);
 
-        editor[0].setData(CURRENT_DATA.description);
+        editor[0].setData(CURRENT_DATA.description.replaceAll("\\",""));
 
         /** main img **/
         var logoData = (CURRENT_DATA.file_data == "" || CURRENT_DATA.file_data == undefined) ? [] : JSON.parse(CURRENT_DATA.file_data);
@@ -802,79 +802,122 @@ function view_car_details(index) {
         </tbody></table>`;
 
 
-        var html = `<div class="accordion" id="accordionExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingZero">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseZero" aria-expanded="true" aria-controls="collapseZero">
-                            Common
-                            </button>
-                        </h2>
-                        <div id="collapseZero" class="accordion-collapse collapse show" aria-labelledby="headingZero" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                ${common_html}
+        var html = `<section class="text-center mb-2">
+                        <button class="btn btn-primary" onclick="show_CSV_modal()">Upload Car Verients</button>
+                    </section>
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingZero">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseZero" aria-expanded="true" aria-controls="collapseZero">
+                                Common
+                                </button>
+                            </h2>
+                            <div id="collapseZero" class="accordion-collapse collapse show" aria-labelledby="headingZero" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    ${common_html}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Color
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th width="25%">Color</th>
-                                            <th width="75%">Images</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>${getColorTbl(false)}</tbody>
-                                </table>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Color
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th width="25%">Color</th>
+                                                <th width="75%">Images</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>${getColorTbl(false)}</tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Verient
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th width="40%">Name</th>
-                                            <th width="15%">Fule Type</th>
-                                            <th width="15%">Transmision</th>
-                                            <th width="15%">Engine</th>
-                                            <th width="15%">Price</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>${getVerientTblData(false)}</tbody>
-                                </table>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Verient
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th width="40%">Name</th>
+                                                <th width="15%">Fule Type</th>
+                                                <th width="15%">Transmision</th>
+                                                <th width="15%">Engine</th>
+                                                <th width="15%">Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>${getVerientTblData(false)}</tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Description
-                            </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                ${CURRENT_DATA.description}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Description
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                <div class="accordion-body general-description">
+                                    ${CURRENT_DATA.description.replaceAll("\\","")}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>`;
+                    </div>`;
        
         $("#comman_ListModal #comman_list_model_div").html(html);
         manageVideoTitle();
     }
     $("#comman_ListModal").modal('show');
     $("#comman_ListModal .comman_list_model_header").html('Cars Details');
+}
+
+function show_CSV_modal() {
+    $("#csvModal").modal('show');
+}
+
+function upload_csv(){
+    var formData = new FormData()
+    formData.append('op', 'upload_csv')
+    formData.append('file', $('#csv_file')[0].files[0])
+    formData.append('car_id', CURRENT_DATA.id);
+    formData.append('user_id', CURRENT_USER_ID);
+    showLoading();
+    $.ajax({
+        type: "POST",
+        url: API_SERVICE_URL,
+        data: formData,
+        dataType: 'json',
+        "crossDomain": true,
+        "headers": {},
+        processData: false,
+        contentType: false,
+        success: async function (data) {
+            if (data && data.success == 1) {
+                showMessage(data.message);
+                $("#csvModal").modal('hide');
+                await table.clearPipeline().draw();
+            }
+            else {
+                showError(data.message);
+            }
+            hideLoading();
+            return false;
+        },
+        fail: function (err) {
+            hideLoading();
+            showError(data.message);
+            return false;
+        }
+    });
 }

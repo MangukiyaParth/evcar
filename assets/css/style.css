@@ -2302,3 +2302,11 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
 .download-brochure i{
     margin-right: 5px;
 }
+
+/** Generated HTML Style **/
+.general-description figure.image{
+	text-align: center;
+}
+.general-description figure.image-style-side{
+	text-align: end;
+}

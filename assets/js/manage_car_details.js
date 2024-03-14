@@ -37,7 +37,7 @@ function getcarData(){
                 $(".vseater").html(carData.seater + ' Seater');
                 $(".vtransmision").html(carData.transmision_name);
                 $(".vtype").html(carData.car_type_name);
-                $(".vdesc").html(carData.description);
+                $(".vdesc").html(carData.description.replaceAll("\\",""));
 
                 if(carData.mileage){
                     $(".vmileage").html(carData.mileage);

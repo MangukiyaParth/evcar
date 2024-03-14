@@ -148,7 +148,7 @@ function edit_slider(index) {
         $('#news_date').val(CURRENT_DATA.news_date);
         $('#short_description').val(CURRENT_DATA.short_desc);
         // $('#description').val(CURRENT_DATA.description); 
-        editor[0].setData(CURRENT_DATA.description)
+        editor[0].setData(CURRENT_DATA.description.replaceAll("\\",""));
         $('#formevent').val('update');
         var logoData = (CURRENT_DATA.main_image_data == "" || CURRENT_DATA.main_image_data == undefined) ? [] : JSON.parse(CURRENT_DATA.main_image_data);
         logoData.forEach(function(imgData) {
@@ -174,12 +174,12 @@ async function view_news_details(index) {
         var html = '<table class="table table-striped"><tbody>';
             html += '<tr class="index-rows">';
                 html += '<th class="index-rows">Description</th>';
-                html += '<td class="index-rows">'+CURRENT_DATA.description+'</td>';
+                html += '<td class="index-rows">'+CURRENT_DATA.description.replaceAll("\\","")+'</td>';
             html += '</tr>';
         html += '</tbody></table>';
 
        
-        await $("#comman_ListModal #comman_list_model_div").html(CURRENT_DATA.description);
+        await $("#comman_ListModal #comman_list_model_div").html('<div class="general-description">'+CURRENT_DATA.description.replaceAll("\\","")+'</div>');
     }
     $("#comman_ListModal").modal('show');
     $("#comman_ListModal .comman_list_model_header").html('News Description');

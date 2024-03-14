@@ -118,16 +118,9 @@
                 </ul>
 
                 <div class="productdiscrip">
-                    <div class="prdsubpart prdsubactive vdesc" id="pdtab1">
+                    <div class="prdsubpart prdsubactive vdesc general-description" id="pdtab1">
                         
                     </div>
-
-
-                    <!-- <div class="prdsubpart" id="pdtab2">
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore doloremque ipsum pariatur rerum, debitis id commodi quae! Quos quidem architecto excepturi. Dicta dolid="pdtab2"oremque optio corrupti voluptates eaque similique
-                            nemo rem!</p>
-                    </div> -->
-
                 </div>
 
 

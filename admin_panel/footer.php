@@ -57,6 +57,28 @@ include 'theme_settings.php';
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+<div id="csvModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="multiple-twoModalLabel">
+                    Upload CSV
+                </h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="offset-3 col-6">
+                        <input type="file" name="file" class="form-control mb-2" id="csv_file" />
+                    </div>
+                </div>
+            </div><!-- /.modal-body -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="upload_csv()">Upload</button>
+            </div><!-- /.modal-footer -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 <div id="delete_modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-sm">
 		<div class="modal-content">
