@@ -2303,6 +2303,29 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
     margin-right: 5px;
 }
 
+.news-title{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 110px;
+}
+
+.news-desc{
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 100px;
+}
+
+@media only screen and (max-width: 820px) {
+    .news-title,
+    .news-desc{
+        height: auto;
+    }
+}
+
 /** Generated HTML Style **/
 .general-description figure.image{
 	text-align: center;

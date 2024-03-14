@@ -52,7 +52,7 @@ function manage_homepage()
 			$outputjson["hybrid_car"] = $rows_hybrid;
 		}
 		
-		$qry_news="SELECT *, DATE_FORMAT(STR_TO_DATE(news_date,'%d/%m/%Y'),'%M %d, %Y') as disp_date FROM tbl_news LIMIT 6";
+		$qry_news="SELECT *, DATE_FORMAT(STR_TO_DATE(news_date,'%d/%m/%Y'),'%M %d, %Y') as disp_date FROM tbl_news ORDER BY STR_TO_DATE(news_date,'%d/%m/%Y') DESC LIMIT 6";
 		$rows_news = $db->execute($qry_news);
 		if ($rows_news != null && is_array($rows_news) && count($rows_news) > 0) {	
 			$outputjson["news"] = $rows_news;
@@ -145,7 +145,7 @@ function manage_homepage()
 		$status = 0;
 		$message = "No news Found.";
 		
-		$qry_news="SELECT *, DATE_FORMAT(STR_TO_DATE(news_date,'%d/%m/%Y'),'%M %d, %Y') as disp_date FROM tbl_news";
+		$qry_news="SELECT *, DATE_FORMAT(STR_TO_DATE(news_date,'%d/%m/%Y'),'%M %d, %Y') as disp_date FROM tbl_news ORDER BY STR_TO_DATE(news_date,'%d/%m/%Y') DESC";
 		$rows_news = $db->execute($qry_news);
 		if ($rows_news != null && is_array($rows_news) && count($rows_news) > 0) {	
 			$outputjson["data"] = $rows_news;
