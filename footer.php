@@ -66,7 +66,23 @@
         </div>
     </div>
 </div>
+<div id="web_comman_ListModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title web_comman_list_model_header" id="multiple-twoModalLabel"></h4>
+                <button type="button" class="btn-close" data-bs-target="#priceModal" data-bs-toggle="modal" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
 
+                <div class="accordion accordion-flush" id="web_comman_list_model_div">
+
+                </div><!-- /.accordion -->
+
+            </div><!-- /.modal-body -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 <script src="<?php echo ROOT_URL; ?>assets/js/jquery-1.11.0.min.js"></script>
 <script src="<?php echo ROOT_URL; ?>assets/js/slick.min.js"></script>
 <script src="<?php echo ROOT_URL; ?>assets/js/data.js"></script>

@@ -75,6 +75,9 @@
         <div class="loadmorbtn load-more-brand-div">
             <p class="morbtn"><a href="javascript:void(0)" onclick="loadMoreBrand()">More</a></p>
         </div>
+        <div class="loadmorbtn load-less-brand-div d-none">
+            <p class="morbtn"><a href="javascript:void(0)" onclick="loadlessBrand()">Show Less</a></p>
+        </div>
     </div>
 </div>
 

@@ -97,12 +97,33 @@
     </div>
 
     <!-- 2nd part -->
+    
 
     <div class="produtabs">
         <ul class="customtabs" id="color_list">
         </ul>
     </div>
-    
+    <div class="nexonblock int_ext-section">
+        <h2 class="nexonvarianttitle">Interior / Exterior Image</h2>
+        <div class="nexoncontain">
+            <div class="productflex75">
+                <div class="nextewlve" id="int_ext_list">
+                    <ul class="gridJfs tabs relative flex mb20 hideScroller row">
+                        <li class="tabLink relative caps1 tabHeadActive " onclick="showint_extimage(1);"><h3> Interior Image </h3></li>
+                        <li class="tabLink relative caps2  " onclick="showint_extimage(2);"><h3> Exterior Image </h3></li>
+                    </ul>   
+                </div>
+                <div class="nextewlve int_list">
+                    
+                </div>
+                <div class="nextewlve ext_list">
+                    
+                </div>
+            </div>
+            <div class="productflex25 ad">
+            </div>
+        </div>
+    </div>
     <section class="video-section d-none">
         <h2>Expert Car Review</h2>
         <div class="video-list"></div>

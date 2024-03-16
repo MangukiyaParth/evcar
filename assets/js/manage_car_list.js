@@ -157,8 +157,14 @@ function getCarList(){
             {
                 var html_car = "";
                 carData.forEach(function (value) {
-                    html_car += `<div class="carfilteritem ">
-                                    <div class="carimagrang">
+                    html_car += `<div class="carfilteritem ">`;
+                                    if(value.comming_soon == 1)
+                                    {
+                                        html_car += `<div class="commingsoon">
+                                            <span>Comming Soon</span>
+                                        </div>`;
+                                    }
+                                    html_car += `<div class="carimagrang">
                                         <img src="${WEB_API_FOLDER+value.file}" alt="${value.name}">
                                     </div>
                                     <div class="pricesettle">

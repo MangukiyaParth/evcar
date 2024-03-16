@@ -119,7 +119,7 @@ function manage_brand()
 						$data['logo'] = $file_new_url;
 						$data['logo_data'] = $logo_data;
 
-						$query = "SELECT file FROM tbl_brand WHERE id = '" . $id ."'";
+						$query = "SELECT logo FROM tbl_brand WHERE id = '" . $id ."'";
 						$rows = $db->execute($query);
 						if ($rows != null && is_array($rows) && count($rows) > 0) {
 							unlink($rows[0]['logo']);

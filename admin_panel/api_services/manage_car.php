@@ -287,6 +287,7 @@ function manage_car()
 					"description" => $description,
 					"update_uid" => $user_id,
 					"update_date" => $date,
+					"comming_soon" => $comming_soon,
 				);
 				if(isset($_POST["file"]))
 				{

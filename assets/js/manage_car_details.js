@@ -107,6 +107,7 @@ function getcarData(){
                 manageColorDetails();
                 manageVerientDetails();
                 manageVideoDetails();
+                manage_int_ext_image();
             }
             return false;
         }
@@ -115,7 +116,141 @@ function getcarData(){
         }
     });
 }
-
+function manage_int_ext_image(){
+    $(".int_list").html('');
+    $(".ext_list").html('');
+    
+    if(carData.interior_gallery_file && carData.interior_gallery_file.trim() != "" && carData.interior_gallery_file.trim() != "[]"){
+        var int_img_Data = JSON.parse(carData.interior_gallery_file);
+        // console.log(int_img_Data.length);
+        if(int_img_Data && int_img_Data.length > 0)
+        {
+            var html_int = "";
+            var j=0;
+            int_img_Data.forEach(function (i) {
+                //  console.log(j);
+                html_int += `<a href="javascript:void(0)">
+                    <div class="video-preview-div">
+                        <img src="${WEB_API_FOLDER+i}" alt="productimage">
+                    </div>
+                </a>`;
+                
+                j++;
+            });
+            $(".int_list").html(html_int);
+            if(j == int_img_Data.length){
+                
+                $('.int_list').slick({
+                    dots: true,
+                    infinite: false,
+                    speed: 300,
+                    slidesToShow: 4,
+                    arrows: true,
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                            slidesToShow: 3,
+                            infinite: true,
+                            arrows: false
+                            }
+                        },
+                        {
+                            breakpoint: 600,
+                            settings: {
+                            slidesToShow: 2,
+                            arrows: false
+                            }
+                        },
+                        {
+                            breakpoint: 480,
+                            settings: {
+                            slidesToShow: 1,
+                            arrows: false
+                            }
+                        }
+                    ]
+                });
+            }
+            /* $("#color_list li").on('click', function(){
+                var ind = $(this).attr('data-index');
+            }); */
+        }
+    }
+    if(carData.gallery_file && carData.gallery_file.trim() != "" && carData.gallery_file.trim() != "[]"){
+        var ext_img_data = JSON.parse(carData.gallery_file);
+        // console.log(ext_img_data.length);
+        if(ext_img_data && ext_img_data.length > 0)
+        {
+            var html_ext = "";
+            var j=0;
+            ext_img_data.forEach(function (i) {
+                //  console.log(j);
+                html_ext += `<a href="javascript:void(0)" style="width: 256px;">
+                    <div class="video-preview-div">
+                        <img src="${WEB_API_FOLDER+i}" alt="productimage">
+                    </div>
+                </a>`;
+                
+                j++;
+            });
+            $(".ext_list").html(html_ext);
+            if(j == ext_img_data.length){
+                
+                $('.ext_list').slick({
+                    dots: true,
+                    infinite: false,
+                    speed: 300,
+                    slidesToShow: 4,
+                    arrows: true,
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                            slidesToShow: 3,
+                            infinite: true,
+                            arrows: false
+                            }
+                        },
+                        {
+                            breakpoint: 600,
+                            settings: {
+                            slidesToShow: 2,
+                            arrows: false
+                            }
+                        },
+                        {
+                            breakpoint: 480,
+                            settings: {
+                            slidesToShow: 1,
+                            arrows: false
+                            }
+                        }
+                    ]
+                });
+            }
+            /* $("#color_list li").on('click', function(){
+                var ind = $(this).attr('data-index');
+            }); */
+        }
+    }
+    showint_extimage(1);
+}
+function showint_extimage(type){
+    if(type == 1)
+    {
+        $('.caps2').removeClass('tabHeadActive');
+        $('.caps1').addClass('tabHeadActive');
+        $('.int_list').removeClass('d-none');
+        $('.ext_list').addClass('d-none');
+    }else{
+        $('.caps1').removeClass('tabHeadActive');
+        $('.caps2').addClass('tabHeadActive');
+        $('.ext_list').removeClass('d-none');
+        $('.int_list').addClass('d-none');
+    }
+    
+}
 function manageColorDetails(){
     if(carData.color_data && carData.color_data.trim() != "" && carData.color_data.trim() != "[]"){
         var clrData = JSON.parse(carData.color_data);
@@ -240,18 +375,28 @@ function manageVideoDetails(){
                 if(vid_match){
                     var youtube_video_id = vid_match.pop();
 
-                    var ver_html = `<a href="${viddata}" target="_blank">
-                                        <div class="video-preview-div">
-                                            <img src="//img.youtube.com/vi/${youtube_video_id}/0.jpg" class="video-preview">
-                                            <div class="video-title-div">
-                                                <span id="vid_title_${youtube_video_id}" class="video-title"></span>
-                                                <i class="video-play-btn fa fa-play-circle"></i>
-                                            </div>
-                                        </div>
-                                    </a>`;
+                   
+                    var ver_html = `<a href="javascript:void(0)">
+                        <div class="video-preview-div" data-videoid="${youtube_video_id}">
+                            <img src="//img.youtube.com/vi/${youtube_video_id}/0.jpg" class="video-preview">
+                            <div class="video-title-div">
+                                <span id="vid_title_${youtube_video_id}" class="video-title"></span>
+                                <i class="video-play-btn fa fa-play-circle"></i>
+                            </div>
+                        </div>
+                    </a>`;
                     $(".video-list").append(ver_html);
                     $(".video-section").removeClass('d-none');
-
+                    $(".video-preview-div").on('click', function(){
+                        var videoid=$(this).attr('data-videoid');
+                        var videoht = `<div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" style="height: 600px;width: 100%;" src="//www.youtube.com/embed/${videoid}?autoplay=1" allowfullscreen></iframe>
+                        </div>`;
+                        // alert(videoht);
+                        $("#web_comman_ListModal #web_comman_list_model_div").html(videoht);
+                        $("#web_comman_ListModal").modal('show');
+                        $("#web_comman_ListModal .web_comman_list_model_header").html('Expert Car Review');
+                    });
                     fetch(`https://noembed.com/embed?dataType=json&url=${viddata}`)
                     .then(res => res.json())
                     .then(data => {
