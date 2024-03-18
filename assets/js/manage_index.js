@@ -5,7 +5,17 @@ jQuery(function () {
 function loadMoreBrand(){
     $("#brand_list").toggleClass("limited-list");
     $(".load-more-brand-div").toggleClass("d-none");
+    $(".load-less-brand-div").toggleClass("d-none");
     $("#brand_list").css("max-height", "auto");
+}
+function loadlessBrand(){
+    $("#brand_list").toggleClass("limited-list");
+    $(".load-more-brand-div").toggleClass("d-none");
+    $(".load-less-brand-div").toggleClass("d-none");
+    var margin = (+$("#brand_list a:nth-child(1)").css('margin-top').replace('px','') * 2);
+    var tot_height = +$("#brand_list a:nth-child(1)")[0].clientHeight + margin;
+    var two_line_height = Math.round((tot_height * 2) + 2);
+    $("#brand_list").css('max-height', two_line_height+' px'.trim());
 }
     
 function getHomepageData(){
