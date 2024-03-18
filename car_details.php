@@ -103,8 +103,8 @@
         <ul class="customtabs" id="color_list">
         </ul>
     </div>
-    <div class="nexonblock int_ext-section">
-        <h2 class="nexonvarianttitle">Interior / Exterior Image</h2>
+    <div class="nexonblock int_ext-section d-none">
+        <h2 class="nexonvarianttitle d-none">Interior / Exterior Image</h2>
         <div class="nexoncontain">
             <div class="productflex75">
                 <div class="nextewlve" id="int_ext_list">

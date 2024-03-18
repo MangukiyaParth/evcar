@@ -26,6 +26,13 @@ jQuery(function () {
     $(".btnSearch").on('click', function(){
         window.location = ROOT_URL+'search/'+$(this).parent('.search-div').find('.search').val().replace(/ /g, '-');
     });
+
+    $('#web_comman_ListModal').on('hidden.bs.modal', function () {
+        if($('#web_comman_ListModal .preview-img').length == 1){
+            $('#web_comman_ListModal .preview-img').remove();
+            $('.preview-img').slick('unslick');
+        }
+    });
 });
     
 function doAPICall(obj, callback, is_async) {

@@ -1,4 +1,5 @@
 var carData = [];
+var load_ext = false;
 jQuery(function () {
     getcarData();
 });
@@ -20,7 +21,7 @@ function getcarData(){
                 if(carData.brochure_file && carData.main_car_id == ""){
                     // var Filename= carData.brochure_file.split('/').pop();
                     var Filename = carData.name + ' Brochure.pdf';
-                    name_value += `<a href="${WEB_API_FOLDER + carData.brochure_file}" target="_blank" type="application/octet-stream" download="${Filename}" class="download-brochure"><i class="fa fa-download"></i>Download Brochure</a>`;
+                    name_value += `<a href="${WEB_API_FOLDER + carData.brochure_file}" target="_blank" type="application/octet-stream" download="${Filename}" class="download-brochure"><i class="fa fa-download"></i>Brochure</a>`;
                 }
                 $(".vname").html(carData.name);
                 $(".vname-with-brochure").html(name_value);
@@ -33,7 +34,12 @@ function getcarData(){
                 else{
                     $(".vengin-div").remove();
                 }
-                $(".vmodel").html(carData.modal_year + ' Model');
+                if(carData.comming_soon){
+                    $(".vmodel").html('Comming Soon');
+                }
+                else{
+                    $(".vmodel").html(carData.modal_year + ' Model');
+                }
                 $(".vseater").html(carData.seater + ' Seater');
                 $(".vtransmision").html(carData.transmision_name);
                 $(".vtype").html(carData.car_type_name);
@@ -119,18 +125,18 @@ function getcarData(){
 function manage_int_ext_image(){
     $(".int_list").html('');
     $(".ext_list").html('');
-    
+    var galleryDataExist = false;
+    var intgalleryDataExist = false;
+    var extgalleryDataExist = false;
     if(carData.interior_gallery_file && carData.interior_gallery_file.trim() != "" && carData.interior_gallery_file.trim() != "[]"){
         var int_img_Data = JSON.parse(carData.interior_gallery_file);
-        // console.log(int_img_Data.length);
         if(int_img_Data && int_img_Data.length > 0)
         {
             var html_int = "";
             var j=0;
             int_img_Data.forEach(function (i) {
-                //  console.log(j);
                 html_int += `<a href="javascript:void(0)">
-                    <div class="video-preview-div">
+                    <div class="video-preview-div gallery-img-preview-div" data-gallery-type="int">
                         <img src="${WEB_API_FOLDER+i}" alt="productimage">
                     </div>
                 </a>`;
@@ -138,43 +144,8 @@ function manage_int_ext_image(){
                 j++;
             });
             $(".int_list").html(html_int);
-            if(j == int_img_Data.length){
-                
-                $('.int_list').slick({
-                    dots: true,
-                    infinite: false,
-                    speed: 300,
-                    slidesToShow: 4,
-                    arrows: true,
-                    responsive: [
-                        {
-                            breakpoint: 1024,
-                            settings: {
-                            slidesToShow: 3,
-                            infinite: true,
-                            arrows: false
-                            }
-                        },
-                        {
-                            breakpoint: 600,
-                            settings: {
-                            slidesToShow: 2,
-                            arrows: false
-                            }
-                        },
-                        {
-                            breakpoint: 480,
-                            settings: {
-                            slidesToShow: 1,
-                            arrows: false
-                            }
-                        }
-                    ]
-                });
-            }
-            /* $("#color_list li").on('click', function(){
-                var ind = $(this).attr('data-index');
-            }); */
+            galleryDataExist = true;
+            intgalleryDataExist = true;
         }
     }
     if(carData.gallery_file && carData.gallery_file.trim() != "" && carData.gallery_file.trim() != "[]"){
@@ -185,9 +156,8 @@ function manage_int_ext_image(){
             var html_ext = "";
             var j=0;
             ext_img_data.forEach(function (i) {
-                //  console.log(j);
                 html_ext += `<a href="javascript:void(0)" style="width: 256px;">
-                    <div class="video-preview-div">
+                    <div class="video-preview-div gallery-img-preview-div" data-gallery-type="ext">
                         <img src="${WEB_API_FOLDER+i}" alt="productimage">
                     </div>
                 </a>`;
@@ -195,9 +165,18 @@ function manage_int_ext_image(){
                 j++;
             });
             $(".ext_list").html(html_ext);
-            if(j == ext_img_data.length){
-                
-                $('.ext_list').slick({
+            galleryDataExist = true;
+            extgalleryDataExist = true;
+        }
+    }
+
+    if(galleryDataExist){
+        if(!intgalleryDataExist){
+            $('.caps1').addClass('d-none');
+        }
+        else{
+            setTimeout(() => {
+                $('.int_list').slick({
                     dots: true,
                     infinite: false,
                     speed: 300,
@@ -207,34 +186,44 @@ function manage_int_ext_image(){
                         {
                             breakpoint: 1024,
                             settings: {
-                            slidesToShow: 3,
-                            infinite: true,
-                            arrows: false
+                                slidesToShow: 3,
+                                arrows: false
                             }
                         },
                         {
                             breakpoint: 600,
                             settings: {
-                            slidesToShow: 2,
-                            arrows: false
+                                slidesToShow: 2,
+                                arrows: false
                             }
                         },
                         {
                             breakpoint: 480,
                             settings: {
-                            slidesToShow: 1,
-                            arrows: false
+                                slidesToShow: 1,
+                                arrows: false
                             }
                         }
                     ]
                 });
-            }
-            /* $("#color_list li").on('click', function(){
-                var ind = $(this).attr('data-index');
-            }); */
+            }, 100);
         }
+        if(!extgalleryDataExist){
+            $('.caps2').addClass('d-none');
+        }
+
+        if(intgalleryDataExist){
+            showint_extimage(1);
+        }
+        else{
+            showint_extimage(2);
+        }
+        $(".int_ext-section").removeClass('d-none');
+        manage_gallery_preview();
     }
-    showint_extimage(1);
+    else{
+        $(".int_ext-section").remove();
+    }
 }
 function showint_extimage(type){
     if(type == 1)
@@ -248,9 +237,101 @@ function showint_extimage(type){
         $('.caps2').addClass('tabHeadActive');
         $('.ext_list').removeClass('d-none');
         $('.int_list').addClass('d-none');
+        if(!load_ext){
+            setTimeout(() => {
+                $('.ext_list').slick({
+                    dots: true,
+                    infinite: false,
+                    speed: 300,
+                    slidesToShow: 4,
+                    arrows: true,
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: 3,
+                                arrows: false
+                            }
+                        },
+                        {
+                            breakpoint: 600,
+                            settings: {
+                                slidesToShow: 2,
+                                arrows: false
+                            }
+                        },
+                        {
+                            breakpoint: 480,
+                            settings: {
+                                slidesToShow: 1,
+                                arrows: false
+                            }
+                        }
+                    ]
+                });
+            }, 100);
+            load_ext = true;
+        }
     }
     
 }
+
+function manage_gallery_preview(){
+    $(".gallery-img-preview-div").on("click", function(){
+        var gallery_type = $(this).prop("data-gallery-type");
+        var html_img = "";
+        if(gallery_type == 'int')
+        {
+            if(carData.interior_gallery_file && carData.interior_gallery_file.trim() != "" && carData.interior_gallery_file.trim() != "[]"){
+                var int_img_Data = JSON.parse(carData.interior_gallery_file);
+                if(int_img_Data && int_img_Data.length > 0)
+                {
+                    int_img_Data.forEach(function (i) {
+                        html_img += `<a href="javascript:void(0)">
+                            <div class="video-preview-div gallery-img-preview-div">
+                                <img src="${WEB_API_FOLDER+i}" alt="productimage">
+                            </div>
+                        </a>`;
+                    });
+                }
+            }
+        }
+        else{
+            if(carData.gallery_file && carData.gallery_file.trim() != "" && carData.gallery_file.trim() != "[]"){
+                var ext_img_data = JSON.parse(carData.gallery_file);
+                if(ext_img_data && ext_img_data.length > 0)
+                {
+                    ext_img_data.forEach(function (i) {
+                        html_img += `<a href="javascript:void(0)" style="width: 256px;">
+                            <div class="video-preview-div gallery-img-preview-div">
+                                <img src="${WEB_API_FOLDER+i}" alt="productimage">
+                            </div>
+                        </a>`;
+                    });
+                }
+            }
+        }
+
+        if(html_img != ""){
+            html_img = `<div class="preview-img">${html_img}</div>`;
+            $("#web_comman_ListModal #web_comman_list_model_div").html(html_img);
+            setTimeout(() => {
+                $('.preview-img').slick({
+                    dots: true,
+                    infinite: false,
+                    speed: 300,
+                    slidesToShow: 1,
+                    arrows: true
+                });
+            },500);
+            $("#web_comman_ListModal").modal('show');
+            $("#web_comman_ListModal .web_comman_list_model_header").html('Image Preview');
+        }
+    });
+}
+
+
+
 function manageColorDetails(){
     if(carData.color_data && carData.color_data.trim() != "" && carData.color_data.trim() != "[]"){
         var clrData = JSON.parse(carData.color_data);
