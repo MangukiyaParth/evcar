@@ -193,6 +193,7 @@ CREATE TABLE `tbl_news` (
   `description` longtext DEFAULT NULL,
   `main_image` varchar(300) DEFAULT NULL,
   `main_image_data` longtext DEFAULT NULL,
+  `tags` LONGTEXT DEFAULT NULL,
   `entry_uid` varchar(50) DEFAULT NULL,
   `entry_date` datetime DEFAULT NULL,
   `update_uid` varchar(50) DEFAULT NULL,

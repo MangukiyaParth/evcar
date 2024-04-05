@@ -16,8 +16,16 @@ function getnewsdetails(){
                                 <h2 class="mb-4">${newsData.title}</h2>
                                 <img src="${WEB_API_FOLDER+newsData.main_image}" class="w-100" alt="2stcar">
                                 <h6 class="dates mb-3">${newsData.disp_date}</h6>
-                                <div class="csrnewsub general-description">${newsData.description.replaceAll("\\","")}</div>
-                            </div>`;
+                                <div class="csrnewsub general-description">${newsData.description.replaceAll("\\","")}</div>`;
+            if(newsData.tags && newsData.tags != "" && newsData.tags != "[]"){
+                let tags = JSON.parse(newsData.tags.replace(/\\"/g,'"'), true);
+                html_news += `<ul class="tag-list">`;
+                tags.forEach(tag => { 
+                    html_news += `<li># ${tag}</li>`;
+                });
+                html_news += `</ul>`;
+            }
+            html_news += `</div>`;
             $("#news_list").html(html_news);
             return false;
         }

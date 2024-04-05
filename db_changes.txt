@@ -80,3 +80,6 @@ ALTER TABLE `tbl_cars`
 
 ALTER TABLE `tbl_cars`   
   CHANGE `modal_year` `modal_year` VARCHAR(50) NULL;
+
+ALTER TABLE `tbl_news`   
+  ADD COLUMN `tags` LONGTEXT DEFAULT '[]' AFTER `main_image_data`;

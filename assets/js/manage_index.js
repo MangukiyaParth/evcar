@@ -159,13 +159,13 @@ function getHomepageData(){
             {
                 var html_news = "";
                 newsData.forEach(function (value) {
-                    html_news += `<div class="validflex1">
+                    html_news += `<a class="validflex1" href="${ROOT_URL}news/${value.sub_title}">
                                     <img src="${WEB_API_FOLDER+value.main_image}" alt="2stcar">
                                     <h6 class="dates">${value.disp_date}</h6>
                                     <h4 class="customservice news-title">${value.title}</h4>
                                     <p class="csrnewsub news-desc">${value.short_desc}</p>
-                                    <a href="${ROOT_URL}news/${value.sub_title}" class="showall">Read More</a>
-                                </div>`;
+                                    <span class="showall">Read More</span>
+                                </a>`;
                     
                 });
                 $("#news_list").html(html_news);

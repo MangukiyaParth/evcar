@@ -7,9 +7,22 @@ jQuery(function () {
 function callOnLoad(){
     HTMLEditor("description", 0);
     get_data();
+    $('#tags').tagEditor({
+        placeholder: 'Enter tags ...'
+    });
+    // // addTag
+    // $('#demo3').tagEditor('addTag', 'example');
+
+    // // removeTag
+    // $('#demo3').tagEditor('removeTag', 'example');
+
 }
 
 function resetform(){
+    var tags = $('#tags').tagEditor('getTags')[0].tags;
+    if(tags){
+        for (i = 0; i < tags.length; i++) { $('#demo3').tagEditor('removeTag', tags[i]); }
+    }
     $('#formevent').val('submit');
 }
 $('#dis_order').on('input', function() {
@@ -35,7 +48,19 @@ function get_data() {
             { data: 'id', name: 'id', "width": "0%", className: "d-none" },
             { data: 'title', name: 'title', "width": "20%" },
             { data: 'news_date', name: 'news_date', "width": "10%" },
-            { data: 'short_desc', name: 'short_desc', "width": "50%" },
+            { data: 'short_desc', name: 'short_desc', "width": "35%" },
+            {
+                data: null,
+                orderable: false,
+                render: function (data, type, row) {
+                    var details ='';
+                    if(row.tags && row.tags != "" && row.tags != "[]"){
+                        let tags = JSON.parse(row.tags.replace(/\\"/g,'"'), true);
+                        return tags.join(", ");
+                    }
+                    return details;
+                }, name: 'tags', "width": "15%"
+            },
             {
                 data: null,
                 orderable: false,
@@ -56,7 +81,7 @@ function get_data() {
             },
         ],
         "columnDefs": [{
-            "targets": 5,
+            "targets": 6,
             "className": "text-end",
             "data": "id",
             "render": function (data, type, row, meta) {
@@ -114,6 +139,7 @@ if($('#'+FORMNAME).length){
                 , news_date: $('#news_date').val()
                 , short_description: $('#short_description').val()
                 , description: editor[0].getData()
+                , tags: JSON.stringify($('#tags').tagEditor('getTags')[0].tags)
                 , formevent: $('#formevent').val()
                 , id: $('#id').val()
             };
@@ -149,6 +175,12 @@ function edit_slider(index) {
         $('#short_description').val(CURRENT_DATA.short_desc);
         // $('#description').val(CURRENT_DATA.description); 
         editor[0].setData(CURRENT_DATA.description.replaceAll("\\",""));
+        if(CURRENT_DATA.tags && CURRENT_DATA.tags != "" && CURRENT_DATA.tags != "[]"){
+            let tags = JSON.parse(CURRENT_DATA.tags.replace(/\\"/g,'"'), true);
+            tags.forEach(tag => {
+                $('#tags').tagEditor('addTag', tag); 
+            });
+        }
         $('#formevent').val('update');
         var logoData = (CURRENT_DATA.main_image_data == "" || CURRENT_DATA.main_image_data == undefined) ? [] : JSON.parse(CURRENT_DATA.main_image_data);
         logoData.forEach(function(imgData) {

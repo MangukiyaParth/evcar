@@ -152,7 +152,11 @@ function apply_after_page_load(){
     //Prevent Submit Form on press Enter
     $('form').on('keyup keypress', function (e) {
         ///Get Target
-        if (e.target.nodeName != 'TEXTAREA' && e.target.id != 'q' && e.target.id != 'tb_email' && e.target.id != 'tb_password' && $(e.target).attr('class') != "note-editable" && !$(e.target).attr('class').includes("ck-editor__editable"))//For Allow Enter in TextArea, Allow when global search enter
+        if (e.target.nodeName != 'TEXTAREA' && 
+        e.target.id != 'q' && e.target.id != 'tb_email' && e.target.id != 'tb_password' && 
+        $(e.target).attr('class') != "note-editable" && 
+        !$(e.target).attr('class')?.includes("ck-editor__editable") &&
+        !$(e.target).parents('ul')?.attr('class')?.includes('tag-editor'))//For Allow Enter in TextArea, Allow when global search enter
         {
             var keyCode = e.keyCode || e.which;
             if (keyCode === 13 && !$(e.target).hasClass('select2-search__field')) {
@@ -186,7 +190,7 @@ function setFileDropzone(element){
         },
         url: API_SERVICE_URL ,
         paramName: pname,
-        maxFilesize: 15, //MB
+        maxFilesize: 100, //MB
         parallelUploads: 2,
         createImageThumbnails: true,
         acceptedFiles: acceptedFiles,
@@ -292,7 +296,7 @@ $(document).ready(function () {
     //Prevent Submit Form on press Enter
     $('form').on('keyup keypress', function (e) {
         ///Get Target
-        if (e.target.nodeName != 'TEXTAREA' && e.target.id != 'q' && e.target.id != 'tb_email' && e.target.id != 'tb_password' && $(e.target).attr('class') != "note-editable" && !$(e.target).attr('class').includes("ck-editor__editable"))//For Allow Enter in TextArea, Allow when global search enter
+        if (e.target.nodeName != 'TEXTAREA' && e.target.id != 'tags'  && e.target.id != 'q' && e.target.id != 'tb_email' && e.target.id != 'tb_password' && $(e.target).attr('class') != "note-editable" && !$(e.target).attr('class').includes("ck-editor__editable"))//For Allow Enter in TextArea, Allow when global search enter
         {
             var keyCode = e.keyCode || e.which;
             if (keyCode === 13 && !$(e.target).hasClass('select2-search__field')) {

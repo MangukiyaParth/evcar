@@ -2484,3 +2484,36 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
     font-weight: bold;
 
 }
+
+.news-area *{
+    text-decoration: none !important;
+}
+
+.tag-list {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+}
+
+.tag-list li{
+    padding: 3px 8px;
+    border: 1px solid #c6c6c6;
+    margin-right: 10px;
+    border-radius: 5px;
+    color: #777;
+    box-shadow: 2px 2px 8px 0px #EEE;
+    position: relative;
+}
+
+.tag-list li:after {
+    content: '';
+    background: linear-gradient(80deg, transparent, transparent, #e7e7e7);
+    display: block;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    top: 1px;
+    right: 2px;
+    rotate: 311deg;
+    border-radius: 50%;
+}

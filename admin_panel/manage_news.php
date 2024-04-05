@@ -46,6 +46,12 @@
                                     </div>
                                     <div class="row">
                                         <div class="mb-3 col-sm-12">
+                                            <label class="form-label" for="tags">Tags</label>
+                                            <input type="text" id="tags" name="tags" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="mb-3 col-sm-12">
                                             <label class="form-label" for="description">Description</label>
                                             <textarea name="description" id="description" class="form-control" placeholder="Enter Description" rows="3" required></textarea> 
                                             <div class="invalid-feedback"> Please enter Description. </div>
@@ -74,6 +80,7 @@
                                             <th>Date </th>
                                             <th>Short Description</th>
                                             <th>Img</th>
+                                            <th>Tags</th>
                                             <th class="text-end">Action</th>
                                         </tr>
                                     </thead>

@@ -271,3 +271,8 @@
 .general-description figure.image-style-side{
 	text-align: end;
 }
+
+.tag-editor .placeholder{
+	background: none !important;
+	color: #6c757d !important;
+}

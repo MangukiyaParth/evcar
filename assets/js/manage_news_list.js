@@ -15,13 +15,13 @@ function getnews(){
             {
                 var html_news = "";
                 newsData.forEach(function (value) {
-                    html_news += `<div class="validflex2">
+                    html_news += `<a class="validflex2" href="${ROOT_URL}news/${value.sub_title}">
                                     <img src="${WEB_API_FOLDER+value.main_image}" class="w-100" alt="2stcar">
                                     <h6 class="dates">${value.disp_date}</h6>
                                     <h4 class="customservice">${value.title}</h4>
                                     <p class="csrnewsub">${value.short_desc}</p>
-                                    <a href="${ROOT_URL}news/${value.sub_title}" class="showall">Read More</a>
-                                </div>`;
+                                    <span class="showall">Read More</span>
+                                </a>`;
                     
                 });
                 $("#news_list").html(html_news);

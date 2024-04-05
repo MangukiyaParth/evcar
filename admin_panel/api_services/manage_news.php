@@ -61,6 +61,7 @@ function manage_news()
 		$news_date = $gh->read("news_date");
 		$short_description = $gh->read("short_description");
 		$description = $gh->read("description");
+		$tags = $gh->read("tags");
 		$date = date('Y-m-d H:i:s');
 		$formevent = $gh->read("formevent");
 
@@ -94,6 +95,7 @@ function manage_news()
 					"description" => $description,
 					"main_image" => $file_new_url,
 					"main_image_data" => $logo_data,
+					"tags" => $tags,
 					"entry_uid" => $user_id,
 					"entry_date" => $date,
 				);
@@ -114,6 +116,7 @@ function manage_news()
 					"news_date" => $news_date,
 					"short_desc" => $short_description,
 					"description" => $description,
+					"tags" => $tags,
 					"update_uid" => $user_id,
 					"update_date" => $date,
 				);
