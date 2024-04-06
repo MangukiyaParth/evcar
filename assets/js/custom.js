@@ -24,7 +24,9 @@ jQuery(function () {
 	});
 
     $(".btnSearch").on('click', function(){
-        window.location = ROOT_URL+'search/'+$(this).parent('.search-div').find('.search').val().replace(/ /g, '-');
+        if($(this).parent('.search-div').find('.search').val() != ""){
+            window.location = ROOT_URL+'search/'+$(this).parent('.search-div').find('.search').val().replace(/ /g, '-');
+        }
     });
 
     $('#web_comman_ListModal').on('hidden.bs.modal', function () {

@@ -99,7 +99,8 @@
                             </div>
                             <div class="loginbutton">
                                 <!-- <p class="loggedin  "><a href="#" class="btn">Login</a></p> -->
-                                <img src="<?php echo ROOT_URL; ?>assets/img/search-Button.png" alt="searchbtn" class="seracbar mobsearchbtn">
+                                <!-- <img src="<?php echo ROOT_URL; ?>assets/img/search-Button.png" alt="searchbtn" class="seracbar mobsearchbtn"> -->
+                                <i class="fa fa-search btnSearch seracbar mobsearchbtn header-search"></i>
                                 <span class="seracbar mobsearchbtn mobsearchclosebtn"><i class="fa fa-close"></i></span>
                             </div>
                         </div>
@@ -130,7 +131,8 @@
                         <div>
                             <form class="d-flex align-items-center position-relative flex-column search-div" role="search">
                                 <input class="form-control me-2 ps-4 pe-5 rounded-pill search" type="text" placeholder="Search" aria-label="Search">
-                                <img src="<?php echo ROOT_URL; ?>assets/img/search-Button.png" alt="searchbtn" class="btnSearch seracbar position-absolute right-0">
+                                <!-- <img src="<?php echo ROOT_URL; ?>assets/img/search-Button.png" alt="searchbtn" class="btnSearch seracbar position-absolute right-0"> -->
+                                <i class="fa fa-search btnSearch seracbar position-absolute right-0 header-search"></i>
                                 <div class="searchCarList" id="search_car_list" style="display: none;"></div>
                             </form>
                         </div>
@@ -150,7 +152,8 @@
                         <div class="my-3">
                             <form class="d-flex align-items-center position-relative search-div" role="search">
                                 <input class="form-control me-2 rounded-pill search" type="text" placeholder="Search" aria-label="Search">
-                                <img src="<?php echo ROOT_URL; ?>assets/img/search-Button.png" alt="searchbtn" class="seracbar btnSearch">
+                                <!-- <img src="<?php echo ROOT_URL; ?>assets/img/search-Button.png" alt="searchbtn" class="seracbar btnSearch"> -->
+                                <i class="fa fa-search seracbar btnSearch header-search position-absolute right-0"></i>
                                 <div class="searchCarList" id="mob_search_car_list" style="display: none;"></div>
                             </form>
                         </div>

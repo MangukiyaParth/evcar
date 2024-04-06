@@ -21,7 +21,7 @@ function callOnLoad(){
 function resetform(){
     var tags = $('#tags').tagEditor('getTags')[0].tags;
     if(tags){
-        for (i = 0; i < tags.length; i++) { $('#demo3').tagEditor('removeTag', tags[i]); }
+        for (i = 0; i < tags.length; i++) { $('#tags').tagEditor('removeTag', tags[i]); }
     }
     $('#formevent').val('submit');
 }

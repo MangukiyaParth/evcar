@@ -287,7 +287,7 @@ echo $include_javscript_at_bottom;
 					prior.parentNode.insertBefore(script, prior);
 					apply_after_page_load();
 					
-					if(newPage == 'manage_dashboard' || newPage == 'manage_setting'){
+					if(newPage == 'manage_dashboard' || newPage == 'manage_setting' || newPage == 'manage_home'){
 						$(".topbar-menu .action-btn").addClass('d-none');
 					}else{
 						$(".topbar-menu .action-btn").removeClass('d-none');

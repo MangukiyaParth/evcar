@@ -11,7 +11,13 @@
     </div>
 
     <div class="prdousctflex">
-        <div class="productpicture productcarslide" id="color_img">
+        <div class="productpicture">
+            <div class="productcarslide" id="color_img">
+            </div>
+            <div class="produtabs">
+                <ul class="customtabs" id="color_list">
+                </ul>
+            </div>
         </div>
         <div class="productpera">
             <p class="starrating d-none">
@@ -98,11 +104,6 @@
 
     <!-- 2nd part -->
     
-
-    <div class="produtabs">
-        <ul class="customtabs" id="color_list">
-        </ul>
-    </div>
     <div class="nexonblock int_ext-section d-none">
         <h2 class="nexonvarianttitle d-none">Interior / Exterior Image</h2>
         <div class="nexoncontain">

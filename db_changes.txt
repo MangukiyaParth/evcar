@@ -83,3 +83,17 @@ ALTER TABLE `tbl_cars`
 
 ALTER TABLE `tbl_news`   
   ADD COLUMN `tags` LONGTEXT DEFAULT '[]' AFTER `main_image_data`;
+
+insert into `tbl_menumaster` (`id`, `menuname`, `pagename`) values ('17122969-5158-1450-3f30-e50069cb47f8', 'Home Manage', 'manage_home');
+
+CREATE TABLE `tbl_home_manage`(  
+  `id` VARCHAR(50) NOT NULL,
+  `list_type` INT,
+  `car_id` VARCHAR(50),
+  `car_name` VARCHAR(250),
+  `entry_uid` VARCHAR(50),
+  `entry_date` DATETIME,
+  `update_uid` VARCHAR(50),
+  `update_date` DATETIME,
+  PRIMARY KEY (`id`)
+);

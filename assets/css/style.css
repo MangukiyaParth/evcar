@@ -196,7 +196,8 @@ body {
 }
 
 .productcarslide .slick-prev:before, .productcarslide .slick-next:before,
-.preview-img .slick-prev:before, .preview-img .slick-next:before {
+.preview-img .slick-prev:before, .preview-img .slick-next:before,
+.trandingslider .slick-prev:before, .trandingslider .slick-next:before {
     color: #40b54d !important;
     background: #FFF;
     border-radius: 50%;
@@ -346,7 +347,8 @@ display: none;
     flex: 0 0 25%;
     max-width: calc(25% - 30px);
     margin: 1% 15px;
-    border: 1px solid #9D9EA2;
+    /* border: 1px solid #9D9EA2; */
+    border: 1px solid #DEDEDE;
     border-radius: 9px;
 }
 
@@ -358,8 +360,8 @@ display: none;
 .carprice {
     font-size: 18px;
     line-height: 27px;
-    color: #000000;
-    font-weight: 700;
+    color: #2F2F2F;
+    font-weight: 600;
     margin: 0;
     padding: 3px 0px;
     font-family: 'Lexend';
@@ -378,8 +380,10 @@ display: none;
 .showroomtitle {
     font-size: 14px;
     line-height: 21px;
-    letter-spacing: -0.5px;
-    color: #46494F;
+    /* letter-spacing: -0.5px;
+    color: #46494F; */
+    letter-spacing: 0;
+    color: #a6a9af;
     margin: 0px;
     font-family: 'Lexend';
     font-weight: 400;
@@ -401,6 +405,7 @@ display: none;
 
 .compareprice {
     margin: 0px;
+    display: inherit;
 }
 
 .compareprice a {
@@ -409,7 +414,7 @@ display: none;
     line-height: 13px;
     font-weight: 500;
     color: #000;
-    border: 1px solid;
+    border: 1px solid #AFAFAF;
     padding: 7px 8px;
     border-radius: 25px;
     font-family: 'Lexend';
@@ -638,6 +643,7 @@ display: none;
     flex: 0 0 33.33%;
     max-width: 32.33%;
     margin-top: 1%;
+    margin-bottom: 40px;
 }
 
 .validflex2 {
@@ -762,9 +768,9 @@ display: none;
     padding: 6% 0px;
 }
 
-.borderlineblog {
+/* .borderlineblog {
     border-bottom: 1px solid #C8C9CB;
-}
+} */
 
 .fa.fa-facebook {
     padding: 5px 9px;
@@ -851,6 +857,7 @@ display: none;
     display: flex;
     flex-wrap: wrap;
     padding-bottom: 3%;
+    align-items: center;
 }
 
 .footerlfle1 {
@@ -1391,15 +1398,22 @@ display: none;
 
 .navonlysearchbar.carlogoflex {
     display: none;
+    position: absolute;
+    top: 0;
+    left: 17%;
+    z-index: 999;
 }
 
 .mobsearchclosebtn{
+    display: none;
+    margin-right: 3px;
+}
+
+.mobsearchclosebtn i{
     background: #40b54d;
     color: #FFF;
-    padding: 8px 12px;
-    font-size: 15px;
+    padding: 14px 15px;
     border-radius: 50%;
-    display: none;
 }
 
 .detailbutton:hover {
@@ -2077,12 +2091,12 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
     .carfont,
     .carnewsubtitle,
     .carnewsubtitle {
-        font-size: 30px;
-        line-height: 35px;
+        font-size: 20px;
+        line-height: 25px;
     }
     .item {
         max-width: calc(50% - 10px);
-        margin: 1% 5px;
+        margin: 2% 5px;
     }
     .newflexreviw {
         flex: 0 0 100%;
@@ -2091,7 +2105,11 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
     .morbtn a{
         display: inline-block;
         margin: 0;
-        padding: 12px 25px;
+        padding: 7px 20px;
+        font-size: 14px;
+    }
+    .loadmorbtn {
+        padding: 0 0 3% 0;
     }
     .carlistfooter {
         display: list-item;
@@ -2116,6 +2134,9 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
     }
 }
 @media only screen and (max-width: 414px) {
+    body {
+        font-size: 14px !important;
+    }
     .cstomflex1 {
         flex: 0 0 100%;
         max-width: 100%;
@@ -2131,8 +2152,24 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
         flex: 0 0 100%;
         max-width: calc(100% - 10px);
     }
-
-
+    .carprice {
+        height: 60px;
+    }
+    .nexontitle {
+        font-size: 23px;
+    }
+    .pdprice {
+        font-size: 20px;
+    }
+    .productcartab-link{
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+    .download-brochure{
+        padding: 4px 15px !important;
+        display: inline-block;
+        width: fit-content;
+    }
 }
 
 @media only screen and (max-width: 375px) {
@@ -2153,6 +2190,7 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
     .carprice {
         font-size: 15px;
         line-height: 18px;
+        height: 45px;
     }
     .boxtitle {
         font-size: 14px;
@@ -2343,7 +2381,7 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
 .download-brochure{
     font-size: 15px;
     color: #40b54d;
-    margin-left: 15px;
+    /* margin-left: 15px; */
     text-decoration: none;
     border: 1px solid #40b54d;
     padding: 10px 15px;
@@ -2516,4 +2554,110 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
     right: 2px;
     rotate: 311deg;
     border-radius: 50%;
+}
+
+.designed-title:after {
+    content: '';
+    display: block;
+    width: 150px;
+    height: 5px;
+    background: linear-gradient(45deg, #40b54d, transparent);
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.trandingslider .slick-list {
+    /* overflow-x: visible !important; */
+    padding-top: 50px;
+    padding-bottom: 25px;
+}
+
+.trandingslider .slick-prev {
+    right: 45px;
+    left: auto;
+    bottom: 0;
+    top: auto;
+    z-index: 2;
+    color: #ffffff;
+}
+
+.trandingslider .slick-next {
+    right: 20px;
+    bottom: 0;
+    top: auto;
+    z-index: 2;
+    color: #ffffff;
+}
+
+.trandingslider .tranding-item {
+    padding: 20px;
+    position: relative;
+}
+
+.trandingslider img {
+    border-radius: 15px;
+    /* box-shadow: 5px 5px 8px 3px #8ba38d8a; */
+}
+
+.trandingslider .tranding-item:hover img {
+    box-shadow: 5px 5px 8px 3px #8ba38d8a;
+    transform: scale(1.02) translateY(-3px);
+    transition-duration: .3s;
+}
+
+.trandingslider .pricebox {
+    position: absolute;
+    top: -20%;
+    left: 5%;
+    padding: 0;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+}
+
+.trandingslider .slide-index {
+    font-size: 130px;
+    line-height: 130px;
+    color: #40b54d;
+    font-weight: 500;
+    z-index: 9999;
+}
+
+.trandingslider .pricebox1 {
+    margin-top: 10%;
+    padding-left: 5px;
+    color: #46494F !important;
+}
+
+@media only screen and (max-width: 920px) {
+    .trandingslider .pricebox {
+        left: 10%;
+        top: -15%;
+    }
+    .trandingslider .tranding-item{
+        padding: 40px 10px !important
+    }
+    .trandingslider .slide-index{
+        font-size: 120px;
+        line-height: 120px;
+    }
+}
+@media only screen and (max-width: 540px) {
+    .trandingslider .pricebox {
+        left: 10%;
+        top: -8%;
+    }
+    .trandingslider .tranding-item{
+        padding: 40px 20px !important
+    }
+    .trandingslider .pricebox1{
+        margin-top: 5%;
+    }
+}
+
+.header-search{
+    padding: 14px;
+    background: #40b54d;
+    color: #FFF;
+    border-radius: 50%;
+    margin-right: 3px;
 }

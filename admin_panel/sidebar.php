@@ -37,6 +37,7 @@
 
             $manage_car_viewright =1;
             $manage_news_viewright =1;
+            $manage_home_viewright =1;
             $manage_setting_viewright =1;
 
         }else{
@@ -47,6 +48,7 @@
 
             $manage_car_Array = $gh->findArrayByValue($setrights, 'pagename','manage_car');
             $manage_news_Array = $gh->findArrayByValue($setrights, 'pagename','manage_news');
+            $manage_home_Array = $gh->findArrayByValue($setrights, 'pagename','manage_home');
             $manage_setting_Array = $gh->findArrayByValue($setrights, 'pagename','manage_setting');
 
             //====================================================  View Rights ====================================================
@@ -57,6 +59,7 @@
 
             $manage_car_viewright =$manage_car_Array['viewright'];
             $manage_news_viewright =$manage_news_Array['viewright'];
+            $manage_home_viewright =$manage_home_Array['viewright'];
             $manage_setting_viewright =$manage_setting_Array['viewright'];
         }
         
@@ -107,6 +110,12 @@
             {
                 ?>
                 <li class="side-nav-item"><a href="javascript:void(0);" onclick="openPage('manage_news')" data-name="manage_news"  class="side-nav-link"><i class="uil-newspaper"></i><span>News</span></a></li>
+                <?php
+            }
+            if($manage_home_viewright ==1)
+            {
+                ?>
+                <li class="side-nav-item"><a href="javascript:void(0);" onclick="openPage('manage_home')" data-name="manage_home"  class="side-nav-link"><i class="mdi mdi-web-refresh"></i><span>Home Manage</span></a></li>
                 <?php
             }
             if($manage_setting_viewright ==1 && false)

@@ -15,8 +15,7 @@ function manage_homepage()
 
 	if($action == "get_data")
 	{
-		$qry_slider="SELECT * FROM tbl_slidermaster
-		WHERE `isactive`=1 ORDER BY `orderno`+0 ASC";
+		$qry_slider="SELECT * FROM tbl_slidermaster WHERE `isactive`=1 ORDER BY `orderno`+0 ASC";
 		$rows_slider = $db->execute($qry_slider);
 		if ($rows_slider != null && is_array($rows_slider) && count($rows_slider) > 0) {	
 			$outputjson["slider"] = $rows_slider;
@@ -34,22 +33,34 @@ function manage_homepage()
 			$outputjson["brand"] = $rows_brand;
 		}
 		
-		$qry_fule="SELECT *, remove_spacialcharacter(name) as encode_name FROM tbl_cars WHERE fule_type = '$const->petrol_fule_id' OR fule_type = '$const->diesel_fule_id' LIMIT 4";
-		$rows_fule = $db->execute($qry_fule);
-		if ($rows_fule != null && is_array($rows_fule) && count($rows_fule) > 0) {	
-			$outputjson["fule_car"] = $rows_fule;
-		}
-		
-		$qry_ev="SELECT *, remove_spacialcharacter(name) as encode_name FROM tbl_cars WHERE fule_type = '$const->ev_fule_id' LIMIT 4";
+		$qry_ev="SELECT *, remove_spacialcharacter(name) as encode_name FROM tbl_cars WHERE id IN (SELECT car_id FROM `tbl_home_manage` WHERE list_type = 1)";
 		$rows_ev = $db->execute($qry_ev);
 		if ($rows_ev != null && is_array($rows_ev) && count($rows_ev) > 0) {	
 			$outputjson["ev_car"] = $rows_ev;
 		}
 		
-		$qry_hybrid="SELECT *, remove_spacialcharacter(name) as encode_name FROM tbl_cars WHERE fule_type = '$const->hybrid_fule_id' LIMIT 4";
+		$qry_hybrid="SELECT *, remove_spacialcharacter(name) as encode_name FROM tbl_cars WHERE id IN (SELECT car_id FROM `tbl_home_manage` WHERE list_type = 2)";
 		$rows_hybrid = $db->execute($qry_hybrid);
 		if ($rows_hybrid != null && is_array($rows_hybrid) && count($rows_hybrid) > 0) {	
 			$outputjson["hybrid_car"] = $rows_hybrid;
+		}
+
+		$qry_fule="SELECT *, remove_spacialcharacter(name) as encode_name FROM tbl_cars WHERE id IN (SELECT car_id FROM `tbl_home_manage` WHERE list_type = 3)";
+		$rows_fule = $db->execute($qry_fule);
+		if ($rows_fule != null && is_array($rows_fule) && count($rows_fule) > 0) {	
+			$outputjson["fule_car"] = $rows_fule;
+		}
+		
+		$qry_tranding="SELECT *, remove_spacialcharacter(name) as encode_name FROM tbl_cars WHERE id IN (SELECT car_id FROM `tbl_home_manage` WHERE list_type = 4)";
+		$rows_tranding = $db->execute($qry_tranding);
+		if ($rows_tranding != null && is_array($rows_tranding) && count($rows_tranding) > 0) {	
+			$outputjson["tranding_car"] = $rows_tranding;
+		}
+		
+		$qry_upcoming="SELECT *, remove_spacialcharacter(name) as encode_name FROM tbl_cars WHERE id IN (SELECT car_id FROM `tbl_home_manage` WHERE list_type = 5)";
+		$rows_upcoming = $db->execute($qry_upcoming);
+		if ($rows_upcoming != null && is_array($rows_upcoming) && count($rows_upcoming) > 0) {	
+			$outputjson["upcoming_car"] = $rows_upcoming;
 		}
 		
 		$qry_news="SELECT *, DATE_FORMAT(STR_TO_DATE(news_date,'%d/%m/%Y'),'%M %d, %Y') as disp_date FROM tbl_news ORDER BY STR_TO_DATE(news_date,'%d/%m/%Y') DESC LIMIT 6";

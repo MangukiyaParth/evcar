@@ -86,7 +86,8 @@ $(document).ready(function() {
         $(".navbarcustom .navbar-nav").slideToggle();
     });
     $(".mobsearchbtn").click(function() {
-        $(".navonlysearchbar").slideToggle();
+        // $(".navonlysearchbar").slideToggle();
+        $(".navonlysearchbar").toggle("slide");
         $(".mobsearchbtn").toggle();
     });
 

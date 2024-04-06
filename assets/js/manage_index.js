@@ -32,6 +32,8 @@ function getHomepageData(){
             var fuleData = data.fule_car;
             var evData = data.ev_car;
             var hybridData = data.hybrid_car;
+            var upcomingData = data.upcoming_car;
+            var trandingData = data.tranding_car;
 
             if(sliderData && sliderData.length > 0)
             {
@@ -195,10 +197,12 @@ function getHomepageData(){
                                 </div>`;       
                 });
                 $("#fule_list").html(html_fule);
+                $(".fule-area").removeClass('d-none');
             }
             else{
                 $(".fule-area").remove();
             }
+
             if(hybridData && hybridData.length > 0)
             {
                 var html_hybrid = "";
@@ -220,10 +224,12 @@ function getHomepageData(){
                                 </div>`;       
                 });
                 $("#hybrid_list").html(html_hybrid);
+                $(".hybrid-area").removeClass('d-none');
             }
             else{
                 $(".hybrid-area").remove();
             }
+
             if(evData && evData.length > 0)
             {
                 var html_ev = "";
@@ -245,9 +251,97 @@ function getHomepageData(){
                                 </div>`;       
                 });
                 $("#ev_list").html(html_ev);
+                $(".ev-area").removeClass('d-none');
             }
             else{
                 $(".ev-area").remove();
+            }
+            
+            if(upcomingData && upcomingData.length > 0)
+            {
+                var html_upcoming = "";
+                upcomingData.forEach(function (value) {
+                    html_upcoming += `<div class="item">
+                                    <div class="carimagrang">
+                                        <img src="${WEB_API_FOLDER+value.file}" alt="${value.name}">
+                                    </div>
+                                    <div class="pricebox">
+                                        <div class="pricebox1 w-100">
+                                            <h4 class="boxtitle">${value.name}</h4>
+                                            <h5 class="carprice">Rs. ${value.price}</h5>
+                                            <div class="pricebox-bottom">
+                                                <p class="showroomtitle">Estimated price</p>
+                                                <p class="compareprice"><a href="${ROOT_URL}cars/${value.encode_name}"> View Details </a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>`;       
+                });
+                $("#upcoming_list").html(html_upcoming);
+                $(".upcoming-area").removeClass('d-none');
+            }
+            else{
+                $(".upcoming-area").remove();
+            }
+            
+            if(trandingData && trandingData.length > 0)
+            {
+                var html_tranding = "";
+                let slide_index = 1;
+                trandingData.forEach(function (value) {
+                    html_tranding += `<a class="tranding-item" href="${ROOT_URL}cars/${value.encode_name}">
+                                        <div class="pricebox">
+                                            <span class="slide-index">${slide_index}</span>
+                                            <div class="pricebox1 w-100">
+                                                <h5>${value.name}</h5>
+                                            </div>
+                                        </div>
+                                        <div class="carimagrang">
+                                            <img src="${WEB_API_FOLDER+value.file}" alt="${value.name}">
+                                        </div>
+                                    </a>`;   
+                    slide_index++;   
+                });
+                $("#tranding_list").html(html_tranding);
+                $(".tranding-area").removeClass('d-none');
+                $('.trandingslider').slick({
+                    dots: false,
+                    infinite: true,
+                    speed: 300,
+                    slidesToShow: 4,
+                    slidesToScroll: 1,
+                    arrows: true,
+                    centerPadding: '60px',
+                    prevArrow: '<button type="button" class="slick-custom-arrow slick-prev"> <i class="fa fa-angle-left" aria-hidden="true"></i> </button>',
+                    nextArrow: '<button type="button" class="slick-custom-arrow slick-next">  <i class="fa fa-angle-right" aria-hidden="true"></i> </button>',
+                    responsive: [{
+                            breakpoint: 991,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 1,
+                                infinite: true,
+                                dots: true
+                            }
+                        },
+                        {
+                            breakpoint: 600,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 2
+                            }
+                        },
+                        {
+                            breakpoint: 480,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
+                        }
+                    ]
+                });
+            }
+            else{
+                $(".tranding-area").remove();
             }
             return false;
         }

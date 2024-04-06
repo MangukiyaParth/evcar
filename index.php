@@ -16,9 +16,9 @@
 
 <!-- tabbing section -->
 
-<section class="logocontainer container ev-area">
+<section class="logocontainer container ev-area d-none">
     <div class="cartitle">
-        <h2 class="carfont">Best EV Cars</h2>
+        <h2 class="carfont designed-title">Best EV Cars</h2>
     </div>
     <div class="foundcar">
         <div class="featuredcar featuredblock">
@@ -32,9 +32,9 @@
         </div>
     </div>
 </section>
-<section class="logocontainer container hybrid-area">
+<section class="logocontainer container hybrid-area d-none">
     <div class="cartitle">
-        <h2 class="carfont">Best Hybrid Cars</h2>
+        <h2 class="carfont designed-title">Best Hybrid Cars</h2>
     </div>
     <div class="foundcar">
         <div class="featuredcar featuredblock">
@@ -48,9 +48,9 @@
         </div>
     </div>
 </section>
-<section class="logocontainer container fule-area">
+<section class="logocontainer container fule-area d-none">
     <div class="cartitle">
-        <h2 class="carfont">Best Fuel Cars</h2>
+        <h2 class="carfont designed-title">Best Fuel Cars</h2>
     </div>
     <div class="foundcar">
         <div class="featuredcar featuredblock">
@@ -63,14 +63,44 @@
         </div>
     </div>
 </section>
+<section class="logocontainer container upcoming-area d-none">
+    <div class="cartitle">
+        <h2 class="carfont designed-title">Upcomming Cars</h2>
+    </div>
+    <div class="foundcar">
+        <div class="featuredcar featuredblock">
+            <div class="disflexcars" id="upcoming_list">
+            </div>
+
+            <div class="loadmorbtn">
+                <p class="morbtn"><a href="<?php echo ROOT_URL.'cars' ?>">More</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="logocontainer container tranding-area d-none">
+    <div class="cartitle">
+        <h2 class="carfont designed-title">Tranding Cars</h2>
+    </div>
+    <div class="foundcar">
+        <div class="featuredcar featuredblock">
+            <div class="testiminialflexstart trandingslider" id="tranding_list">
+            </div>
+
+            <div class="loadmorbtn">
+                <p class="morbtn"><a href="<?php echo ROOT_URL.'cars' ?>">More</a></p>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- symbol section -->
 <div class="symbol brand-area">
     <div class="logocontainer container">
         <div class="dreamtitle">
-            <h2 class="dreamsubtitle">Find your dream car</h2>
+            <h2 class="dreamsubtitle designed-title">Find your dream car</h2>
         </div>
-        <div class="d-flex flex-wrap limited-list" id="brand_list">
+        <div class="d-flex flex-wrap limited-list my-3" id="brand_list">
         </div>
         <div class="loadmorbtn load-more-brand-div">
             <p class="morbtn"><a href="javascript:void(0)" onclick="loadMoreBrand()">More</a></p>
@@ -128,7 +158,7 @@
     <div class="testinmonialbg">
         <div class="logocontainer container">
             <div class="carnewstitle">
-                <h2 class="colortestimonial carnewsubtitle">CUSTOMER TESTIMONIALS</h2>
+                <h2 class="colortestimonial carnewsubtitle designed-title">CUSTOMER TESTIMONIALS</h2>
             </div>
             <div class="testiminialflexstart testimonialslider" id="testimonial_list">
                 
@@ -143,7 +173,7 @@
             <div class="carnewflex d-flex flex-wrap justify-content-between align-items-center">
 
                 <div class="carnewstitle">
-                    <h2 class="carnewsubtitle">EV CARS NEWS</h2>
+                    <h2 class="carnewsubtitle designed-title">EV CARS NEWS</h2>
                 </div>
                 <div class="caeblog">
                     <a href="<?php echo ROOT_URL; ?>news" class="showall">Show All</a>
