@@ -79,8 +79,8 @@
                                             <th>Title </th>
                                             <th>Date </th>
                                             <th>Short Description</th>
-                                            <th>Img</th>
                                             <th>Tags</th>
+                                            <th>Img</th>
                                             <th class="text-end">Action</th>
                                         </tr>
                                     </thead>

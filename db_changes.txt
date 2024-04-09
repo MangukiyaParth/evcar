@@ -97,3 +97,6 @@ CREATE TABLE `tbl_home_manage`(
   `update_date` DATETIME,
   PRIMARY KEY (`id`)
 );
+
+ALTER TABLE `tbl_cars` CHANGE `engine` `engine` VARCHAR(50) NULL;
+ALTER TABLE `tbl_cars_verient` CHANGE `engine` `engine` VARCHAR(50) NULL;

@@ -165,7 +165,7 @@ function getCarList(){
                                         </div>`;
                                     }
                                     html_car += `<div class="carimagrang">
-                                        <img src="${WEB_API_FOLDER+value.file}" alt="${value.name}">
+                                        <img src="${WEB_API_FOLDER+value.file.replace('/images/','/images_thumb/')}" alt="${value.name}" class="tmp-img">
                                     </div>
                                     <div class="pricesettle">
                                         <div class="pricebox1 w-100">
@@ -183,6 +183,7 @@ function getCarList(){
                                 </div>`;
                 });
                 $("#car_list").html(html_car);
+                show_real_image("#car_list .tmp-img");
             }
             else {
                 $("#car_list").html(data.message);

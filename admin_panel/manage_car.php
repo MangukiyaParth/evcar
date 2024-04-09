@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="mb-3 col-sm-4">
                                         <label class="form-label" for="engine">Engine Displacement</label>
-                                        <input type="text" id="engine" name="engine" class="form-control numbersOnlyField" placeholder="Enter engine displacement" />
+                                        <input type="text" id="engine" name="engine" class="form-control" placeholder="Enter engine displacement" />
                                     </div>
                                     <div class="mb-3 col-sm-4">
                                         <label class="form-label" for="modal_year">Modal Year</label>
@@ -264,7 +264,7 @@
                                 <div class="row">
                                     <div class="mb-3 offset-1 col-sm-3">
                                         <label class="form-label" for="verient_engine">Engine Displacement</label>
-                                        <input type="text" id="verient_engine" name="verient_engine" class="form-control numbersOnlyField" placeholder="Enter engine displacement" />
+                                        <input type="text" id="verient_engine" name="verient_engine" class="form-control" placeholder="Enter engine displacement" />
                                     </div>
                                     <div class="mb-3 col-sm-3">
                                         <label class="form-label" for="verient_price">Price</label>

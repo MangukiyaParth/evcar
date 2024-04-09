@@ -443,6 +443,7 @@ display: none;
     margin: 0px;
     font-family: lexend;
     padding-bottom: 1%;
+    text-transform: uppercase;
 }
 
 #brand_list{

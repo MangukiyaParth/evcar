@@ -16,7 +16,7 @@ function getnews(){
                 var html_news = "";
                 newsData.forEach(function (value) {
                     html_news += `<a class="validflex2" href="${ROOT_URL}news/${value.sub_title}">
-                                    <img src="${WEB_API_FOLDER+value.main_image}" class="w-100" alt="2stcar">
+                                    <img src="${WEB_API_FOLDER+value.main_image.replace('/images/','/images_thumb/')}" class="tmp-img w-100" alt="2stcar">
                                     <h6 class="dates">${value.disp_date}</h6>
                                     <h4 class="customservice">${value.title}</h4>
                                     <p class="csrnewsub">${value.short_desc}</p>
@@ -25,6 +25,7 @@ function getnews(){
                     
                 });
                 $("#news_list").html(html_news);
+                show_real_image("#news_list .tmp-img");
             }
             else{
                 $(".news-area").remove();
