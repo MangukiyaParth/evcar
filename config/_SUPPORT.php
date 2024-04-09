@@ -773,6 +773,11 @@ class SUPPORT
 		array_map('unlink', glob("$dirname/*"));
 		array_map("rmdir", glob("$dirname/*")); 
 		rmdir($dirname);
+		
+		$dirname = dirname(__DIR__, 1) . "/admin_panel/api_services/upload/images_thumb/".$type."/".$id;
+		array_map('unlink', glob("$dirname/*"));
+		array_map("rmdir", glob("$dirname/*")); 
+		rmdir($dirname);
 
 	}
 

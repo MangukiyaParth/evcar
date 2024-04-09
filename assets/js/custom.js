@@ -249,3 +249,18 @@ function get_car_suggestion(search, element){
         }
     });
 }
+
+function show_real_image(ele){
+    $(ele).each(function () {
+        // var tmp_url = $(this).prop('src');
+        // var main_url = tmp_url.replace('/images_thumb/','/images/');
+        let main_img_ele = $(this)[0].outerHTML.replace('/images_thumb/','/images/').replace('tmp-img','main-img d-none');
+        $(this).after(main_img_ele);
+        
+        $(this).next('.main-img').on('load', function(){
+            $(this).removeClass('d-none');
+            // $(this).prev('.tmp-img').addClass('d-none');
+            $(this).prev('.tmp-img').remove();
+        })
+    });
+}

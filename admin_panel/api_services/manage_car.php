@@ -106,6 +106,7 @@ function manage_car()
 				$file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
 				$file_data = str_replace('/'.$file_name, '/'.$id.'/'.$file_name, $file_data);
 				rename($file_url, $file_new_url);
+				saveThumbnail($file_new_url, str_replace('/'.$file_name,'', $file_new_url));
 			}
 			
 			$brochure_file_url='';
@@ -153,8 +154,10 @@ function manage_car()
 							$gh->TryCreateDirIfNeeded(str_replace($color_file_name, $id.'/', $color_file_new_url));// Create directory if not exist
 							$color_file_new_url = str_replace($color_file_name, $id.'/'.$color_file_name, $color_file_new_url);
 							$img_data = str_replace('/'.$color_file_name, '/'.$id.'/'.$color_file_name, $img_data);
+
 							array_push($file_urls, $color_file_new_url);
 							rename($color_file_url, $color_file_new_url);
+							saveThumbnail($color_file_new_url, str_replace('/'.$color_file_name,'', $color_file_new_url));
 							$img_cnt++;
 						}
 					}
@@ -305,6 +308,7 @@ function manage_car()
 						$file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
 						$logo_data = str_replace('/'.$logo_data, '/'.$id.'/'.$file_name, $logo_data);
 						rename($file_url, $file_new_url);
+						saveThumbnail($file_new_url, str_replace('/'.$file_name,'', $file_new_url));
 						$data['file'] = $file_new_url;
 						$data['file_data'] = $logo_data;
 
@@ -356,8 +360,10 @@ function manage_car()
 										$gh->TryCreateDirIfNeeded(str_replace($color_file_name, $id.'/', $color_file_new_url));// Create directory if not exist
 										$color_file_new_url = str_replace($color_file_name, $id.'/'.$color_file_name, $color_file_new_url);
 										$img_data = str_replace('/'.$color_file_name, '/'.$id.'/'.$color_file_name, $img_data);
+
 										array_push($file_urls, $color_file_new_url);
 										rename($color_file_url, $color_file_new_url);
+										saveThumbnail($color_file_new_url, str_replace('/'.$color_file_name,'', $color_file_new_url));
 									}
 									else{
 										array_push($file_urls, $imgs['url']);

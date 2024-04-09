@@ -40,7 +40,7 @@ function getHomepageData(){
                 var html_slider = "";
                 sliderData.forEach(function (value) {
                     html_slider += `<div class="carimage" style="background-image: linear-gradient( rgba(8, 14, 19, 0), rgba(8, 14, 19, 1), #FFFFFF)');">
-                                        <img src="${WEB_API_FOLDER+value.file}" class="w-100"/>
+                                        <img src="${WEB_API_FOLDER+value.file.replace('/images/','/images_thumb/')}" class="tmp-img w-100"/>
                                         <div class="bgimagecar">
                                             <h2 class="worldtitle">${value.title}</h2>
                                             <p class="worldsubtitle">${value.description}</p>
@@ -48,6 +48,7 @@ function getHomepageData(){
                                     </div>`;
                 });
                 $("#slider_list").html(html_slider);
+                show_real_image("#slider_list .tmp-img");
                 
                 $('.one-time').slick({
                     dots: true,
@@ -78,7 +79,7 @@ function getHomepageData(){
                                             <div class="reviwprevioue">
                                                 <div class="testimonialfle d-flex align-items-center ">
                                                     <div class="testimonialman">
-                                                        <img src="${WEB_API_FOLDER+value.file}" alt="${value.personname}" class="prsonalman">
+                                                        <img src="${WEB_API_FOLDER+value.file.replace('/images/','/images_thumb/')}" alt="${value.personname}" class="tmp-img prsonalman">
                                                     </div>
                                                     <div class="testimonailperson">
                                                         <h5 class="personname reviedetail">${value.personname}</h5>
@@ -97,6 +98,7 @@ function getHomepageData(){
                     
                 });
                 $("#testimonial_list").html(html_testimonial);
+                show_real_image("#testimonial_list .tmp-img");
                 $('.testimonialslider').slick({
                     dots: false,
                     infinite: true,
@@ -142,12 +144,15 @@ function getHomepageData(){
                 var html_brand = "";
                 brandData.forEach(function (value) {
                     html_brand += `<a class="symbol1 text-decoration-none" href="${ROOT_URL}brand/${value.encode_name}">
-                                            <div class="kiaheight"> <img src="${WEB_API_FOLDER+value.logo}" class="h-100" alt="${value.brand}"></div>
+                                            <div class="kiaheight"> 
+                                            <img src="${WEB_API_FOLDER+value.logo.replace('/images/','/images_thumb/')}" class="h-100 tmp-img" alt="${value.brand}">
+                                            </div>
                                             <p class="symbolname">${value.brand}</p>
                                         </a>`;
                     
                 });
                 $("#brand_list").html(html_brand);
+                show_real_image("#brand_list .tmp-img");
                 var margin = (+$("#brand_list a:nth-child(1)").css('margin-top').replace('px','') * 2);
                 var tot_height = +$("#brand_list a:nth-child(1)")[0].clientHeight + margin;
                 var two_line_height = Math.round((tot_height * 2) + 2);
@@ -162,7 +167,7 @@ function getHomepageData(){
                 var html_news = "";
                 newsData.forEach(function (value) {
                     html_news += `<a class="validflex1" href="${ROOT_URL}news/${value.sub_title}">
-                                    <img src="${WEB_API_FOLDER+value.main_image}" alt="2stcar">
+                                    <img src="${WEB_API_FOLDER+value.main_image.replace('/images/','/images_thumb/')}" class="2stcar tmp-img">
                                     <h6 class="dates">${value.disp_date}</h6>
                                     <h4 class="customservice news-title">${value.title}</h4>
                                     <p class="csrnewsub news-desc">${value.short_desc}</p>
@@ -171,6 +176,7 @@ function getHomepageData(){
                     
                 });
                 $("#news_list").html(html_news);
+                show_real_image("#news_list .tmp-img");
             }
             else{
                 $(".news-area").remove();
@@ -182,7 +188,7 @@ function getHomepageData(){
                 fuleData.forEach(function (value) {
                     html_fule += `<div class="item">
                                     <div class="carimagrang">
-                                        <img src="${WEB_API_FOLDER+value.file}" alt="${value.name}">
+                                        <img src="${WEB_API_FOLDER+value.file.replace('/images/','/images_thumb/')}" alt="${value.name}" class="tmp-img">
                                     </div>
                                     <div class="pricebox">
                                         <div class="pricebox1 w-100">
@@ -197,6 +203,7 @@ function getHomepageData(){
                                 </div>`;       
                 });
                 $("#fule_list").html(html_fule);
+                show_real_image("#fule_list .tmp-img");
                 $(".fule-area").removeClass('d-none');
             }
             else{
@@ -209,7 +216,7 @@ function getHomepageData(){
                 hybridData.forEach(function (value) {
                     html_hybrid += `<div class="item">
                                     <div class="carimagrang">
-                                        <img src="${WEB_API_FOLDER+value.file}" alt="${value.name}">
+                                        <img src="${WEB_API_FOLDER+value.file.replace('/images/','/images_thumb/')}" alt="${value.name}" class="tmp-img">
                                     </div>
                                     <div class="pricebox">
                                         <div class="pricebox1 w-100">
@@ -224,6 +231,7 @@ function getHomepageData(){
                                 </div>`;       
                 });
                 $("#hybrid_list").html(html_hybrid);
+                show_real_image("#hybrid_list .tmp-img");
                 $(".hybrid-area").removeClass('d-none');
             }
             else{
@@ -236,7 +244,7 @@ function getHomepageData(){
                 evData.forEach(function (value) {
                     html_ev += `<div class="item">
                                     <div class="carimagrang">
-                                        <img src="${WEB_API_FOLDER+value.file}" alt="${value.name}">
+                                        <img src="${WEB_API_FOLDER+value.file.replace('/images/','/images_thumb/')}" alt="${value.name}" class="tmp-img">
                                     </div>
                                     <div class="pricebox">
                                         <div class="pricebox1 w-100">
@@ -251,6 +259,7 @@ function getHomepageData(){
                                 </div>`;       
                 });
                 $("#ev_list").html(html_ev);
+                show_real_image("#ev_list .tmp-img");
                 $(".ev-area").removeClass('d-none');
             }
             else{
@@ -263,7 +272,7 @@ function getHomepageData(){
                 upcomingData.forEach(function (value) {
                     html_upcoming += `<div class="item">
                                     <div class="carimagrang">
-                                        <img src="${WEB_API_FOLDER+value.file}" alt="${value.name}">
+                                        <img src="${WEB_API_FOLDER+value.file.replace('/images/','/images_thumb/')}" alt="${value.name}" class="tmp-img">
                                     </div>
                                     <div class="pricebox">
                                         <div class="pricebox1 w-100">
@@ -278,6 +287,7 @@ function getHomepageData(){
                                 </div>`;       
                 });
                 $("#upcoming_list").html(html_upcoming);
+                show_real_image("#upcoming_list .tmp-img");
                 $(".upcoming-area").removeClass('d-none');
             }
             else{
@@ -297,12 +307,13 @@ function getHomepageData(){
                                             </div>
                                         </div>
                                         <div class="carimagrang">
-                                            <img src="${WEB_API_FOLDER+value.file}" alt="${value.name}">
+                                            <img src="${WEB_API_FOLDER+value.file.replace('/images/','/images_thumb/')}" alt="${value.name}" class="tmp-img">
                                         </div>
                                     </a>`;   
                     slide_index++;   
                 });
                 $("#tranding_list").html(html_tranding);
+                show_real_image("#tranding_list .tmp-img");
                 $(".tranding-area").removeClass('d-none');
                 $('.trandingslider').slick({
                     dots: false,

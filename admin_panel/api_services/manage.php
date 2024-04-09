@@ -540,6 +540,7 @@ function uploadDropzoneFiles($fileData,$primary_id){
 			
 			$gh->TryCreateDirIfNeeded(str_replace($file_name, $primary_id.'/', $file_new_url));// Create directory if not exist
 			$file_new_url = str_replace($file_name, $primary_id.'/'.$file_name, $file_new_url);
+			saveThumbnail($file_new_url, str_replace('/'.$file_name,'', $file_new_url));
 			$fileData = str_replace('/'.$file_name, '/'.$primary_id.'/'.$file_name, $fileData);
 			array_push($file_urls, $file_new_url);
 			rename($file_url, $file_new_url);
@@ -553,6 +554,41 @@ function uploadDropzoneFiles($fileData,$primary_id){
 		"file_url" => $file_urls,
 	);
 }
+
+function saveThumbnail($file_url, $dir_path){
+	$new_file_url = str_replace('/images/','/images_thumb/',$file_url);
+	$new_dir_path = str_replace('/images/','/images_thumb/',$dir_path).'/';
+
+	if (!is_dir($new_dir_path) && !file_exists($new_dir_path)) {
+		$oldmask = umask(0);
+		mkdir($new_dir_path, 0777, true);
+		umask($oldmask);
+	}
+
+	$image_info = getimagesize($file_url);
+	$file_size = filesize($file_url);
+	$image_type = ($image_info) ? $image_info[2] : 0;
+
+	if($file_size > 100000 && $image_type && $image_type > 0){
+		
+		if( $image_type == IMAGETYPE_JPEG ) { 
+			$image = imagecreatefromjpeg($file_url);
+		} 
+		elseif( $image_type == IMAGETYPE_GIF ) { 
+			$image = imagecreatefromgif($file_url);
+		} 
+		elseif( $image_type == IMAGETYPE_PNG ) { 
+			$image = imagecreatefrompng($file_url);
+		}
+
+		$compression = (10000000 / $file_size);
+		imagejpeg($image,$new_file_url,$compression);
+	}
+	else{
+		copy($file_url , $new_file_url);
+	}
+}
+
 
 interface MyPackageThrowable extends Throwable
 {

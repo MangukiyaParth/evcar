@@ -83,6 +83,7 @@ function manage_slider()
 				$file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
 				$logo_data = str_replace('/'.$file_name, '/'.$id.'/'.$file_name, $logo_data);
 				rename($file_url, $file_new_url);
+				saveThumbnail($file_new_url, str_replace('/'.$file_name,'', $file_new_url));
 			}
 			$data = array(
 				"id" => $id,
@@ -126,6 +127,7 @@ function manage_slider()
 						$file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
 						$logo_data = str_replace('/'.$logo_data, '/'.$id.'/'.$file_name, $logo_data);
 						rename($file_url, $file_new_url);
+						saveThumbnail($file_new_url, str_replace('/'.$file_name,'', $file_new_url));
 						$data['file'] = $file_new_url;
 						$data['file_data'] = $logo_data;
 
