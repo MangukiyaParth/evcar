@@ -47,7 +47,6 @@
     <link rel="stylesheet" href="<?php echo ROOT_URL; ?>assets/css/slick-theme.min.css">
     <link rel="stylesheet" href="<?php echo ROOT_URL; ?>assets/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&family=Public+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script>
         var PRIMARY_ID = '<?php echo $primary_id; ?>';
         var CURRENT_USER_ID = '<?php echo $current_user_id; ?>';
