@@ -96,17 +96,21 @@ function manage_car()
 			$file_data='';
 			if(isset($_POST["file"]))
 			{
-				$file = json_decode($_POST["file"], true);
-				$file_url = $file[0]['url'];
-				$file_name = $file[0]['filename'];
-				$file_new_url = str_replace('tmp/','images/', $file_url);
-				$file_data = str_replace('tmp/','images/', $_POST["file"]);
+				// $file = json_decode($_POST["file"], true);
+				// $file_url = $file[0]['url'];
+				// $file_name = $file[0]['filename'];
+				// $file_new_url = str_replace('tmp/','images/', $file_url);
+				// $file_data = str_replace('tmp/','images/', $_POST["file"]);
 				
-				$gh->TryCreateDirIfNeeded(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
-				$file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
-				$file_data = str_replace('/'.$file_name, '/'.$id.'/'.$file_name, $file_data);
-				rename($file_url, $file_new_url);
-				saveThumbnail($file_new_url, str_replace('/'.$file_name,'', $file_new_url));
+				// $gh->TryCreateDirIfNeeded(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
+				// $file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
+				// $file_data = str_replace('/'.$file_name, '/'.$id.'/'.$file_name, $file_data);
+				// rename($file_url, $file_new_url);
+				// saveThumbnail($file_new_url, str_replace('/'.$file_name,'', $file_new_url));
+
+				$newData = uploadDropzoneFiles($_POST["file"],$id);
+				$file_new_url= $newData['file_url'][0];
+				$file_data= $newData['file_data'];
 			}
 			
 			$brochure_file_url='';
@@ -143,23 +147,26 @@ function manage_car()
 					$img_data = $clrdata['img_data'];
 					$file_urls = [];
 					if(isset($img_data)){
-						$imgdata = json_decode($img_data, true);
-						$img_cnt = 0;
-						foreach($imgdata as $imgs){
-							$color_file_url = $imgs['url'];
-							$color_file_name = $imgs['filename'];
-							$color_file_new_url = str_replace('tmp/','images/', $color_file_url);
-							$img_data = str_replace('tmp/','images/', $img_data);
+						// $imgdata = json_decode($img_data, true);
+						// $img_cnt = 0;
+						// foreach($imgdata as $imgs){
+						// 	$color_file_url = $imgs['url'];
+						// 	$color_file_name = $imgs['filename'];
+						// 	$color_file_new_url = str_replace('tmp/','images/', $color_file_url);
+						// 	$img_data = str_replace('tmp/','images/', $img_data);
 							
-							$gh->TryCreateDirIfNeeded(str_replace($color_file_name, $id.'/', $color_file_new_url));// Create directory if not exist
-							$color_file_new_url = str_replace($color_file_name, $id.'/'.$color_file_name, $color_file_new_url);
-							$img_data = str_replace('/'.$color_file_name, '/'.$id.'/'.$color_file_name, $img_data);
+						// 	$gh->TryCreateDirIfNeeded(str_replace($color_file_name, $id.'/', $color_file_new_url));// Create directory if not exist
+						// 	$color_file_new_url = str_replace($color_file_name, $id.'/'.$color_file_name, $color_file_new_url);
+						// 	$img_data = str_replace('/'.$color_file_name, '/'.$id.'/'.$color_file_name, $img_data);
 
-							array_push($file_urls, $color_file_new_url);
-							rename($color_file_url, $color_file_new_url);
-							saveThumbnail($color_file_new_url, str_replace('/'.$color_file_name,'', $color_file_new_url));
-							$img_cnt++;
-						}
+						// 	array_push($file_urls, $color_file_new_url);
+						// 	rename($color_file_url, $color_file_new_url);
+						// 	saveThumbnail($color_file_new_url, str_replace('/'.$color_file_name,'', $color_file_new_url));
+						// 	$img_cnt++;
+						// }
+						$newData = uploadDropzoneFiles($img_data,$id);
+						$file_urls = $newData['file_url'];
+						$img_data = $newData['file_data'];
 					}
 					$colordata[$color_cnt]['img_data'] = $img_data;
 					$colordata[$color_cnt]['img_url'] = json_encode($file_urls);
@@ -296,21 +303,25 @@ function manage_car()
 				{
 					if (str_contains($_POST["file"], 'tmp/'))
 					{
+
+						$newData = uploadDropzoneFiles($_POST["file"],$id);
+						$data['file'] = $newData['file_url'][0];
+						$data['file_data'] = $newData['file_data'];
 						if ($existing_data != null && $existing_data != []) {
 							unlink($existing_data['file']);
 						}
 						
-						$file_url = $file[0]['url'];
-						$file_name = $file[0]['name'];
-						$file_new_url = str_replace('tmp/','images/', $file_url);
-						$logo_data = str_replace('tmp/','images/', $_POST["file"]);
-						$gh->TryCreateDirIfNeeded(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
-						$file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
-						$logo_data = str_replace('/'.$logo_data, '/'.$id.'/'.$file_name, $logo_data);
-						rename($file_url, $file_new_url);
-						saveThumbnail($file_new_url, str_replace('/'.$file_name,'', $file_new_url));
-						$data['file'] = $file_new_url;
-						$data['file_data'] = $logo_data;
+						// $file_url = $file[0]['url'];
+						// $file_name = $file[0]['name'];
+						// $file_new_url = str_replace('tmp/','images/', $file_url);
+						// $logo_data = str_replace('tmp/','images/', $_POST["file"]);
+						// $gh->TryCreateDirIfNeeded(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
+						// $file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
+						// $logo_data = str_replace('/'.$logo_data, '/'.$id.'/'.$file_name, $logo_data);
+						// rename($file_url, $file_new_url);
+						// saveThumbnail($file_new_url, str_replace('/'.$file_name,'', $file_new_url));
+						// $data['file'] = $file_new_url;
+						// $data['file_data'] = $logo_data;
 
 					}
 				}
@@ -349,27 +360,30 @@ function manage_car()
 						if(isset($img_data)){
 							$imgdata = json_decode($img_data, true);
 							if (str_contains($img_data, 'tmp/')){
-								$img_cnt = 0;
-								foreach($imgdata as $imgs){
-									if (str_contains($imgs['url'], 'tmp/')){
-										$color_file_url = $imgs['url'];
-										$color_file_name = $imgs['filename'];
-										$color_file_new_url = str_replace('tmp/','images/', $color_file_url);
-										$img_data = str_replace('tmp/','images/', $img_data);
+								// $img_cnt = 0;
+								// foreach($imgdata as $imgs){
+								// 	if (str_contains($imgs['url'], 'tmp/')){
+								// 		$color_file_url = $imgs['url'];
+								// 		$color_file_name = $imgs['filename'];
+								// 		$color_file_new_url = str_replace('tmp/','images/', $color_file_url);
+								// 		$img_data = str_replace('tmp/','images/', $img_data);
 										
-										$gh->TryCreateDirIfNeeded(str_replace($color_file_name, $id.'/', $color_file_new_url));// Create directory if not exist
-										$color_file_new_url = str_replace($color_file_name, $id.'/'.$color_file_name, $color_file_new_url);
-										$img_data = str_replace('/'.$color_file_name, '/'.$id.'/'.$color_file_name, $img_data);
+								// 		$gh->TryCreateDirIfNeeded(str_replace($color_file_name, $id.'/', $color_file_new_url));// Create directory if not exist
+								// 		$color_file_new_url = str_replace($color_file_name, $id.'/'.$color_file_name, $color_file_new_url);
+								// 		$img_data = str_replace('/'.$color_file_name, '/'.$id.'/'.$color_file_name, $img_data);
 
-										array_push($file_urls, $color_file_new_url);
-										rename($color_file_url, $color_file_new_url);
-										saveThumbnail($color_file_new_url, str_replace('/'.$color_file_name,'', $color_file_new_url));
-									}
-									else{
-										array_push($file_urls, $imgs['url']);
-									}
-									$img_cnt++;
-								}
+								// 		array_push($file_urls, $color_file_new_url);
+								// 		rename($color_file_url, $color_file_new_url);
+								// 		saveThumbnail($color_file_new_url, str_replace('/'.$color_file_name,'', $color_file_new_url));
+								// 	}
+								// 	else{
+								// 		array_push($file_urls, $imgs['url']);
+								// 	}
+								// 	$img_cnt++;
+								// }
+								$newData = uploadDropzoneFiles($img_data,$id);
+								$file_urls = $newData['file_url'];
+								$img_data = $newData['file_data'];
 							}
 							else{
 								$file_urls = array_column($imgdata, 'url');

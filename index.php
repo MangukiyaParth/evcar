@@ -1,10 +1,10 @@
 <?php 
     include 'header.php'; 
-    $include_javscript_at_bottom .= '<script src="'.ROOT_URL.'assets/js/manage_index.js"></script>';    
+    $include_javscript_at_bottom .= '<script src="'.ROOT_URL.'assets/js/manage_index.min.js"></script>';    
 ?> 
 
 <!-- /slider section -->
-<section class="slider-area">
+<section class="slider-area skeleton skeleton-main-slider">
     <div class="slidercontain">
         <div class="slidercrousal">
             <div class="carexibition one-time" id="slider_list">
@@ -16,64 +16,157 @@
 
 <!-- tabbing section -->
 
-<section class="logocontainer container ev-area d-none">
-    <div class="cartitle">
+<section class="logocontainer container ev-area">
+    <div class="cartitle d-none">
         <h2 class="carfont designed-title">Best EV Cars</h2>
     </div>
     <div class="foundcar">
         <div class="featuredcar featuredblock">
+            <div class="skeleton skeleton-car-list-title"></div>
             <div class="disflexcars" id="ev_list">
-                
+                <div class="item">
+                    <div class="carimagrang">
+                        <div class="skeleton skeleton-car-list-img"></div>
+                    </div>
+                    <div class="pricebox">
+                        <div class="pricebox1 w-100">
+                            <div class="boxtitle skeleton skeleton-car-list-name"></div>
+                            <div class="carprice skeleton skeleton-car-list-price"></div>
+                            <div class="pricebox-bottom skeleton skeleton-car-list-extra">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="carimagrang">
+                        <div class="skeleton skeleton-car-list-img"></div>
+                    </div>
+                    <div class="pricebox">
+                        <div class="pricebox1 w-100">
+                            <div class="boxtitle skeleton skeleton-car-list-name"></div>
+                            <div class="carprice skeleton skeleton-car-list-price"></div>
+                            <div class="pricebox-bottom skeleton skeleton-car-list-extra">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="carimagrang">
+                        <div class="skeleton skeleton-car-list-img"></div>
+                    </div>
+                    <div class="pricebox">
+                        <div class="pricebox1 w-100">
+                            <div class="boxtitle skeleton skeleton-car-list-name"></div>
+                            <div class="carprice skeleton skeleton-car-list-price"></div>
+                            <div class="pricebox-bottom skeleton skeleton-car-list-extra">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="carimagrang">
+                        <div class="skeleton skeleton-car-list-img"></div>
+                    </div>
+                    <div class="pricebox">
+                        <div class="pricebox1 w-100">
+                            <div class="boxtitle skeleton skeleton-car-list-name"></div>
+                            <div class="carprice skeleton skeleton-car-list-price"></div>
+                            <div class="pricebox-bottom skeleton skeleton-car-list-extra">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="loadmorbtn">
-                <p class="morbtn"><a href="<?php echo ROOT_URL.'fuel/'.$const->fule_type_ev_txt ?>">More</a></p>
+            <div class="loadmorbtn d-none">
+                <p class="morbtn"><a href="<?php echo ROOT_URL.'fuel/'.$const->fule_type_ev_txt ?>">More EVs</a></p>
             </div>
         </div>
     </div>
 </section>
-<section class="logocontainer container hybrid-area d-none">
-    <div class="cartitle">
+<section class="logocontainer container hybrid-area">
+    <div class="cartitle d-none">
         <h2 class="carfont designed-title">Best Hybrid Cars</h2>
     </div>
     <div class="foundcar">
         <div class="featuredcar featuredblock">
+            <div class="skeleton skeleton-car-list-title"></div>
             <div class="disflexcars" id="hybrid_list">
-                
+                <div class="item">
+                    <div class="carimagrang">
+                        <div class="skeleton skeleton-car-list-img"></div>
+                    </div>
+                    <div class="pricebox">
+                        <div class="pricebox1 w-100">
+                            <div class="boxtitle skeleton skeleton-car-list-name"></div>
+                            <div class="carprice skeleton skeleton-car-list-price"></div>
+                            <div class="pricebox-bottom skeleton skeleton-car-list-extra">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="loadmorbtn">
-                <p class="morbtn"><a href="<?php echo ROOT_URL.'fuel/'.$const->fule_type_hybrid_txt ?>">More</a></p>
+            <div class="loadmorbtn d-none">
+                <p class="morbtn"><a href="<?php echo ROOT_URL.'fuel/'.$const->fule_type_hybrid_txt ?>">More Hybrid Cars</a></p>
             </div>
         </div>
     </div>
 </section>
-<section class="logocontainer container fule-area d-none">
-    <div class="cartitle">
+<section class="logocontainer container fule-area">
+    <div class="cartitle d-none">
         <h2 class="carfont designed-title">Best Fuel Cars</h2>
     </div>
     <div class="foundcar">
         <div class="featuredcar featuredblock">
+            <div class="skeleton skeleton-car-list-title"></div>
             <div class="disflexcars" id="fule_list">
+                <div class="item">
+                    <div class="carimagrang">
+                        <div class="skeleton skeleton-car-list-img"></div>
+                    </div>
+                    <div class="pricebox">
+                        <div class="pricebox1 w-100">
+                            <div class="boxtitle skeleton skeleton-car-list-name"></div>
+                            <div class="carprice skeleton skeleton-car-list-price"></div>
+                            <div class="pricebox-bottom skeleton skeleton-car-list-extra">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="loadmorbtn">
-                <p class="morbtn"><a href="<?php echo ROOT_URL.'fuel/'.$const->fule_type_fuel_txt ?>">More</a></p>
+            <div class="loadmorbtn d-none">
+                <p class="morbtn"><a href="<?php echo ROOT_URL.'fuel/'.$const->fule_type_fuel_txt ?>">More Fuel Cars</a></p>
             </div>
         </div>
     </div>
 </section>
-<section class="logocontainer container upcoming-area d-none">
-    <div class="cartitle">
+<section class="logocontainer container upcoming-area">
+    <div class="cartitle d-none">
         <h2 class="carfont designed-title">Upcomming Cars</h2>
     </div>
     <div class="foundcar">
         <div class="featuredcar featuredblock">
+            <div class="skeleton skeleton-car-list-title"></div>
             <div class="disflexcars" id="upcoming_list">
+                <div class="item">
+                    <div class="carimagrang">
+                        <div class="skeleton skeleton-car-list-img"></div>
+                    </div>
+                    <div class="pricebox">
+                        <div class="pricebox1 w-100">
+                            <div class="boxtitle skeleton skeleton-car-list-name"></div>
+                            <div class="carprice skeleton skeleton-car-list-price"></div>
+                            <div class="pricebox-bottom skeleton skeleton-car-list-extra">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="loadmorbtn">
-                <p class="morbtn"><a href="<?php echo ROOT_URL.'cars' ?>">More</a></p>
+            <div class="loadmorbtn d-none">
+                <p class="morbtn"><a href="<?php echo ROOT_URL.'cars' ?>">More Upcomming Cars</a></p>
             </div>
         </div>
     </div>
@@ -88,7 +181,7 @@
             </div>
 
             <div class="loadmorbtn">
-                <p class="morbtn"><a href="<?php echo ROOT_URL.'cars' ?>">More</a></p>
+                <p class="morbtn"><a href="<?php echo ROOT_URL.'cars' ?>">More Tranding Cars</a></p>
             </div>
         </div>
     </div>
@@ -103,10 +196,10 @@
         <div class="d-flex flex-wrap limited-list my-3" id="brand_list">
         </div>
         <div class="loadmorbtn load-more-brand-div">
-            <p class="morbtn"><a href="javascript:void(0)" onclick="loadMoreBrand()">More</a></p>
+            <p class="morbtn"><button href="javascript:void(0)" onclick="loadMoreBrand()">Show More Brands</button></p>
         </div>
         <div class="loadmorbtn load-less-brand-div d-none">
-            <p class="morbtn"><a href="javascript:void(0)" onclick="loadlessBrand()">Show Less</a></p>
+            <p class="morbtn"><button href="javascript:void(0)" onclick="loadlessBrand()">Show Less</button></p>
         </div>
     </div>
 </div>
@@ -125,7 +218,7 @@
                     <div class="cstomflex1">
                         <div class="cstompadding">
 
-                            <img src="assets/img/icon3.png" alt="icon3">
+                            <img src="assets/img/icon3.webp" alt="icon3">
                         </div>
                         <h3 class="customservice">BEST VALUE</h3>
                         <div class="servicepera">vehicles offering a blend of features, performance, reliability, and affordability. Users can compare models, read expert and user reviews, and find transparent pricing information</div>
@@ -134,7 +227,7 @@
                     <div class="cstomflex1">
                         <div class="cstompadding">
 
-                            <img src="assets/img/icon5.png" alt="icon5">
+                            <img src="assets/img/icon5.webp" alt="icon5">
                         </div>
                         <h3 class="customservice">HIGHEST QUALITY</h3>
                         <div class="servicepera">handpicked assortment of vehicles renowned for their exceptional craftsmanship, durability, reliability, and advanced engineering. </div>
@@ -143,7 +236,7 @@
                     <div class="cstomflex1">
                         <div class="cstompadding">
 
-                            <img src="assets/img/icon6.png" alt="icon6">
+                            <img src="assets/img/icon6.webp" alt="icon6">
                         </div>
                         <h3 class="customservice">TRUST</h3>
                         <div class="servicepera">vehicles that have earned a reputation for reliability, safety, and customer satisfaction. </div>

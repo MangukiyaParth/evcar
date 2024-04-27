@@ -60,39 +60,39 @@ function manage_brand()
 		$formevent = $gh->read("formevent");
 
 		if($formevent =='submit'){
+			$id=$gh->generateuuid();
 			$file_new_url='';
 			$logo_data='';
 			if(isset($_POST["file"]))
 			{
 
-				$file = json_decode($_POST["file"], true);
-				$file_url = $file[0]['url'];
-				$file_name = $file[0]['filename'];
-				$file_new_url = str_replace('tmp/','images/', $file_url);
-				$logo_data = str_replace('tmp/','images/', $_POST["file"]);
-			}
+				// $file = json_decode($_POST["file"], true);
+				// $file_url = $file[0]['url'];
+				// $file_name = $file[0]['filename'];
+				// $file_new_url = str_replace('tmp/','images/', $file_url);
+				// $logo_data = str_replace('tmp/','images/', $_POST["file"]);
 			
-				$id=$gh->generateuuid();
-				if(isset($_POST["file"]))
-				{
-					$gh->TryCreateDirIfNeeded(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
-					$file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
-					$logo_data = str_replace('/'.$file_name, '/'.$id.'/'.$file_name, $logo_data);
-					rename($file_url, $file_new_url);
-				}
-				$data = array(
-					"id" => $id,
-					"brand" => $brand,
-					"logo" => $file_new_url,
-					"logo_data" => $logo_data,
-					"entry_uid" => $user_id,
-					"entry_date" => $date,
-				);
-				$db->insert("tbl_brand", $data);
+				// $gh->TryCreateDirIfNeeded(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
+				// $file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
+				// $logo_data = str_replace('/'.$file_name, '/'.$id.'/'.$file_name, $logo_data);
+				// rename($file_url, $file_new_url);
+				$newData = uploadDropzoneFiles($_POST["file"],$id);
+				$file_new_url= $newData['file_url'][0];
+				$logo_data= $newData['file_data'];
+			}
+			$data = array(
+				"id" => $id,
+				"brand" => $brand,
+				"logo" => $file_new_url,
+				"logo_data" => $logo_data,
+				"entry_uid" => $user_id,
+				"entry_date" => $date,
+			);
+			$db->insert("tbl_brand", $data);
 
-				$outputjson['result'] = [];
-				$outputjson['success'] = 1;
-				$outputjson['message'] = "Data added successfully";
+			$outputjson['result'] = [];
+			$outputjson['success'] = 1;
+			$outputjson['message'] = "Data added successfully";
 		}else{																						//update
 			if(isset($_POST["file"]))
 			{
@@ -108,16 +108,20 @@ function manage_brand()
 				{
 					if (str_contains($_POST["file"], 'tmp/'))
 					{
-						$file_url = $file[0]['url'];
-						$file_name = $file[0]['name'];
-						$file_new_url = str_replace('tmp/','images/', $file_url);
-						$logo_data = str_replace('tmp/','images/', $_POST["file"]);
-						$gh->TryCreateDirIfNeeded(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
-						$file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
-						$logo_data = str_replace('/'.$logo_data, '/'.$id.'/'.$file_name, $logo_data);
-						rename($file_url, $file_new_url);
-						$data['logo'] = $file_new_url;
-						$data['logo_data'] = $logo_data;
+						// $file_url = $file[0]['url'];
+						// $file_name = $file[0]['name'];
+						// $file_new_url = str_replace('tmp/','images/', $file_url);
+						// $logo_data = str_replace('tmp/','images/', $_POST["file"]);
+						// $gh->TryCreateDirIfNeeded(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
+						// $file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
+						// $logo_data = str_replace('/'.$logo_data, '/'.$id.'/'.$file_name, $logo_data);
+						// rename($file_url, $file_new_url);
+						// $data['logo'] = $file_new_url;
+						// $data['logo_data'] = $logo_data;
+
+						$newData = uploadDropzoneFiles($_POST["file"],$id);
+						$data['logo']= $newData['file_url'][0];
+						$data['logo_data']= $newData['file_data'];
 
 						$query = "SELECT logo FROM tbl_brand WHERE id = '" . $id ."'";
 						$rows = $db->execute($query);

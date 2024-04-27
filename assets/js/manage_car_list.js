@@ -157,7 +157,7 @@ function getCarList(){
             {
                 var html_car = "";
                 carData.forEach(function (value) {
-                    html_car += `<div class="carfilteritem ">`;
+                    html_car += `<div class="carfilteritem " onclick="window.location.href='${ROOT_URL}cars/${value.encode_name}'">`;
                                     if(value.comming_soon == 1)
                                     {
                                         html_car += `<div class="commingsoon">
@@ -165,7 +165,7 @@ function getCarList(){
                                         </div>`;
                                     }
                                     html_car += `<div class="carimagrang">
-                                        <img src="${WEB_API_FOLDER+value.file.replace('/images/','/images_thumb/')}" alt="${value.name}" class="tmp-img">
+                                        <img src="${WEB_API_FOLDER+value.file.replace('/images_thumb/','/images_thumb/')}" alt="${value.name}" class="tmp-img">
                                     </div>
                                     <div class="pricesettle">
                                         <div class="pricebox1 w-100">
@@ -183,7 +183,7 @@ function getCarList(){
                                 </div>`;
                 });
                 $("#car_list").html(html_car);
-                show_real_image("#car_list .tmp-img");
+                // show_real_image("#car_list .tmp-img");
             }
             else {
                 $("#car_list").html(data.message);

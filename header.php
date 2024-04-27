@@ -39,14 +39,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EV Cars Info: The Ultimate Guide to Price, Features, Performance, News</title>
+    <title>EV Cars Info: The Ultimate Guide to Price, Features, Performance, News</title>
+    <meta name="description" content="EV Cars Info, car info, The Ultimate Guide to Price, Features, Performance, News">
     <link rel="icon" href="<?= ROOT_URL.'assets/img/favicon.ico'; ?>" type="image/x-icon" />
-    <link rel="stylesheet" href="<?php echo ROOT_URL; ?>assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo ROOT_URL; ?>assets/css/style.min.css">
     <link rel="stylesheet" href="<?php echo ROOT_URL; ?>assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo ROOT_URL; ?>assets/css/slick.css">
     <link rel="stylesheet" href="<?php echo ROOT_URL; ?>assets/css/slick-theme.min.css">
     <link rel="stylesheet" href="<?php echo ROOT_URL; ?>assets/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&family=Public+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="<?= ROOT_URL.'assets/img/logo.webp'; ?>">
+    <link rel="preload" as="image" href="<?= ROOT_URL.'assets/img/footerlogo.webp'; ?>">
+    <link rel="preload" as="image" href="<?= ROOT_URL.'assets/img/ic_flag_india_in.webp'; ?>">
+    <link rel="preload" as="image" href="<?= ROOT_URL.'assets/img/icon3.webp'; ?>">
+    <link rel="preload" as="image" href="<?= ROOT_URL.'assets/img/icon5.webp'; ?>">
+    <link rel="preload" as="image" href="<?= ROOT_URL.'assets/img/icon6.webp'; ?>">
+    <link rel="stylesheet" href="<?php echo ROOT_URL; ?>assets/css/g-fonts.css">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&family=Public+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"> -->
     <script>
         var PRIMARY_ID = '<?php echo $primary_id; ?>';
         var CURRENT_USER_ID = '<?php echo $current_user_id; ?>';
@@ -66,11 +74,10 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GHWWB6EPB4"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-GHWWB6EPB4');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-GHWWB6EPB4');
     </script>
 </head>
 
@@ -82,7 +89,7 @@
                 <div class="carlogo navdisnonemobile">
                     <h1>
                         <a href="<?php echo ROOT_URL; ?>home">
-                            <img src="<?php echo ROOT_URL; ?>assets/img/logo.png" alt="logo" class="logoimage w-50">
+                            <img src="<?php echo ROOT_URL; ?>assets/img/logo.webp" alt="logo" class="logoimage w-50">
                         </a>
                     </h1>
                 </div>
@@ -91,10 +98,10 @@
                     <div class="container-fluid">
                         <div class="mobilelogoflex py-2">
                             <div class="carlogo">
-                                <img src="<?php echo ROOT_URL; ?>assets/img/logo.png" alt="logo" class="logoimage">
+                                <img src="<?php echo ROOT_URL; ?>assets/img/logo.webp" alt="logo" class="logoimage">
                             </div>
                             <div class="nav-mobile">
-                                <a id="navbar-toggle" href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                                <a id="navbar-toggle" href="#" aria-label="Toggle Navbar"><i class="fa fa-bars" aria-hidden="true"></i></a>
                             </div>
                             <div class="loginbutton">
                                 <!-- <p class="loggedin  "><a href="#" class="btn">Login</a></p> -->
@@ -109,13 +116,13 @@
                                     <a class="nav-link px-3 active" href="<?php echo ROOT_URL; ?>home">Home</a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link px-3" href="<?php echo ROOT_URL.'fuel/'.$const->fule_type_ev_txt; ?>">EV Cars</a>
+                                    <a class="nav-link px-3" href="<?php echo ROOT_URL.'fuel-type/'.$const->fule_type_ev_txt; ?>">EV Cars</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link px-3" href="<?php echo ROOT_URL.'fuel/'.$const->fule_type_hybrid_txt; ?>">Hybrid Cars</a>
+                                    <a class="nav-link px-3" href="<?php echo ROOT_URL.'fuel-type/'.$const->fule_type_hybrid_txt; ?>">Hybrid Cars</a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link px-3" href="<?php echo ROOT_URL.'fuel/'.$const->fule_type_fuel_txt; ?>">Fuel Cars</a>
+                                    <a class="nav-link px-3" href="<?php echo ROOT_URL.'fuel-type/'.$const->fule_type_fuel_txt; ?>">Fuel Cars</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link px-3" href="<?php echo ROOT_URL; ?>news">Car News</a>

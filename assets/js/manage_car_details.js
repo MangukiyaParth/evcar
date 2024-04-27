@@ -137,14 +137,14 @@ function manage_int_ext_image(){
             int_img_Data.forEach(function (i) {
                 html_int += `<a href="javascript:void(0)">
                     <div class="video-preview-div gallery-img-preview-div" data-gallery-type="int">
-                        <img src="${WEB_API_FOLDER+i.replace('/images/','/images_thumb/')}" alt="productimage" class="tmp-img">
+                        <img src="${WEB_API_FOLDER+i.replace('/images_thumb/','/images_thumb/')}" alt="productimage" class="tmp-img">
                     </div>
                 </a>`;
                 
                 j++;
             });
             $(".int_list").html(html_int);
-            show_real_image(".int_list .tmp-img");
+            // show_real_image(".int_list .tmp-img");
             galleryDataExist = true;
             intgalleryDataExist = true;
         }
@@ -159,14 +159,14 @@ function manage_int_ext_image(){
             ext_img_data.forEach(function (i) {
                 html_ext += `<a href="javascript:void(0)" style="width: 256px;">
                     <div class="video-preview-div gallery-img-preview-div" data-gallery-type="ext">
-                        <img src="${WEB_API_FOLDER+i.replace('/images/','/images_thumb/')}" alt="productimage" class="tmp-img">
+                        <img src="${WEB_API_FOLDER+i.replace('/images_thumb/','/images_thumb/')}" alt="productimage" class="tmp-img">
                     </div>
                 </a>`;
                 
                 j++;
             });
             $(".ext_list").html(html_ext);
-            show_real_image(".ext_list .tmp-img");
+            // show_real_image(".ext_list .tmp-img");
             galleryDataExist = true;
             extgalleryDataExist = true;
         }
@@ -291,7 +291,7 @@ function manage_gallery_preview(){
                     int_img_Data.forEach(function (i) {
                         html_img += `<a href="javascript:void(0)">
                             <div class="video-preview-div gallery-img-preview-div">
-                                <img src="${WEB_API_FOLDER+i.replace('/images/','/images_thumb/')}" alt="productimage" class="tmp-img">
+                                <img src="${WEB_API_FOLDER+i.replace('/images_thumb/','/images_thumb/')}" alt="productimage" class="tmp-img">
                             </div>
                         </a>`;
                     });
@@ -306,7 +306,7 @@ function manage_gallery_preview(){
                     ext_img_data.forEach(function (i) {
                         html_img += `<a href="javascript:void(0)" style="width: 256px;">
                             <div class="video-preview-div gallery-img-preview-div">
-                                <img src="${WEB_API_FOLDER+i.replace('/images/','/images_thumb/')}" alt="productimage" class="tmp-img">
+                                <img src="${WEB_API_FOLDER+i.replace('/images_thumb/','/images_thumb/')}" alt="productimage" class="tmp-img">
                             </div>
                         </a>`;
                     });
@@ -317,7 +317,7 @@ function manage_gallery_preview(){
         if(html_img != ""){
             html_img = `<div class="preview-img">${html_img}</div>`;
             $("#web_comman_ListModal #web_comman_list_model_div").html(html_img);
-            show_real_image("#web_comman_ListModal #web_comman_list_model_div .tmp-img");
+            // show_real_image("#web_comman_ListModal #web_comman_list_model_div .tmp-img");
             setTimeout(() => {
                 $('.preview-img').slick({
                     dots: true,
@@ -355,9 +355,9 @@ function manageColorDetails(){
         }
     }
     else {
-        var html_clr = `<img src="${WEB_API_FOLDER+carData.file.replace('/images/','/images_thumb/')}" alt="productimage" class="tmp-img">`;
+        var html_clr = `<img src="${WEB_API_FOLDER+carData.file.replace('/images_thumb/','/images_thumb/')}" alt="productimage" class="tmp-img">`;
         $("#color_img").html(html_clr);
-        show_real_image("#color_img .tmp-img");
+        // show_real_image("#color_img .tmp-img");
         $('.productcarslide').slick({
             dots: true,
             infinite: true,
@@ -378,13 +378,13 @@ function manageColorClick(ind, first_time = false){
         {
             var html_clr = "";
             imageData.forEach(function (colorImg) {
-                html_clr += `<img src="${WEB_API_FOLDER+colorImg.replace('/images/','/images_thumb/')}" alt="productimage" class="tmp-img">`;
+                html_clr += `<img src="${WEB_API_FOLDER+colorImg.replace('/images_thumb/','/images_thumb/')}" alt="productimage" class="tmp-img">`;
             });
             if(!first_time){
                 $('.productcarslide').slick('unslick');
             }
             $("#color_img").html(html_clr);
-            show_real_image("#color_img .tmp-img");
+            // show_real_image("#color_img .tmp-img");
             $('.productcarslide').slick({
                 dots: true,
                 infinite: true,

@@ -4,7 +4,7 @@
         <div class="footerbroda">
             <div class="footerflex">
                 <div class="footerlfle1">
-                    <img src="<?php echo ROOT_URL; ?>assets/img/footerlogo.png" alt="logo" class="footerlogoimage w-75">
+                    <img src="<?php echo ROOT_URL; ?>assets/img/footerlogo.webp" loading="lazy" alt="logo" class="footerlogoimage w-75">
                     <div class="footericon mt-3">
                         <i class="fa fa-facebook" aria-hidden="true"></i>
                         <i class="fa fa-instagram" aria-hidden="true"></i>
@@ -52,7 +52,7 @@
                 <div class="copyflex1">
                     <p class="madeintitle"><a href="#">
                         Made in Bharat 
-                        <img src="<?php echo ROOT_URL; ?>assets/img/ic_flag_india_in.jpg" alt="in, " class="footer-flag-icon">
+                        <img src="<?php echo ROOT_URL; ?>assets/img/ic_flag_india_in.webp" loading="lazy" alt="in" class="footer-flag-icon">
                     </a></p>
                 </div>
                 <!-- <div class="copyflex1">
@@ -83,14 +83,14 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-<script src="<?php echo ROOT_URL; ?>assets/js/jquery-1.11.0.min.js"></script>
-<script src="<?php echo ROOT_URL; ?>assets/js/slick.min.js"></script>
-<script src="<?php echo ROOT_URL; ?>assets/js/data.js"></script>
-<script src="<?php echo ROOT_URL; ?>assets/js/popper.min.js"></script>
-<script src="<?php echo ROOT_URL; ?>assets/js/bootstrap.bundle.min.js"></script>
+<script defer src="<?php echo ROOT_URL; ?>assets/js/jquery.min.js"></script>
+<script defer src="<?php echo ROOT_URL; ?>assets/js/slick.min.js"></script>
+<script defer src="<?php echo ROOT_URL; ?>assets/js/data.js"></script>
+<script defer src="<?php echo ROOT_URL; ?>assets/js/popper.min.js"></script>
+<script defer src="<?php echo ROOT_URL; ?>assets/js/bootstrap.bundle.min.js"></script>
+<script defer src="<?php echo ROOT_URL; ?>assets/js/custom.min.js"></script>
 
 <?php 
-$include_javscript_at_bottom = '<script src="' . ROOT_URL.'assets/js/custom.js' . '"></script>' . $include_javscript_at_bottom;
 $include_javscript_at_bottom = str_replace('<script ', '<script defer ', $include_javscript_at_bottom);
 echo $include_javscript_at_bottom;
 ?>

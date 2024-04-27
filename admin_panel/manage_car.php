@@ -65,7 +65,7 @@
                                     </div>
                                     <div class="mb-3 col-sm-4">
                                         <label class="form-label" for="seater">Seater</label>
-                                        <input type="text" id="seater" name="seater" class="form-control numbersOnlyField" placeholder="Enter seater" required />
+                                        <input type="text" id="seater" name="seater" class="form-control" placeholder="Enter seater" required />
                                     </div>
                                     <div class="mb-3 col-sm-4">
                                         <label class="form-label" for="car_type">Car Type</label>

@@ -14,7 +14,7 @@ function getnewsdetails(){
             $(".news_title").html(newsData.title);
             var html_news = `<div class="w-100">
                                 <h2 class="mb-4">${newsData.title}</h2>
-                                <img src="${WEB_API_FOLDER+newsData.main_image.replace('/images/','/images_thumb/')}" class="tmp-img w-100" alt="2stcar">
+                                <img src="${WEB_API_FOLDER+newsData.main_image.replace('/images_thumb/','/images_thumb/')}" class="tmp-img w-100" alt="2stcar">
                                 <h6 class="dates mb-3">${newsData.disp_date}</h6>
                                 <div class="csrnewsub general-description">${newsData.description.replaceAll("\\","")}</div>`;
             if(newsData.tags && newsData.tags != "" && newsData.tags != "[]"){
@@ -27,7 +27,7 @@ function getnewsdetails(){
             }
             html_news += `</div>`;
             $("#news_list").html(html_news);
-            show_real_image("#news_list .tmp-img");
+            // show_real_image("#news_list .tmp-img");
             return false;
         }
         else if (data && data != null && data.success == false) {

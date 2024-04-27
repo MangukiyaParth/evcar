@@ -100,3 +100,14 @@ CREATE TABLE `tbl_home_manage`(
 
 ALTER TABLE `tbl_cars` CHANGE `engine` `engine` VARCHAR(50) NULL;
 ALTER TABLE `tbl_cars_verient` CHANGE `engine` `engine` VARCHAR(50) NULL;
+ALTER TABLE `tbl_cars` CHANGE `seater` `seater` VARCHAR(50) NULL;
+
+UPDATE `tbl_cars` SET `file` = REPLACE(REPLACE(`file`, '.png','.webp'), '.jpg','.webp'), `file_data` = REPLACE(REPLACE(`file_data`, '.png','.webp'), '.jpg','.webp');
+UPDATE `tbl_cars` SET `gallery_file` = REPLACE(REPLACE(`gallery_file`, '.png','.webp'), '.jpg','.webp'), `gallery_file_data` = REPLACE(REPLACE(`gallery_file_data`, '.png','.webp'), '.jpg','.webp');
+UPDATE `tbl_cars` SET `interior_gallery_file` = REPLACE(REPLACE(`interior_gallery_file`, '.png','.webp'), '.jpg','.webp'), `interior_gallery_file_data` = REPLACE(REPLACE(`interior_gallery_file_data`, '.png','.webp'), '.jpg','.webp');
+UPDATE `tbl_cars` SET `color_data` = REPLACE(REPLACE(`color_data`, '.png','.webp'), '.jpg','.webp');
+UPDATE `tbl_cars_colors` SET `file_url` = REPLACE(REPLACE(`file_url`, '.png','.webp'), '.jpg','.webp'), `file_data` = REPLACE(REPLACE(`file_data`, '.png','.webp'), '.jpg','.webp');
+UPDATE `tbl_brand` SET `logo` = REPLACE(REPLACE(`logo`, '.png','.webp'), '.jpg','.webp'), `logo_data` = REPLACE(REPLACE(`logo_data`, '.png','.webp'), '.jpg','.webp');
+UPDATE `tbl_news` SET `main_image` = REPLACE(REPLACE(`main_image`, '.png','.webp'), '.jpg','.webp'), `main_image_data` = REPLACE(REPLACE(`main_image_data`, '.png','.webp'), '.jpg','.webp'), `description` = REPLACE(REPLACE(`description`, '.png','.webp'), '.jpg','.webp');
+UPDATE `tbl_slidermaster` SET `file` = REPLACE(REPLACE(`file`, '.png','.webp'), '.jpg','.webp'), `file_data` = REPLACE(REPLACE(`file_data`, '.png','.webp'), '.jpg','.webp');
+UPDATE `tbl_testimonialmaster` SET `file` = REPLACE(REPLACE(`file`, '.png','.webp'), '.jpg','.webp'), `file_data` = REPLACE(REPLACE(`file_data`, '.png','.webp'), '.jpg','.webp');

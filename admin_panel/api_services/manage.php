@@ -512,8 +512,8 @@ function manageFilepathofEditor($description,$module,$entry_id){
 		$mainPath = $tag->getAttribute('src');
 		if ($mainPath) {
 			if ($tmp && str_contains($mainPath, $tmp)) {
-				echo $oldPath = str_replace(API_SERVICE_URL, "", $mainPath);
-				echo $newPath = str_replace($tmp, "/images/".$module."/".$entry_id."/", $oldPath);
+				$oldPath = str_replace(API_SERVICE_URL, "", $mainPath);
+				$newPath = str_replace($tmp, "/images/".$module."/".$entry_id."/", $oldPath);
 				$gh->TryCreateDirIfNeeded($newPath);// Create directory if not exist
 				rename($oldPath, $newPath);
 				$description = str_replace($mainPath, "__SERVICEURL__" . $newPath, $description);
@@ -537,13 +537,41 @@ function uploadDropzoneFiles($fileData,$primary_id){
 			$file_name = $imgs['filename'];
 			$file_new_url = str_replace('tmp/','images/', $file_url);
 			$fileData = str_replace('tmp/','images/', $fileData);
-			
+
 			$gh->TryCreateDirIfNeeded(str_replace($file_name, $primary_id.'/', $file_new_url));// Create directory if not exist
 			$file_new_url = str_replace($file_name, $primary_id.'/'.$file_name, $file_new_url);
-			saveThumbnail($file_new_url, str_replace('/'.$file_name,'', $file_new_url));
-			$fileData = str_replace('/'.$file_name, '/'.$primary_id.'/'.$file_name, $fileData);
-			array_push($file_urls, $file_new_url);
-			rename($file_url, $file_new_url);
+			
+			$image_info = getimagesize($file_url);
+			$image_type = ($image_info) ? $image_info[2] : 0;
+
+			if($image_type && $image_type > 0){
+                
+				$explode_file_url = explode('.', $file_new_url);
+                $extension = end($explode_file_url);
+                $file_webp_url = str_replace('.'.$extension,'.webp',$file_new_url);
+				$new_file_name = $file_name;
+				if(convertToWebP($file_url, $file_webp_url)){
+                    // File created successfully
+					$file_new_url = $file_webp_url;
+					$new_file_name = str_replace('.'.$extension,'.webp',$file_name);
+                }else {
+                    rename($file_url, $file_new_url);
+                }
+
+				$fileData = str_replace('/'.$file_name, '/'.$primary_id.'/'.$new_file_name, $fileData);
+				array_push($file_urls, $file_new_url);
+			}
+			else{
+				
+				$fileData = str_replace('/'.$file_name, '/'.$primary_id.'/'.$file_name, $fileData);
+				array_push($file_urls, $file_new_url);
+			}
+
+			// Save original Image
+			$file_org_url = str_replace('tmp/','org_images/', $file_url);
+			$gh->TryCreateDirIfNeeded(str_replace($file_name, $primary_id.'/', $file_org_url));
+			$file_org_url = str_replace($file_name, $primary_id.'/'.$file_name, $file_org_url);
+			rename($file_url, $file_org_url);
 		}
 		else{
 			array_push($file_urls, $imgs['url']);
@@ -587,6 +615,41 @@ function saveThumbnail($file_url, $dir_path){
 	else{
 		copy($file_url , $new_file_url);
 	}
+}
+
+function convertToWebP($inputFile, $outputFile) {
+    // Get image info
+    $info = getimagesize($inputFile);
+    
+    // Check if GD library supports WebP
+    if (!function_exists('imagecreatefromwebp')) {
+        // echo "GD library does not support WebP format.";
+        return false;
+    }
+    
+    // Load the image based on its MIME type
+    switch ($info['mime']) {
+        case 'image/jpeg':
+            $img = imagecreatefromjpeg($inputFile);
+            break;
+        case 'image/png':
+            $img = imagecreatefrompng($inputFile);
+            break;
+        default:
+            // echo "Unsupported image format.";
+            return false;
+    }
+    
+    // Save the image as WebP
+    if (!imagewebp($img, $outputFile, 80)) { // 80 is the quality level (0-100)
+        // echo "Failed to save the image as WebP.";
+        return false;
+    }
+    
+    // Free up memory
+    imagedestroy($img);
+    
+    return true;
 }
 
 

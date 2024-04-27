@@ -71,7 +71,7 @@ CREATE TABLE `tbl_cars` (
   `modal_year` VARCHAR(50) DEFAULT NULL,
   `transmision` varchar(50) DEFAULT NULL,
   `transmision_name` varchar(50) DEFAULT NULL,
-  `seater` int(11) DEFAULT NULL,
+  `seater` varchar(50) DEFAULT NULL,
   `car_type` varchar(50) DEFAULT NULL,
   `car_type_name` varchar(50) DEFAULT NULL,
   `mileage` VARCHAR(50) DEFAULT NULL,

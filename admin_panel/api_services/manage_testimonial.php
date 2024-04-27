@@ -68,25 +68,27 @@ function manage_testimonial()
 
 		if($formevent == 'submit'){
 			
+			$id=$gh->generateuuid();
 			$file_new_url='';
 			$logo_data='';
-			if(isset($_POST["file_name"]))
-			{
-				$file = json_decode($_POST["file_name"], true);
-				$file_url = $file[0]['url'];
-				$file_name = $file[0]['filename'];
-				$file_new_url = str_replace('tmp/','images/', $file_url);
-				$logo_data = str_replace('tmp/','images/', $_POST["file_name"]);
-			}
 			if ($personname) {
-				$id=$gh->generateuuid();
 				if(isset($_POST["file_name"]))
 				{
-					$gh->TryCreateDirIfNeeded(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
-					$file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
-					$logo_data = str_replace('/'.$file_name, '/'.$id.'/'.$file_name, $logo_data);
-					rename($file_url, $file_new_url);
-					saveThumbnail($file_new_url, str_replace('/'.$file_name,'', $file_new_url));
+					// $file = json_decode($_POST["file_name"], true);
+					// $file_url = $file[0]['url'];
+					// $file_name = $file[0]['filename'];
+					// $file_new_url = str_replace('tmp/','images/', $file_url);
+					// $logo_data = str_replace('tmp/','images/', $_POST["file_name"]);
+
+					// $gh->TryCreateDirIfNeeded(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
+					// $file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
+					// $logo_data = str_replace('/'.$file_name, '/'.$id.'/'.$file_name, $logo_data);
+					// rename($file_url, $file_new_url);
+					// saveThumbnail($file_new_url, str_replace('/'.$file_name,'', $file_new_url));
+
+					$newData = uploadDropzoneFiles($_POST["file_name"],$id);
+					$file_new_url= $newData['file_url'][0];
+					$logo_data= $newData['file_data'];
 				}
 
 				$data = array(
@@ -134,17 +136,21 @@ function manage_testimonial()
 				{
 					if (str_contains($_POST["file_name"], 'tmp/'))
 					{
-						$file_url = $file[0]['url'];
-						$file_name = $file[0]['name'];
-						$file_new_url = str_replace('tmp/','images/', $file_url);
-						$logo_data = str_replace('tmp/','images/', $_POST["file_name"]);
-						$gh->TryCreateDirIfNeeded(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
-						$file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
-						$logo_data = str_replace('/'.$logo_data, '/'.$id.'/'.$file_name, $logo_data);
-						rename($file_url, $file_new_url);
-						saveThumbnail($file_new_url, str_replace('/'.$file_name,'', $file_new_url));
-						$data['file'] = $file_new_url;
-						$data['file_data'] = $logo_data;
+						// $file_url = $file[0]['url'];
+						// $file_name = $file[0]['name'];
+						// $file_new_url = str_replace('tmp/','images/', $file_url);
+						// $logo_data = str_replace('tmp/','images/', $_POST["file_name"]);
+						// $gh->TryCreateDirIfNeeded(str_replace($file_name,$id.'/', $file_new_url));// Create directory if not exist
+						// $file_new_url = str_replace($file_name,$id.'/'.$file_name, $file_new_url);
+						// $logo_data = str_replace('/'.$logo_data, '/'.$id.'/'.$file_name, $logo_data);
+						// rename($file_url, $file_new_url);
+						// saveThumbnail($file_new_url, str_replace('/'.$file_name,'', $file_new_url));
+						// $data['file'] = $file_new_url;
+						// $data['file_data'] = $logo_data;
+
+						$newData = uploadDropzoneFiles($_POST["file_name"],$id);
+						$data['file'] = $newData['file_url'][0];
+						$data['file_data'] = $newData['file_data'];
 		
 						$query = "SELECT file FROM tbl_testimonialmaster WHERE id = '" . $id ."'";
 						$rows = $db->execute($query);
