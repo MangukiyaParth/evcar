@@ -40,7 +40,7 @@
             $manage_car_viewright =1;
             $manage_news_viewright =1;
             $manage_home_viewright =1;
-            // $manage_setting_viewright =1;
+            $manage_setting_viewright =1;
             $manage_userrights_viewright =1;
 
         }else{
@@ -54,7 +54,7 @@
             $manage_car_Array = $gh->findArrayByValue($setrights, 'pagename','manage_car');
             $manage_news_Array = $gh->findArrayByValue($setrights, 'pagename','manage_news');
             $manage_home_Array = $gh->findArrayByValue($setrights, 'pagename','manage_home');
-            // $manage_setting_Array = $gh->findArrayByValue($setrights, 'pagename','manage_setting');
+            $manage_setting_Array = $gh->findArrayByValue($setrights, 'pagename','manage_setting');
             $manage_userrights_Array = $gh->findArrayByValue($setrights, 'pagename','manage_userrights');
 
             //====================================================  View Rights ====================================================
@@ -68,7 +68,7 @@
             $manage_car_viewright =$manage_car_Array['viewright'];
             $manage_news_viewright =$manage_news_Array['viewright'];
             $manage_home_viewright =$manage_home_Array['viewright'];
-            // $manage_setting_viewright =$manage_setting_Array['viewright'];
+            $manage_setting_viewright =$manage_setting_Array['viewright'];
             $manage_userrights_viewright =$manage_userrights_Array['viewright'];
         }
         
@@ -144,7 +144,7 @@
                 <li class="side-nav-item"><a href="javascript:void(0);" onclick="openPage('manage_userrights')" data-name="manage_userrights"  class="side-nav-link"><i class="ri-settings-5-line"></i><span>User Rights</span></a></li>
                 <?php
             }
-            if(false)
+            if(true)
             {
                 ?>
                 <li class="side-nav-item"><a href="javascript:void(0);" onclick="openPage('manage_setting')" data-name="manage_setting"  class="side-nav-link"><i class="ri-settings-5-line"></i><span>Settings</span></a></li>
