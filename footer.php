@@ -6,31 +6,14 @@
                 <div class="footerlfle1">
                     <img src="<?php echo ROOT_URL; ?>assets/img/footerlogo.webp" loading="lazy" alt="logo" class="footerlogoimage w-75">
                     <div class="footericon mt-3">
-                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                        <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                        <i class="fa-brands fa-facebook"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-youtube"></i>
 
                     </div>
                 </div>
 
-                <!-- <div class="footerflex2 footer-ev-area">
-                    <h4 class="carinfotitle mt-2">Best EV Cars</h4>
-                    <ul class="carlistfooter" id="footer_ev_list">
-                    </ul>
-                </div>
-
-                <div class="footerflex2 footer-hybrid-area">
-                    <h4 class="carinfotitle mt-2">Best Hybrid</h4>
-                    <ul class="carlistfooter" id="footer_hybrid_list">
-                    </ul>
-                </div>
-
-                <div class="footerflex2 footer-fule-area">
-                    <h4 class="carinfotitle mt-2">Best Fuel</h4>
-                    <ul class="carlistfooter" id="footer_fule_list">
-                    </ul>
-                </div> -->
                 <div class="footer-links">
                     <h4 class="carinfotitle mt-2">EV Cars info</h4>
                     <ul class="carlistfooter">

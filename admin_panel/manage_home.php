@@ -33,7 +33,7 @@
                                             </select>
                                         </div>
                                         <div class="mb-3 col-sm-1 mt-3">
-                                            <button class="btn btn-primary" type="button" onclick="addCar()">Add</button>
+                                            <button class="btn btn-primary add-right-btn" type="button" onclick="addCar()">Add</button>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -58,7 +58,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-6 text-end">
-                                            <button class="btn btn-primary offset-sm-3" type="submit">Submit</button>
+                                            <button class="btn btn-primary offset-sm-3 add-right-btn" type="submit">Submit</button>
                                         </div>
                                     </div>
                                 </form>

@@ -126,9 +126,13 @@ function manageList(){
     let car_html = "";
     var i = 0;
     carList.forEach(car => {
+        var delete_btn = "";
+        if(deleteright == 1){
+            delete_btn = `<i class="uil-trash-alt text-danger" onclick="removeCar('${i}')" style="font-size: large; cursor: pointer;"></i>`;
+        }
         car_html +=`<tr class="car-${i}">
                         <td>${car.name}</td>
-                        <td><i class="uil-trash-alt text-danger" onclick="removeCar('${i}')" style="font-size: large; cursor: pointer;"></i></td>
+                        <td>${delete_btn}</td>
                     </tr>`;
                     i++;
     });

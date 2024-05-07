@@ -111,3 +111,50 @@ UPDATE `tbl_brand` SET `logo` = REPLACE(REPLACE(`logo`, '.png','.webp'), '.jpg',
 UPDATE `tbl_news` SET `main_image` = REPLACE(REPLACE(`main_image`, '.png','.webp'), '.jpg','.webp'), `main_image_data` = REPLACE(REPLACE(`main_image_data`, '.png','.webp'), '.jpg','.webp'), `description` = REPLACE(REPLACE(`description`, '.png','.webp'), '.jpg','.webp');
 UPDATE `tbl_slidermaster` SET `file` = REPLACE(REPLACE(`file`, '.png','.webp'), '.jpg','.webp'), `file_data` = REPLACE(REPLACE(`file_data`, '.png','.webp'), '.jpg','.webp');
 UPDATE `tbl_testimonialmaster` SET `file` = REPLACE(REPLACE(`file`, '.png','.webp'), '.jpg','.webp'), `file_data` = REPLACE(REPLACE(`file_data`, '.png','.webp'), '.jpg','.webp');
+
+
+insert into `tbl_menumaster` (`id`, `menuname`, `pagename`) values ('17150632-9639-8181-cc18-70f5598c48fe', 'Role Master', 'manage_role');
+insert into `tbl_menumaster` (`id`, `menuname`, `pagename`) values ('17150633-2139-4353-75c1-5e9f77a446ff', 'User Master', 'manage_user');
+insert into `tbl_menumaster` (`id`, `menuname`, `pagename`) values ('17150775-1261-9814-f61f-0893d2034c29', 'User Rights', 'manage_userrights');
+
+CREATE TABLE `tbl_citymaster` (
+  `id` varchar(50) NOT NULL,
+  `countryid` varchar(50) DEFAULT NULL,
+  `stateid` varchar(50) DEFAULT NULL,
+  `cityname` varchar(100) DEFAULT NULL,
+  `entry_uid` varchar(50) DEFAULT NULL,
+  `entry_date` datetime DEFAULT NULL,
+  `update_uid` varchar(50) DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `city` (`cityname`),
+  KEY `stateid` (`stateid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+insert  into `tbl_citymaster`(`id`,`countryid`,`stateid`,`cityname`,`entry_uid`,`entry_date`,`update_uid`,`update_date`) values ('17150729-9333-1796-c4ea-a5308de74aea',NULL,'17150697-9494-9273-5ffe-35a10a194ef7','Surat',NULL,NULL,NULL,NULL);
+
+CREATE TABLE `tbl_statemaster` (
+  `id` varchar(50) NOT NULL,
+  `countryid` varchar(50) DEFAULT NULL,
+  `statename` varchar(100) DEFAULT NULL,
+  `statecode` varchar(50) DEFAULT NULL,
+  `entry_uid` varchar(50) DEFAULT NULL,
+  `entry_date` datetime DEFAULT NULL,
+  `update_uid` varchar(50) DEFAULT NULL,
+  `update_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `state` (`statename`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+insert  into `tbl_statemaster`(`id`,`countryid`,`statename`,`statecode`,`entry_uid`,`entry_date`,`update_uid`,`update_date`) values ('17150697-9494-9273-5ffe-35a10a194ef7',NULL,'Gujarat','05',NULL,NULL,NULL,NULL);
+
+ALTER TABLE `tbl_users`   
+  ADD COLUMN `contact` VARCHAR(20) NULL AFTER `phone`,
+  ADD COLUMN `address` LONGTEXT NULL AFTER `email`,
+  ADD COLUMN `stateid` VARCHAR(50) NULL AFTER `address`,
+  ADD COLUMN `cityid` VARCHAR(50) NULL AFTER `stateid`,
+  ADD COLUMN `pincode` VARCHAR(10) NULL AFTER `cityid`,
+  ADD COLUMN `entry_uid` varchar(50) NULL AFTER `otp`,
+  ADD COLUMN `entry_date` datetime NULL AFTER `entry_uid`,
+  ADD COLUMN `update_uid` varchar(50) NULL AFTER `entry_date`,
+  ADD COLUMN `update_date` datetime NULL AFTER `update_uid`;

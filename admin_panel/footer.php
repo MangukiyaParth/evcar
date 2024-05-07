@@ -160,19 +160,19 @@ include 'theme_settings.php';
                     <form id="resetpass" class="needs-validation" novalidate method="POST"  >
                         <input type="hidden" class="form-control" name="userid" id="userid" >
                         <div class="mb-3">
-                        <label for="" class="form-label">User Name : </label>
-                        <span id="helpId " class="usernamesp"></span>
+							<label for="" class="form-label">User Name : </label>
+							<span id="helpId " class="usernamesp"></span>
                         </div>
                         <div class="mb-3">
-                        <label for="" class="form-label">Password</label>
-                        <input type="text" class="form-control" name="mdpassword" id="mdpassword" aria-describedby="helpId" placeholder="Enter Password">
+							<label for="" class="form-label">Password</label>
+							<input type="text" class="form-control" name="mdpassword" id="mdpassword" aria-describedby="helpId" placeholder="Enter Password">
                         </div>
                         <div class="mb-3">
-                        <label for="" class="form-label">Confirm Password</label>
-                        <input type="text" class="form-control" name="confirmPassword" id="confirmPassword" aria-describedby="helpId" placeholder="Enter Confirm Password">
-                        <p id="passwordError" style="color: red;"></p>
+							<label for="" class="form-label">Confirm Password</label>
+							<input type="text" class="form-control" name="confirmPassword" id="confirmPassword" aria-describedby="helpId" placeholder="Enter Confirm Password">
+							<p id="passwordError" style="color: red;"></p>
                         </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    	<button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div><!-- /.accordion -->
 
@@ -254,6 +254,16 @@ echo $include_javscript_at_bottom;
 						}
 					}
 
+					if(addright != 1){
+						$(".add-right-btn").remove();
+					}
+					if(editright != 1){
+						$(".edit-right-btn").remove();
+					}
+					if(deleteright != 1){
+						$(".delete-right-btn").remove();
+					}
+
 					var page_name = CURRENT_PAGE.replace("_"," ").replace("manage"," ").replace(/(?:^|\s)\w/g, function(match) {
 						return match.toUpperCase();
 					});
@@ -287,7 +297,7 @@ echo $include_javscript_at_bottom;
 					prior.parentNode.insertBefore(script, prior);
 					apply_after_page_load();
 					
-					if(newPage == 'manage_dashboard' || newPage == 'manage_setting' || newPage == 'manage_home'){
+					if(newPage == 'manage_dashboard' || newPage == 'manage_setting' || newPage == 'manage_home' || newPage == 'manage_userrights'){
 						$(".topbar-menu .action-btn").addClass('d-none');
 					}else{
 						$(".topbar-menu .action-btn").removeClass('d-none');
