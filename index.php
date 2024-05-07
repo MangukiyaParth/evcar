@@ -177,7 +177,7 @@
     </div>
     <div class="foundcar">
         <div class="featuredcar featuredblock">
-            <div class="testiminialflexstart trandingslider" id="tranding_list">
+            <div class="testiminialflexstart trandingslider mb-0" id="tranding_list">
             </div>
 
             <div class="loadmorbtn">
@@ -217,8 +217,7 @@
 
                     <div class="cstomflex1">
                         <div class="cstompadding">
-
-                            <img src="assets/img/icon3.webp" alt="icon3">
+                            <img src="assets/img/icon3.webp" loading="lazy" alt="icon3">
                         </div>
                         <h3 class="customservice">BEST VALUE</h3>
                         <div class="servicepera">vehicles offering a blend of features, performance, reliability, and affordability. Users can compare models, read expert and user reviews, and find transparent pricing information</div>
@@ -226,8 +225,7 @@
 
                     <div class="cstomflex1">
                         <div class="cstompadding">
-
-                            <img src="assets/img/icon5.webp" alt="icon5">
+                            <img src="assets/img/icon5.webp" loading="lazy" alt="icon5">
                         </div>
                         <h3 class="customservice">HIGHEST QUALITY</h3>
                         <div class="servicepera">handpicked assortment of vehicles renowned for their exceptional craftsmanship, durability, reliability, and advanced engineering. </div>
@@ -235,8 +233,7 @@
 
                     <div class="cstomflex1">
                         <div class="cstompadding">
-
-                            <img src="assets/img/icon6.webp" alt="icon6">
+                            <img src="assets/img/icon6.webp" loading="lazy" alt="icon6">
                         </div>
                         <h3 class="customservice">TRUST</h3>
                         <div class="servicepera">vehicles that have earned a reputation for reliability, safety, and customer satisfaction. </div>

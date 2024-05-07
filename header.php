@@ -42,19 +42,14 @@
     <title>EV Cars Info: The Ultimate Guide to Price, Features, Performance, News</title>
     <meta name="description" content="EV Cars Info, car info, The Ultimate Guide to Price, Features, Performance, News">
     <link rel="icon" href="<?= ROOT_URL.'assets/img/favicon.ico'; ?>" type="image/x-icon" />
-    <link rel="stylesheet" href="<?php echo ROOT_URL; ?>assets/css/style.min.css">
-    <link rel="stylesheet" href="<?php echo ROOT_URL; ?>assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo ROOT_URL; ?>assets/css/slick.css">
-    <link rel="stylesheet" href="<?php echo ROOT_URL; ?>assets/css/slick-theme.min.css">
-    <link rel="stylesheet" href="<?php echo ROOT_URL; ?>assets/css/font-awesome.min.css">
     <link rel="preload" as="image" href="<?= ROOT_URL.'assets/img/logo.webp'; ?>">
-    <link rel="preload" as="image" href="<?= ROOT_URL.'assets/img/footerlogo.webp'; ?>">
-    <link rel="preload" as="image" href="<?= ROOT_URL.'assets/img/ic_flag_india_in.webp'; ?>">
-    <link rel="preload" as="image" href="<?= ROOT_URL.'assets/img/icon3.webp'; ?>">
-    <link rel="preload" as="image" href="<?= ROOT_URL.'assets/img/icon5.webp'; ?>">
-    <link rel="preload" as="image" href="<?= ROOT_URL.'assets/img/icon6.webp'; ?>">
-    <link rel="stylesheet" href="<?php echo ROOT_URL; ?>assets/css/g-fonts.css">
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&family=Public+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"> -->
+
+    <link async rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link async rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link async rel="stylesheet" href="<?php echo ROOT_URL; ?>assets/css/slick-theme.min.css">
+    <link async rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link async rel="stylesheet" href="<?php echo ROOT_URL; ?>assets/css/style.min.css">
+    <link async rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900">
     <script>
         var PRIMARY_ID = '<?php echo $primary_id; ?>';
         var CURRENT_USER_ID = '<?php echo $current_user_id; ?>';
@@ -116,13 +111,13 @@
                                     <a class="nav-link px-3 active" href="<?php echo ROOT_URL; ?>home">Home</a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link px-3" href="<?php echo ROOT_URL.'fuel-type/'.$const->fule_type_ev_txt; ?>">EV Cars</a>
+                                    <a class="nav-link px-3" href="<?php echo ROOT_URL.'fuel/'.$const->fule_type_ev_txt; ?>">EV Cars</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link px-3" href="<?php echo ROOT_URL.'fuel-type/'.$const->fule_type_hybrid_txt; ?>">Hybrid Cars</a>
+                                    <a class="nav-link px-3" href="<?php echo ROOT_URL.'fuel/'.$const->fule_type_hybrid_txt; ?>">Hybrid Cars</a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link px-3" href="<?php echo ROOT_URL.'fuel-type/'.$const->fule_type_fuel_txt; ?>">Fuel Cars</a>
+                                    <a class="nav-link px-3" href="<?php echo ROOT_URL.'fuel/'.$const->fule_type_fuel_txt; ?>">Fuel Cars</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link px-3" href="<?php echo ROOT_URL; ?>news">Car News</a>

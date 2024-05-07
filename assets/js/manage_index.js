@@ -36,7 +36,7 @@ function loadMoreBrand(){
     $("#brand_list").toggleClass("limited-list");
     $(".load-more-brand-div").toggleClass("d-none");
     $(".load-less-brand-div").toggleClass("d-none");
-    $("#brand_list").css("max-height", "auto");
+    $("#brand_list").css("max-height", "none");
 }
 function loadlessBrand(){
     $("#brand_list").toggleClass("limited-list");
@@ -227,48 +227,17 @@ function getHomepageData(){
                                             </div>
                                         </div>
                                         <div class="carimagrang">
-                                            <img src="${WEB_API_FOLDER+value.file.replace('/images_thumb/','/images_thumb/')}" loading="lazy" alt="${value.name}" class="tmp-img1">
+                                            <img src="${WEB_API_FOLDER+value.file.replace('/images_thumb/','/images_thumb/')}" alt="${value.name}" class="tmp-img1">
                                         </div>
                                     </a>`;   
                     slide_index++;   
                 });
-                $("#tranding_list").html(html_tranding);
+                await $("#tranding_list").html(html_tranding);
                 // show_real_image("#tranding_list .tmp-img");
                 $(".tranding-area").removeClass('d-none');
-                $('.trandingslider').slick({
-                    dots: false,
-                    infinite: true,
-                    speed: 300,
-                    slidesToShow: 4,
-                    slidesToScroll: 1,
-                    arrows: true,
-                    centerPadding: '60px',
-                    prevArrow: '<button type="button" class="slick-custom-arrow slick-prev" title="slide Prev"> <i class="fa fa-angle-left" aria-hidden="true"></i> </button>',
-                    nextArrow: '<button type="button" class="slick-custom-arrow slick-next" title="slide Next">  <i class="fa fa-angle-right" aria-hidden="true"></i> </button>',
-                    responsive: [{
-                            breakpoint: 991,
-                            settings: {
-                                slidesToShow: 3,
-                                slidesToScroll: 1,
-                                infinite: true,
-                                dots: true
-                            }
-                        },
-                        {
-                            breakpoint: 600,
-                            settings: {
-                                slidesToShow: 2,
-                                slidesToScroll: 2
-                            }
-                        },
-                        {
-                            breakpoint: 480,
-                            settings: {
-                                slidesToShow: 1,
-                                slidesToScroll: 1
-                            }
-                        }
-                    ]
+                setTimeout(() => { manage_single_slide($('.trandingslider')); }, 2000);
+                $('#tranding_list').resize(function() {
+                    manage_single_slide($('.trandingslider'));
                 });
             }
             else{

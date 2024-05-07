@@ -264,3 +264,41 @@ function show_real_image(ele){
         })
     });
 }
+
+function manage_single_slide(element){
+    element.slick({
+        dots: false,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        arrows: true,
+        centerPadding: '60px',
+        prevArrow: '<button type="button" class="slick-custom-arrow slick-prev" title="slide Prev"> <i class="fa fa-angle-left" aria-hidden="true"></i> </button>',
+        nextArrow: '<button type="button" class="slick-custom-arrow slick-next" title="slide Next">  <i class="fa fa-angle-right" aria-hidden="true"></i> </button>',
+        responsive: [{
+                breakpoint: 991,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    });
+}
