@@ -4,7 +4,7 @@
     <!-- Logo Light -->
     <a href="page/manage_dashboard" class="logo logo-light">
         <span class="logo-lg py-2">
-            <img src="<?php echo ADMIN_PANEL_URL; ?>assets/images/logo.png" alt="logo" height="50">
+            <img src="<?php echo ADMIN_PANEL_URL; ?>assets/images/logo.webp" alt="logo" height="50">
         </span>
         <span class="logo-sm">
             <img src="<?php echo ADMIN_PANEL_URL; ?>assets/images/logo-sm.png" alt="small logo" height="25">

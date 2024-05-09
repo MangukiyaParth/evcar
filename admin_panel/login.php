@@ -24,7 +24,7 @@ var MODULE_NAME = "login";
                     <!-- Logo -->
                     <div class="card-header pt-2 pb-2 text-center">
                         <a href="index.html">
-                            <span><img src="<?php echo ADMIN_PANEL_URL; ?>assets/images/logo-dark.png" alt="logo" width="100%"></span>
+                            <span><img src="<?php echo ADMIN_PANEL_URL; ?>assets/images/logo-dark.webp" alt="logo" width="100%"></span>
                         </a>
                         <!-- <h1><b>LM Account</b></h1> -->
                     </div>
