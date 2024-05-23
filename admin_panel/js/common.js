@@ -210,6 +210,18 @@ function setFileDropzone(element){
                 op: "upload_file",
             }
         },
+        uploadprogress(file, progress, bytesSent) {
+            console.log("progress file:", file);
+            console.log("progress:", progress);
+            if (file.previewElement) {
+                for (let node of file.previewElement.querySelectorAll(
+                    "[data-dz-uploadprogress]"
+                )) {
+                    node.nodeName === "PROGRESS" ? (node.value = progress) : (node.style.width = `${progress}%`);
+                    node.nodeName === "PROGRESS" ? (node.value = progress) : (node.nextSibling.innerHTML = `${Math.round(progress)}%`);
+                }
+            }
+        },
         successmultiple(files,response){
             var res_files = JSON.parse(response.files);
             var curr_file = hideen_id.val();

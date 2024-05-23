@@ -81,12 +81,10 @@
 
         <div class="logosection logocontainer">
             <div class="carlogoflex d-flex justify-content-between align-items-center container px-0 py-2">
-                <div class="carlogo navdisnonemobile">
-                    <h1>
-                        <a href="<?php echo ROOT_URL; ?>home">
-                            <img src="<?php echo ROOT_URL; ?>assets/img/logo.webp" alt="logo" class="logoimage w-50">
-                        </a>
-                    </h1>
+                <div class="carlogo navdisnonemobile w-25">
+                    <a href="<?php echo ROOT_URL; ?>home">
+                        <img src="<?php echo ROOT_URL; ?>assets/img/logo.webp" alt="logo" class="logoimage w-100">
+                    </a>
                 </div>
                 <!-- navbar -->
                 <nav class="navbarcustom navbar navbar-expand-lg bg-body-tertiary w-100">
@@ -121,6 +119,9 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link px-3" href="<?php echo ROOT_URL; ?>news">Car News</a>
+                                </li>
+                                <li class="nav-item d-none">
+                                    <a class="nav-link px-3" href="<?php echo ROOT_URL; ?>ev-calculator">EV Calculator</a>
                                 </li>
                             </ul>
                         </div>

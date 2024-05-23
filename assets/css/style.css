@@ -2428,6 +2428,19 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
 .general-description figure.image-style-side{
 	text-align: end;
 }
+.general-description table{
+	width: 100%;
+}
+.general-description table tr td,
+.general-description table tr th{
+	border: 1px solid #bfbfbf;
+    min-width: 2em;
+    padding: .4em;
+}
+.general-description table tr th{
+    background: rgba(0, 0, 0, .05);
+    font-weight: 700;
+}
 
 
 

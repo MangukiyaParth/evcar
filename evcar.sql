@@ -16,7 +16,7 @@ CREATE TABLE `tbl_audit_logs` (
   `is_deleted` tinyint(1) DEFAULT NULL,
   `ip_address` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 /*Data for the table `tbl_audit_logs` */
 
@@ -34,7 +34,7 @@ CREATE TABLE `tbl_brand` (
   `update_uid` varchar(50) DEFAULT NULL,
   `update_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 /*Data for the table `tbl_brand` */
 
@@ -48,7 +48,7 @@ CREATE TABLE `tbl_car_type` (
   `id` varchar(50) NOT NULL,
   `car_type` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 /*Data for the table `tbl_car_type` */
 
@@ -67,7 +67,7 @@ CREATE TABLE `tbl_cars` (
   `fule_type` varchar(50) DEFAULT NULL,
   `fule_type_name` varchar(50) DEFAULT NULL,
   `engine` varchar(50) DEFAULT NULL,
-  `comming_soon` TINYINT DEFAULT 0,
+  `comming_soon` tinyint(4) DEFAULT 0,
   `modal_year` VARCHAR(50) DEFAULT NULL,
   `transmision` varchar(50) DEFAULT NULL,
   `transmision_name` varchar(50) DEFAULT NULL,
@@ -81,13 +81,13 @@ CREATE TABLE `tbl_cars` (
   `length` INT DEFAULT NULL,
   `width` INT DEFAULT NULL,
   `height` INT DEFAULT NULL,
-  `img_360` VARCHAR(250) DEFAULT NULL
-  `discontinued` TINYINT DEFAULT 0,
+  `img_360` VARCHAR(250) DEFAULT NULL,
+  `discontinued` tinyint(4) DEFAULT 0,
   `driving_range` VARCHAR(50) DEFAULT NULL,
   `battery_warranty` VARCHAR(50) DEFAULT NULL,
   `battery_capacity` VARCHAR(50) DEFAULT NULL,
   `ncap_rating` VARCHAR(50) DEFAULT NULL,
-  `show_on_homepage` TINYINT DEFAULT 0,
+  `show_on_homepage` tinyint(4) DEFAULT 0,
   `description` longtext DEFAULT NULL,
   `file` longtext DEFAULT NULL,
   `file_data` longtext DEFAULT NULL,
@@ -105,7 +105,7 @@ CREATE TABLE `tbl_cars` (
   `update_uid` varchar(50) DEFAULT NULL,
   `update_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 /*Data for the table `tbl_cars` */
 
@@ -122,7 +122,7 @@ CREATE TABLE `tbl_cars_colors` (
   `entry_uid` varchar(50) DEFAULT NULL,
   `entry_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 /*Data for the table `tbl_cars_colors` */
 
@@ -143,7 +143,7 @@ CREATE TABLE `tbl_cars_verient` (
   `entry_uid` varchar(50) DEFAULT NULL,
   `entry_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 /*Data for the table `tbl_cars_verient` */
 
@@ -159,7 +159,7 @@ CREATE TABLE `tbl_fules` (
   `update_uid` varchar(50) DEFAULT NULL,
   `update_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 /*Data for the table `tbl_fules` */
 
@@ -173,7 +173,7 @@ CREATE TABLE `tbl_menumaster` (
   `id` varchar(50) DEFAULT NULL,
   `menuname` varchar(50) DEFAULT NULL,
   `pagename` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 /*Data for the table `tbl_menumaster` */
 
@@ -189,7 +189,7 @@ CREATE TABLE `tbl_news` (
   `sub_title` varchar(250) DEFAULT NULL,
   `news_date` varchar(50) DEFAULT NULL,
   `short_desc` longtext DEFAULT NULL,
-  `show_on_homepage` TINYINT DEFAULT 0,
+  `show_on_homepage` tinyint(4) DEFAULT 0,
   `description` longtext DEFAULT NULL,
   `main_image` varchar(300) DEFAULT NULL,
   `main_image_data` longtext DEFAULT NULL,
@@ -199,7 +199,7 @@ CREATE TABLE `tbl_news` (
   `update_uid` varchar(50) DEFAULT NULL,
   `update_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 /*Data for the table `tbl_news` */
 
@@ -211,7 +211,7 @@ CREATE TABLE `tbl_roles` (
   `id` varchar(50) NOT NULL,
   `role` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 /*Data for the table `tbl_roles` */
 
@@ -239,7 +239,7 @@ CREATE TABLE `tbl_settings` (
   `otp` varchar(10) DEFAULT NULL,
   `attempt` int(11) DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 /*Data for the table `tbl_settings` */
 
@@ -275,7 +275,7 @@ CREATE TABLE `tbl_slidermaster` (
   KEY `update_date` (`update_date`),
   KEY `update_uid` (`update_uid`),
   KEY `btntext` (`btntext`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+);
 
 /*Data for the table `tbl_slidermaster` */
 
@@ -306,7 +306,7 @@ CREATE TABLE `tbl_testimonialmaster` (
   KEY `update_uid` (`update_uid`),
   KEY `img` (`file`(3072)),
   KEY `date` (`tdate`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+);
 
 /*Data for the table `tbl_testimonialmaster` */
 
@@ -318,7 +318,7 @@ CREATE TABLE `tbl_transmision` (
   `id` varchar(50) NOT NULL,
   `trans_type` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 /*Data for the table `tbl_transmision` */
 
@@ -333,7 +333,7 @@ CREATE TABLE `tbl_user_cmp` (
   `userid` varchar(50) DEFAULT NULL,
   `cmpid` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 /*Data for the table `tbl_user_cmp` */
 
@@ -353,7 +353,7 @@ CREATE TABLE `tbl_userrights` (
   `entry_uid` varchar(50) DEFAULT NULL,
   `entry_date` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 /*Data for the table `tbl_userrights` */
 
@@ -366,7 +366,7 @@ CREATE TABLE `tbl_userrole` (
   `userid` varchar(50) DEFAULT NULL,
   `roleid` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 /*Data for the table `tbl_userrole` */
 
@@ -390,7 +390,7 @@ CREATE TABLE `tbl_users` (
   `token` varchar(100) DEFAULT NULL,
   `otp` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 /*Data for the table `tbl_users` */
 

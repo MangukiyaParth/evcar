@@ -15,6 +15,7 @@ include 'theme_settings.php';
 					<a href="javascript:void(0);" class="text-muted fw-bold" data-dz-name></a>
 					<p class="mb-0" data-dz-size></p>
 				</div>
+				<div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span><span class="progress-indk"></span></div>
 				<div class="col-auto dz-remove-btn-div">
 					<!-- Button -->
 					<a href="" class="btn btn-link btn-lg text-muted" data-dz-remove>

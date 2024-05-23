@@ -1,6 +1,6 @@
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^www\.
-RewriteRule ^(.*)$ http://localhost:8080/product/HTML/evcar/$1 [R=301,L]
+RewriteRule ^(.*)$ http://localhost:8080/HTML/evcar/$1 [R=301,L]
 RewriteRule ^home?$ index.php
 RewriteRule ^cars?$ car_list.php
 RewriteRule ^news?$ news_list.php
@@ -8,6 +8,7 @@ RewriteRule ^about-us?$ about_us.php
 RewriteRule ^contact-us?$ contact_us.php
 RewriteRule ^privacy-policy?$ privacy.php
 RewriteRule ^terms-conditions?$ terms.php
+RewriteRule ^ev-calculator?$ ev_calculator.php
 RewriteRule ^news/([^/]+)/?$ news_details.php?id=$1  [NC,L]
 RewriteRule ^search/([^/]+)/?$ car_list.php?list_type=SEARCH&id=$1  [NC,L]
 RewriteRule ^brand/([^/]+)/?$ car_list.php?list_type=BRAND&id=$1  [NC,L]
