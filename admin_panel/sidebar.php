@@ -40,6 +40,7 @@
             $manage_car_viewright =1;
             $manage_news_viewright =1;
             $manage_home_viewright =1;
+            $manage_subscriber_viewright =1;
             $manage_setting_viewright =1;
             $manage_userrights_viewright =1;
 
@@ -54,6 +55,7 @@
             $manage_car_Array = $gh->findArrayByValue($setrights, 'pagename','manage_car');
             $manage_news_Array = $gh->findArrayByValue($setrights, 'pagename','manage_news');
             $manage_home_Array = $gh->findArrayByValue($setrights, 'pagename','manage_home');
+            $manage_subscriber_Array = $gh->findArrayByValue($setrights, 'pagename','manage_subscriber');
             $manage_setting_Array = $gh->findArrayByValue($setrights, 'pagename','manage_setting');
             $manage_userrights_Array = $gh->findArrayByValue($setrights, 'pagename','manage_userrights');
 
@@ -68,6 +70,7 @@
             $manage_car_viewright =$manage_car_Array['viewright'];
             $manage_news_viewright =$manage_news_Array['viewright'];
             $manage_home_viewright =$manage_home_Array['viewright'];
+            $manage_subscriber_viewright =$manage_subscriber_Array['viewright'];
             $manage_setting_viewright =$manage_setting_Array['viewright'];
             $manage_userrights_viewright =$manage_userrights_Array['viewright'];
         }
@@ -136,6 +139,12 @@
             {
                 ?>
                 <li class="side-nav-item"><a href="javascript:void(0);" onclick="openPage('manage_home')" data-name="manage_home"  class="side-nav-link"><i class="mdi mdi-web-refresh"></i><span>Home Manage</span></a></li>
+                <?php
+            }
+            if($manage_subscriber_viewright ==1)
+            {
+                ?>
+                <li class="side-nav-item"><a href="javascript:void(0);" onclick="openPage('manage_subscriber')" data-name="manage_subscriber"  class="side-nav-link"><i class="uil-envelope"></i><span>Subscriber</span></a></li>
                 <?php
             }
             if($manage_userrights_viewright ==1)

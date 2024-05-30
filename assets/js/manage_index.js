@@ -374,3 +374,38 @@ function getHomepageData(){
         }
     });
 }
+
+$("#subscribeForm").on("submit", function(e){
+    e.preventDefault();
+    addSubscriber();
+});
+
+function addSubscriber(){
+    var sub_email = $("#sub_email").val();
+    var req_data = {
+        op: "manage_homepage",
+        action: "add_subscriber",
+        sub_email: sub_email
+    };
+    doAPICall(req_data, async function(data){
+        if (data && data != null && data.success == true) {
+            $("#responseModal img").prop('src', ROOT_URL+"assets/img/success.gif");
+            $("#responseModal h4").html('You are successfully subscribe with <span class="text-success">EV Cars</span>.');
+            $("#responseModal").modal('show');
+            $("#sub_email").val('');
+            setTimeout(() => {
+                $("#responseModal").modal('hide');
+            }, 3000);
+            return false;
+        }
+        else if (data && data != null && data.success == false) {
+            $("#responseModal img").prop('src', ROOT_URL+"assets/img/warning.gif");
+            $("#responseModal h4").html(data.message);
+            $("#responseModal").modal('show');
+            setTimeout(() => {
+                $("#responseModal").modal('hide');
+            }, 3000);
+            return false;
+        }
+    });
+}

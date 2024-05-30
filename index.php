@@ -279,4 +279,17 @@
     </div>
 </div>
 
+<div class="subscribe-div">
+    <div class="subscribe-container container">
+        <div>
+            <h2 class="text-success">Stay Updated <span class="f-shape"></span><span class="s-shape"></span></h2>
+            <h5>Subscribe to Our Newsletter</h5>
+        </div>
+        <form id="subscribeForm" class="subscribe-form">
+            <input type="email" name="email" id="sub_email" class="form-control rounded-pill" placeholder="Your email address" required>
+            <button type="submit">Subscribe<i class="fa fa-arrow-right ms-2"></i></button>
+        </form>
+    </div>
+</div>
+
 <?php include 'footer.php' ?> 

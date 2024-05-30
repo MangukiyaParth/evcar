@@ -204,4 +204,33 @@ function manage_homepage()
 		$outputjson['status'] = $status;
 		$outputjson['message'] = $message;
 	}
+	else if($action == "add_subscriber")
+	{
+		$sub_email = $gh->read("sub_email","");
+		$date = date('Y-m-d H:i:s');
+		$heading = "";
+
+		$status = 0;
+		
+		$qry_car="SELECT * FROM tbl_subscriber WHERE email = '$sub_email'";
+		$rows_car = $db->execute($qry_car);
+		if ($rows_car != null && is_array($rows_car) && count($rows_car) > 0) {	
+			$message = "You are already subscribe with EV Cars.";
+		}
+		else{
+			$id=$gh->generateuuid();
+			$data = array(
+				"id" => $id,
+				"email" => $sub_email,
+				"entry_date" => $date,
+			);
+			$db->insert("tbl_subscriber", $data);
+			$status = 1;
+			$message = "success.";
+		}
+		$outputjson['heading'] = $heading;
+		$outputjson['success'] = $status;
+		$outputjson['status'] = $status;
+		$outputjson['message'] = $message;
+	}
 }

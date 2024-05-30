@@ -158,3 +158,6 @@ ALTER TABLE `tbl_users`
   ADD COLUMN `entry_date` datetime NULL AFTER `entry_uid`,
   ADD COLUMN `update_uid` varchar(50) NULL AFTER `entry_date`,
   ADD COLUMN `update_date` datetime NULL AFTER `update_uid`;
+
+CREATE TABLE `tbl_subscriber` (`id` varchar(50) NOT NULL, `email` VARCHAR(100) NOT NULL , `entry_date` DATETIME NOT NULL );
+INSERT INTO `tbl_menumaster`(`id`, `menuname`, `pagename`) VALUES ('17170490-2873-2563-986b-68a976d845be','Subscriber','manage_subscriber')

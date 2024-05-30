@@ -177,7 +177,7 @@ CREATE TABLE `tbl_menumaster` (
 
 /*Data for the table `tbl_menumaster` */
 
-insert  into `tbl_menumaster`(`id`,`menuname`,`pagename`) values ('17024612-6799-0841-dfbc-c6f078474330','Brand Master','manage_brand'),('17024613-1815-4677-e481-26bd85c4440c','Cars Master','manage_car'),('17024613-2381-8465-ffdf-d46967d64445','News Master','manage_news'),('17024613-2714-6516-4c0c-e0ea67124fe1','Settings','manage_setting'),('17056532-7595-5867-d06a-323a7a814371','Slider Master','manage_slider'),('17056533-1585-5565-f99d-3797fcca403d','Testimonial Master','manage_testimonial'),('17122969-5158-1450-3f30-e50069cb47f8', 'Home Manage', 'manage_home');
+insert  into `tbl_menumaster`(`id`,`menuname`,`pagename`) values ('17024612-6799-0841-dfbc-c6f078474330','Brand Master','manage_brand'),('17024613-1815-4677-e481-26bd85c4440c','Cars Master','manage_car'),('17024613-2381-8465-ffdf-d46967d64445','News Master','manage_news'),('17024613-2714-6516-4c0c-e0ea67124fe1','Settings','manage_setting'),('17056532-7595-5867-d06a-323a7a814371','Slider Master','manage_slider'),('17056533-1585-5565-f99d-3797fcca403d','Testimonial Master','manage_testimonial'),('17122969-5158-1450-3f30-e50069cb47f8', 'Home Manage', 'manage_home'),('17170490-2873-2563-986b-68a976d845be','Subscriber','manage_subscriber');
 
 /*Table structure for table `tbl_news` */
 
@@ -407,6 +407,8 @@ CREATE TABLE `tbl_home_manage`(
 );
 
 insert  into `tbl_users`(`id`,`name`,`username`,`password`,`role_id`,`last_logged_in`,`last_login_offset`,`insert_at`,`phone`,`email`,`token`,`otp`) values ('17019352-1247-1172-9a37-27852d564b27','Admin','a','0cc175b9c0f1b6a831c399e269772661','17019350-1059-3172-f8de-9c507e9e4901','2024-01-24 11:55:11','330','2023-02-01 11:49:50',NULL,'admin@admin.com','',386110);
+
+CREATE TABLE `tbl_subscriber` (`id` varchar(50) NOT NULL, `email` VARCHAR(100) NOT NULL , `entry_date` DATETIME NOT NULL );
 
 CREATE
     VIEW `car_details` 
