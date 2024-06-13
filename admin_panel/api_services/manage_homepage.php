@@ -89,11 +89,15 @@ function manage_homepage()
 		$brand_filter = $gh->read("brand_filter","");
 		$fuel_filter = $gh->read("fuel_filter","");
 		$search = $gh->read("search","");
+		$is_upcomming = $gh->read("is_upcomming",0);
 		$heading = "";
 
 		$status = 0;
 		$message = "No Cars Found.";
 		$where = " WHERE 1=1 ";
+		if($is_upcomming != "" && $is_upcomming == 1){
+			$where .= " AND comming_soon = 1 ";
+		}
 		if($brand_filter != ""){
 			$where .= " AND remove_spacialcharacter(brand_name) $collection IN ('".str_replace(",","','",$brand_filter)."') ";
 		}

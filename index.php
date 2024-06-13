@@ -166,7 +166,7 @@
             </div>
 
             <div class="loadmorbtn d-none">
-                <p class="morbtn"><a href="<?php echo ROOT_URL.'cars' ?>">More Upcomming Cars</a></p>
+                <p class="morbtn"><a href="<?php echo ROOT_URL.'upcomming' ?>">More Upcomming Cars</a></p>
             </div>
         </div>
     </div>

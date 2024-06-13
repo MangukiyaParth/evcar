@@ -2,6 +2,7 @@ var sorting = 0;
 var brand_filter = [];
 var fuel_filter = [];
 var search_val = "";
+var is_upcomming = 0;
 jQuery(function () {
     get_brands();
     // history.replaceState({}, "title", ROOT_URL+"cars");
@@ -15,6 +16,29 @@ jQuery(function () {
         var fuel_type_id = $(this).val();
         $("#"+fuel_type_id).prop('checked', true);
         addFule(fuel_type_id);
+    });
+   
+    $('[name="filter_upcomming"]').on('click',function(){
+        if(is_upcomming == 1){
+            is_upcomming = 0;
+            $("#mob_filter_upcomming").prop('checked', false);
+        }
+        else{
+            is_upcomming = 1;
+            $("#mob_filter_upcomming").prop('checked', true);
+        }
+        getCarList();
+    });
+    $('[name="mob_filter_upcomming"]').on('click',function(){
+        if(is_upcomming == 1){
+            is_upcomming = 0;
+            $("#filter_upcomming").prop('checked', false);
+        }
+        else{
+            is_upcomming = 1;
+            $("#filter_upcomming").prop('checked', true);
+        }
+        getCarList();
     });
     
     $('body').on('click','[name="filter_brand"]',function(){
@@ -61,6 +85,12 @@ function defaultSelected(){
         $("#mob_"+PRIMARY_ID).prop('checked', true);
         $("#"+PRIMARY_ID).prop('checked', true);
         $(".brand_acc__title").click();
+    }
+    else if(list_type == 'UPCOMMING'){
+        is_upcomming = 1;
+        $("#mob_filter_upcomming").prop('checked', true);
+        $("#filter_upcomming").prop('checked', true);
+        getCarList();
     }
     else if(list_type == 'SEARCH'){
         search_val = PRIMARY_ID;
@@ -146,7 +176,8 @@ function getCarList(){
         sorting: sorting,
         brand_filter: brand_filter.join(','),
         fuel_filter: fuel_filter.join(','),
-        search: search_val
+        search: search_val,
+        is_upcomming: is_upcomming
     };
     doAPICall(req_data, async function(data){
         search_val="";

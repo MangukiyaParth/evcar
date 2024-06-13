@@ -73,7 +73,7 @@
             <div class="modal-body">
                 <!-- <button type="button" class="btn-close" data-bs-target="#priceModal" data-bs-toggle="modal" data-bs-dismiss="modal" aria-label="Close"></button> -->
                 <div class="d-flex flex-column text-center">
-                    <img src="assets/img/success.gif" alt="Icon" class="w-50 m-auto">
+                    <img src="assets/img/success.gif" alt="Icon" class="w-25 m-auto">
                     <h4 class="px-3 pb-3">You are successfully subscribe with EV Cars.</h4>
                 </div>
             </div><!-- /.modal-body -->
