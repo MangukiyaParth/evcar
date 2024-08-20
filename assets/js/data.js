@@ -81,7 +81,7 @@ $(document).ready(function() {
         $(this).addClass('variantroundactive');
 
     });
-    $("#navbar-toggle i").click(function() {
+    $("#navbar-toggle img").click(function() {
         // console.log('hello');
         $(".navbarcustom .navbar-nav").slideToggle();
     });
@@ -121,7 +121,7 @@ $(document).ready(function() {
   $('.clsoverlay').css("display","block");    
  });
 
- $(".fafaclose i").on("click", function () {
+ $(".fafaclose img").on("click", function () {
     // console.log("ckidwd");
     $('.clsoverlay').css("display","none");
     $('.filtersubtitlemobile.boxclsactive').removeClass('boxclsactive');

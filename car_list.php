@@ -8,7 +8,7 @@
 <section class="logocontainer container">
     <div class="homeproduct">
         <img src="<?php echo ROOT_URL; ?>assets/img/home.png" alt="home">
-        <a href="<?php echo ROOT_URL; ?>home">Home</a> <i class="fa fa-angle-right" aria-hidden="true"></i>
+        <a href="<?php echo ROOT_URL; ?>home">Home</a><img src="<?php echo ROOT_URL; ?>assets/img/angle-right.svg" class="arrow width-28">
         <a href="javascript:void(0)" class="gernexon">Cars</a>
     </div>
     <div class="clsoverlay"></div>
@@ -75,7 +75,7 @@
 
                     <div class="filtersubtitle filtersubtitlemobile">
                         <div class="fafaclose">
-                            <i class=" fa fa-times" aria-hidden="true"></i>
+                            <img src="<?php echo ROOT_URL; ?>assets/img/close-dark.svg" class="width-25">
                         </div>
 
                         <div class="mainfilter acc__card mt-3 border-0">

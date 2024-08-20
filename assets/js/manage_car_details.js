@@ -21,7 +21,7 @@ function getcarData(){
                 if(carData.brochure_file && carData.main_car_id == ""){
                     // var Filename= carData.brochure_file.split('/').pop();
                     var Filename = carData.name + ' Brochure.pdf';
-                    name_value += `&nbsp;&nbsp;<a href="${WEB_API_FOLDER + carData.brochure_file}" target="_blank" type="application/octet-stream" download="${Filename}" class="download-brochure"><i class="fa fa-download"></i>Brochure</a>`;
+                    name_value += `&nbsp;&nbsp;<a href="${WEB_API_FOLDER + carData.brochure_file}" target="_blank" type="application/octet-stream" download="${Filename}" class="download-brochure"><img src="${ROOT_URL}assets/img/download.svg" class="width-15">Brochure</a>`;
                 }
                 $(".vname").html(carData.name);
                 $(".vname-with-brochure").html(name_value);
@@ -467,7 +467,7 @@ function manageVideoDetails(){
                             <img src="//img.youtube.com/vi/${youtube_video_id}/0.jpg" class="video-preview">
                             <div class="video-title-div">
                                 <span id="vid_title_${youtube_video_id}" class="video-title"></span>
-                                <i class="video-play-btn fa fa-play-circle"></i>
+                                <img src="${ROOT_URL}assets/img/play.svg" class="video-play-btn width-35">
                             </div>
                         </div>
                     </a>`;

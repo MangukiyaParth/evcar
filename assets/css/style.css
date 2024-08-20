@@ -791,11 +791,17 @@ display: none;
     position: relative;
 }
 
-.footericon i {
+.footericon i,
+.footericon img {
     border: 1px solid #9D9EA2;
     padding: 5px 6px;
     border-radius: 25px;
     color: #fff;
+    width: 30px;
+}
+
+.footericon img.insta {
+    height: 31px;
 }
 
 .footer-flag-icon{
@@ -995,6 +1001,10 @@ display: none;
 
 .homeproduct img {
     padding-right: 10px;
+}
+
+.homeproduct img.arrow {
+    padding: 0 10px;
 }
 
 .homeproduct i {
@@ -1414,7 +1424,8 @@ display: none;
     margin-right: 3px;
 }
 
-.mobsearchclosebtn i{
+.mobsearchclosebtn i,
+.mobsearchclosebtn img{
     background: #40b54d;
     color: #FFF;
     padding: 14px 15px;
@@ -1678,6 +1689,22 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
         transform: rotate(225deg);
         transition: all 0.2s ease-in-out;
     }
+}
+.acc__title::after {
+    width: 8px;
+    height: 8px;
+    border-right: 1px solid #4a6e78;
+    border-bottom: 1px solid #4a6e78;
+    position: absolute;
+    right: 10px;
+    content: " ";
+    top: 17px;
+    transform: rotate(45deg);
+    transition: all 0.2s ease-in-out;
+}
+.acc__title.active::after {
+    transform: rotate(225deg);
+    transition: all 0.2s ease-in-out;
 }
 .acc__panel {
     display: none;
@@ -2394,7 +2421,8 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
     border-radius: 10px;
 }
 
-.download-brochure i{
+.download-brochure i,
+.download-brochure img{
     margin-right: 5px;
 }
 
@@ -2816,4 +2844,24 @@ nav.navbarcustom.navbar.navbar-expand-lg.bg-body-tertiary {
     .subscribe-form input[type="email"] {
         max-width: 90vw;
     }
+}
+
+.h-45{
+    height: 45px;
+}
+
+.width-15{
+    width: 15px;
+}
+
+.width-25{
+    width: 25px;
+}
+
+.width-28{
+    width: 28px;
+}
+
+.width-35{
+    width: 35px;
 }

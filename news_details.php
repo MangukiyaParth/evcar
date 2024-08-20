@@ -8,8 +8,8 @@
     <div class="logocontainer container">
         <div class="homeproduct">
             <img src="<?php echo ROOT_URL; ?>assets/img/home.png" alt="home">
-            <a href="<?php echo ROOT_URL; ?>home">Home</a> <i class="fa fa-angle-right" aria-hidden="true"></i>
-            <a href="<?php echo ROOT_URL; ?>news">NEWS</a> <i class="fa fa-angle-right" aria-hidden="true"></i>
+            <a href="<?php echo ROOT_URL; ?>home">Home</a><img src="<?php echo ROOT_URL; ?>assets/img/angle-right.svg" class="arrow width-28">
+            <a href="<?php echo ROOT_URL; ?>news">NEWS</a><img src="<?php echo ROOT_URL; ?>assets/img/angle-right.svg" class="arrow width-28">
             <a href="javascript:void(0)" class="gernexon news_title">Nexon</a>
         </div>
         <div class="vaildityall">

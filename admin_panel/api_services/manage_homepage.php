@@ -8,7 +8,7 @@ function manage_homepage()
 
 	$action = $gh->read("action");
 
-	$collection = "";
+	$collection = "COLLATE utf8mb4_general_ci";
 	if(IS_PRODUCTION){
 		$collection = "COLLATE utf8mb4_general_ci";
 	}

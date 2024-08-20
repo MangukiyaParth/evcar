@@ -6,11 +6,10 @@
                 <div class="footerlfle1">
                     <img src="<?php echo ROOT_URL; ?>assets/img/footerlogo.webp" loading="lazy" alt="logo" class="footerlogoimage w-75">
                     <div class="footericon mt-3">
-                        <i class="fa-brands fa-facebook"></i>
-                        <i class="fa-brands fa-instagram"></i>
-                        <i class="fa-brands fa-twitter"></i>
-                        <i class="fa-brands fa-youtube"></i>
-
+                        <img src="<?php echo ROOT_URL; ?>assets/img/facebook.svg">
+                        <img src="<?php echo ROOT_URL; ?>assets/img/instagram.svg" class="insta">
+                        <img src="<?php echo ROOT_URL; ?>assets/img/twitter.svg">
+                        <img src="<?php echo ROOT_URL; ?>assets/img/youtube.svg">
                     </div>
                 </div>
 

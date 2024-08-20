@@ -41,13 +41,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EV Cars Info: The Ultimate Guide to Price, Features, Performance, News</title>
     <meta name="description" content="EV Cars Info, car info, The Ultimate Guide to Price, Features, Performance, News">
-    <link rel="icon" href="<?= ROOT_URL.'assets/img/favicon.ico'; ?>" type="image/x-icon" />
+    <!-- <link rel="icon" href="<?= ROOT_URL.'assets/img/favicon.ico'; ?>" type="image/x-icon" /> -->
+     
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= ROOT_URL.'assets/img/apple-touch-icon.png'; ?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= ROOT_URL.'assets/img/favicon-32x32.png'; ?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= ROOT_URL.'assets/img/favicon-16x16.png'; ?>">
+    <link rel="manifest" href="<?= ROOT_URL.'assets/img/site.webmanifest'; ?>">
+    <link rel="mask-icon" href="<?= ROOT_URL.'assets/img/safari-pinned-tab.svg'; ?>" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+
     <link rel="preload" as="image" href="<?= ROOT_URL.'assets/img/logo.webp'; ?>">
 
     <link async rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link async rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link async rel="stylesheet" href="<?php echo ROOT_URL; ?>assets/css/slick-theme.min.css">
-    <link async rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link async rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integritPy="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
     <link async rel="stylesheet" href="<?php echo ROOT_URL; ?>assets/css/style.min.css">
     <link async rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900">
     <script>
@@ -94,13 +104,11 @@
                                 <img src="<?php echo ROOT_URL; ?>assets/img/logo.webp" alt="logo" class="logoimage">
                             </div>
                             <div class="nav-mobile">
-                                <a id="navbar-toggle" href="#" aria-label="Toggle Navbar"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                                <a id="navbar-toggle" href="#" aria-label="Toggle Navbar"><img src="<?php echo ROOT_URL; ?>assets/img/bars.svg" class="width-25"></i></a>
                             </div>
                             <div class="loginbutton">
-                                <!-- <p class="loggedin  "><a href="#" class="btn">Login</a></p> -->
-                                <!-- <img src="<?php echo ROOT_URL; ?>assets/img/search-Button.png" alt="searchbtn" class="seracbar mobsearchbtn"> -->
-                                <i class="fa fa-search btnSearch seracbar mobsearchbtn header-search"></i>
-                                <span class="seracbar mobsearchbtn mobsearchclosebtn"><i class="fa fa-close"></i></span>
+                                <img src="<?php echo ROOT_URL; ?>assets/img/search.svg" class="btnSearch seracbar mobsearchbtn header-search h-45">
+                                <span class="seracbar mobsearchbtn mobsearchclosebtn"><img src="<?php echo ROOT_URL; ?>assets/img/close.svg" class="h-45"></span>
                             </div>
                         </div>
                         <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
@@ -133,8 +141,7 @@
                         <div>
                             <form class="d-flex align-items-center position-relative flex-column search-div" role="search">
                                 <input class="form-control me-2 ps-4 pe-5 rounded-pill search" type="text" placeholder="Search" aria-label="Search">
-                                <!-- <img src="<?php echo ROOT_URL; ?>assets/img/search-Button.png" alt="searchbtn" class="btnSearch seracbar position-absolute right-0"> -->
-                                <i class="fa fa-search btnSearch seracbar position-absolute right-0 header-search"></i>
+                                <img src="<?php echo ROOT_URL; ?>assets/img/search.svg" class="btnSearch seracbar position-absolute right-0 header-search">
                                 <div class="searchCarList" id="search_car_list" style="display: none;"></div>
                             </form>
                         </div>
@@ -154,8 +161,7 @@
                         <div class="my-3">
                             <form class="d-flex align-items-center position-relative search-div" role="search">
                                 <input class="form-control me-2 rounded-pill search" type="text" placeholder="Search" aria-label="Search">
-                                <!-- <img src="<?php echo ROOT_URL; ?>assets/img/search-Button.png" alt="searchbtn" class="seracbar btnSearch"> -->
-                                <i class="fa fa-search seracbar btnSearch header-search position-absolute right-0"></i>
+                                <img src="<?php echo ROOT_URL; ?>assets/img/search.svg" class="seracbar btnSearch header-search position-absolute right-0">
                                 <div class="searchCarList" id="mob_search_car_list" style="display: none;"></div>
                             </form>
                         </div>
