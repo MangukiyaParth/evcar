@@ -4,9 +4,9 @@
 ?>
 <div class="logocontainer container">
     <div class="homeproduct">
-        <img src="<?php echo ROOT_URL; ?>assets/img/home.png" alt="home">
-        <a href="<?php echo ROOT_URL; ?>home">Home</a><img src="<?php echo ROOT_URL; ?>assets/img/angle-right.svg" class="arrow width-28"></i>
-        <a href="<?php echo ROOT_URL; ?>" class="brand_url">Tata</a><img src="<?php echo ROOT_URL; ?>assets/img/angle-right.svg" class="arrow width-28">
+        <img src="<?php echo ROOT_URL; ?>assets/img/home.png" alt="home" loading="lazy">
+        <a href="<?php echo ROOT_URL; ?>home">Home</a><img src="<?php echo ROOT_URL; ?>assets/img/angle-right.svg" class="arrow width-28" loading="lazy"></i>
+        <a href="<?php echo ROOT_URL; ?>" class="brand_url">Tata</a><img src="<?php echo ROOT_URL; ?>assets/img/angle-right.svg" class="arrow width-28" loading="lazy">
         <a href="javascript:void(0)" class="gernexon vname">Nexon</a>
     </div>
 
@@ -38,63 +38,63 @@
             <table class="table table-strip spec-table">
                 <tbody>
                     <tr class="vfule-div">
-                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/fuel.svg" alt="Fuel Type"><span> Fuel Type </span></div></td>
+                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/fuel.svg" loading="lazy" alt="Fuel Type"><span> Fuel Type </span></div></td>
                         <td class="vfuel"></td>
                     </tr>
                     <tr class="vmodal_year-div">
-                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/calendar.svg" alt="Model"><span> Model </span></div></td>
+                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/calendar.svg" loading="lazy" alt="Model"><span> Model </span></div></td>
                         <td class="vmodel"></td>
                     </tr>
                     <tr class="vtransmision-div">
-                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/transmission.svg" alt="Transmision"><span> Transmision </span></div></td>
+                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/transmission.svg" loading="lazy" alt="Transmision"><span> Transmision </span></div></td>
                         <td class="vtransmision"></td>
                     </tr>
                     <tr class="vengin-div">
-                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/engine.svg" alt="Engine Size"><span> Engine Size </span></div></td>
+                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/engine.svg" loading="lazy" alt="Engine Size"><span> Engine Size </span></div></td>
                         <td class="vengin"></td>
                     </tr>
                     <tr class="vmileage-div d-none">
-                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/mileage.svg" alt="Mileage"><span> Mileage </span></div></td>
+                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/mileage.svg" loading="lazy" alt="Mileage"><span> Mileage </span></div></td>
                         <td class="vmileage"></td>
                     </tr>
                     <tr class="vground-clearance-div d-none">
-                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/ground-clearance.svg" alt="Ground Clearance"><span> Ground Clearance (mm) </span></div></td>
+                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/ground-clearance.svg" loading="lazy" alt="Ground Clearance"><span> Ground Clearance (mm) </span></div></td>
                         <td class="vground-clearance"></td>
                     </tr>
                     <tr class="vwarranty-div d-none">
-                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/warranty.svg" alt="Warranty"><span> Warranty </span></div></td>
+                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/warranty.svg" loading="lazy" alt="Warranty"><span> Warranty </span></div></td>
                         <td class="vwarranty"></td>
                     </tr>
                     <tr class="vseater-div">
-                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/seated.svg" alt="Seating Capacity"><span> Seating Capacity </span></div></td>
+                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/seated.svg" loading="lazy" alt="Seating Capacity"><span> Seating Capacity </span></div></td>
                         <td class="vseater"></td>
                     </tr>
                     <tr class="vdimension-div d-none">
-                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/dimension.svg" alt="Size"><span> Size </span></div></td>
+                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/dimension.svg" loading="lazy" alt="Size"><span> Size </span></div></td>
                         <td class="vdimension"></td>
                     </tr>
                     <tr class="vfuel-tank-div d-none">
-                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/fuel-tank-capacity.svg" alt="Fuel Tank"><span> Fuel Tank </span></div></td>
+                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/fuel-tank-capacity.svg" loading="lazy" alt="Fuel Tank"><span> Fuel Tank </span></div></td>
                         <td class="vfuel-tank"></td>
                     </tr>
                     <tr class="vdriveing-range-div d-none">
-                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/driving-range.svg" alt="Driving Range (km)"><span> Driving Range (km) </span></div></td>
+                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/driving-range.svg" loading="lazy" alt="Driving Range (km)"><span> Driving Range (km) </span></div></td>
                         <td class="vdriveing-range"></td>
                     </tr>
                     <tr class="vncap-rating-div d-none">
-                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/safety-rating.svg" alt="NCAP Rating"><span> NCAP Rating (Best - 5 Star) </span></div></td>
+                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/safety-rating.svg" loading="lazy" alt="NCAP Rating"><span> NCAP Rating (Best - 5 Star) </span></div></td>
                         <td class="vncap-rating"></td>
                     </tr>
                     <tr class="vbattery-warranty-div d-none">
-                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/battery-warranty.svg" alt="Battery Warranty"><span> Battery Warranty </span></div></td>
+                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/battery-warranty.svg" loading="lazy" alt="Battery Warranty"><span> Battery Warranty </span></div></td>
                         <td class="vbattery-warranty"></td>
                     </tr>
                     <tr class="vbattery-capacity-div d-none">
-                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/battery-size.svg" alt="Battery Capacity"><span> Battery Capacity </span></div></td>
+                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/battery-size.svg" loading="lazy" alt="Battery Capacity"><span> Battery Capacity </span></div></td>
                         <td class="vbattery-capacity"></td>
                     </tr>
                     <tr class="vtype-div">
-                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/car-type.svg" alt="Car Type"><span> Car Type </span></div></td>
+                        <td><div class="spec-title"><img src="<?php echo ROOT_URL; ?>assets/img/car-type.svg" loading="lazy" alt="Car Type"><span> Car Type </span></div></td>
                         <td class="vtype"></td>
                     </tr>
                 </tbody>

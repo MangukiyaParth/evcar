@@ -22,7 +22,7 @@ function loadMoreBrand(){
             if(brand_index >= 12){
                 html_brand += `<a class="symbol1 text-decoration-none" href="${ROOT_URL}brand/${value.encode_name}">
                                     <div class="kiaheight"> 
-                                    <img src="${WEB_API_FOLDER+value.logo.replace('/images_thumb/','/images_thumb/')}" class="h-100 tmp-img1" alt="${value.brand}">
+                                    <img src="${WEB_API_FOLDER+value.logo.replace('/images_thumb/','/images_thumb/')}" class="h-100 tmp-img1" alt="${value.brand}" loading="lazy">
                                     </div>
                                     <p class="symbolname">${value.brand}</p>
                                 </a>`;
@@ -71,7 +71,7 @@ function getHomepageData(){
                 var slider_index = 0;
                 sliderData.forEach(function (value) {
                     html_slider += `<div class="carimage" style="background-image: linear-gradient( rgba(8, 14, 19, 0), rgba(8, 14, 19, 1), #FFFFFF)');">
-                                        <img src="${WEB_API_FOLDER+value.file.replace('/images_thumb/','/images_thumb/')}" alt="slider-${slider_index}" class="tmp-img1 w-100"/>
+                                        <img src="${WEB_API_FOLDER+value.file.replace('/images_thumb/','/images_thumb/')}" alt="slider-${slider_index}" class="tmp-img1 w-100" loading="lazy"/>
                                         <div class="bgimagecar">
                                             <h2 class="worldtitle">${value.title}</h2>
                                             <p class="worldsubtitle">${value.description}</p>
@@ -104,7 +104,7 @@ function getHomepageData(){
                 evData.forEach(function (value) {
                     html_ev += `<div class="item" onclick="window.location.href='${ROOT_URL}cars/${value.encode_name}'">
                                     <div class="carimagrang">
-                                        <img src="${WEB_API_FOLDER+value.file.replace('/images_thumb/','/images_thumb/')}" alt="${value.name}" class="tmp-img1">
+                                        <img src="${WEB_API_FOLDER+value.file.replace('/images_thumb/','/images_thumb/')}" alt="${value.name}" class="tmp-img1" loading="lazy">
                                     </div>
                                     <div class="pricebox">
                                         <div class="pricebox1 w-100">
@@ -227,7 +227,7 @@ function getHomepageData(){
                                             </div>
                                         </div>
                                         <div class="carimagrang">
-                                            <img src="${WEB_API_FOLDER+value.file.replace('/images_thumb/','/images_thumb/')}" alt="${value.name}" class="tmp-img1">
+                                            <img src="${WEB_API_FOLDER+value.file.replace('/images_thumb/','/images_thumb/')}" alt="${value.name}" class="tmp-img1" loading="lazy">
                                         </div>
                                     </a>`;   
                     slide_index++;   

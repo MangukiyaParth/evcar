@@ -35,6 +35,7 @@
         $current_page = basename($_SERVER['PHP_SELF']);
         $page = "";
         $include_javscript_at_bottom = "";
+        header("Cache-Control: max-age=31536000");
     ?>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -59,7 +60,7 @@
     <link async rel="stylesheet" href="<?php echo ROOT_URL; ?>assets/css/slick-theme.min.css">
     <!-- <link async rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integritPy="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
     <link async rel="stylesheet" href="<?php echo ROOT_URL; ?>assets/css/style.min.css">
-    <link async rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900">
+    <link async rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&display=swap">
     <script>
         var PRIMARY_ID = '<?php echo $primary_id; ?>';
         var CURRENT_USER_ID = '<?php echo $current_user_id; ?>';
@@ -93,7 +94,7 @@
             <div class="carlogoflex d-flex justify-content-between align-items-center container px-0 py-2">
                 <div class="carlogo navdisnonemobile w-25">
                     <a href="<?php echo ROOT_URL; ?>home">
-                        <img src="<?php echo ROOT_URL; ?>assets/img/logo.webp" alt="logo" class="logoimage w-100">
+                        <img src="<?php echo ROOT_URL; ?>assets/img/logo.webp" alt="logo" class="logoimage w-100" loading="lazy">
                     </a>
                 </div>
                 <!-- navbar -->
@@ -101,14 +102,14 @@
                     <div class="container-fluid">
                         <div class="mobilelogoflex py-2">
                             <div class="carlogo">
-                                <img src="<?php echo ROOT_URL; ?>assets/img/logo.webp" alt="logo" class="logoimage">
+                                <img src="<?php echo ROOT_URL; ?>assets/img/logo.webp" alt="logo" class="logoimage" loading="lazy">
                             </div>
                             <div class="nav-mobile">
-                                <a id="navbar-toggle" href="#" aria-label="Toggle Navbar"><img src="<?php echo ROOT_URL; ?>assets/img/bars.svg" class="width-25"></i></a>
+                                <a id="navbar-toggle" href="#" aria-label="Toggle Navbar"><img src="<?php echo ROOT_URL; ?>assets/img/bars.svg" class="width-25" loading="lazy"></a>
                             </div>
                             <div class="loginbutton">
-                                <img src="<?php echo ROOT_URL; ?>assets/img/search.svg" class="btnSearch seracbar mobsearchbtn header-search h-45">
-                                <span class="seracbar mobsearchbtn mobsearchclosebtn"><img src="<?php echo ROOT_URL; ?>assets/img/close.svg" class="h-45"></span>
+                                <img src="<?php echo ROOT_URL; ?>assets/img/search.svg" class="btnSearch seracbar mobsearchbtn header-search h-45" loading="lazy">
+                                <span class="seracbar mobsearchbtn mobsearchclosebtn"><img src="<?php echo ROOT_URL; ?>assets/img/close.svg" class="h-45" loading="lazy"></span>
                             </div>
                         </div>
                         <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
@@ -141,7 +142,7 @@
                         <div>
                             <form class="d-flex align-items-center position-relative flex-column search-div" role="search">
                                 <input class="form-control me-2 ps-4 pe-5 rounded-pill search" type="text" placeholder="Search" aria-label="Search">
-                                <img src="<?php echo ROOT_URL; ?>assets/img/search.svg" class="btnSearch seracbar position-absolute right-0 header-search">
+                                <img src="<?php echo ROOT_URL; ?>assets/img/search.svg" class="btnSearch seracbar position-absolute right-0 header-search" loading="lazy">
                                 <div class="searchCarList" id="search_car_list" style="display: none;"></div>
                             </form>
                         </div>
@@ -161,7 +162,7 @@
                         <div class="my-3">
                             <form class="d-flex align-items-center position-relative search-div" role="search">
                                 <input class="form-control me-2 rounded-pill search" type="text" placeholder="Search" aria-label="Search">
-                                <img src="<?php echo ROOT_URL; ?>assets/img/search.svg" class="seracbar btnSearch header-search position-absolute right-0">
+                                <img src="<?php echo ROOT_URL; ?>assets/img/search.svg" class="seracbar btnSearch header-search position-absolute right-0" loading="lazy">
                                 <div class="searchCarList" id="mob_search_car_list" style="display: none;"></div>
                             </form>
                         </div>

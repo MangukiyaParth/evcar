@@ -287,7 +287,7 @@
         </div>
         <form id="subscribeForm" class="subscribe-form">
             <input type="email" name="email" id="sub_email" class="form-control rounded-pill" placeholder="Your email address" required>
-            <button type="submit">Subscribe<img src="<?php echo ROOT_URL; ?>assets/img/arrow-right.svg" class="width-15 ms-2"></button>
+            <button type="submit">Subscribe<img src="<?php echo ROOT_URL; ?>assets/img/arrow-right.svg" class="width-15 ms-2" loading="lazy"></button>
         </form>
     </div>
 </div>

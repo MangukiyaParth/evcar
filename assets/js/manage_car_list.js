@@ -196,7 +196,7 @@ function getCarList(){
                                         </div>`;
                                     }
                                     html_car += `<div class="carimagrang">
-                                        <img src="${WEB_API_FOLDER+value.file.replace('/images_thumb/','/images_thumb/')}" alt="${value.name}" class="tmp-img">
+                                        <img src="${WEB_API_FOLDER+value.file.replace('/images_thumb/','/images_thumb/')}" alt="${value.name}" class="tmp-img" loading="lazy">
                                     </div>
                                     <div class="pricesettle">
                                         <div class="pricebox1 w-100">

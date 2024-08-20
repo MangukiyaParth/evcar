@@ -21,7 +21,7 @@ function getcarData(){
                 if(carData.brochure_file && carData.main_car_id == ""){
                     // var Filename= carData.brochure_file.split('/').pop();
                     var Filename = carData.name + ' Brochure.pdf';
-                    name_value += `&nbsp;&nbsp;<a href="${WEB_API_FOLDER + carData.brochure_file}" target="_blank" type="application/octet-stream" download="${Filename}" class="download-brochure"><img src="${ROOT_URL}assets/img/download.svg" class="width-15">Brochure</a>`;
+                    name_value += `&nbsp;&nbsp;<a href="${WEB_API_FOLDER + carData.brochure_file}" target="_blank" type="application/octet-stream" download="${Filename}" class="download-brochure"><img src="${ROOT_URL}assets/img/download.svg" class="width-15" loading="lazy">Brochure</a>`;
                 }
                 $(".vname").html(carData.name);
                 $(".vname-with-brochure").html(name_value);
@@ -137,7 +137,7 @@ function manage_int_ext_image(){
             int_img_Data.forEach(function (i) {
                 html_int += `<a href="javascript:void(0)">
                     <div class="video-preview-div gallery-img-preview-div" data-gallery-type="int">
-                        <img src="${WEB_API_FOLDER+i.replace('/images_thumb/','/images_thumb/')}" alt="productimage" class="tmp-img">
+                        <img src="${WEB_API_FOLDER+i.replace('/images_thumb/','/images_thumb/')}" alt="productimage" class="tmp-img" loading="lazy">
                     </div>
                 </a>`;
                 
@@ -159,7 +159,7 @@ function manage_int_ext_image(){
             ext_img_data.forEach(function (i) {
                 html_ext += `<a href="javascript:void(0)" style="width: 256px;">
                     <div class="video-preview-div gallery-img-preview-div" data-gallery-type="ext">
-                        <img src="${WEB_API_FOLDER+i.replace('/images_thumb/','/images_thumb/')}" alt="productimage" class="tmp-img">
+                        <img src="${WEB_API_FOLDER+i.replace('/images_thumb/','/images_thumb/')}" alt="productimage" class="tmp-img" loading="lazy">
                     </div>
                 </a>`;
                 
@@ -291,7 +291,7 @@ function manage_gallery_preview(){
                     int_img_Data.forEach(function (i) {
                         html_img += `<a href="javascript:void(0)">
                             <div class="video-preview-div gallery-img-preview-div">
-                                <img src="${WEB_API_FOLDER+i.replace('/images_thumb/','/images_thumb/')}" alt="productimage" class="tmp-img">
+                                <img src="${WEB_API_FOLDER+i.replace('/images_thumb/','/images_thumb/')}" alt="productimage" class="tmp-img" loading="lazy">
                             </div>
                         </a>`;
                     });
@@ -306,7 +306,7 @@ function manage_gallery_preview(){
                     ext_img_data.forEach(function (i) {
                         html_img += `<a href="javascript:void(0)" style="width: 256px;">
                             <div class="video-preview-div gallery-img-preview-div">
-                                <img src="${WEB_API_FOLDER+i.replace('/images_thumb/','/images_thumb/')}" alt="productimage" class="tmp-img">
+                                <img src="${WEB_API_FOLDER+i.replace('/images_thumb/','/images_thumb/')}" alt="productimage" class="tmp-img" loading="lazy">
                             </div>
                         </a>`;
                     });
@@ -355,7 +355,7 @@ function manageColorDetails(){
         }
     }
     else {
-        var html_clr = `<img src="${WEB_API_FOLDER+carData.file.replace('/images_thumb/','/images_thumb/')}" alt="productimage" class="tmp-img">`;
+        var html_clr = `<img src="${WEB_API_FOLDER+carData.file.replace('/images_thumb/','/images_thumb/')}" alt="productimage" class="tmp-img" loading="lazy">`;
         $("#color_img").html(html_clr);
         // show_real_image("#color_img .tmp-img");
         $('.productcarslide').slick({
@@ -378,7 +378,7 @@ function manageColorClick(ind, first_time = false){
         {
             var html_clr = "";
             imageData.forEach(function (colorImg) {
-                html_clr += `<img src="${WEB_API_FOLDER+colorImg.replace('/images_thumb/','/images_thumb/')}" alt="productimage" class="tmp-img">`;
+                html_clr += `<img src="${WEB_API_FOLDER+colorImg.replace('/images_thumb/','/images_thumb/')}" alt="productimage" class="tmp-img" loading="lazy">`;
             });
             if(!first_time){
                 $('.productcarslide').slick('unslick');
@@ -464,10 +464,10 @@ function manageVideoDetails(){
                    
                     var ver_html = `<a href="javascript:void(0)">
                         <div class="video-preview-div" data-videoid="${youtube_video_id}">
-                            <img src="//img.youtube.com/vi/${youtube_video_id}/0.jpg" class="video-preview">
+                            <img src="//img.youtube.com/vi/${youtube_video_id}/0.jpg" class="video-preview" loading="lazy">
                             <div class="video-title-div">
                                 <span id="vid_title_${youtube_video_id}" class="video-title"></span>
-                                <img src="${ROOT_URL}assets/img/play.svg" class="video-play-btn width-35">
+                                <img src="${ROOT_URL}assets/img/play.svg" class="video-play-btn width-35" loading="lazy">
                             </div>
                         </div>
                     </a>`;

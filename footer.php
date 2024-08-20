@@ -6,10 +6,10 @@
                 <div class="footerlfle1">
                     <img src="<?php echo ROOT_URL; ?>assets/img/footerlogo.webp" loading="lazy" alt="logo" class="footerlogoimage w-75">
                     <div class="footericon mt-3">
-                        <img src="<?php echo ROOT_URL; ?>assets/img/facebook.svg">
-                        <img src="<?php echo ROOT_URL; ?>assets/img/instagram.svg" class="insta">
-                        <img src="<?php echo ROOT_URL; ?>assets/img/twitter.svg">
-                        <img src="<?php echo ROOT_URL; ?>assets/img/youtube.svg">
+                        <img src="<?php echo ROOT_URL; ?>assets/img/facebook.svg" loading="lazy">
+                        <img src="<?php echo ROOT_URL; ?>assets/img/instagram.svg" class="insta" loading="lazy">
+                        <img src="<?php echo ROOT_URL; ?>assets/img/twitter.svg" loading="lazy">
+                        <img src="<?php echo ROOT_URL; ?>assets/img/youtube.svg" loading="lazy">
                     </div>
                 </div>
 
@@ -72,7 +72,7 @@
             <div class="modal-body">
                 <!-- <button type="button" class="btn-close" data-bs-target="#priceModal" data-bs-toggle="modal" data-bs-dismiss="modal" aria-label="Close"></button> -->
                 <div class="d-flex flex-column text-center">
-                    <img src="assets/img/success.gif" alt="Icon" class="w-25 m-auto">
+                    <img src="assets/img/success.gif" alt="Icon" class="w-25 m-auto" loading="lazy">
                     <h4 class="px-3 pb-3">You are successfully subscribe with EV Cars.</h4>
                 </div>
             </div><!-- /.modal-body -->
