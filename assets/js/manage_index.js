@@ -235,7 +235,8 @@ function getHomepageData(){
                 await $("#tranding_list").html(html_tranding);
                 // show_real_image("#tranding_list .tmp-img");
                 $(".tranding-area").removeClass('d-none');
-                setTimeout(() => { manage_single_slide($('.trandingslider')); }, 2000);
+                manage_single_slide($('.trandingslider'));
+                setTimeout(() => { $(".trandingslider").slick('unslick'); manage_single_slide($('.trandingslider')); }, 2000);
                 $('#tranding_list').resize(function() {
                     manage_single_slide($('.trandingslider'));
                 });

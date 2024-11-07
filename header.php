@@ -93,7 +93,7 @@
         <div class="logosection logocontainer">
             <div class="carlogoflex d-flex justify-content-between align-items-center container px-0 py-2">
                 <div class="carlogo navdisnonemobile w-25">
-                    <a href="<?php echo ROOT_URL; ?>home">
+                    <a href="<?php echo ROOT_URL; ?>">
                         <img src="<?php echo ROOT_URL; ?>assets/img/logo.webp" alt="logo" class="logoimage w-100" loading="lazy">
                     </a>
                 </div>

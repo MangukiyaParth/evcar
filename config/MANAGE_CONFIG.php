@@ -6,9 +6,9 @@ if (session_status() == PHP_SESSION_NONE || !isset($_SESSION)) {
 define("IS_DEVELOPMENT", true);
 define("IS_PRODUCTION", (!IS_DEVELOPMENT));
 if (IS_PRODUCTION) {
-    define("API_SERVICE_URL", "http://" . $_SERVER['HTTP_HOST'] . "/api_services/");
-    define("ADMIN_PANEL_URL", "http://" . $_SERVER['HTTP_HOST'] . "/admin_panel/");
-    define("ROOT_URL", "http://" . $_SERVER['HTTP_HOST'] . "/");
+    define("API_SERVICE_URL", "https://" . $_SERVER['HTTP_HOST'] . "/api_services/");
+    define("ADMIN_PANEL_URL", "https://" . $_SERVER['HTTP_HOST'] . "/admin_panel/");
+    define("ROOT_URL", "https://" . $_SERVER['HTTP_HOST'] . "/");
     define("ALLOW_EXTERNAL_SCRIPT", "1");
     define("ALLOW_MIXPANEL_SCRIPT", "1");
 } else {
