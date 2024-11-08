@@ -12,7 +12,7 @@ function getcarData(){
     };
     doAPICall(req_data, async function(data){
         if (data && data != null && data.success == true) {
-            carData = data.data;
+            carData = decryptAES256CBC(data.data);
             if(carData)
             {
                 $(".brand_url").attr('href',ROOT_URL+'brand/'+carData.encode_brand_name);

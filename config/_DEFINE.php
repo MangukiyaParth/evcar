@@ -9,7 +9,7 @@ include_once "gatter_satter.php";
 
 define("UPLOAD", "upload/");
 
-header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Origin: https://evcarsinfo.in');
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Content-Range, Content-Disposition");
 header('Access-Control-Allow-Methods: GET, HEAD, OPTIONS, POST, PUT');
 

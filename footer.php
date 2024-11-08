@@ -84,7 +84,36 @@
 <script defer type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js" integrity="sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
 <script defer src="<?php echo ROOT_URL; ?>assets/js/data.js"></script>
+<script defer>
+    function decryptAES256CBC(encryptedData) {
+        if(encryptedData){
+            // Decode the base64 encoded encrypted data
+            let encryptedHex = CryptoJS.enc.Base64.parse(encryptedData);
+
+            // Convert the key and iv to the correct format for CryptoJS
+            let keyUtf8 = CryptoJS.enc.Utf8.parse('<?php echo $_ENV['ENCR_KEY'] ?>');
+            let ivUtf8 = CryptoJS.enc.Utf8.parse('<?php echo $_ENV['ENCR_IV'] ?>');
+
+            // Decrypt
+            let decrypted = CryptoJS.AES.decrypt(
+                { ciphertext: encryptedHex },
+                keyUtf8,
+                {
+                    iv: ivUtf8,
+                    mode: CryptoJS.mode.CBC,
+                    padding: CryptoJS.pad.Pkcs7
+                }
+            );
+            // Convert decrypted data to a UTF-8 string
+            return JSON.parse(decrypted.toString(CryptoJS.enc.Utf8));
+        }
+        else {
+            return [];
+        }
+    }
+</script>
 <script defer src="<?php echo ROOT_URL; ?>assets/js/custom.min.js"></script>
 
 <?php 

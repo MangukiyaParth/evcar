@@ -135,7 +135,7 @@ function get_brands(){
     };
     doAPICall(req_data, async function(data){
         if (data && data != null && data.success == true) {
-            var brandData = data.brand;
+            var brandData = decryptAES256CBC(data.brand);
             if(brandData && brandData.length > 0)
             {
                 var html_brand = "";
@@ -183,7 +183,7 @@ function getCarList(){
         search_val="";
         $(".page-heading").html(data.heading);
         if (data && data != null && data.success == true) {
-            var carData = data.data;
+            var carData = decryptAES256CBC(data.data);
             if(carData && carData.length > 0)
             {
                 var html_car = "";

@@ -12,9 +12,9 @@ if (IS_PRODUCTION) {
     define("ALLOW_EXTERNAL_SCRIPT", "1");
     define("ALLOW_MIXPANEL_SCRIPT", "1");
 } else {
-    define("API_SERVICE_URL", "http://" . $_SERVER['HTTP_HOST'] . "/product/HTML/evcar/admin_panel/api_services/");
-    define("ADMIN_PANEL_URL", "http://" . $_SERVER['HTTP_HOST'] . "/product/HTML/evcar/admin_panel/");
-    define("ROOT_URL", "http://" . $_SERVER['HTTP_HOST'] . "/product/HTML/evcar/");
+    define("API_SERVICE_URL", "http://" . $_SERVER['HTTP_HOST'] . "/PHP/product/evcar/admin_panel/api_services/");
+    define("ADMIN_PANEL_URL", "http://" . $_SERVER['HTTP_HOST'] . "/PHP/product/evcar/admin_panel/");
+    define("ROOT_URL", "http://" . $_SERVER['HTTP_HOST'] . "/PHP/product/evcar/");
     define("ALLOW_EXTERNAL_SCRIPT", "0");
     define("ALLOW_MIXPANEL_SCRIPT", "0");
 }

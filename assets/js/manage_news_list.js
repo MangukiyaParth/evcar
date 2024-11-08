@@ -9,7 +9,7 @@ function getnews(){
     };
     doAPICall(req_data, async function(data){
         if (data && data != null && data.success == true) {
-            var newsData = data.data;
+            var newsData = decryptAES256CBC(data.data);
             
             if(newsData && newsData.length > 0)
             {

@@ -12,7 +12,7 @@ ini_set("pcre.backtrack_limit", "5000000");
 date_default_timezone_set('Asia/Calcutta');
 
 if (isset($_SERVER) && isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-	header('Access-Control-Allow-Origin: *');
+	header('Access-Control-Allow-Origin: https://evcarsinfo.in');
 	// header('Access-Control-Allow-Headers: X-Requested-With');
 	header("HTTP/1.1 200 OK");
 

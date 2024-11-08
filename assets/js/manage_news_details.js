@@ -10,7 +10,7 @@ function getnewsdetails(){
     };
     doAPICall(req_data, async function(data){
         if (data && data != null && data.success == true) {
-            var newsData = data.data;
+            var newsData = decryptAES256CBC(data.data);
             $(".news_title").html(newsData.title);
             var html_news = `<div class="w-100">
                                 <h2 class="mb-4">${newsData.title}</h2>

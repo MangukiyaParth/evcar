@@ -18,55 +18,55 @@ function manage_homepage()
 		$qry_slider="SELECT * FROM tbl_slidermaster WHERE `isactive`=1 ORDER BY `orderno`+0 ASC";
 		$rows_slider = $db->execute($qry_slider);
 		if ($rows_slider != null && is_array($rows_slider) && count($rows_slider) > 0) {	
-			$outputjson["slider"] = $rows_slider;
+			$outputjson["slider"] = encrypt($_ENV['ENCR_KEY'],$_ENV['ENCR_IV'],json_encode($rows_slider));
 		}
 
 		$qry_testimonial="SELECT *, DATE_FORMAT(tdate, '%M %d, %Y') AS disp_date FROM tbl_testimonialmaster WHERE `isactive`=1 ORDER BY `orderno`+0 ASC";
 		$rows_testimonial = $db->execute($qry_testimonial);
 		if ($rows_testimonial != null && is_array($rows_testimonial) && count($rows_testimonial) > 0) {	
-			$outputjson["testimonial"] = $rows_testimonial;
+			$outputjson["testimonial"] = encrypt($_ENV['ENCR_KEY'],$_ENV['ENCR_IV'],json_encode($rows_testimonial));
 		}
 		
 		$qry_brand="SELECT *, remove_spacialcharacter(brand) as encode_name FROM tbl_brand";
 		$rows_brand = $db->execute($qry_brand);
 		if ($rows_brand != null && is_array($rows_brand) && count($rows_brand) > 0) {	
-			$outputjson["brand"] = $rows_brand;
+			$outputjson["brand"] = encrypt($_ENV['ENCR_KEY'],$_ENV['ENCR_IV'],json_encode($rows_brand));
 		}
 		
 		$qry_ev="SELECT *, remove_spacialcharacter(name) as encode_name FROM tbl_cars WHERE id IN (SELECT car_id FROM `tbl_home_manage` WHERE list_type = 1)";
 		$rows_ev = $db->execute($qry_ev);
 		if ($rows_ev != null && is_array($rows_ev) && count($rows_ev) > 0) {	
-			$outputjson["ev_car"] = $rows_ev;
+			$outputjson["ev_car"] = encrypt($_ENV['ENCR_KEY'],$_ENV['ENCR_IV'],json_encode($rows_ev));
 		}
 		
 		$qry_hybrid="SELECT *, remove_spacialcharacter(name) as encode_name FROM tbl_cars WHERE id IN (SELECT car_id FROM `tbl_home_manage` WHERE list_type = 2)";
 		$rows_hybrid = $db->execute($qry_hybrid);
 		if ($rows_hybrid != null && is_array($rows_hybrid) && count($rows_hybrid) > 0) {	
-			$outputjson["hybrid_car"] = $rows_hybrid;
+			$outputjson["hybrid_car"] = encrypt($_ENV['ENCR_KEY'],$_ENV['ENCR_IV'],json_encode($rows_hybrid));
 		}
 
 		$qry_fule="SELECT *, remove_spacialcharacter(name) as encode_name FROM tbl_cars WHERE id IN (SELECT car_id FROM `tbl_home_manage` WHERE list_type = 3)";
 		$rows_fule = $db->execute($qry_fule);
 		if ($rows_fule != null && is_array($rows_fule) && count($rows_fule) > 0) {	
-			$outputjson["fule_car"] = $rows_fule;
+			$outputjson["fule_car"] = encrypt($_ENV['ENCR_KEY'],$_ENV['ENCR_IV'],json_encode($rows_fule));
 		}
 		
 		$qry_tranding="SELECT *, remove_spacialcharacter(name) as encode_name FROM tbl_cars WHERE id IN (SELECT car_id FROM `tbl_home_manage` WHERE list_type = 4)";
 		$rows_tranding = $db->execute($qry_tranding);
 		if ($rows_tranding != null && is_array($rows_tranding) && count($rows_tranding) > 0) {	
-			$outputjson["tranding_car"] = $rows_tranding;
+			$outputjson["tranding_car"] = encrypt($_ENV['ENCR_KEY'],$_ENV['ENCR_IV'],json_encode($rows_tranding));
 		}
 		
 		$qry_upcoming="SELECT *, remove_spacialcharacter(name) as encode_name FROM tbl_cars WHERE id IN (SELECT car_id FROM `tbl_home_manage` WHERE list_type = 5)";
 		$rows_upcoming = $db->execute($qry_upcoming);
 		if ($rows_upcoming != null && is_array($rows_upcoming) && count($rows_upcoming) > 0) {	
-			$outputjson["upcoming_car"] = $rows_upcoming;
+			$outputjson["upcoming_car"] = encrypt($_ENV['ENCR_KEY'],$_ENV['ENCR_IV'],json_encode($rows_upcoming));
 		}
 		
 		$qry_news="SELECT *, DATE_FORMAT(STR_TO_DATE(news_date,'%d/%m/%Y'),'%M %d, %Y') as disp_date FROM tbl_news ORDER BY STR_TO_DATE(news_date,'%d/%m/%Y') DESC LIMIT 6";
 		$rows_news = $db->execute($qry_news);
 		if ($rows_news != null && is_array($rows_news) && count($rows_news) > 0) {	
-			$outputjson["news"] = $rows_news;
+			$outputjson["news"] = encrypt($_ENV['ENCR_KEY'],$_ENV['ENCR_IV'],json_encode($rows_news));
 		}
 		$outputjson['success'] = 1;
 		$outputjson['status'] = 1;
@@ -77,7 +77,7 @@ function manage_homepage()
 		$qry_brand="SELECT *, remove_spacialcharacter(brand) as encode_name FROM tbl_brand";
 		$rows_brand = $db->execute($qry_brand);
 		if ($rows_brand != null && is_array($rows_brand) && count($rows_brand) > 0) {	
-			$outputjson["brand"] = $rows_brand;
+			$outputjson["brand"] = encrypt($_ENV['ENCR_KEY'],$_ENV['ENCR_IV'],json_encode($rows_brand));
 		}
 		$outputjson['success'] = 1;
 		$outputjson['status'] = 1;
@@ -119,7 +119,7 @@ function manage_homepage()
 		$qry_car="SELECT *, remove_spacialcharacter(name) as encode_name FROM tbl_cars $where $orderby";
 		$rows_car = $db->execute($qry_car);
 		if ($rows_car != null && is_array($rows_car) && count($rows_car) > 0) {	
-			$outputjson["data"] = $rows_car;
+			$outputjson["data"] = encrypt($_ENV['ENCR_KEY'],$_ENV['ENCR_IV'],json_encode($rows_car));
 			$status = 1;
 			$message = "success.";
 		}
@@ -148,7 +148,7 @@ function manage_homepage()
 			if ($rows_car_verient != null && is_array($rows_car_verient) && count($rows_car_verient) > 0) {	
 				$rows_car[0]['vdata'] = json_encode($rows_car_verient);
 			}
-			$outputjson["data"] = $rows_car[0];
+			$outputjson["data"] = encrypt($_ENV['ENCR_KEY'],$_ENV['ENCR_IV'],json_encode($rows_car[0]));
 			$status = 1;
 			$message = "success.";
 		}
@@ -163,7 +163,7 @@ function manage_homepage()
 		$qry_news="SELECT *, DATE_FORMAT(STR_TO_DATE(news_date,'%d/%m/%Y'),'%M %d, %Y') as disp_date FROM tbl_news ORDER BY STR_TO_DATE(news_date,'%d/%m/%Y') DESC";
 		$rows_news = $db->execute($qry_news);
 		if ($rows_news != null && is_array($rows_news) && count($rows_news) > 0) {	
-			$outputjson["data"] = $rows_news;
+			$outputjson["data"] = encrypt($_ENV['ENCR_KEY'],$_ENV['ENCR_IV'],json_encode($rows_news));
 			$status = 1;
 			$message = "success.";
 		}
@@ -181,7 +181,7 @@ function manage_homepage()
 		$qry_news = 'SELECT *, DATE_FORMAT(STR_TO_DATE(news_date,"%d/%m/%Y"),"%M %d, %Y") as disp_date FROM tbl_news WHERE sub_title = "'.$title.'"';
 		$rows_news = $db->execute($qry_news);
 		if ($rows_news != null && is_array($rows_news) && count($rows_news) > 0) {	
-			$outputjson["data"] = $rows_news[0];
+			$outputjson["data"] = encrypt($_ENV['ENCR_KEY'],$_ENV['ENCR_IV'],json_encode($rows_news[0]));
 			$status = 1;
 			$message = "success.";
 		}
@@ -199,7 +199,7 @@ function manage_homepage()
 		$qry_car="SELECT *, remove_spacialcharacter(name) as encode_name FROM tbl_cars WHERE LOWER(`name`) LIKE LOWER('%$search%')";
 		$rows_car = $db->execute($qry_car);
 		if ($rows_car != null && is_array($rows_car) && count($rows_car) > 0) {	
-			$outputjson["data"] = $rows_car;
+			$outputjson["data"] = encrypt($_ENV['ENCR_KEY'],$_ENV['ENCR_IV'],json_encode($rows_car));
 			$status = 1;
 			$message = "success.";
 		}
@@ -237,4 +237,11 @@ function manage_homepage()
 		$outputjson['status'] = $status;
 		$outputjson['message'] = $message;
 	}
+}
+
+function encrypt($key, $iv, $data) {
+	$OPENSSL_CIPHER_NAME = "aes-256-cbc";
+	$encodedEncryptedData = base64_encode(openssl_encrypt($data, $OPENSSL_CIPHER_NAME, $key, OPENSSL_RAW_DATA, $iv));
+	$encryptedPayload = $encodedEncryptedData;
+	return $encryptedPayload;
 }

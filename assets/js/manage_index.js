@@ -55,15 +55,15 @@ function getHomepageData(){
     };
     doAPICall(req_data, async function(data){
         if (data && data != null && data.success == true) {
-            sliderData = data.slider;
-            testimonialData = data.testimonial;
-            brandData = data.brand;
-            newsData = data.news;
-            fuleData = data.fule_car;
-            evData = data.ev_car;
-            hybridData = data.hybrid_car;
-            upcomingData = data.upcoming_car;
-            trandingData = data.tranding_car;
+            sliderData = decryptAES256CBC(data.slider);
+            testimonialData = decryptAES256CBC(data.testimonial);
+            brandData = decryptAES256CBC(data.brand);
+            newsData = decryptAES256CBC(data.news);
+            fuleData = decryptAES256CBC(data.fule_car);
+            evData = decryptAES256CBC(data.ev_car);
+            hybridData = decryptAES256CBC(data.hybrid_car);
+            upcomingData = decryptAES256CBC(data.upcoming_car);
+            trandingData = decryptAES256CBC(data.tranding_car);
 
             if(sliderData && sliderData.length > 0)
             {
